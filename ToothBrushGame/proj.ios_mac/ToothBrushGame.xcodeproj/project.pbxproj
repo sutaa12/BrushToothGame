@@ -62,6 +62,20 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		6138F65B19EBCE90006FAF8A /* HitCheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6138F65319EBCE90006FAF8A /* HitCheck.cpp */; };
+		6138F65C19EBCE90006FAF8A /* Tooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6138F65519EBCE90006FAF8A /* Tooth.cpp */; };
+		6138F65D19EBCE90006FAF8A /* ToothManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6138F65719EBCE90006FAF8A /* ToothManager.cpp */; };
+		6138F66C19EBCEA8006FAF8A /* Boss.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66019EBCEA8006FAF8A /* Boss.png */; };
+		6138F66D19EBCEA8006FAF8A /* bubble_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66119EBCEA8006FAF8A /* bubble_01.png */; };
+		6138F66E19EBCEA8006FAF8A /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66219EBCEA8006FAF8A /* CloseNormal.png */; };
+		6138F66F19EBCEA8006FAF8A /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66319EBCEA8006FAF8A /* CloseSelected.png */; };
+		6138F67019EBCEA8006FAF8A /* Enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66419EBCEA8006FAF8A /* Enemy.png */; };
+		6138F67119EBCEA8006FAF8A /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66619EBCEA8006FAF8A /* Marker Felt.ttf */; };
+		6138F67219EBCEA8006FAF8A /* haguki.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66719EBCEA8006FAF8A /* haguki.png */; };
+		6138F67319EBCEA8006FAF8A /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66819EBCEA8006FAF8A /* HelloWorld.png */; };
+		6138F67419EBCEA8006FAF8A /* Plaque.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66919EBCEA8006FAF8A /* Plaque.png */; };
+		6138F67519EBCEA8006FAF8A /* tooth_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66A19EBCEA8006FAF8A /* tooth_01.png */; };
+		6138F67619EBCEA8006FAF8A /* Tooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66B19EBCEA8006FAF8A /* Tooth.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -107,20 +121,6 @@
 			remoteGlobalIDString = A03F2ED617814268006731B9;
 			remoteInfo = "CocosDenshion Mac";
 		};
-		1AC6FB02180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A03F31FD1781479B006731B9;
-			remoteInfo = "jsbindings Mac";
-		};
-		1AC6FB04180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A6FB53017854BC300CDF010;
-			remoteInfo = "luabindings Mac";
-		};
 		1AC6FB06180E9839004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
@@ -155,20 +155,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = A07A4FB4178387730073F6A7;
 			remoteInfo = "CocosDenshion iOS";
-		};
-		1AC6FB10180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A07A5030178387750073F6A7;
-			remoteInfo = "jsbindings iOS";
-		};
-		1AC6FB12180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A119791178526AA00D62A44;
-			remoteInfo = "luabindings iOS";
 		};
 		1AC6FB15180E9959004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -288,6 +274,23 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		6138F65319EBCE90006FAF8A /* HitCheck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HitCheck.cpp; path = ../Classes/HitCheck.cpp; sourceTree = "<group>"; };
+		6138F65419EBCE90006FAF8A /* HitCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitCheck.h; path = ../Classes/HitCheck.h; sourceTree = "<group>"; };
+		6138F65519EBCE90006FAF8A /* Tooth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tooth.cpp; path = ../Classes/Tooth.cpp; sourceTree = "<group>"; };
+		6138F65619EBCE90006FAF8A /* Tooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tooth.h; path = ../Classes/Tooth.h; sourceTree = "<group>"; };
+		6138F65719EBCE90006FAF8A /* ToothManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ToothManager.cpp; path = ../Classes/ToothManager.cpp; sourceTree = "<group>"; };
+		6138F65819EBCE90006FAF8A /* ToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToothManager.h; path = ../Classes/ToothManager.h; sourceTree = "<group>"; };
+		6138F66019EBCEA8006FAF8A /* Boss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Boss.png; sourceTree = "<group>"; };
+		6138F66119EBCEA8006FAF8A /* bubble_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubble_01.png; sourceTree = "<group>"; };
+		6138F66219EBCEA8006FAF8A /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
+		6138F66319EBCEA8006FAF8A /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
+		6138F66419EBCEA8006FAF8A /* Enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Enemy.png; sourceTree = "<group>"; };
+		6138F66619EBCEA8006FAF8A /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
+		6138F66719EBCEA8006FAF8A /* haguki.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = haguki.png; sourceTree = "<group>"; };
+		6138F66819EBCEA8006FAF8A /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
+		6138F66919EBCEA8006FAF8A /* Plaque.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plaque.png; sourceTree = "<group>"; };
+		6138F66A19EBCEA8006FAF8A /* tooth_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tooth_01.png; sourceTree = "<group>"; };
+		6138F66B19EBCEA8006FAF8A /* Tooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tooth.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -364,6 +367,12 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6138F65319EBCE90006FAF8A /* HitCheck.cpp */,
+				6138F65419EBCE90006FAF8A /* HitCheck.h */,
+				6138F65519EBCE90006FAF8A /* Tooth.cpp */,
+				6138F65619EBCE90006FAF8A /* Tooth.h */,
+				6138F65719EBCE90006FAF8A /* ToothManager.cpp */,
+				6138F65819EBCE90006FAF8A /* ToothManager.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
@@ -390,15 +399,11 @@
 				1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */,
 				1AC6FAFF180E9839004C840B /* libbox2d Mac.a */,
 				1AC6FB01180E9839004C840B /* libCocosDenshion Mac.a */,
-				1AC6FB03180E9839004C840B /* libjsbindings Mac.a */,
-				1AC6FB05180E9839004C840B /* libluabindings Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2dx iOS.a */,
 				1AC6FB09180E9839004C840B /* libcocos2dx-extensions iOS.a */,
 				1AC6FB0B180E9839004C840B /* libchipmunk iOS.a */,
 				1AC6FB0D180E9839004C840B /* libbox2d iOS.a */,
 				1AC6FB0F180E9839004C840B /* libCocosDenshion iOS.a */,
-				1AC6FB11180E9839004C840B /* libjsbindings iOS.a */,
-				1AC6FB13180E9839004C840B /* libluabindings iOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -484,9 +489,28 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		6138F66519EBCEA8006FAF8A /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6138F66619EBCEA8006FAF8A /* Marker Felt.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6138F66019EBCEA8006FAF8A /* Boss.png */,
+				6138F66119EBCEA8006FAF8A /* bubble_01.png */,
+				6138F66219EBCEA8006FAF8A /* CloseNormal.png */,
+				6138F66319EBCEA8006FAF8A /* CloseSelected.png */,
+				6138F66419EBCEA8006FAF8A /* Enemy.png */,
+				6138F66519EBCEA8006FAF8A /* fonts */,
+				6138F66719EBCEA8006FAF8A /* haguki.png */,
+				6138F66819EBCEA8006FAF8A /* HelloWorld.png */,
+				6138F66919EBCEA8006FAF8A /* Plaque.png */,
+				6138F66A19EBCEA8006FAF8A /* tooth_01.png */,
+				6138F66B19EBCEA8006FAF8A /* Tooth.png */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -617,20 +641,6 @@
 			remoteRef = 1AC6FB00180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1AC6FB03180E9839004C840B /* libjsbindings Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsbindings Mac.a";
-			remoteRef = 1AC6FB02180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1AC6FB05180E9839004C840B /* libluabindings Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluabindings Mac.a";
-			remoteRef = 1AC6FB04180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		1AC6FB07180E9839004C840B /* libcocos2dx iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -666,20 +676,6 @@
 			remoteRef = 1AC6FB0E180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1AC6FB11180E9839004C840B /* libjsbindings iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsbindings iOS.a";
-			remoteRef = 1AC6FB10180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1AC6FB13180E9839004C840B /* libluabindings iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluabindings iOS.a";
-			remoteRef = 1AC6FB12180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -687,24 +683,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6138F67619EBCEA8006FAF8A /* Tooth.png in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				6138F67419EBCEA8006FAF8A /* Plaque.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				6138F66C19EBCEA8006FAF8A /* Boss.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				6138F67519EBCEA8006FAF8A /* tooth_01.png in Resources */,
+				6138F66F19EBCEA8006FAF8A /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				6138F67119EBCEA8006FAF8A /* Marker Felt.ttf in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				6138F66D19EBCEA8006FAF8A /* bubble_01.png in Resources */,
+				6138F67319EBCEA8006FAF8A /* HelloWorld.png in Resources */,
+				6138F66E19EBCEA8006FAF8A /* CloseNormal.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				6138F67019EBCEA8006FAF8A /* Enemy.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				6138F67219EBCEA8006FAF8A /* haguki.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,9 +734,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6138F65D19EBCE90006FAF8A /* ToothManager.cpp in Sources */,
+				6138F65B19EBCE90006FAF8A /* HitCheck.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				6138F65C19EBCE90006FAF8A /* Tooth.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
