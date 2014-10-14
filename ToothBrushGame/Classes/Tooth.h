@@ -34,7 +34,7 @@ public:
     void uninit(void);
     void update(void);
     
-    static Tooth* Create(const std::string& filename,const Vec2& pos = Vec2(0.0f,0.0f));
+    static Tooth* Create(const Vec2& pos);
     Sprite* getSprite(void){return m_pToothSprite;}
     
     void setPos(Vec2 pos){m_pos = pos;}
@@ -45,19 +45,10 @@ public:
     
     void RefreshToothSpritePos(void){m_pToothSprite->setPosition(m_pos);}
     
-    typedef enum
-    {
-        TOOTH_STATUS_NONE = 0,
-        TOOTH_STATUS_MAX,
-    }TOOTH_STATUS;
-
 private:
     Sprite* m_pToothSprite;
-    Sprite* m_pPlaqueSprite;
     Vec2 m_pos;
     Vec3 m_rot;
-    std::string m_spriteFileName;
-    TOOTH_STATUS m_status;
 };
 
 #endif /* defined(__test__Tooth__) */

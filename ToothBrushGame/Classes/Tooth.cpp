@@ -17,7 +17,6 @@ Tooth::Tooth(void)
 {
     // メンバ変数の初期化
     m_pToothSprite = nullptr;
-    m_pPlaqueSprite = nullptr;
 }
 
 //================================================================================
@@ -34,7 +33,7 @@ Tooth::~Tooth()
 bool Tooth::init(void)
 {
     // スプライトの作成
-    m_pToothSprite = Sprite::create(m_spriteFileName);
+    m_pToothSprite = Sprite::create("tooth_01.png");
     
     // エラーチェック
     if(m_pToothSprite == nullptr)
@@ -71,13 +70,12 @@ void Tooth::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-Tooth* Tooth::Create(const std::string &filename,const Vec2& pos)
+Tooth* Tooth::Create(const Vec2& pos)
 {
     // インスタンスの生成
     Tooth* pTooth = new Tooth();
     
     // メンバ変数の代入
-    pTooth->m_spriteFileName = filename;
     pTooth->m_pos = pos;
     
     // 初期化

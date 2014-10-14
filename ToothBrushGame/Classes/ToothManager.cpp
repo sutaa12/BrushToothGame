@@ -10,6 +10,7 @@
 //********************************************************************************
 #include "ToothManager.h"
 #include "Tooth.h"
+#include "Gum.h"
 
 static const int TOOTHMANAGER_DISPLAY_CENTER_X = (320);
 
@@ -45,12 +46,23 @@ bool ToothManager::init(void)
     m_pTopTooth = new Tooth[m_nTopToothNum];
     
     // 上歯茎生成
-    m_pTopGumSprite = Sprite::create("haguki.png");                                                             // スプライト生成
+    /*m_pTopGumSprite = Sprite::create("haguki.png");                                                             // スプライト生成
     Rect gumSpriteRect = (m_pTopGumSprite->getBoundingBox());                                                   // スプライトサイズ取得
     m_topGumPos = Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,m_startLeftTopPos.y - (gumSpriteRect.size.height / 2));    // スプライト座標算出
-    m_pTopGumSprite->setPosition(m_topGumPos);                                                                  // スプライト座標設定
-    m_pLayer->addChild(m_pTopGumSprite);                                                                        // スプライト登録
+    m_pTopGumSprite->setPosition(m_topGumPos);                                                     // スプライト座標設定
+   */
+    // 上歯茎生成
+    m_pTopGum = Gum::Create();
     
+    // スプライトサイズ取得
+    
+    
+    // 座標変換(左上を持ってきているため、中心にそろえる処理)
+    
+    // スプライト登録
+    m_pLayer->addChild(m_pTopGum->getSprite());
+    
+
     // 上歯生成処理
     m_pTopToothSprite = Sprite::create("tooth_01.png");
     Rect toothSpriteRect = (m_pTopToothSprite->getBoundingBox());
@@ -76,49 +88,7 @@ bool ToothManager::init(void)
     
     
     
-    
-    
-    
-    // 上歯の生成
-    for(int nCnt = 0;nCnt < m_nTopToothNum;nCnt++)
-    {
-        // 歯のインスタンス化
-        m_pTopTooth[nCnt] = *Tooth::Create("HelloWorld.png",
-                                           Vec2(m_topToothPos.x - toothSpriteRect.size.width / 2,m_topToothPos.y));
 
-        // スプライトサイズ取得
-        Rect rect = (m_pTopTooth[nCnt].getSprite())->getBoundingBox();
-        
-        // 取得したスプライトサイズを元に再配置
-        m_pTopTooth[nCnt].addPos((rect.size.width * nCnt) + (rect.size.width / 2) + m_fDistance, 0);
-       
-        // 再配置したのをスプライトに反映
-        m_pTopTooth[nCnt].RefreshToothSpritePos();
-        
-        // スプライトの登録
-        m_pLayer->addChild(m_pTopTooth[nCnt].getSprite(),0);
-    }
-    
-    // 下歯の生成
-    for(int nCnt = 0;nCnt < m_nBottomToothNum;nCnt++)
-    {
-        // 歯のインスタンス化
-        m_pBottomTooth[nCnt] = *Tooth::Create("HelloWorld.png",
-                                              Vec2(m_bottomToothPos.x - toothSpriteRect.size.width / 2,m_bottomToothPos.y));
-        
-        // スプライトサイズ取得
-        Rect rect = (m_pBottomTooth[nCnt].getSprite())->getBoundingBox();
-        
-        // 取得したスプライトサイズを元に再配置
-        m_pBottomTooth[nCnt].addPos((rect.size.width * nCnt) + (rect.size.width / 2)+ m_fDistance, 0);
-        
-        // 再配置したのをスプライトに反映
-        m_pBottomTooth[nCnt].RefreshToothSpritePos();
-        
-        // スプライトの登録
-        //m_pLayer->addChild(m_pBottomTooth[nCnt].getSprite(),0);
-    }
-    
     // 正常終了
     return true;
 }

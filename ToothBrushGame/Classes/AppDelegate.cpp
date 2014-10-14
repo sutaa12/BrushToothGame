@@ -19,7 +19,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLView::create("My Game");
         director->setOpenGLView(glview);
         
-        glview->setDesignResolutionSize(320, 480, ResolutionPolicy::SHOW_ALL);
+        //glview->setDesignResolutionSize(320, 480, ResolutionPolicy::SHOW_ALL);
         //director->setContentScaleFactor(1920 / 480);
     }
 

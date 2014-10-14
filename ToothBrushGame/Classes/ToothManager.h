@@ -23,6 +23,7 @@ using namespace cocos2d;
 // 前方クラス宣言
 //********************************************************************************
 class Tooth;
+class Gum;
 
 //********************************************************************************
 // クラス宣言
@@ -61,6 +62,11 @@ private:
     
     Tooth* m_pTopTooth;
     Tooth* m_pBottomTooth;
+    
+    Gum* m_pTopGum;
+    Gum* m_pBottomGum;
+    
+    
     Sprite* m_pTopToothSprite;
     Sprite* m_pBottomToothSprite;
     Sprite* m_pTopGumSprite;
