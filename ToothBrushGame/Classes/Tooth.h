@@ -35,7 +35,7 @@ public:
     void update(void);
     
     static Tooth* Create(const Vec2& pos = Vec2(0.0f,0.0f));
-    Sprite* getSprite(void){return m_pToothSprite;}
+    Sprite* getSprite(void){return m_pSprite;}
     
     void setPos(Vec2 pos){m_pos = pos;}
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
@@ -47,10 +47,10 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
     
-    void RefreshToothSpritePos(void){m_pToothSprite->setPosition(m_pos);}
+    void RefreshSpritePos(void){m_pSprite->setPosition(m_pos);}
     
 private:
-    Sprite* m_pToothSprite;
+    Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;
 };

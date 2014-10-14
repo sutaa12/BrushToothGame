@@ -65,7 +65,7 @@ bool ToothManager::init(void)
                         m_pTopGum->getPos().y - gumSpriteRect.size.height / 2 - (toothSpriteRect.size.height / 2));
     
     // スプライトの再配置
-    m_pTopTooth->RefreshToothSpritePos();
+    m_pTopTooth->RefreshSpritePos();
     
     // スプライトの登録
     m_pLayer->addChild(m_pTopTooth->getSprite());
@@ -134,7 +134,7 @@ void ToothManager::AddTopGumPosAndTopToothPos(const Vec2& vec)
     m_pTopGum->RefreshSpritePos();
     
     m_pTopTooth->addPos(vec);
-    m_pTopTooth->RefreshToothSpritePos();
+    m_pTopTooth->RefreshSpritePos();
 }
 
 //================================================================================
@@ -146,7 +146,7 @@ void ToothManager::AddBottomGumPosAndBottomToothPos(const Vec2& vec)
     m_pBottomGum->RefreshSpritePos();
     
     m_pBottomTooth->addPos(vec);
-    m_pBottomTooth->RefreshToothSpritePos();
+    m_pBottomTooth->RefreshSpritePos();
 }
 
 

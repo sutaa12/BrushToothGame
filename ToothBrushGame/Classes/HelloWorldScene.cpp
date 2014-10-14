@@ -2,6 +2,7 @@
 
 #include "Tooth.h"
 #include "ToothManager.h"
+#include "Plaque.h"
 
 USING_NS_CC;
 
@@ -102,6 +103,8 @@ bool HelloWorld::init()
     m_bMove = false;
     m_bBossDisp = false;
     m_touchPos = Point(0.0f,0.0f);
+
+    this->addChild(Plaque::Create(Vec2(64, 64))->getSprite());  
     
     return true;
 }
