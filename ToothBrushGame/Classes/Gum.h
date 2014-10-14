@@ -38,8 +38,12 @@ public:
     
     void setPos(Vec2 pos){m_pos = pos;}
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
+    void setPosX(float x){m_pos.x = x;}
+    void setPosY(float y){m_pos.y = y;}
     void addPos(Vec2 pos){m_pos += pos;}
     void addPos(float x,float y){m_pos.x += x;m_pos.y += y;}
+    void addPosX(float x){m_pos.x += x;}
+    void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
     
     void RefreshSpritePos(void){m_pSprite->setPosition(m_pos);}
