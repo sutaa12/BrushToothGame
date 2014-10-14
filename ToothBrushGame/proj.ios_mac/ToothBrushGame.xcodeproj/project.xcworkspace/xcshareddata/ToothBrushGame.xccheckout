@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5B300F19-DFE3-4F72-B3EC-8C7E7BB7E56D</string>
+	<string>4DDA0BBB-1BD3-4DFE-8C5E-7E9807B59E84</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ToothBrushGame</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>03729D8AB56B5DB6D0858E7EA5953BE0E0122B9B</key>
-		<string>github.com:JunMaru/BrushToothGame.git</string>
+		<string>https://github.com/sutaa12/BrushToothGame.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ToothBrushGame/proj.ios_mac/ToothBrushGame.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:JunMaru/BrushToothGame.git</string>
+	<string>https://github.com/sutaa12/BrushToothGame.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

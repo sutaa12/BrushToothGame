@@ -55,13 +55,15 @@ bool ToothManager::init(void)
     m_pTopGum = Gum::Create();
     
     // スプライトサイズ取得
-    
+    Rect gumSpriteRect = (m_pTopGum->getSprite()->getBoundingBox());
     
     // 座標変換(左上を持ってきているため、中心にそろえる処理)
-    
+    m_pTopGum->setPos(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,m_startLeftTopPos.y - (gumSpriteRect.size.height / 2)));
+    m_pTopGum->RefreshSpritePos();
+
     // スプライト登録
     m_pLayer->addChild(m_pTopGum->getSprite());
-    
+
 
     // 上歯生成処理
     m_pTopToothSprite = Sprite::create("tooth_01.png");
