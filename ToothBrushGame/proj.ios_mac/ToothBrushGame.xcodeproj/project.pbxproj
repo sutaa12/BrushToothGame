@@ -10,6 +10,7 @@
 		18648C8819ED1CC100A7FB85 /* Plaque.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18648C8619ED1CC100A7FB85 /* Plaque.cpp */; };
 		18648C8D19ED25AA00A7FB85 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18648C8B19ED25AA00A7FB85 /* Enemy.cpp */; };
 		18648C9019ED25B700A7FB85 /* Boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18648C8E19ED25B700A7FB85 /* Boss.cpp */; };
+		18648C9319EE102200A7FB85 /* EnemyManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18648C9119EE102200A7FB85 /* EnemyManager.cpp */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -239,6 +240,8 @@
 		18648C8C19ED25AA00A7FB85 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = ../Classes/Enemy.h; sourceTree = "<group>"; };
 		18648C8E19ED25B700A7FB85 /* Boss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Boss.cpp; path = ../Classes/Boss.cpp; sourceTree = "<group>"; };
 		18648C8F19ED25B700A7FB85 /* Boss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boss.h; path = ../Classes/Boss.h; sourceTree = "<group>"; };
+		18648C9119EE102200A7FB85 /* EnemyManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyManager.cpp; path = ../Classes/EnemyManager.cpp; sourceTree = "<group>"; };
+		18648C9219EE102200A7FB85 /* EnemyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyManager.h; path = ../Classes/EnemyManager.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -379,22 +382,24 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				6138F65319EBCE90006FAF8A /* HitCheck.cpp */,
-				6138F65419EBCE90006FAF8A /* HitCheck.h */,
-				6138F65519EBCE90006FAF8A /* Tooth.cpp */,
-				6138F65619EBCE90006FAF8A /* Tooth.h */,
-				6138F65719EBCE90006FAF8A /* ToothManager.cpp */,
-				6138F65819EBCE90006FAF8A /* ToothManager.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				6138F65319EBCE90006FAF8A /* HitCheck.cpp */,
+				6138F65419EBCE90006FAF8A /* HitCheck.h */,
 				6F55138119ECD12A00217950 /* Gum.cpp */,
 				6F55138219ECD12A00217950 /* Gum.h */,
+				6138F65519EBCE90006FAF8A /* Tooth.cpp */,
+				6138F65619EBCE90006FAF8A /* Tooth.h */,
+				6138F65719EBCE90006FAF8A /* ToothManager.cpp */,
+				6138F65819EBCE90006FAF8A /* ToothManager.h */,
 				18648C8619ED1CC100A7FB85 /* Plaque.cpp */,
 				18648C8719ED1CC100A7FB85 /* Plaque.h */,
 				18648C8B19ED25AA00A7FB85 /* Enemy.cpp */,
 				18648C8C19ED25AA00A7FB85 /* Enemy.h */,
+				18648C9119EE102200A7FB85 /* EnemyManager.cpp */,
+				18648C9219EE102200A7FB85 /* EnemyManager.h */,
 				18648C8E19ED25B700A7FB85 /* Boss.cpp */,
 				18648C8F19ED25B700A7FB85 /* Boss.h */,
 			);
@@ -595,7 +600,7 @@
 				LastUpgradeCheck = 0500;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = MDDB52YB8L;
+						DevelopmentTeam = N32WVFQ7H8;
 					};
 				};
 			};
@@ -759,6 +764,7 @@
 				6138F65B19EBCE90006FAF8A /* HitCheck.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				18648C9319EE102200A7FB85 /* EnemyManager.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				6138F65C19EBCE90006FAF8A /* Tooth.cpp in Sources */,
 				6F55138319ECD12A00217950 /* Gum.cpp in Sources */,
@@ -840,6 +846,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -860,6 +867,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -871,6 +879,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -889,6 +898,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
