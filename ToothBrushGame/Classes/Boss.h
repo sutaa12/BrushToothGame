@@ -27,7 +27,7 @@ public:
     void update();  //更新
     void disappear();   //消滅
 
-    static Boss* Create(const Vec2& pos = Vec2(0.0f,0.0f));
+    static Boss* create(const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
 
     void setPos(Vec2 pos){m_pos = pos;}
@@ -40,7 +40,7 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
 
-    void RefreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+    void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
 
 private:
     Sprite* m_pSprite;

@@ -1,92 +1,101 @@
-//
-//  Number.cpp
+//********************************************************************************
+//  PlaqueManager.cpp
 //  ToothBrushGame
 //
-//  Created by 鈴木 愛忠 on 2014/10/15.
+//  Created by 丸山 潤 on 2014/10/15.
 //
-//
-
+//********************************************************************************
 //********************************************************************************
 // インクルード
 //********************************************************************************
-#include "Number.h"
+#include "PlaqueManager.h"
+#include "Plaque.h"
 
 //================================================================================
 // コンストラクタ
 //================================================================================
-Number::Number(void)
+PlaqueManager::PlaqueManager(void)
 {
-    // メンバ変数の初期化
-    m_pSprite = nullptr;
+    m_nPlaqueNum = 0;
+    m_ppPlaque = nullptr;
 }
 
 //================================================================================
 // デストラクタ
 //================================================================================
-Number::~Number()
+PlaqueManager::~PlaqueManager()
 {
-    
+
 }
 
 //================================================================================
 // 初期化処理
 //================================================================================
-bool Number::init(void)
+bool PlaqueManager::init(void)
 {
-    // スプライトの作成
-    m_pSprite = Sprite::create("tooth_01.png");
-    
-    // エラーチェック
-    if(m_pSprite == nullptr)
+    // クリエイトで持ってきた最大値分だけ動的確保
+    m_ppPlaque = new Plaque*[m_nPlaqueMaxNum];
+
+    for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
     {
-        // スプライト生成エラー
-        return false;
+        m_ppPlaque[nCnt] = nullptr;
     }
-    
-    // スプライトの座標設定
-    m_pSprite->setPosition(m_pos);
-    
-    // 正常終了
+
+    createPlaque();
+
     return true;
 }
 
 //================================================================================
 // 終了処理
 //================================================================================
-void Number::uninit(void)
+void PlaqueManager::uninit(void)
 {
-    
+
 }
 
 //================================================================================
 // 更新処理
 //================================================================================
-void Number::update(void)
+void PlaqueManager::update(void)
 {
-    //m_pNumberSprite->setPosition(m_pos);
-    
-    
+
 }
-//================================================================================
-// 数字代入処理
-//================================================================================
-void Number::setNumber(int number)
-{
-    
-}
+
 //================================================================================
 // 生成処理
 //================================================================================
-Number* Number::create(const Vec2& pos)
+PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Layer* pLayer)
 {
-    // インスタンスの生成
-    Number* pNumber = new Number();
-    
-    // メンバ変数の代入
-    pNumber->m_pos = pos;
-    
-    // 初期化
-    pNumber->init();
-    
-    return pNumber;
+    PlaqueManager* pPlaqueManager = new PlaqueManager();
+
+    pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum;
+    pPlaqueManager->m_pLayer = pLayer;
+
+    pPlaqueManager->init();
+
+    return pPlaqueManager;
 }
+
+//================================================================================
+// 歯垢生成処理
+//================================================================================
+void PlaqueManager::createPlaque(void)
+{
+    Vec2 pos = Vec2(300,300);
+
+    // 生成チェック
+    for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
+    {
+        m_ppPlaque[nCnt] = Plaque::create(pos);
+
+        m_pLayer->addChild(m_ppPlaque[nCnt]->getSprite());
+
+        m_nPlaqueNum++;
+    }
+}
+
+
+
+
+

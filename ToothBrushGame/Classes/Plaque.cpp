@@ -66,7 +66,7 @@ void Plaque::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-Plaque* Plaque::Create(const Vec2& pos)
+Plaque* Plaque::create(const Vec2& pos)
 {
     // インスタンスの生成
     Plaque* pPlaque = new Plaque();

@@ -1,15 +1,15 @@
-//
-//  EnemyManager.h
+//********************************************************************************
+//  PlaqueManager.h
 //  ToothBrushGame
 //
-//  Created by 川原 岳大 on 2014/10/15.
+//  Created by 丸山 潤 on 2014/10/15.
 //
-//
-
-#ifndef __ToothBrushGame__EnemyManager__
-#define __ToothBrushGame__EnemyManager__
-
-#include <stdio.h>
+//********************************************************************************
+//********************************************************************************
+// インクルードガード
+//********************************************************************************
+#ifndef __ToothBrushGame__PlaqueManager__
+#define __ToothBrushGame__PlaqueManager__
 
 //********************************************************************************
 // インクルード
@@ -24,41 +24,34 @@ using namespace cocos2d;
 //********************************************************************************
 // 前方クラス宣言
 //********************************************************************************
-class Enemy;
+class Plaque;
 
 //********************************************************************************
 // クラス宣言
 //********************************************************************************
-class EnemyManager
+class PlaqueManager
 {
 public:
-    EnemyManager();
-    ~EnemyManager();
+    PlaqueManager();
+    ~PlaqueManager();
 
     bool init(void);
     void uninit(void);
     void update(void);
 
-    static EnemyManager* create(const Vec2& startLeftTopPos,Layer* layer);
+    static PlaqueManager* create(int nPlaqueMaxNum,Layer* pLayer);
 
-    Enemy* getTopTooth(void){return m_pTopTooth;}
-    Enemy* getBootomTooth(void){return m_pBottomTooth;}
 
-    void disappear(const Vec2& vec);
-    void action(const Vec2& vec);
-    void attack(const Vec2& vec);
-    void move(const Vec2& vec);
-    void spawn(const Vec2& vec);
-    void checkDamage(const Vec2& vec);
-
+    Plaque** getPlaqueTop(void){return &m_ppPlaque[0];}
+    int getPlaqueNum(void){return m_nPlaqueNum;}
 
 private:
-    Vec2 m_startLeftTopPos;
-
-    Enemy* m_pTopTooth;
-    Enemy* m_pBottomTooth;
-
+    Plaque** m_ppPlaque;
+    int m_nPlaqueNum;
+    int m_nPlaqueMaxNum;
     Layer* m_pLayer;
+
+    void createPlaque(void);
 };
 
-#endif /* defined(__ToothBrushGame__EnemyManager__) */
+#endif /* defined(__ToothBrushGame__PlaqueManager__) */

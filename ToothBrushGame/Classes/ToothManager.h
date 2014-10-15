@@ -38,13 +38,13 @@ public:
     void uninit(void);
     void update(void);
     
-    static ToothManager* Create(const Vec2& startLeftTopPos,Layer* layer);
+    static ToothManager* create(const Vec2& startLeftTopPos,Layer* layer);
     
     Tooth* getTopTooth(void){return m_pTopTooth;}
     Tooth* getBootomTooth(void){return m_pBottomTooth;}
     
-    void AddTopGumPosAndTopToothPos(const Vec2& vec);
-    void AddBottomGumPosAndBottomToothPos(const Vec2& vec);
+    void addTopGumPosAndTopToothPos(const Vec2& vec);
+    void addBottomGumPosAndBottomToothPos(const Vec2& vec);
     
 private:
     Vec2 m_startLeftTopPos;
