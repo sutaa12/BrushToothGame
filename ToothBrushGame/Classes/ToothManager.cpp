@@ -39,7 +39,7 @@ ToothManager::~ToothManager()
 bool ToothManager::init(void)
 {
     // 上歯茎生成
-    m_pTopGum = Gum::Create();
+    m_pTopGum = Gum::create();
     
     // スプライトサイズ取得
     Rect gumSpriteRect = (m_pTopGum->getSprite()->getBoundingBox());
@@ -49,13 +49,13 @@ bool ToothManager::init(void)
                            m_startLeftTopPos.y - (gumSpriteRect.size.height / 2)));
     
     // スプライトの再配置
-    m_pTopGum->RefreshSpritePos();
+    m_pTopGum->refreshSpritePos();
 
     // スプライトの登録
     m_pLayer->addChild(m_pTopGum->getSprite());
 
     // 上歯生成処理
-    m_pTopTooth = Tooth::Create();
+    m_pTopTooth = Tooth::create();
     
     // スプライトサイズ取得
     Rect toothSpriteRect = m_pTopTooth->getSprite()->getBoundingBox();
@@ -65,14 +65,14 @@ bool ToothManager::init(void)
                         m_pTopGum->getPos().y - gumSpriteRect.size.height / 2 - (toothSpriteRect.size.height / 2));
     
     // スプライトの再配置
-    m_pTopTooth->RefreshSpritePos();
+    m_pTopTooth->refreshSpritePos();
     
     // スプライトの登録
     m_pLayer->addChild(m_pTopTooth->getSprite());
     
     
     // 下歯生成処理
-    m_pBottomTooth = Tooth::Create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
+    m_pBottomTooth = Tooth::create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
                                         m_pTopTooth->getPos().y - toothSpriteRect.size.height));
     
     // スプライトの回転
@@ -82,7 +82,7 @@ bool ToothManager::init(void)
     m_pLayer->addChild(m_pBottomTooth->getSprite());
     
     // 下歯茎生成処理
-    m_pBottomGum = Gum::Create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
+    m_pBottomGum = Gum::create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
                                     m_pBottomTooth->getPos().y - toothSpriteRect.size.height / 2 - gumSpriteRect.size.height / 2));
     
     // スプライトの登録
@@ -110,7 +110,7 @@ void ToothManager::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-ToothManager* ToothManager::Create(const Vec2& startLeftTopPos,Layer* layer)
+ToothManager* ToothManager::create(const Vec2& startLeftTopPos,Layer* layer)
 {
     // 歯マネージャーのインスタンス化
     ToothManager* pToothManager = new ToothManager();
@@ -128,25 +128,25 @@ ToothManager* ToothManager::Create(const Vec2& startLeftTopPos,Layer* layer)
 //================================================================================
 // 上歯茎と上歯の座標を足す
 //================================================================================
-void ToothManager::AddTopGumPosAndTopToothPos(const Vec2& vec)
+void ToothManager::addTopGumPosAndTopToothPos(const Vec2& vec)
 {
     m_pTopGum->addPos(vec);
-    m_pTopGum->RefreshSpritePos();
+    m_pTopGum->refreshSpritePos();
     
     m_pTopTooth->addPos(vec);
-    m_pTopTooth->RefreshSpritePos();
+    m_pTopTooth->refreshSpritePos();
 }
 
 //================================================================================
 // 下歯茎と下歯の座標を足す
 //================================================================================
-void ToothManager::AddBottomGumPosAndBottomToothPos(const Vec2& vec)
+void ToothManager::addBottomGumPosAndBottomToothPos(const Vec2& vec)
 {
     m_pBottomGum->addPos(vec);
-    m_pBottomGum->RefreshSpritePos();
+    m_pBottomGum->refreshSpritePos();
     
     m_pBottomTooth->addPos(vec);
-    m_pBottomTooth->RefreshSpritePos();
+    m_pBottomTooth->refreshSpritePos();
 }
 
 

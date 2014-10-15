@@ -39,7 +39,7 @@ public:
     void uninit(void);
     void update(void);
 
-    static EnemyManager* Create(const Vec2& startLeftTopPos,Layer* layer);
+    static EnemyManager* create(const Vec2& startLeftTopPos,Layer* layer);
 
     Enemy* getTopTooth(void){return m_pTopTooth;}
     Enemy* getBootomTooth(void){return m_pBottomTooth;}

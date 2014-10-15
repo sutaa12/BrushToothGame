@@ -3,6 +3,7 @@
 #include "Tooth.h"
 #include "ToothManager.h"
 #include "Plaque.h"
+#include "PlaqueManager.h"
 
 USING_NS_CC;
 
@@ -80,7 +81,7 @@ bool HelloWorld::init()
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
     
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::Create(Vec2(0.0f,visibleSize.height),this);
+    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
     m_bHit = false;
     
     // 泡のスプライト生成
@@ -104,7 +105,9 @@ bool HelloWorld::init()
     m_bBossDisp = false;
     m_touchPos = Point(0.0f,0.0f);
 
-    this->addChild(Plaque::Create(Vec2(64, 64))->getSprite());  
+    this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
+
+    PlaqueManager::create(100, this);
     
     return true;
 }
@@ -134,8 +137,8 @@ void HelloWorld::update(float fTime)
     {
         m_bMove = true;
         
-        m_pToothManager->AddBottomGumPosAndBottomToothPos(Vec2(0,-100));
-        m_pToothManager->AddTopGumPosAndTopToothPos(Vec2(0,100));
+        m_pToothManager->addBottomGumPosAndBottomToothPos(Vec2(0,-100));
+        m_pToothManager->addTopGumPosAndTopToothPos(Vec2(0,100));
        
         // ボス出現判定
         if(!m_bBossDisp)

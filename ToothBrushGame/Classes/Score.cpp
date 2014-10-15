@@ -41,7 +41,7 @@ bool Score::init(void)
     for(int nloop = 0;nloop < m_nMaxNumber;nloop++)
     {
         // 上歯茎生成
-        m_ppNumbers[nloop] = Number::Create();
+        m_ppNumbers[nloop] = Number::create();
         
         // スプライトサイズ取得
         Rect numgerRect = (m_ppNumbers[nloop]->getSprite()->getBoundingBox());
@@ -51,7 +51,7 @@ bool Score::init(void)
                                m_startLeftTopPos.y - (numgerRect.size.height / 2)));
         
         // スプライトの再配置
-        m_ppNumbers[nloop]->RefreshSpritePos();
+        m_ppNumbers[nloop]->refreshSpritePos();
         
         // スプライトの登録
         m_pLayer->addChild(m_ppNumbers[nloop]->getSprite());
@@ -79,7 +79,7 @@ void Score::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-Score* Score::Create(const Vec2& startLeftTopPos,int nMaxNumber,Layer* layer)
+Score* Score::create(const Vec2& startLeftTopPos,int nMaxNumber,Layer* layer)
 {
     // 歯マネージャーのインスタンス化
     Score* pScore = new Score();

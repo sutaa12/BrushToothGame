@@ -37,7 +37,7 @@ public:
     void uninit(void);
     void update(void);
     
-    static Score* Create(const Vec2& startLeftTopPos,int nNumber,Layer* layer);
+    static Score* create(const Vec2& startLeftTopPos,int nNumber,Layer* layer);
     
     Number** getNumber(void){return &m_ppNumbers[0];}
         

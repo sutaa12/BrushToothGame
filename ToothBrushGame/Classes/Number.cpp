@@ -77,7 +77,7 @@ void Number::setNumber(int number)
 //================================================================================
 // 生成処理
 //================================================================================
-Number* Number::Create(const Vec2& pos)
+Number* Number::create(const Vec2& pos)
 {
     // インスタンスの生成
     Number* pNumber = new Number();

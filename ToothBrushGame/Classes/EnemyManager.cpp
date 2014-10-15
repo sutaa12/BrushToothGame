@@ -113,7 +113,7 @@ void EnemyManager::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-EnemyManager* EnemyManager::Create(const Vec2& startLeftTopPos,Layer* layer)
+EnemyManager* EnemyManager::create(const Vec2& startLeftTopPos,Layer* layer)
 {
     // 歯マネージャーのインスタンス化
     EnemyManager* pEnemyManager = new EnemyManager();

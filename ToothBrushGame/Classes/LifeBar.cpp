@@ -70,7 +70,7 @@ void LifeBar::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-LifeBar* LifeBar::Create(const Vec2& pos)
+LifeBar* LifeBar::create(const Vec2& pos)
 {
     // インスタンスの生成
     LifeBar* pLifeBar = new LifeBar();

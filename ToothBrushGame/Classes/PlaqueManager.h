@@ -40,9 +40,9 @@ public:
     void update(void);
 
     static PlaqueManager* create(int nPlaqueMaxNum,Layer* pLayer);
-    void createPlaque(void);
 
-    Plaque** getPlaqueTop(void){return m_ppPlaque;}
+
+    Plaque** getPlaqueTop(void){return &m_ppPlaque[0];}
     int getPlaqueNum(void){return m_nPlaqueNum;}
 
 private:
@@ -51,6 +51,7 @@ private:
     int m_nPlaqueMaxNum;
     Layer* m_pLayer;
 
+    void createPlaque(void);
 };
 
 #endif /* defined(__ToothBrushGame__PlaqueManager__) */

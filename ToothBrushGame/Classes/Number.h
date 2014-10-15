@@ -32,7 +32,7 @@ public:
     void uninit(void);
     void update(void);
     
-    static Number* Create(const Vec2& pos = Vec2(0.0f,0.0f));
+    static Number* create(const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
     
     void setPos(Vec2 pos){m_pos = pos;}
@@ -47,7 +47,7 @@ public:
     
     void setNumber(int number);
     
-    void RefreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+    void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
     
 private:
     Sprite* m_pSprite;
