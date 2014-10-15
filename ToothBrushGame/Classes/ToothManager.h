@@ -43,7 +43,6 @@ public:
     Tooth* getTopTooth(void){return m_pTopTooth;}
     Tooth* getBootomTooth(void){return m_pBottomTooth;}
     
-
     void addTopGumPosAndTopToothPos(const Vec2& vec);
     void addBottomGumPosAndBottomToothPos(const Vec2& vec);
     void moveTooth(float time, Vec2 pos);
