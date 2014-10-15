@@ -23,6 +23,7 @@ using namespace cocos2d;
 // 前方クラス宣言
 //********************************************************************************
 class Tooth;
+class Gum;
 
 //********************************************************************************
 // クラス宣言
@@ -37,11 +38,7 @@ public:
     void uninit(void);
     void update(void);
     
-    static ToothManager* Create(const Vec2& startLeftTopPos,const int& nTopToothNum,
-                                const int& nBottomToothNum,const float& fDistance,Layer* layer);
-    
-    int getTopToothNum(void){return m_nTopToothNum;}
-    int getBottomToothNum(void){return m_nBottomToothNum;}
+    static ToothManager* Create(const Vec2& startLeftTopPos,Layer* layer);
     
     Tooth* getTopTooth(void){return m_pTopTooth;}
     Tooth* getBootomTooth(void){return m_pBottomTooth;}
@@ -50,21 +47,13 @@ public:
     void AddBottomGumPosAndBottomToothPos(const Vec2& vec);
     
 private:
-    int m_nTopToothNum;
-    int m_nBottomToothNum;
-    float m_fDistance;
     Vec2 m_startLeftTopPos;
-    Vec2 m_topToothPos;
-    Vec2 m_bottomToothPos;
-    Vec2 m_topGumPos;
-    Vec2 m_bottomGumPos;
-    
+
     Tooth* m_pTopTooth;
     Tooth* m_pBottomTooth;
-    Sprite* m_pTopToothSprite;
-    Sprite* m_pBottomToothSprite;
-    Sprite* m_pTopGumSprite;
-    Sprite* m_pBottomGumSprite;
+    
+    Gum* m_pTopGum;
+    Gum* m_pBottomGum;
     
     Layer* m_pLayer;
 };
