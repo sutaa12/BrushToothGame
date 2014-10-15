@@ -12,18 +12,24 @@
 //********************************************************************************
 #include "EnemyManager.h"
 #include "Enemy.h"
-
-static const int TOOTHMANAGER_DISPLAY_CENTER_X = (320);
-
+#include "Random.h"
 //================================================================================
 // コンストラクタ
 //================================================================================
-EnemyManager::EnemyManager(void)
+EnemyManager::EnemyManager(int numEnemy)
 {
     // メンバ変数の初期化
-    m_pTopTooth = nullptr;
-    m_pBottomTooth = nullptr;
+    if(numEnemy >= ENEMY_MAX)
+    {
+        numEnemy = ENEMY_MAX - 1;
+    }
+    m_numEnemy = numEnemy;
     m_pLayer = nullptr;
+    for(int nloop = 0;nloop < EnemyManager::ENEMY_MAX;nloop++)
+    {
+        m_pEnemy[nloop] = nullptr;
+    }
+
 }
 
 //================================================================================
@@ -39,6 +45,12 @@ EnemyManager::~EnemyManager()
 //================================================================================
 bool EnemyManager::init(void)
 {
+    for(int nloop = 0;nloop < m_numEnemy;nloop++)
+    {
+        m_pEnemy[nloop] = Enemy::create(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
+        
+        m_pLayer->addChild(m_pEnemy[nloop]->getSprite());
+    }
     /*
     // 上歯茎生成
     m_pTopGum = Gum::Create();
@@ -91,6 +103,7 @@ bool EnemyManager::init(void)
     m_pLayer->addChild(m_pBottomGum->getSprite());
      
     */
+    
     // 正常終了
     return true;
 }
@@ -108,18 +121,25 @@ void EnemyManager::uninit(void)
 //================================================================================
 void EnemyManager::update(void)
 {
+    for(int nloop = 0;nloop < EnemyManager::ENEMY_MAX;nloop++)
+    {
+       if( m_pEnemy[nloop] != nullptr)
+       {
+           m_pEnemy[nloop]->update();
+       }
+    }
+
 }
 
 //================================================================================
 // 生成処理
 //================================================================================
-EnemyManager* EnemyManager::create(const Vec2& startLeftTopPos,Layer* layer)
+EnemyManager* EnemyManager::create(Layer* layer,int numEnemy)
 {
     // 歯マネージャーのインスタンス化
-    EnemyManager* pEnemyManager = new EnemyManager();
+    EnemyManager* pEnemyManager = new EnemyManager(numEnemy);
 
     // メンバー変数の代入
-    pEnemyManager->m_startLeftTopPos = startLeftTopPos;
     pEnemyManager->m_pLayer = layer;
 
     // 初期化

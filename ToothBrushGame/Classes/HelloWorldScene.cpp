@@ -4,7 +4,7 @@
 #include "ToothManager.h"
 #include "Plaque.h"
 #include "PlaqueManager.h"
-
+#include "EnemyManager.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -84,6 +84,8 @@ bool HelloWorld::init()
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
     m_bHit = false;
     
+    m_pEnemyManager = EnemyManager::create(this,10);
+    
     // 泡のスプライト生成
     m_pBubbleSprite = Sprite::create("bubble_01.png");
     m_bubblePos = Vec2(0.0f,0.0f);
@@ -152,6 +154,8 @@ void HelloWorld::update(float fTime)
             this->addChild(m_pBossSprite);
         }
     }
+    //敵の更新
+    m_pEnemyManager->update();
 }
 
 bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
