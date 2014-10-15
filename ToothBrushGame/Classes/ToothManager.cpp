@@ -150,18 +150,29 @@ void ToothManager::AddBottomGumPosAndBottomToothPos(const Vec2& vec)
 }
 
 //================================================================================
-// 歯を動かす
+// 上下歯を動かす
 //================================================================================
-void ToothManager::moveTooth(float time, Vec2 pos)
+void ToothManager::moveToothAndGum(float time, Vec2 pos)
 {
     //仮の座標に画像のPosを加算する
     m_pTopTooth->addPos(pos);
+    m_pBottomTooth->addPos(pos * -1);
+    m_pTopGum->addPos(pos);
+    m_pBottomGum->addPos(pos * -1);
     //m_pTopTooth->RefreshSpritePos();
 
-    //
     Vec2 TopToothPos = m_pTopTooth->getPos();
+    Vec2 BottomToothPos = m_pBottomTooth->getPos();
 
+    Vec2 TopGumPos = m_pTopGum->getPos();
+    Vec2 BottomGumPos = m_pBottomGum->getPos();
+
+    //歯
     m_pTopTooth->getSprite()->runAction(MoveTo::create(1.0f, TopToothPos));
+    m_pBottomTooth->getSprite()->runAction(MoveTo::create(1.0f, BottomToothPos));
+    //歯茎
+    m_pTopGum->getSprite()->runAction(MoveTo::create(1.0f, TopGumPos));
+    m_pBottomGum->getSprite()->runAction(MoveTo::create(1.0f, BottomGumPos));
 
 }
 
