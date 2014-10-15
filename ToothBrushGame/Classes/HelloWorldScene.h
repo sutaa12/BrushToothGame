@@ -6,6 +6,7 @@
 using namespace cocos2d;
 
 class ToothManager;
+class PlaqueManager;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -26,11 +27,27 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
     
-private:    
+private:
+    typedef enum
+    {
+        SWIPE_DIRECTION_NONE = 0,
+        SWIPE_DIRECTION_UP,
+        SWIPE_DIRECTION_DOWN,
+        SWIPE_DIRECTION_LEFT,
+        SWIPE_DIRECTION_RIGHT,
+        SWIPE_DIRECTION_MAX,
+    }SWIPE_DIRECTION;
+
     Point m_touchPos;
+    Point m_oldTouchPos;
+    SWIPE_DIRECTION m_swipeDirection;
+    SWIPE_DIRECTION m_oldSwipeDirection;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
+
+    static const int SWIPE_PERMISSION_DISTANCE = (3);
     
     ToothManager* m_pToothManager;
+    PlaqueManager* m_pPlaqueManager;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;
@@ -50,5 +67,7 @@ private:
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);
     void onTouchEnded(Touch* pTouch,Event* pEvent);
+
+    SWIPE_DIRECTION calcSwipeDirection(float fAngle);
 };
 #endif // __HELLOWORLD_SCENE_H__
