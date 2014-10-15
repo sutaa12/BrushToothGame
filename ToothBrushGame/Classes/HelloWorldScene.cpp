@@ -134,9 +134,11 @@ void HelloWorld::update(float fTime)
     {
         m_bMove = true;
         
-        m_pToothManager->AddBottomGumPosAndBottomToothPos(Vec2(0,-100));
-        m_pToothManager->AddTopGumPosAndTopToothPos(Vec2(0,100));
-       
+       // m_pToothManager->AddBottomGumPosAndBottomToothPos(Vec2(0,-100));
+        //m_pToothManager->AddTopGumPosAndTopToothPos(Vec2(0,100));
+
+        m_pToothManager->moveTooth(1.0f, Vec2(0, 20));
+
         // ボス出現判定
         if(!m_bBossDisp)
         {
@@ -220,11 +222,3 @@ void HelloWorld::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
     
 }
-
-
-
-
-
-
-
-
