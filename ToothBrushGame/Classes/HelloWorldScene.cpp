@@ -106,10 +106,13 @@ bool HelloWorld::init()
     m_bMove = false;
     m_bBossDisp = false;
     m_touchPos = Point(0.0f,0.0f);
+    m_oldTouchPos = m_touchPos;
+    m_swipeDirection = SWIPE_DIRECTION_NONE;
+    m_oldSwipeDirection = m_swipeDirection;
 
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
 
-    PlaqueManager::create(100, this);
+     m_pPlaqueManager = PlaqueManager::create(100, this);
     
     return true;
 }
@@ -133,6 +136,7 @@ void HelloWorld::update(float fTime)
 {
     // 歯の更新
     m_pToothManager->update();
+    m_pPlaqueManager->update();
     
     // 歯を動かすか判定
     if(m_bEnemyDie && m_bPlaqueDie && !m_bMove)
@@ -170,7 +174,7 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
     
     // エネミースプライトのサイズ取得
     Rect enemyRect = m_pEnemySprite->getBoundingBox();
-    
+
     // エネミーあたり判定
     if(enemyRect.containsPoint(m_touchPos))
     {
@@ -198,18 +202,54 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
 
 void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
 {
+    Point swipVec = Point(0,0);
+
     // タッチ座標の取得
+    m_oldTouchPos = m_touchPos;
     m_touchPos = pTouch->getLocation();
-    
+
+
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
-    
+
+    CCLOG("現タッチ位置(%f,%f)",m_touchPos.x,m_touchPos.y);
+    CCLOG("旧タッチ位置(%f,%f)",m_oldTouchPos.x,m_oldTouchPos.y);
+
+    float fDistance = m_touchPos.distance(m_oldTouchPos);
+
+    CCLOG("距離(%f)",fDistance);
+
+    // スワイプされているならスワイプ方向の取得
+    if(fDistance > SWIPE_PERMISSION_DISTANCE)
+    {
+        Point::subtract(m_touchPos, m_oldTouchPos, &swipVec);
+        float fAngle = atan2f(swipVec.x,swipVec.y);
+        CCLOG("角度(%f)",fAngle);
+
+        m_oldSwipeDirection = m_swipeDirection;
+        m_swipeDirection = calcSwipeDirection(fAngle);
+
+    }
+
+    else
+    {
+        m_swipeDirection = SWIPE_DIRECTION_NONE;
+    }
+
+    if(m_swipeDirection == SWIPE_DIRECTION_NONE)
+    {
+        return;
+    }
+
+    Rect swipeRect;
+    swipeRect.setRect(m_touchPos.x - swipVec.x / 2 ,m_touchPos.y - swipVec.y / 2,swipVec.x , swipVec.y);
+
     // 歯垢スプライトのサイズ取得
     Rect plaqueRect = m_pPlaqueSprite->getBoundingBox();
-    
+
     // 歯垢当たり判定
-    if(plaqueRect.containsPoint(m_touchPos))
+    if(plaqueRect.intersectsRect(swipeRect))
     {
         // 歯垢を透明にする
         m_pPlaqueSprite->setOpacity(0);
@@ -221,6 +261,8 @@ void HelloWorld::onTouchEnded(Touch* pTouch, Event* pEvent)
 {
     // タッチしていないので泡スプライトを透明に
     m_pBubbleSprite->setOpacity(0);
+
+    m_swipeDirection = SWIPE_DIRECTION_NONE;
     
     m_bHit = false;
 }
@@ -228,4 +270,35 @@ void HelloWorld::onTouchEnded(Touch* pTouch, Event* pEvent)
 void HelloWorld::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
     
+}
+
+HelloWorld::SWIPE_DIRECTION HelloWorld::calcSwipeDirection(float fAngle)
+{
+    fAngle = fAngle * 180 / M_PI;
+
+    if(fAngle <= 45 && fAngle >= -45)
+    {
+        CCLOG("上方向");
+        return SWIPE_DIRECTION_UP;
+    }
+
+    if(fAngle <= 135 && fAngle >= 45)
+    {
+        CCLOG("右方向");
+        return SWIPE_DIRECTION_RIGHT;
+    }
+
+    if(fAngle <= -45 && fAngle >= -135)
+    {
+        CCLOG("左方向");
+        return SWIPE_DIRECTION_LEFT;
+    }
+
+    if((fAngle <= -135 && fAngle >= -180) || (fAngle <= 180 && fAngle >= 135))
+    {
+        CCLOG("下方向");
+        return SWIPE_DIRECTION_DOWN;
+    }
+
+    return SWIPE_DIRECTION_NONE;
 }
