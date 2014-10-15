@@ -1,85 +1,101 @@
 //********************************************************************************
-//  Tooth.cpp
-//  test
+//  PlaqueManager.cpp
+//  ToothBrushGame
 //
-//  Created by 丸山 潤 on 2014/10/08.
+//  Created by 丸山 潤 on 2014/10/15.
 //
 //********************************************************************************
 //********************************************************************************
 // インクルード
 //********************************************************************************
-#include "Tooth.h"
+#include "PlaqueManager.h"
+#include "Plaque.h"
 
 //================================================================================
 // コンストラクタ
 //================================================================================
-Tooth::Tooth(void)
+PlaqueManager::PlaqueManager(void)
 {
-    // メンバ変数の初期化
-    m_pSprite = nullptr;
+    m_nPlaqueNum = 0;
+    m_ppPlaque = nullptr;
 }
 
 //================================================================================
 // デストラクタ
 //================================================================================
-Tooth::~Tooth()
+PlaqueManager::~PlaqueManager()
 {
-    
+
 }
 
 //================================================================================
 // 初期化処理
 //================================================================================
-bool Tooth::init(void)
+bool PlaqueManager::init(void)
 {
-    // スプライトの作成
-    m_pSprite = Sprite::create("tooth_01.png");
-    
-    // エラーチェック
-    if(m_pSprite == nullptr)
+    // クリエイトで持ってきた最大値分だけ動的確保
+    m_ppPlaque = new Plaque*[m_nPlaqueMaxNum];
+
+    for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
     {
-        // スプライト生成エラー
-        return false;
+        m_ppPlaque[nCnt] = nullptr;
     }
-    
-    // スプライトの座標設定
-    m_pSprite->setPosition(m_pos);
-    
-    // 正常終了
+
+    createPlaque();
+
     return true;
 }
 
 //================================================================================
 // 終了処理
 //================================================================================
-void Tooth::uninit(void)
+void PlaqueManager::uninit(void)
 {
-    
+
 }
 
 //================================================================================
 // 更新処理
 //================================================================================
-void Tooth::update(void)
+void PlaqueManager::update(void)
 {
-    //m_pToothSprite->setPosition(m_pos);
-    
-    
+
 }
 
 //================================================================================
 // 生成処理
 //================================================================================
-Tooth* Tooth::create(const Vec2& pos)
+PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Layer* pLayer)
 {
-    // インスタンスの生成
-    Tooth* pTooth = new Tooth();
-    
-    // メンバ変数の代入
-    pTooth->m_pos = pos;
-    
-    // 初期化
-    pTooth->init();
-    
-    return pTooth;
+    PlaqueManager* pPlaqueManager = new PlaqueManager();
+
+    pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum;
+    pPlaqueManager->m_pLayer = pLayer;
+
+    pPlaqueManager->init();
+
+    return pPlaqueManager;
 }
+
+//================================================================================
+// 歯垢生成処理
+//================================================================================
+void PlaqueManager::createPlaque(void)
+{
+    Vec2 pos = Vec2(300,300);
+
+    // 生成チェック
+    for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
+    {
+        m_ppPlaque[nCnt] = Plaque::create(pos);
+
+        m_pLayer->addChild(m_ppPlaque[nCnt]->getSprite());
+
+        m_nPlaqueNum++;
+    }
+}
+
+
+
+
+

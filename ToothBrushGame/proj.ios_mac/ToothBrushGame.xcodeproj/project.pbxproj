@@ -80,6 +80,7 @@
 		6138F67519EBCEA8006FAF8A /* tooth_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66A19EBCEA8006FAF8A /* tooth_01.png */; };
 		6138F67619EBCEA8006FAF8A /* Tooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 6138F66B19EBCEA8006FAF8A /* Tooth.png */; };
 		6F55138319ECD12A00217950 /* Gum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F55138119ECD12A00217950 /* Gum.cpp */; };
+		6FB847C319EE09E3009D509D /* PlaqueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FB847C119EE09E3009D509D /* PlaqueManager.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -303,6 +304,8 @@
 		6138F66B19EBCEA8006FAF8A /* Tooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tooth.png; sourceTree = "<group>"; };
 		6F55138119ECD12A00217950 /* Gum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Gum.cpp; path = ../Classes/Gum.cpp; sourceTree = "<group>"; };
 		6F55138219ECD12A00217950 /* Gum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gum.h; path = ../Classes/Gum.h; sourceTree = "<group>"; };
+		6FB847C119EE09E3009D509D /* PlaqueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlaqueManager.cpp; path = ../Classes/PlaqueManager.cpp; sourceTree = "<group>"; };
+		6FB847C219EE09E3009D509D /* PlaqueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaqueManager.h; path = ../Classes/PlaqueManager.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -397,6 +400,8 @@
 				18648C8C19ED25AA00A7FB85 /* Enemy.h */,
 				18648C8E19ED25B700A7FB85 /* Boss.cpp */,
 				18648C8F19ED25B700A7FB85 /* Boss.h */,
+				6FB847C119EE09E3009D509D /* PlaqueManager.cpp */,
+				6FB847C219EE09E3009D509D /* PlaqueManager.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -761,6 +766,7 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				6138F65C19EBCE90006FAF8A /* Tooth.cpp in Sources */,
+				6FB847C319EE09E3009D509D /* PlaqueManager.cpp in Sources */,
 				6F55138319ECD12A00217950 /* Gum.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
