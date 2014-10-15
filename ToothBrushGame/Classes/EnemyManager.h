@@ -32,17 +32,17 @@ class Enemy;
 class EnemyManager
 {
 public:
-    EnemyManager();
+    //最初に出す敵の数
+    EnemyManager(int numEnemy);
     ~EnemyManager();
 
     bool init(void);
     void uninit(void);
     void update(void);
 
-    static EnemyManager* create(const Vec2& startLeftTopPos,Layer* layer);
+    static EnemyManager* create(Layer* layer,int numEnemy);
 
-    Enemy* getTopTooth(void){return m_pTopTooth;}
-    Enemy* getBootomTooth(void){return m_pBottomTooth;}
+    Enemy* getTopTooth(void){return m_pEnemy[0];}
 
     void disappear(const Vec2& vec);
     void action(const Vec2& vec);
@@ -53,12 +53,13 @@ public:
 
 
 private:
-    Vec2 m_startLeftTopPos;
-
-    Enemy* m_pTopTooth;
-    Enemy* m_pBottomTooth;
+    //敵の最大数
+    static const int ENEMY_MAX = 10;
+    //敵の配列
+    Enemy* m_pEnemy[ENEMY_MAX];
 
     Layer* m_pLayer;
+    int m_numEnemy;
 };
 
 #endif /* defined(__ToothBrushGame__EnemyManager__) */

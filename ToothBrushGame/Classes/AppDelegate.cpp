@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
+#include "Random.h"
 
 USING_NS_CC;
 
@@ -12,6 +13,9 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+    //乱数初期化
+    RandomMT::initRand();
+
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -31,7 +35,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
-
+    
     // run
     director->runWithScene(scene);
 

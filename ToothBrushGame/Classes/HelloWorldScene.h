@@ -6,6 +6,7 @@
 using namespace cocos2d;
 
 class ToothManager;
+class EnemyManager;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -31,6 +32,7 @@ private:
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
     
     ToothManager* m_pToothManager;
+    EnemyManager* m_pEnemyManager;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;

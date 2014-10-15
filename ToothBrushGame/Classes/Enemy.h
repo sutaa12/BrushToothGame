@@ -11,8 +11,18 @@
 
 #include <stdio.h>
 #include "cocos2d.h"
+#include <random>
 
 using namespace cocos2d;
+
+enum ACTION_MODE
+{
+    ACTION_NONE = 0,
+    ACTION_MOVE,
+    ACTION_ATTACK,
+    ACTION_DELAY,
+    ACTION_MAX
+};
 
 class Enemy
 {
@@ -38,13 +48,41 @@ public:
     void addPosX(float x){m_pos.x += x;}
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
+    
+    //行動選択関数
+    void choiceAction(void);
+    
+    //移動
+    void moveAction(void);
+    //攻撃
+    void attackAction(void);
+    //待機
+    void delayAction(void);
 
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
 
 private:
+    void (Enemy::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
     Sprite* m_pSprite;
     Vec2 m_pos;
+    Vec2 m_move;
     Vec3 m_rot;
+    //時間
+    int m_time;
+    //
+    int m_actionMode;
+//マクロ
+public:
+    //時間の最大値
+    static const int MAX_TIME = 100;
+    //移動の最大値
+    static const int MIN_X = 0;
+    static const int MAX_X = 600;
+    static const int MIN_Y = 200;
+    static const int MAX_Y = 900;
+    static const int MAX_MOVE = 20;
+    static const int DAMEGE = 1;
+
 };
 
 
