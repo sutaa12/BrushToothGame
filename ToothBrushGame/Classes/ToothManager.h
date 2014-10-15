@@ -45,7 +45,7 @@ public:
     
     void addTopGumPosAndTopToothPos(const Vec2& vec);
     void addBottomGumPosAndBottomToothPos(const Vec2& vec);
-    void moveTooth(float time, Vec2 pos);
+    void moveToothAndGum(float time, Vec2 pos);
     
 private:
     Vec2 m_startLeftTopPos;
