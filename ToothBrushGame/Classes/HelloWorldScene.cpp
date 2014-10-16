@@ -5,6 +5,7 @@
 #include "Plaque.h"
 #include "PlaqueManager.h"
 #include "EnemyManager.h"
+#include "Boss.h"
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -103,8 +104,8 @@ bool HelloWorld::init()
     
     m_bEnemyDie = false;
     m_bPlaqueDie = false;
-    m_bMove = false;
     m_bBossDisp = false;
+    m_bMove = false;
     m_touchPos = Point(0.0f,0.0f);
     m_oldTouchPos = m_touchPos;
     m_swipeDirection = SWIPE_DIRECTION_NONE;
@@ -153,9 +154,9 @@ void HelloWorld::update(float fTime)
         {
             // ボスの生成
             m_bBossDisp = true;
-            m_pBossSprite = Sprite::create("Boss.png");
-            m_pBossSprite->cocos2d::Node::setPosition(Vec2(350,600));
-            this->addChild(m_pBossSprite);
+            m_pBoss = Boss::create(Vec2(350,500));
+            m_pBoss->setSpawn(Vec2(350,500));
+            this->addChild(m_pBoss->getSprite());
         }
     }
     //敵の更新
@@ -187,13 +188,13 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
     if(m_bBossDisp)
     {
         // ボススプライトのサイズ取得
-        Rect bossSpriteRect = m_pBossSprite->getBoundingBox();
+        Rect bossSpriteRect = m_pBoss->getSprite()->getBoundingBox();
         
         // ボス当たり判定
-        if(bossSpriteRect.containsPoint(m_touchPos))
+        if(bossSpriteRect.containsPoint(m_touchPos) && m_pBoss->getDisapper())
         {
-            // ボスを透明にする
-            m_pBossSprite->setOpacity(0);
+            // ボスにダメージ
+            m_pBoss->addDamage();
         }
     }
     
