@@ -43,7 +43,7 @@ public:
     static EnemyManager* create(Layer* layer,int numEnemy);
 
     //敵の先頭取得
-    Enemy* getEnemysTop(void){return m_pEnemy[0];}
+    Enemy** getEnemysTop(void){return &m_pEnemy[0];}
 
     void spawn(void);
 public:
