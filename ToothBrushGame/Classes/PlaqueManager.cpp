@@ -25,7 +25,14 @@ PlaqueManager::PlaqueManager(void)
 //================================================================================
 PlaqueManager::~PlaqueManager()
 {
+    for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
+    {
+        delete m_ppPlaque[nCnt];
+        m_ppPlaque[nCnt] = nullptr;
+    }
 
+    delete m_ppPlaque;
+    m_ppPlaque = nullptr;
 }
 
 //================================================================================
