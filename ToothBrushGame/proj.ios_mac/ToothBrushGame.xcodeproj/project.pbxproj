@@ -87,6 +87,7 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C3EABB3A19EF8963005B8CF4 /* HitChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3EABB3819EF8963005B8CF4 /* HitChecker.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -323,6 +324,8 @@
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C3BA23A519EF6EC9008281A2 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../Classes/common.h; sourceTree = "<group>"; };
+		C3EABB3819EF8963005B8CF4 /* HitChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HitChecker.cpp; path = ../Classes/HitChecker.cpp; sourceTree = "<group>"; };
+		C3EABB3919EF8963005B8CF4 /* HitChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitChecker.h; path = ../Classes/HitChecker.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -410,6 +413,8 @@
 				6138F68619EEBBCE006FAF8A /* HelloWorldScene.h */,
 				6138F68719EEBBCE006FAF8A /* HitCheck.cpp */,
 				6138F68819EEBBCE006FAF8A /* HitCheck.h */,
+				C3EABB3819EF8963005B8CF4 /* HitChecker.cpp */,
+				C3EABB3919EF8963005B8CF4 /* HitChecker.h */,
 				6138F68919EEBBCE006FAF8A /* LifeBar.cpp */,
 				6138F68A19EEBBCE006FAF8A /* LifeBar.h */,
 				6138F68B19EEBBCE006FAF8A /* Number.cpp */,
@@ -802,6 +807,7 @@
 				6138F6A419EEBBCE006FAF8A /* PlaqueManager.cpp in Sources */,
 				6138F69D19EEBBCE006FAF8A /* EnemyManager.cpp in Sources */,
 				6138F6A119EEBBCE006FAF8A /* LifeBar.cpp in Sources */,
+				C3EABB3A19EF8963005B8CF4 /* HitChecker.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

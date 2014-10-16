@@ -37,9 +37,10 @@ public:
     HitChecker();
     ~HitChecker();
 
-    HitChecker* cleate(EnemyManager* pEnemyManager,ToothManager* pToothManager,PlaqueManager* pPlaqueManager);
+    static HitChecker* create(EnemyManager* pEnemyManager,ToothManager* pToothManager,PlaqueManager* pPlaqueManager);
 
     void hitCheckSwipe(Rect touchRect,int nDirectionType);
+    void hitCheckTap(Point touchPoint);
 
 private:
     EnemyManager* m_pEnemyManager;
