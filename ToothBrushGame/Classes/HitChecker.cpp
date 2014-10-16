@@ -55,6 +55,7 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
 
         Rect plaqueRect = (ppPlaque[nPlaqueNum]->getSprite())->getBoundingBox();
 
+        // 当たり判定
         if(plaqueRect.intersectsRect(touchRect))
         {
             ppPlaque[nPlaqueNum]->setDisappear(true);
@@ -66,9 +67,32 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
 //================================================================================
 // タップ時の当たり判定
 //================================================================================
-void HitChecker::hitCheckTap(Point touchPoint)
+void HitChecker::hitCheckTap(Rect touchRect)
 {
-    
+    Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
+
+    for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
+    {
+        // 使われていないならスキップ
+        if(ppEnemy[nEnemyNum] == nullptr)
+        {
+            continue;
+        }
+
+        // 既に死んでいるならスキップ
+        if(ppEnemy[nEnemyNum]->getDisapper())
+        {
+            continue;
+        }
+
+        Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
+
+        // 当たり判定
+        if(enemyRect.intersectsRect(touchRect))
+        {
+            ppEnemy[nEnemyNum]->addDamage();
+        }
+    }
 }
 
 //================================================================================
