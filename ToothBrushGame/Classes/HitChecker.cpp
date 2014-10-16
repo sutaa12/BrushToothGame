@@ -15,6 +15,7 @@
 #include "Tooth.h"
 #include "Enemy.h"
 #include "Plaque.h"
+#include "HelloWorldScene.h"
 
 //================================================================================
 // コンストラクタ
@@ -58,8 +59,19 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
         // 当たり判定
         if(plaqueRect.intersectsRect(touchRect))
         {
-            ppPlaque[nPlaqueNum]->setDisappear(true);
-            (ppPlaque[nPlaqueNum]->getSprite())->setOpacity(0);
+            if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+            {
+                ppPlaque[nPlaqueNum]->addDamage(1);
+            }
+
+            else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+            {
+                ppPlaque[nPlaqueNum]->addDamage(3);
+            }
+            else
+            {
+
+            }
         }
     }
 }

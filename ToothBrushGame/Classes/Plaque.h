@@ -44,12 +44,21 @@ public:
     bool getDisappear(void){return m_bDisappear;}
     void setDisappear(bool bFlg){m_bDisappear = bFlg;}
 
+    // ダメージ処理(内部:ダメージタイマーがダメージ許可時間を上回っていたらダメージを与える)
+    void addDamage(int nDamage = 1);
+
 private:
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;
 
     bool m_bDisappear;
+    int m_nLife;
+    int m_nDamageTimer;
+
+public:
+    static const unsigned short OPACITY_SPEED = 255;
+    static const unsigned int DAMAGE_PERMISSION_TIME = 30;
 };
 
 

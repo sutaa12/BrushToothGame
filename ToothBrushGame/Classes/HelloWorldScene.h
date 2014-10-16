@@ -29,8 +29,7 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-    
-private:
+
     typedef enum
     {
         SWIPE_DIRECTION_NONE = 0,
@@ -41,6 +40,7 @@ private:
         SWIPE_DIRECTION_MAX,
     }SWIPE_DIRECTION;
 
+private:
     Point m_touchPos;
     Point m_oldTouchPos;
     SWIPE_DIRECTION m_swipeDirection;
