@@ -10,6 +10,7 @@ class EnemyManager;
 class PlaqueManager;
 class Boss;
 class HitChecker;
+class LifeBar;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -60,6 +61,8 @@ private:
     Sprite* m_pEnemySprite;
     Sprite* m_pPlaqueSprite;
     Sprite* m_pBossSprite;
+    
+    LifeBar* m_pLifeBar;
     
     Boss* m_pBoss;
     

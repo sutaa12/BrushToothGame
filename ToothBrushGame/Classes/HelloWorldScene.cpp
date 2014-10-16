@@ -7,6 +7,7 @@
 #include "EnemyManager.h"
 #include "Boss.h"
 #include "HitChecker.h"
+#include "LifeBar.h"
 
 USING_NS_CC;
 
@@ -82,7 +83,10 @@ bool HelloWorld::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
-    
+
+    m_pLifeBar = nullptr;
+    m_pLifeBar = LifeBar::create(this,Vec2(320,440));
+
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
     m_bHit = false;
@@ -120,7 +124,6 @@ bool HelloWorld::init()
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
 
     m_pBoss = nullptr;
-    
     return true;
 }
 
@@ -141,6 +144,7 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float fTime)
 {
+    m_pLifeBar->update();
     // 歯の更新
     m_pToothManager->update();
     m_pPlaqueManager->update();
