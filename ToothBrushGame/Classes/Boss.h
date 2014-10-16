@@ -12,8 +12,7 @@
 #include <stdio.h>
 
 #include "cocos2d.h"
-#include "Enemy.h"
-
+class EnemyManager;
 using namespace cocos2d;
 
 class Boss
@@ -38,7 +37,7 @@ public:
     void update();  //更新
     void disappear();   //消滅
 
-    static Boss* create(const Vec2& pos = Vec2(0.0f,0.0f));
+    static Boss* create(EnemyManager* pEnemymaanager,const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
 
     void setPos(Vec2 pos){m_pos = pos;}
@@ -87,6 +86,7 @@ private:
     
 private:
     void (Boss::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
+    EnemyManager* m_pEnemyManager;//敵生成用
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;

@@ -52,6 +52,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		618F47DA19F0189F007DBB5F /* Bubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 618F47D819F0189F007DBB5F /* Bubble.cpp */; };
+		618F47DD19F018B0007DBB5F /* EffectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 618F47DB19F018B0007DBB5F /* EffectManager.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -276,6 +278,10 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		618F47D819F0189F007DBB5F /* Bubble.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bubble.cpp; path = ../Classes/Bubble.cpp; sourceTree = "<group>"; };
+		618F47D919F0189F007DBB5F /* Bubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bubble.h; path = ../Classes/Bubble.h; sourceTree = "<group>"; };
+		618F47DB19F018B0007DBB5F /* EffectManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EffectManager.cpp; path = ../Classes/EffectManager.cpp; sourceTree = "<group>"; };
+		618F47DC19F018B0007DBB5F /* EffectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EffectManager.h; path = ../Classes/EffectManager.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -444,6 +450,10 @@
 				C3AFC7F519EFC0220017FB78 /* ToothManager.h */,
 				C3AFC7F619EFC0220017FB78 /* UIManager.cpp */,
 				C3AFC7F719EFC0220017FB78 /* UIManager.h */,
+				618F47D819F0189F007DBB5F /* Bubble.cpp */,
+				618F47D919F0189F007DBB5F /* Bubble.h */,
+				618F47DB19F018B0007DBB5F /* EffectManager.cpp */,
+				618F47DC19F018B0007DBB5F /* EffectManager.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -800,6 +810,7 @@
 			files = (
 				C3AFC80019EFC0220017FB78 /* Item.cpp in Sources */,
 				C3AFC80119EFC0220017FB78 /* LifeBar.cpp in Sources */,
+				618F47DD19F018B0007DBB5F /* EffectManager.cpp in Sources */,
 				C3AFC7FA19EFC0220017FB78 /* Enemy.cpp in Sources */,
 				C3AFC80419EFC0220017FB78 /* Plaque.cpp in Sources */,
 				C3AFC7FC19EFC0220017FB78 /* Gum.cpp in Sources */,
@@ -810,6 +821,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				618F47DA19F0189F007DBB5F /* Bubble.cpp in Sources */,
 				C3AFC7F919EFC0220017FB78 /* Boss.cpp in Sources */,
 				C3AFC80719EFC0220017FB78 /* Score.cpp in Sources */,
 				C3AFC80619EFC0220017FB78 /* Random.cpp in Sources */,

@@ -1,33 +1,28 @@
 //
-//  EnemyManager.cpp
+//  EffectManager.cpp
 //  ToothBrushGame
 //
-//  Created by 川原 岳大 on 2014/10/15.
+//  Created by 鈴木愛忠 on 2014/10/17.
 //
 //
 
-
-//********************************************************************************
-// インクルード
-//********************************************************************************
-#include "EnemyManager.h"
-#include "Enemy.h"
+#include "EffectManager.h"
+#include "Bubble.h"
 #include "Random.h"
 //================================================================================
 // コンストラクタ
 //================================================================================
-EnemyManager::EnemyManager(int numEnemy)
+EffectManager::EffectManager(int numEffect)
 {
     // メンバ変数の初期化
-    if(numEnemy >= ENEMY_MAX)
+    if(numEffect >= Effect_MAX)
     {
-        numEnemy = ENEMY_MAX - 1;
+        numEffect = Effect_MAX - 1;
     }
-    m_numEnemy = numEnemy;
     m_pLayer = nullptr;
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        m_pEnemy[nloop] = nullptr;
+        m_pEffect[nloop] = nullptr;
     }
     m_nTime = 0;
     m_nTimeSpan = TIME_SPAN;
@@ -36,14 +31,14 @@ EnemyManager::EnemyManager(int numEnemy)
 //================================================================================
 // デストラクタ
 //================================================================================
-EnemyManager::~EnemyManager()
+EffectManager::~EffectManager()
 {
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        if(m_pEnemy[nloop])
+        if(m_pEffect[nloop])
         {
-            delete m_pEnemy[nloop];
-            m_pEnemy[nloop] = nullptr;
+            delete m_pEffect[nloop];
+            m_pEffect[nloop] = nullptr;
         }
     }
 }
@@ -51,17 +46,13 @@ EnemyManager::~EnemyManager()
 //================================================================================
 // 初期化処理
 //================================================================================
-bool EnemyManager::init(void)
+bool EffectManager::init(void)
 {
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        m_pEnemy[nloop] = Enemy::create(Vec2(0,0));
-        m_pLayer->addChild(m_pEnemy[nloop]->getSprite());
+        m_pEffect[nloop] = Bubble::create(Vec2(0,0));
+        m_pLayer->addChild(m_pEffect[nloop]->getSprite());
         
-    }
-    for(int nloop = 0;nloop < m_numEnemy;nloop++)
-    {
-        m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
     }
     
     // 正常終了
@@ -71,21 +62,21 @@ bool EnemyManager::init(void)
 //================================================================================
 // 終了処理
 //================================================================================
-void EnemyManager::uninit(void)
+void EffectManager::uninit(void)
 {
-
+    
 }
 
 //================================================================================
 // 更新処理
 //================================================================================
-void EnemyManager::update(void)
+void EffectManager::update(void)
 {
     m_nTime++;
-
-    for(int nloop = 0;nloop < EnemyManager::ENEMY_MAX;nloop++)
+    
+    for(int nloop = 0;nloop < EffectManager::Effect_MAX;nloop++)
     {
-           m_pEnemy[nloop]->update();
+        m_pEffect[nloop]->update();
     }
     
 }
@@ -93,35 +84,35 @@ void EnemyManager::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-EnemyManager* EnemyManager::create(Layer* layer,int numEnemy)
+EffectManager* EffectManager::create(Layer* layer,int numEffect)
 {
     // 歯マネージャーのインスタンス化
-    EnemyManager* pEnemyManager = new EnemyManager(numEnemy);
-
+    EffectManager* pEffectManager = new EffectManager(numEffect);
+    
     // メンバー変数の代入
-    pEnemyManager->m_pLayer = layer;
-
+    pEffectManager->m_pLayer = layer;
+    
     // 初期化
-    pEnemyManager->init();
-
-    return pEnemyManager;
+    pEffectManager->init();
+    
+    return pEffectManager;
 }
 
 //================================================================================
 // 敵生成処理
 //================================================================================
-void EnemyManager::spawn(int nSpawnNum)
+void EffectManager::spawn(int nSpawnNum,Vec2 pos,Color3B col)
 {
-    clampf(nSpawnNum, 0, ENEMY_MAX);
-    int nEnemyNum = 0;
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    clampf(nSpawnNum, 0, Effect_MAX);
+    int nEffectNum = 0;
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        if(m_pEnemy[nloop]->getDisapper())
+        if(m_pEffect[nloop]->getDisapper())
         {
-            m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
-            nEnemyNum++;
+            m_pEffect[nloop]->setSpawn(pos,col);
+            nEffectNum++;
         }
-        if(nEnemyNum >= nSpawnNum)
+        if(nEffectNum >= nSpawnNum)
         {
             return;
         }
@@ -130,28 +121,28 @@ void EnemyManager::spawn(int nSpawnNum)
 //================================================================================
 // 敵の数取得
 //================================================================================
-int EnemyManager::getEnemyNum(void)
+int EffectManager::getEffectNum(void)
 {
-    int numEnemy = 0;
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    int numEffect = 0;
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        if(!m_pEnemy[nloop]->getDisapper())
+        if(!m_pEffect[nloop]->getDisapper())
         {
-            numEnemy++;
+            numEffect++;
         }
     }
-    return numEnemy;
+    return numEffect;
 }
 //================================================================================
 // 敵をすべて消滅
 //================================================================================
-void EnemyManager::setEnemyClear(void)
+void EffectManager::setEffectClear(void)
 {
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        if(!m_pEnemy[nloop]->getDisapper())
+        if(!m_pEffect[nloop]->getDisapper())
         {
-            m_pEnemy[nloop]->disappear();
+            m_pEffect[nloop]->disappear();
         }
     }
 }

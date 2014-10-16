@@ -9,8 +9,6 @@
 #ifndef __ToothBrushGame__EnemyManager__
 #define __ToothBrushGame__EnemyManager__
 
-#include <stdio.h>
-
 //********************************************************************************
 // インクルード
 //********************************************************************************
@@ -44,8 +42,14 @@ public:
 
     //敵の先頭取得
     Enemy** getEnemysTop(void){return &m_pEnemy[0];}
-
-    void spawn(void);
+    
+    //敵の数取得
+    int getEnemyNum(void);
+    
+    //すべての敵を消す
+    void setEnemyClear(void);
+    
+    void spawn(int nSpawnNum = ENEMY_MAX);
 public:
     //敵の最大数
     static const int ENEMY_MAX = 50;

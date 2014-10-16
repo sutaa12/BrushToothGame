@@ -1,41 +1,32 @@
 //
-//  Enemy.h
+//  Bubble.h
 //  ToothBrushGame
 //
-//  Created by 川原 岳大 on 2014/10/14.
+//  Created by 鈴木愛忠 on 2014/10/17.
 //
 //
 
-#ifndef __ToothBrushGame__Enemy__
-#define __ToothBrushGame__Enemy__
+#ifndef __ToothBrushGame__Bubble__
+#define __ToothBrushGame__Bubble__
 
 #include "cocos2d.h"
 
 using namespace cocos2d;
 
 
-class Enemy
+class Bubble
 {
-private:
-    enum ACTION_MODE
-    {
-        ACTION_NONE = 0,
-        ACTION_MOVE,
-        ACTION_ATTACK,
-        ACTION_DELAY,
-        ACTION_MAX
-    };
-
+    
 public:
-    Enemy();   //コンストラクタ
-    ~Enemy();  //デストラクタ
-
+    Bubble();   //コンストラクタ
+    ~Bubble();  //デストラクタ
+    
     bool init();    //初期設定
     void uninit();  //
     void update();  //更新
     void disappear();   //消滅
-
-    static Enemy* create(const Vec2& pos = Vec2(0.0f,0.0f));
+    
+    static Bubble* create(const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
     
     //セッター　ゲッター
@@ -49,25 +40,12 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
     bool getDisapper(void){return m_bDeath;}
-    //行動選択関数
-    void choiceAction(void);
-    
-    //移動
-    void moveAction(void);
-    //攻撃
-    void attackAction(void);
-    //待機
-    void delayAction(void);
-    
     //位置を画像に適用
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
     //出現
-    void setSpawn(Vec2 pos);
-    //ダメージ処理
-    void addDamage(int nDamage = 1);
-
+    void setSpawn(Vec2 pos,Color3B col = Color3B(255,255,255));
+    
 private:
-    void (Enemy::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec2 m_move;
@@ -80,23 +58,17 @@ private:
     bool m_bDeath;
     //HP
     int m_nLife;
-//定数
+    //定数
 public:
     //ライフの最大値
     static const int MAX_LIFE = 3;
     //時間の最大値
     static const int MAX_TIME = 100;
     //移動の最大値
-    static const int MIN_X = 0;
-    static const int MAX_X = 600;
-    static const int MIN_Y = 200;
-    static const int MAX_Y = 900;
     static const int MAX_MOVE = 20;
     static const int DAMEGE = 1;
-    static const unsigned short OPACITY_SPEED = 255;
-
+    
 };
 
 
-
-#endif /* defined(__ToothBrushGame__Enemy__) */
+#endif /* defined(__ToothBrushGame__Bubble__) */

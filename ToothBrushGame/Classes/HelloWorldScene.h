@@ -12,6 +12,7 @@ class Boss;
 class HitChecker;
 class UIManager;
 class LifeBar;
+class EffectManager;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -56,17 +57,10 @@ private:
     PlaqueManager* m_pPlaqueManager;
     HitChecker* m_pHitChecker;
     UIManager* m_pUIManager;
+    EffectManager* m_EffectManager;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;
-    
-    Sprite* m_pEnemySprite;
-    Sprite* m_pPlaqueSprite;
-    Sprite* m_pBossSprite;
-    Sprite* m_pItemSprite;
-    Sprite* m_pScoreSprite;
-    LifeBar* m_pLifeBar;
-    
     
     Boss* m_pBoss;
     

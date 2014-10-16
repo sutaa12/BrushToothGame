@@ -73,6 +73,8 @@ void Enemy::uninit(void)
 //================================================================================
 void Enemy::disappear(void)
 {
+    m_nLife = 0;
+    m_bDeath = true;
     unsigned short uOpacity = m_pSprite->getOpacity();
     if(uOpacity >= 0)
     {
@@ -82,7 +84,6 @@ void Enemy::disappear(void)
     if(uOpacity <= 0)
     {
         uOpacity = 0;
-        m_bDeath = true;
     }
 }
 //================================================================================

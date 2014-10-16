@@ -36,7 +36,7 @@ MenuBar::~MenuBar()
 bool MenuBar::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("UI_Item.png");
+    m_pSprite = Sprite::create("UI_ScoreAndMenu.png");
 
     // エラーチェック
     if(m_pSprite == nullptr)

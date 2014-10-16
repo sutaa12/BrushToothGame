@@ -10,6 +10,7 @@
 #include "Random.h"
 #include "common.h"
 #include "LifeBar.h"
+#include "EnemyManager.h"
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -116,7 +117,7 @@ void Boss::update(void)
 //================================================================================
 void Boss::choiceAction(void)
 {
-    m_actionMode = RandomMT::getRandom(0, ACTION_MAX - 1);
+    m_actionMode = RandomMT::getRandom(0, Boss::ACTION_MAX);
     m_time = RandomMT::getRandom(0, Boss::MAX_TIME);
     m_move = Vec2(RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE),RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE));
 }
@@ -151,7 +152,7 @@ void Boss::moveAction(void)
 void Boss::attackAction(void)
 {
     //攻撃
-    if(m_time % 50 == 0)
+    if(m_time % 20 == 0)
     {
         LifeBar::addLife(-1);
     }
@@ -166,11 +167,16 @@ void Boss::delayAction(void)
     m_time--;
 }
 //================================================================================
-//歯垢出現
+//敵出現
 //================================================================================
 void Boss::spawnAction(void)
 {
-    
+    //攻撃
+    if(m_time % 50 == 0)
+    {
+        m_pEnemyManager->spawn(1);
+    }
+    m_time--;
 }
 //================================================================================
 //ダメージ処理
@@ -194,14 +200,14 @@ void Boss::setSpawn(Vec2 pos)
 //================================================================================
 // 生成処理
 //================================================================================
-Boss* Boss::create(const Vec2& pos)
+Boss* Boss::create(EnemyManager* pEnemyManager,const Vec2& pos)
 {
     // インスタンスの生成
     Boss* pBoss = new Boss();
     
     // メンバ変数の代入
     pBoss->m_pos = pos;
-    
+    pBoss->m_pEnemyManager = pEnemyManager;
     // 初期化
     pBoss->init();
     
