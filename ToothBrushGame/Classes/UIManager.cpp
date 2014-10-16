@@ -43,58 +43,44 @@ UIManager::~UIManager()
 //================================================================================
 bool UIManager::init(void)
 {
-    /*
+
+    /**
+     *  UI Score Generation
+     **/
     // スコア生成
-    m_pScore = Score::create();
+    m_pScore = Score::create(Vec2(0, 0), 1, m_pLayer);
 
+
+    /**
+     *  UI Item Generation
+     **/
+    // UIアイテム生成処理
+    m_pItem = Item::create();
     // スプライトサイズ取得
-    Rect gumSpriteRect = (m_pScore->getSprite()->getBoundingBox());
-
-    // 座標変換(左上を持ってきているため、中心にそろえる処理)
-    m_pScore->setPos(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
-                           m_startLeftTopPos.y - (gumSpriteRect.size.height / 2)));
-
+    Rect itemSpriteRect = m_pItem->getSprite()->getBoundingBox();
+    //座標変換(左上を持ってきているため、中心にそろえる処理)
+    m_pItem->setPos(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
+                         0 + itemSpriteRect.size.height / 2 ));
     // スプライトの再配置
-    m_pScore->refreshSpritePos();
-
+    m_pItem->refreshSpritePos();
     // スプライトの登録
-    m_pLayer->addChild(m_pScore->getSprite());
-/*
-    // 上歯生成処理
-//    m_pTopTooth = Tooth::create();
+    m_pLayer->addChild(m_pItem->getSprite());
 
+    /**
+     *  UI Menubar Generation
+     **/
+    // UIアイテム生成処理
+    m_pMenuBar = MenuBar::create();
     // スプライトサイズ取得
-    Rect toothSpriteRect = m_pTopTooth->getSprite()->getBoundingBox();
-
-    // 座標変換
-    m_pTopTooth->setPos(TOOTHMANAGER_DISPLAY_CENTER_X,
-                        m_pTopGum->getPos().y - gumSpriteRect.size.height / 2 - (toothSpriteRect.size.height / 2));
-
+    Rect MenuBarSpriteRect = m_pMenuBar->getSprite()->getBoundingBox();
+    //座標変換(左上を持ってきているため、中心にそろえる処理)
+    m_pMenuBar->setPos(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
+                         m_startLeftTopPos.y - (MenuBarSpriteRect.size.height / 2)));
     // スプライトの再配置
-    m_pTopTooth->refreshSpritePos();
-
+    m_pMenuBar->refreshSpritePos();
     // スプライトの登録
-    m_pLayer->addChild(m_pTopTooth->getSprite());
+    m_pLayer->addChild(m_pMenuBar->getSprite());
 
-
-    // 下歯生成処理
-    m_pBottomTooth = Tooth::create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
-                                        m_pTopTooth->getPos().y - toothSpriteRect.size.height));
-
-    // スプライトの回転
-    m_pBottomTooth->getSprite()->setRotation(180);
-
-    // スプライトの登録
-    m_pLayer->addChild(m_pBottomTooth->getSprite());
-
-    // 下歯茎生成処理
-    m_pBottomGum = Gum::create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
-                                    m_pBottomTooth->getPos().y - toothSpriteRect.size.height / 2 - gumSpriteRect.size.height / 2));
-
-    // スプライトの登録
-    m_pLayer->addChild(m_pBottomGum->getSprite());
-
-    */
     // 正常終了
     return true;
 }

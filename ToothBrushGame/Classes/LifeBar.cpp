@@ -33,7 +33,7 @@ LifeBar::~LifeBar()
 bool LifeBar::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("tooth_01.png");
+    m_pSprite = Sprite::create("hpbar.png");
     
     // エラーチェック
     if(m_pSprite == nullptr)

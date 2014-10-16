@@ -81,7 +81,7 @@ bool HelloWorld::init()
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
     
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
+    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
     
     m_pEnemyManager = EnemyManager::create(this,10);
@@ -92,11 +92,13 @@ bool HelloWorld::init()
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
-    
+
+    //敵のスプライト生成
     m_pEnemySprite = Sprite::create("Enemy.png");
     m_pEnemySprite->setPosition(400, 600);
     this->addChild(m_pEnemySprite);
-    
+
+    //歯垢のスプライト生成
     m_pPlaqueSprite = Sprite::create("Plaque.png");
     m_pPlaqueSprite->setPosition(410, 800);
     this->addChild(m_pPlaqueSprite);
@@ -112,8 +114,18 @@ bool HelloWorld::init()
 
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
 
-     m_pPlaqueManager = PlaqueManager::create(100, this);
-    
+    m_pPlaqueManager = PlaqueManager::create(100, this);
+
+    //UIスコアのスプライト生成
+    m_pScoreSprite = Sprite::create("UI_ScoreAndMenu.png");
+    m_pScoreSprite->setPosition(320, 928);
+    this->addChild(m_pScoreSprite);
+
+    //UIアイテムのスプライト生成
+    m_pItemSprite = Sprite::create("UI_Item.png");
+    m_pItemSprite->setPosition(320, 111);
+    this->addChild(m_pItemSprite);
+
     return true;
 }
 
@@ -136,6 +148,7 @@ void HelloWorld::update(float fTime)
 {
     // 歯の更新
     m_pToothManager->update();
+    // 歯垢の更新
     m_pPlaqueManager->update();
     
     // 歯を動かすか判定
