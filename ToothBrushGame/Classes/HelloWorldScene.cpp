@@ -84,11 +84,8 @@ bool HelloWorld::init()
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
 
-    m_pLifeBar = nullptr;
-    m_pLifeBar = LifeBar::create(this,Vec2(320,256));
-
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
+    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
     
     m_pEnemyManager = EnemyManager::create(this,50);
@@ -99,11 +96,13 @@ bool HelloWorld::init()
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
-    
+
+    //敵のスプライト生成
     m_pEnemySprite = Sprite::create("Enemy.png");
     m_pEnemySprite->setPosition(400, 600);
     this->addChild(m_pEnemySprite);
-    
+
+    //歯垢のスプライト生成
     m_pPlaqueSprite = Sprite::create("Plaque.png");
     m_pPlaqueSprite->setPosition(410, 800);
     this->addChild(m_pPlaqueSprite);
@@ -124,6 +123,20 @@ bool HelloWorld::init()
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
 
     m_pBoss = nullptr;
+    //UIスコアのスプライト生成
+    m_pScoreSprite = Sprite::create("UI_ScoreAndMenu.png");
+    m_pScoreSprite->setPosition(320, visibleSize.height - 32);
+    this->addChild(m_pScoreSprite);
+
+    //HPバー作成
+    m_pLifeBar = nullptr;
+    m_pLifeBar = LifeBar::create(this,Vec2(320,240));
+    
+    //UIアイテムのスプライト生成
+    m_pItemSprite = Sprite::create("UI_Item.png");
+    m_pItemSprite->setPosition(320, m_pItemSprite->getContentSize().height / 2 + 1);
+    this->addChild(m_pItemSprite);
+
     return true;
 }
 
@@ -144,9 +157,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float fTime)
 {
-    m_pLifeBar->update();
+
     // 歯の更新
     m_pToothManager->update();
+    // 歯垢の更新
     m_pPlaqueManager->update();
     
     // 歯を動かすか判定
@@ -176,6 +190,8 @@ void HelloWorld::update(float fTime)
     {
     m_pBoss->update();
     }
+    //HPバー更新
+    m_pLifeBar->update();
 }
 
 bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
