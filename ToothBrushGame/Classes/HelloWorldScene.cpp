@@ -115,9 +115,11 @@ bool HelloWorld::init()
 
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
 
-     m_pPlaqueManager = PlaqueManager::create(100, this);
+    m_pPlaqueManager = PlaqueManager::create(100, this);
 
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
+
+    m_pBoss = nullptr;
     
     return true;
 }
@@ -185,13 +187,15 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
     // エネミースプライトのサイズ取得
     Rect enemyRect = m_pEnemySprite->getBoundingBox();
 
-    // エネミーあたり判定
+    // エネミーあたり判定(最初に置いたやつ)
     if(enemyRect.containsPoint(m_touchPos))
     {
         // エネミーを透明にする
         m_pEnemySprite->setOpacity(0);
         m_bEnemyDie = true;
     }
+
+    m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     
     // ボスが出現しているとき
     if(m_bBossDisp)
@@ -239,14 +243,13 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
 
         m_oldSwipeDirection = m_swipeDirection;
         m_swipeDirection = calcSwipeDirection(fAngle);
-
     }
-
     else
     {
         m_swipeDirection = SWIPE_DIRECTION_NONE;
     }
 
+    // スワイプされていないorスワイプしていても異常な角度
     if(m_swipeDirection == SWIPE_DIRECTION_NONE)
     {
         return;
@@ -258,7 +261,6 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
     swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
                       swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
 
-    
     // 歯垢スプライトのサイズ取得
     Rect plaqueRect = m_pPlaqueSprite->getBoundingBox();
 
