@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18F15C8419EF672200D4D830 /* UI_Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F15C8319EF672200D4D830 /* UI_Item.png */; };
+		18F15C8619EF678500D4D830 /* UI_ScoreAndMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 18F15C8519EF678500D4D830 /* UI_ScoreAndMenu.png */; };
+		18F15C8919EF68AF00D4D830 /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18F15C8719EF68AF00D4D830 /* UIManager.cpp */; };
+		18F15C8F19EF69AC00D4D830 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18F15C8D19EF69AC00D4D830 /* Item.cpp */; };
+		18F15C9219EF6D1900D4D830 /* MenuBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18F15C9019EF6D1900D4D830 /* MenuBar.cpp */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -237,6 +242,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18F15C8319EF672200D4D830 /* UI_Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UI_Item.png; sourceTree = "<group>"; };
+		18F15C8519EF678500D4D830 /* UI_ScoreAndMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UI_ScoreAndMenu.png; sourceTree = "<group>"; };
+		18F15C8719EF68AF00D4D830 /* UIManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UIManager.cpp; path = ../Classes/UIManager.cpp; sourceTree = "<group>"; };
+		18F15C8819EF68AF00D4D830 /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIManager.h; path = ../Classes/UIManager.h; sourceTree = "<group>"; };
+		18F15C8D19EF69AC00D4D830 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Item.cpp; path = ../Classes/Item.cpp; sourceTree = "<group>"; };
+		18F15C8E19EF69AC00D4D830 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../Classes/Item.h; sourceTree = "<group>"; };
+		18F15C9019EF6D1900D4D830 /* MenuBar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MenuBar.cpp; path = ../Classes/MenuBar.cpp; sourceTree = "<group>"; };
+		18F15C9119EF6D1900D4D830 /* MenuBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuBar.h; path = ../Classes/MenuBar.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
@@ -425,6 +438,12 @@
 				6138F69619EEBBCE006FAF8A /* Tooth.h */,
 				6138F69719EEBBCE006FAF8A /* ToothManager.cpp */,
 				6138F69819EEBBCE006FAF8A /* ToothManager.h */,
+				18F15C8719EF68AF00D4D830 /* UIManager.cpp */,
+				18F15C8819EF68AF00D4D830 /* UIManager.h */,
+				18F15C8D19EF69AC00D4D830 /* Item.cpp */,
+				18F15C8E19EF69AC00D4D830 /* Item.h */,
+				18F15C9019EF6D1900D4D830 /* MenuBar.cpp */,
+				18F15C9119EF6D1900D4D830 /* MenuBar.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -548,6 +567,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18F15C8519EF678500D4D830 /* UI_ScoreAndMenu.png */,
+				18F15C8319EF672200D4D830 /* UI_Item.png */,
 				6138F66019EBCEA8006FAF8A /* Boss.png */,
 				6138F66119EBCEA8006FAF8A /* bubble_01.png */,
 				6138F66219EBCEA8006FAF8A /* CloseNormal.png */,
@@ -738,9 +759,11 @@
 				6138F66C19EBCEA8006FAF8A /* Boss.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				18F15C8619EF678500D4D830 /* UI_ScoreAndMenu.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				6138F67519EBCEA8006FAF8A /* tooth_01.png in Resources */,
+				18F15C8419EF672200D4D830 /* UI_Item.png in Resources */,
 				6138F66F19EBCEA8006FAF8A /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				6138F67119EBCEA8006FAF8A /* Marker Felt.ttf in Resources */,
@@ -785,8 +808,10 @@
 				6138F6A219EEBBCE006FAF8A /* Number.cpp in Sources */,
 				6138F69C19EEBBCE006FAF8A /* Enemy.cpp in Sources */,
 				6138F69E19EEBBCE006FAF8A /* Gum.cpp in Sources */,
+				18F15C8919EF68AF00D4D830 /* UIManager.cpp in Sources */,
 				6138F6A519EEBBCE006FAF8A /* Random.cpp in Sources */,
 				6138F6A719EEBBCE006FAF8A /* Tooth.cpp in Sources */,
+				18F15C8F19EF69AC00D4D830 /* Item.cpp in Sources */,
 				6138F69F19EEBBCE006FAF8A /* HelloWorldScene.cpp in Sources */,
 				6138F6A319EEBBCE006FAF8A /* Plaque.cpp in Sources */,
 				6138F6A619EEBBCE006FAF8A /* Score.cpp in Sources */,
@@ -799,6 +824,7 @@
 				6138F6A819EEBBCE006FAF8A /* ToothManager.cpp in Sources */,
 				6138F6A419EEBBCE006FAF8A /* PlaqueManager.cpp in Sources */,
 				6138F69D19EEBBCE006FAF8A /* EnemyManager.cpp in Sources */,
+				18F15C9219EF6D1900D4D830 /* MenuBar.cpp in Sources */,
 				6138F6A119EEBBCE006FAF8A /* LifeBar.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -891,9 +917,9 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6800c772-8be9-4ba4-a6e4-e92d5b352bf1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -922,9 +948,9 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6800c772-8be9-4ba4-a6e4-e92d5b352bf1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
