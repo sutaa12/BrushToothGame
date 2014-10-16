@@ -48,7 +48,7 @@ public:
     void spawn(void);
 public:
     //敵の最大数
-    static const int ENEMY_MAX = 10;
+    static const int ENEMY_MAX = 50;
     //開始する時間感覚
     static const int TIME_SPAN = 50;
 private:

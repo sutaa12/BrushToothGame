@@ -85,13 +85,13 @@ bool HelloWorld::init()
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
 
     m_pLifeBar = nullptr;
-    m_pLifeBar = LifeBar::create(this,Vec2(320,440));
+    m_pLifeBar = LifeBar::create(this,Vec2(320,256));
 
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
     m_bHit = false;
     
-    m_pEnemyManager = EnemyManager::create(this,10);
+    m_pEnemyManager = EnemyManager::create(this,50);
     
     // 泡のスプライト生成
     m_pBubbleSprite = Sprite::create("bubble_01.png");
