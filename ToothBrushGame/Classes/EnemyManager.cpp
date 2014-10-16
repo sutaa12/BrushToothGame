@@ -88,20 +88,6 @@ void EnemyManager::update(void)
            m_pEnemy[nloop]->update();
     }
     
-    if(m_nTime % m_nTimeSpan == 0)
-    {
-        for(int nloop = 0;nloop < EnemyManager::ENEMY_MAX;nloop++)
-        {
-            if(!m_pEnemy[nloop]->getDisapper())
-            {
-                m_pEnemy[nloop]->addDamage();
-            }
-        }
-    }
-    if(m_nTime % (m_nTimeSpan * 2) == 0)
-    {
-        spawn();
-    }
 }
 
 //================================================================================
