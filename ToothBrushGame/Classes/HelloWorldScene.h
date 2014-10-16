@@ -8,6 +8,10 @@ using namespace cocos2d;
 class ToothManager;
 class EnemyManager;
 class PlaqueManager;
+class Boss;
+class HitChecker;
+class UIManager;
+class LifeBar;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -27,8 +31,7 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-    
-private:
+
     typedef enum
     {
         SWIPE_DIRECTION_NONE = 0,
@@ -39,6 +42,7 @@ private:
         SWIPE_DIRECTION_MAX,
     }SWIPE_DIRECTION;
 
+private:
     Point m_touchPos;
     Point m_oldTouchPos;
     SWIPE_DIRECTION m_swipeDirection;
@@ -50,6 +54,8 @@ private:
     ToothManager* m_pToothManager;
     EnemyManager* m_pEnemyManager;
     PlaqueManager* m_pPlaqueManager;
+    HitChecker* m_pHitChecker;
+    UIManager* m_pUIManager;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;
@@ -57,6 +63,12 @@ private:
     Sprite* m_pEnemySprite;
     Sprite* m_pPlaqueSprite;
     Sprite* m_pBossSprite;
+    Sprite* m_pItemSprite;
+    Sprite* m_pScoreSprite;
+    LifeBar* m_pLifeBar;
+    
+    
+    Boss* m_pBoss;
     
     bool m_bEnemyDie;
     bool m_bPlaqueDie;

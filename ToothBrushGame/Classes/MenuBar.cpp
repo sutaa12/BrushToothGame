@@ -1,29 +1,31 @@
 //
-//  Plaque.cpp
+//  MenuBar.cpp
 //  ToothBrushGame
 //
-//  Created by 川原 岳大 on 2014/10/14.
+//  Created by 川原 岳大 on 2014/10/16.
 //
 //
 
-#include "Plaque.h"
+
+//********************************************************************************
+// インクルード
+//********************************************************************************
+#include "MenuBar.h"
+
 
 //================================================================================
 // コンストラクタ
 //================================================================================
-Plaque::Plaque(void)
+MenuBar::MenuBar(void)
 {
     // メンバ変数の初期化
     m_pSprite = nullptr;
-    m_bDisappear = false;
-    m_nLife = 3;
-    m_nDamageTimer = DAMAGE_PERMISSION_TIME;
 }
 
 //================================================================================
 // デストラクタ
 //================================================================================
-Plaque::~Plaque()
+MenuBar::~MenuBar()
 {
 
 }
@@ -31,10 +33,10 @@ Plaque::~Plaque()
 //================================================================================
 // 初期化処理
 //================================================================================
-bool Plaque::init(void)
+bool MenuBar::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("Plaque.png");
+    m_pSprite = Sprite::create("UI_Item.png");
 
     // エラーチェック
     if(m_pSprite == nullptr)
@@ -53,7 +55,7 @@ bool Plaque::init(void)
 //================================================================================
 // 終了処理
 //================================================================================
-void Plaque::uninit(void)
+void MenuBar::uninit(void)
 {
 
 }
@@ -61,70 +63,26 @@ void Plaque::uninit(void)
 //================================================================================
 // 更新処理
 //================================================================================
-void Plaque::update(void)
+void MenuBar::update(void)
 {
-    if(m_bDisappear)
-    {
-        return;
-    }
-
-    m_nDamageTimer++;
+    //m_pToothSprite->setPosition(m_pos);
 
 
-    // HPが0以下ならば消滅
-    if(m_nLife <= 0)
-    {
-        m_nLife = 0;
-        disappear();
-    }
-}
-
-//================================================================================
-// 消滅処理
-//================================================================================
-void Plaque::disappear(void)
-{
-    unsigned short uOpacity = m_pSprite->getOpacity();
-
-    if(uOpacity >= 0)
-    {
-        uOpacity -= OPACITY_SPEED;
-    }
-
-    if(uOpacity <= 0)
-    {
-        uOpacity = 0;
-        m_bDisappear = true;
-    }
-
-    m_pSprite->setOpacity(uOpacity);
 }
 
 //================================================================================
 // 生成処理
 //================================================================================
-Plaque* Plaque::create(const Vec2& pos)
+MenuBar* MenuBar::create(const Vec2& pos)
 {
     // インスタンスの生成
-    Plaque* pPlaque = new Plaque();
+    MenuBar* pMenuBar = new MenuBar();
 
     // メンバ変数の代入
-    pPlaque->m_pos = pos;
+    pMenuBar->m_pos = pos;
 
     // 初期化
-    pPlaque->init();
-
-    return pPlaque;
-}
-
-//================================================================================
-// ダメージ処理
-//================================================================================
-void Plaque::addDamage(int nDamage)
-{
-    if(m_nDamageTimer >= DAMAGE_PERMISSION_TIME)
-    {
-        m_nLife -= nDamage;
-        m_nDamageTimer = 0;
-    }
+    pMenuBar->init();
+    
+    return pMenuBar;
 }

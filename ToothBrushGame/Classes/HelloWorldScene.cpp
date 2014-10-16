@@ -5,6 +5,10 @@
 #include "Plaque.h"
 #include "PlaqueManager.h"
 #include "EnemyManager.h"
+#include "Boss.h"
+#include "HitChecker.h"
+#include "LifeBar.h"
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -79,12 +83,12 @@ bool HelloWorld::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
-    
+
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height),this);
+    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
     
-    m_pEnemyManager = EnemyManager::create(this,10);
+    m_pEnemyManager = EnemyManager::create(this,50);
     
     // 泡のスプライト生成
     m_pBubbleSprite = Sprite::create("bubble_01.png");
@@ -92,19 +96,21 @@ bool HelloWorld::init()
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
-    
+
+    //敵のスプライト生成
     m_pEnemySprite = Sprite::create("Enemy.png");
     m_pEnemySprite->setPosition(400, 600);
     this->addChild(m_pEnemySprite);
-    
+
+    //歯垢のスプライト生成
     m_pPlaqueSprite = Sprite::create("Plaque.png");
     m_pPlaqueSprite->setPosition(410, 800);
     this->addChild(m_pPlaqueSprite);
     
     m_bEnemyDie = false;
     m_bPlaqueDie = false;
-    m_bMove = false;
     m_bBossDisp = false;
+    m_bMove = false;
     m_touchPos = Point(0.0f,0.0f);
     m_oldTouchPos = m_touchPos;
     m_swipeDirection = SWIPE_DIRECTION_NONE;
@@ -112,8 +118,25 @@ bool HelloWorld::init()
 
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
 
-     m_pPlaqueManager = PlaqueManager::create(100, this);
+    m_pPlaqueManager = PlaqueManager::create(100, this);
+
+    m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
+
+    m_pBoss = nullptr;
+    //UIスコアのスプライト生成
+    m_pScoreSprite = Sprite::create("UI_ScoreAndMenu.png");
+    m_pScoreSprite->setPosition(320, visibleSize.height - 32);
+    this->addChild(m_pScoreSprite);
+
+    //HPバー作成
+    m_pLifeBar = nullptr;
+    m_pLifeBar = LifeBar::create(this,Vec2(320,240));
     
+    //UIアイテムのスプライト生成
+    m_pItemSprite = Sprite::create("UI_Item.png");
+    m_pItemSprite->setPosition(320, m_pItemSprite->getContentSize().height / 2 + 1);
+    this->addChild(m_pItemSprite);
+
     return true;
 }
 
@@ -134,8 +157,10 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float fTime)
 {
+
     // 歯の更新
     m_pToothManager->update();
+    // 歯垢の更新
     m_pPlaqueManager->update();
     
     // 歯を動かすか判定
@@ -153,13 +178,20 @@ void HelloWorld::update(float fTime)
         {
             // ボスの生成
             m_bBossDisp = true;
-            m_pBossSprite = Sprite::create("Boss.png");
-            m_pBossSprite->cocos2d::Node::setPosition(Vec2(350,600));
-            this->addChild(m_pBossSprite);
+            m_pBoss = Boss::create(Vec2(350,500));
+            m_pBoss->setSpawn(Vec2(350,500));
+            this->addChild(m_pBoss->getSprite());
         }
     }
     //敵の更新
     m_pEnemyManager->update();
+    //ボスの更新
+    if(m_pBoss)
+    {
+    m_pBoss->update();
+    }
+    //HPバー更新
+    m_pLifeBar->update();
 }
 
 bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
@@ -175,25 +207,27 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
     // エネミースプライトのサイズ取得
     Rect enemyRect = m_pEnemySprite->getBoundingBox();
 
-    // エネミーあたり判定
+    // エネミーあたり判定(最初に置いたやつ)
     if(enemyRect.containsPoint(m_touchPos))
     {
         // エネミーを透明にする
         m_pEnemySprite->setOpacity(0);
         m_bEnemyDie = true;
     }
+
+    m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     
     // ボスが出現しているとき
     if(m_bBossDisp)
     {
         // ボススプライトのサイズ取得
-        Rect bossSpriteRect = m_pBossSprite->getBoundingBox();
+        Rect bossSpriteRect = m_pBoss->getSprite()->getBoundingBox();
         
         // ボス当たり判定
-        if(bossSpriteRect.containsPoint(m_touchPos))
+        if(bossSpriteRect.containsPoint(m_touchPos) && !m_pBoss->getDisapper())
         {
-            // ボスを透明にする
-            m_pBossSprite->setOpacity(0);
+            // ボスにダメージ
+            m_pBoss->addDamage();
         }
     }
     
@@ -207,7 +241,6 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
     // タッチ座標の取得
     m_oldTouchPos = m_touchPos;
     m_touchPos = pTouch->getLocation();
-
 
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
@@ -229,39 +262,44 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
 
         m_oldSwipeDirection = m_swipeDirection;
         m_swipeDirection = calcSwipeDirection(fAngle);
-
     }
-
     else
     {
         m_swipeDirection = SWIPE_DIRECTION_NONE;
     }
 
+    // スワイプされていないorスワイプしていても異常な角度
     if(m_swipeDirection == SWIPE_DIRECTION_NONE)
     {
         return;
     }
 
+    // 当たり判定領域の算出
+    Rect bubbleRect = m_pBubbleSprite->getBoundingBox();
     Rect swipeRect;
-    swipeRect.setRect(m_touchPos.x - swipVec.x / 2 ,m_touchPos.y - swipVec.y / 2,swipVec.x , swipVec.y);
+    swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
+                      swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
 
     // 歯垢スプライトのサイズ取得
     Rect plaqueRect = m_pPlaqueSprite->getBoundingBox();
 
-    // 歯垢当たり判定
+    // 歯垢当たり判定(はじめに一つだけ出したやつ)
     if(plaqueRect.intersectsRect(swipeRect))
     {
         // 歯垢を透明にする
         m_pPlaqueSprite->setOpacity(0);
         m_bPlaqueDie = true;
     }
+
+    // スワイプ時の当たり判定
+    m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection);
 }
 
 void HelloWorld::onTouchEnded(Touch* pTouch, Event* pEvent)
 {
     // タッチしていないので泡スプライトを透明に
     m_pBubbleSprite->setOpacity(0);
-
+    
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     
     m_bHit = false;
