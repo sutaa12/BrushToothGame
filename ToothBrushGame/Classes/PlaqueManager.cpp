@@ -82,7 +82,7 @@ PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Layer* pLayer)
 //================================================================================
 void PlaqueManager::createPlaque(void)
 {
-    Vec2 pos = Vec2(300,300);
+    Vec2 pos = Vec2(50,600);
 
     // 生成チェック
     for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
@@ -92,6 +92,8 @@ void PlaqueManager::createPlaque(void)
         m_pLayer->addChild(m_ppPlaque[nCnt]->getSprite());
 
         m_nPlaqueNum++;
+
+        pos.x += 10;
     }
 }
 

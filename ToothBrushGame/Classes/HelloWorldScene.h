@@ -8,6 +8,7 @@ using namespace cocos2d;
 class ToothManager;
 class EnemyManager;
 class PlaqueManager;
+class HitChecker;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -50,6 +51,7 @@ private:
     ToothManager* m_pToothManager;
     EnemyManager* m_pEnemyManager;
     PlaqueManager* m_pPlaqueManager;
+    HitChecker* m_pHitChecker;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;

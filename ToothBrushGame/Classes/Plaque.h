@@ -41,10 +41,15 @@ public:
 
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
 
+    bool getDisappear(void){return m_bDisappear;}
+    void setDisappear(bool bFlg){m_bDisappear = bFlg;}
+
 private:
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;
+
+    bool m_bDisappear;
 };
 
 
