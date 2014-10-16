@@ -87,6 +87,7 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C360636519EFADC5008A2452 /* hpbar.png in Resources */ = {isa = PBXBuildFile; fileRef = C360636419EFADC5008A2452 /* hpbar.png */; };
 		C3EABB3A19EF8963005B8CF4 /* HitChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3EABB3819EF8963005B8CF4 /* HitChecker.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -323,6 +324,7 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C360636419EFADC5008A2452 /* hpbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hpbar.png; sourceTree = "<group>"; };
 		C3BA23A519EF6EC9008281A2 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = common.h; path = ../Classes/common.h; sourceTree = "<group>"; };
 		C3EABB3819EF8963005B8CF4 /* HitChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HitChecker.cpp; path = ../Classes/HitChecker.cpp; sourceTree = "<group>"; };
 		C3EABB3919EF8963005B8CF4 /* HitChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitChecker.h; path = ../Classes/HitChecker.h; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C360636419EFADC5008A2452 /* hpbar.png */,
 				6138F66019EBCEA8006FAF8A /* Boss.png */,
 				6138F66119EBCEA8006FAF8A /* bubble_01.png */,
 				6138F66219EBCEA8006FAF8A /* CloseNormal.png */,
@@ -745,6 +748,7 @@
 				6138F66C19EBCEA8006FAF8A /* Boss.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				C360636519EFADC5008A2452 /* hpbar.png in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				6138F67519EBCEA8006FAF8A /* tooth_01.png in Resources */,
