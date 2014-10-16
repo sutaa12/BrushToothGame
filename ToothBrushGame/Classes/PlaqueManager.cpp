@@ -59,7 +59,10 @@ void PlaqueManager::uninit(void)
 //================================================================================
 void PlaqueManager::update(void)
 {
-
+    for(int nPlaqueNum = 0;nPlaqueNum < m_nPlaqueMaxNum;nPlaqueNum++)
+    {
+        m_ppPlaque[nPlaqueNum]->update();
+    }
 }
 
 //================================================================================

@@ -226,7 +226,6 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
     m_oldTouchPos = m_touchPos;
     m_touchPos = pTouch->getLocation();
 
-
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);

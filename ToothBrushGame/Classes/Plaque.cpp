@@ -16,6 +16,8 @@ Plaque::Plaque(void)
     // メンバ変数の初期化
     m_pSprite = nullptr;
     m_bDisappear = false;
+    m_nLife = 3;
+    m_nDamageTimer = DAMAGE_PERMISSION_TIME;
 }
 
 //================================================================================
@@ -61,7 +63,41 @@ void Plaque::uninit(void)
 //================================================================================
 void Plaque::update(void)
 {
-    //m_pToothSprite->setPosition(m_pos);
+    if(m_bDisappear)
+    {
+        return;
+    }
+
+    m_nDamageTimer++;
+
+
+    // HPが0以下ならば消滅
+    if(m_nLife <= 0)
+    {
+        m_nLife = 0;
+        disappear();
+    }
+}
+
+//================================================================================
+// 消滅処理
+//================================================================================
+void Plaque::disappear(void)
+{
+    unsigned short uOpacity = m_pSprite->getOpacity();
+
+    if(uOpacity >= 0)
+    {
+        uOpacity -= OPACITY_SPEED;
+    }
+
+    if(uOpacity <= 0)
+    {
+        uOpacity = 0;
+        m_bDisappear = true;
+    }
+
+    m_pSprite->setOpacity(uOpacity);
 }
 
 //================================================================================
@@ -79,4 +115,16 @@ Plaque* Plaque::create(const Vec2& pos)
     pPlaque->init();
 
     return pPlaque;
+}
+
+//================================================================================
+// ダメージ処理
+//================================================================================
+void Plaque::addDamage(int nDamage)
+{
+    if(m_nDamageTimer >= DAMAGE_PERMISSION_TIME)
+    {
+        m_nLife -= nDamage;
+        m_nDamageTimer = 0;
+    }
 }
