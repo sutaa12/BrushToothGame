@@ -6,6 +6,8 @@
 #include "PlaqueManager.h"
 #include "EnemyManager.h"
 #include "Boss.h"
+#include "HitChecker.h"
+
 USING_NS_CC;
 
 Scene* HelloWorld::createScene()
@@ -114,6 +116,8 @@ bool HelloWorld::init()
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
 
      m_pPlaqueManager = PlaqueManager::create(100, this);
+
+    m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
     
     return true;
 }
@@ -161,6 +165,11 @@ void HelloWorld::update(float fTime)
     }
     //敵の更新
     m_pEnemyManager->update();
+    //ボスの更新
+    if(m_pBoss)
+    {
+    m_pBoss->update();
+    }
 }
 
 bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
@@ -191,7 +200,7 @@ bool HelloWorld::onTouchBegin(Touch* pTouch,Event* pEvent)
         Rect bossSpriteRect = m_pBoss->getSprite()->getBoundingBox();
         
         // ボス当たり判定
-        if(bossSpriteRect.containsPoint(m_touchPos) && m_pBoss->getDisapper())
+        if(bossSpriteRect.containsPoint(m_touchPos) && !m_pBoss->getDisapper())
         {
             // ボスにダメージ
             m_pBoss->addDamage();
@@ -243,26 +252,33 @@ void HelloWorld::onTouchMoved(Touch* pTouch,Event* pEvent)
         return;
     }
 
+    // 当たり判定領域の算出
+    Rect bubbleRect = m_pBubbleSprite->getBoundingBox();
     Rect swipeRect;
-    swipeRect.setRect(m_touchPos.x - swipVec.x / 2 ,m_touchPos.y - swipVec.y / 2,swipVec.x , swipVec.y);
+    swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
+                      swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
 
+    
     // 歯垢スプライトのサイズ取得
     Rect plaqueRect = m_pPlaqueSprite->getBoundingBox();
 
-    // 歯垢当たり判定
+    // 歯垢当たり判定(はじめに一つだけ出したやつ)
     if(plaqueRect.intersectsRect(swipeRect))
     {
         // 歯垢を透明にする
         m_pPlaqueSprite->setOpacity(0);
         m_bPlaqueDie = true;
     }
+
+    // スワイプ時の当たり判定
+    m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection);
 }
 
 void HelloWorld::onTouchEnded(Touch* pTouch, Event* pEvent)
 {
     // タッチしていないので泡スプライトを透明に
     m_pBubbleSprite->setOpacity(0);
-
+    
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     
     m_bHit = false;

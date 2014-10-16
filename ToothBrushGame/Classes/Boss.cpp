@@ -27,6 +27,7 @@ Boss::Boss(void)
     m_actionMode = 0;
     m_time = 0;
     m_nLife = 0;
+    m_bDeath = true;
 }
 
 //================================================================================
@@ -182,7 +183,7 @@ void Boss::setSpawn(Vec2 pos)
     m_pos = pos;
     m_pSprite->setPosition(pos);
     m_pSprite->setOpacity(255);
-    m_nLife = RandomMT::getRaodom(1, MAX_LIFE);
+    m_nLife = MAX_LIFE;
     
 }
 //================================================================================
