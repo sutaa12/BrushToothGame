@@ -8,20 +8,7 @@
 
 #include "Enemy.h"
 #include "Random.h"
-//ベクトルの最大値チェック　超えていたら押し戻す
-template <class T1,class T2>
-inline void CHECK_MAX_POS(T1 &vec0,T2 &vecMin,T2 &vecMax)
-{
-    if(vec0 >= vecMax)
-    {
-        vec0 = vecMax;
-    }else
-        if(vec0 <= vecMin)
-        {
-            vec0 = vecMin;
-        }
-}
-
+#include "common.h"
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -37,7 +24,7 @@ Enemy::Enemy(void)
     m_pFunc[3] = &Enemy::delayAction;
     m_actionMode = 0;
     m_time = 0;
-    
+    m_nLife = 0;
 }
 
 //================================================================================
@@ -45,7 +32,7 @@ Enemy::Enemy(void)
 //================================================================================
 Enemy::~Enemy()
 {
-
+    
 }
 
 //================================================================================
@@ -63,8 +50,11 @@ bool Enemy::init(void)
         return false;
     }
 
+    m_bDeath = true;
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
+    
+    m_pSprite->setOpacity(255);
 
     // 正常終了
     return true;
@@ -75,21 +65,46 @@ bool Enemy::init(void)
 //================================================================================
 void Enemy::uninit(void)
 {
-
 }
 
+//================================================================================
+//消滅処理
+//================================================================================
+void Enemy::disappear(void)
+{
+    unsigned short uOpacity = m_pSprite->getOpacity();
+    if(uOpacity >= 0)
+    {
+        uOpacity -= OPACITY_SPEED;
+    }
+    m_pSprite->setOpacity(uOpacity);
+    if(uOpacity <= 0)
+    {
+        uOpacity = 0;
+        m_bDeath = true;
+    }
+}
 //================================================================================
 // 更新処理
 //================================================================================
 void Enemy::update(void)
 {
-    //状態に応じた処理開始
-    (this->*m_pFunc[m_actionMode])();
-    //タイムが0なら強制的に行動させる
-    if(m_time <= 0)
+    if(!m_bDeath)
     {
-        m_time = 0;
-        m_actionMode = ACTION_NONE;
+        //状態に応じた処理開始
+        (this->*m_pFunc[m_actionMode])();
+        //タイムが0なら強制的に行動させる
+        if(m_time <= 0)
+        {
+            m_time = 0;
+            m_actionMode = ACTION_NONE;
+        }
+        //HPが０なら消滅
+        if(m_nLife <= 0)
+        {
+            m_nLife = 0;
+            disappear();
+        }
     }
 }
 //================================================================================
@@ -99,7 +114,7 @@ void Enemy::choiceAction(void)
 {
     m_actionMode = RandomMT::getRandom(0, ACTION_MAX - 1);
     m_time = RandomMT::getRandom(0, Enemy::MAX_TIME);
-    m_move = Vec2(RandomMT::getRandom(0,Enemy::MAX_MOVE),RandomMT::getRandom(0,Enemy::MAX_MOVE));
+    m_move = Vec2(RandomMT::getRandom(-Enemy::MAX_MOVE,Enemy::MAX_MOVE),RandomMT::getRandom(-Enemy::MAX_MOVE,Enemy::MAX_MOVE));
 }
 //================================================================================
 //移動
@@ -141,6 +156,25 @@ void Enemy::attackAction(void)
 void Enemy::delayAction(void)
 {
     m_time--;
+}
+//================================================================================
+//ダメージ処理
+//================================================================================
+void Enemy::addDamage(int nDamage)
+{
+    m_nLife -= nDamage;
+}
+//================================================================================
+// 敵再配置処理
+//================================================================================
+void Enemy::setSpawn(Vec2 pos)
+{
+    m_bDeath = false;
+    m_pos = pos;
+    m_pSprite->setPosition(pos);
+    m_pSprite->setOpacity(255);
+    m_nLife = RandomMT::getRaodom(1, MAX_LIFE);
+   
 }
 //================================================================================
 // 生成処理

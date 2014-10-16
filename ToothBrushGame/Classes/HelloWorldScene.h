@@ -8,6 +8,7 @@ using namespace cocos2d;
 class ToothManager;
 class EnemyManager;
 class PlaqueManager;
+class Boss;
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -57,6 +58,8 @@ private:
     Sprite* m_pEnemySprite;
     Sprite* m_pPlaqueSprite;
     Sprite* m_pBossSprite;
+    
+    Boss* m_pBoss;
     
     bool m_bEnemyDie;
     bool m_bPlaqueDie;

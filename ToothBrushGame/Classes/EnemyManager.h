@@ -42,24 +42,25 @@ public:
 
     static EnemyManager* create(Layer* layer,int numEnemy);
 
-    Enemy* getTopTooth(void){return m_pEnemy[0];}
+    Enemy* getEnemys(void){return m_pEnemy[0];}
 
-    void disappear(const Vec2& vec);
-    void action(const Vec2& vec);
-    void attack(const Vec2& vec);
-    void move(const Vec2& vec);
-    void spawn(const Vec2& vec);
-    void checkDamage(const Vec2& vec);
-
-
-private:
+    void spawn(void);
+public:
     //敵の最大数
     static const int ENEMY_MAX = 10;
+    //開始する時間感覚
+    static const int TIME_SPAN = 50;
+private:
+
     //敵の配列
     Enemy* m_pEnemy[ENEMY_MAX];
-
+    
     Layer* m_pLayer;
     int m_numEnemy;
+    
+    int m_nTime;
+    
+    int m_nTimeSpan;
 };
 
 #endif /* defined(__ToothBrushGame__EnemyManager__) */
