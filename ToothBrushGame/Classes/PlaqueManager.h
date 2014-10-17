@@ -55,6 +55,8 @@ private:
     Layer* m_pLayer;
 
     void createPlaque(void);
+
+    void getRandGlidNum(std::set<int>& result,int nMin,int nMax,int nNum);
 };
 
 #endif /* defined(__ToothBrushGame__PlaqueManager__) */
