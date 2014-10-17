@@ -7,6 +7,7 @@
 //
 
 #include "Gum.h"
+#include "LifeBar.h"
 
 //================================================================================
 // コンストラクタ
@@ -15,6 +16,7 @@ Gum::Gum(void)
 {
     // メンバ変数の初期化
     m_pSprite = nullptr;
+    m_nDamageTimer = DAMAGE_PERMISSION_TIME;
 }
 
 //================================================================================
@@ -60,7 +62,7 @@ void Gum::uninit(void)
 //================================================================================
 void Gum::update(void)
 {
-    //m_pToothSprite->setPosition(m_pos);
+    m_nDamageTimer++;
 }
 
 //================================================================================
@@ -78,4 +80,16 @@ Gum* Gum::create(const Vec2& pos)
     pGum->init();
     
     return pGum;
+}
+
+//================================================================================
+// ダメージ処理
+//================================================================================
+void Gum::addDamage(int nDamage)
+{
+    if(m_nDamageTimer >= DAMAGE_PERMISSION_TIME)
+    {
+        LifeBar::addLife(-nDamage);
+        m_nDamageTimer = 0;
+    }
 }

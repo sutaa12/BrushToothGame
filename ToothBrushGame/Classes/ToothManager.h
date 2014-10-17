@@ -42,6 +42,8 @@ public:
     
     Tooth* getTopTooth(void){return m_pTopTooth;}
     Tooth* getBootomTooth(void){return m_pBottomTooth;}
+    Gum* getTopGum(void){return m_pTopGum;}
+    Gum* getBottomGum(void){return m_pBottomGum;}
     
     void addTopGumPosAndTopToothPos(const Vec2& vec);
     void addBottomGumPosAndBottomToothPos(const Vec2& vec);
