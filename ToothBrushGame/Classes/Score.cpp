@@ -12,6 +12,7 @@
 #include "Number.h"
 
 static const int Score_DISPLAY_CENTER_X = (320);
+int Score::m_nScorePoint = 0;
 
 //================================================================================
 // コンストラクタ
@@ -41,6 +42,7 @@ Score::~Score()
 //================================================================================
 bool Score::init(void)
 {
+    /*  スコアを画像で表示するときに使う
     m_ppNumbers = new Number*[m_nMaxNumber];
     for(int nloop = 0;nloop < m_nMaxNumber;nloop++)
     {
@@ -60,6 +62,21 @@ bool Score::init(void)
         // スプライトの登録
         m_pLayer->addChild(m_ppNumbers[nloop]->getSprite());
     }
+     */
+
+
+    // SCORE　文字列
+    m_pScoreLabel = LabelTTF::create("SCORE", "ariel", 48);
+    //左上の位置に設定
+    m_pScoreLabel->setPosition(m_startLeftTopPos);
+
+    // スコアポイント
+    m_pPointLabel = LabelTTF::create("0", "ariel", 48);
+    //SCORE文字の一番後ろの位置にセット
+    m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pScoreLabel->getContentSize().width, m_startLeftTopPos.y));
+    //スコア数字初期化
+    m_nScorePoint = 0;
+
     // 正常終了
     return true;
 }
@@ -77,7 +94,12 @@ void Score::uninit(void)
 //================================================================================
 void Score::update(void)
 {
-    
+
+    String* points = String::createWithFormat( "%d", this->m_nScorePoint);
+
+    // スコアポイントの表示を更新
+    m_pPointLabel->setString(points->getCString());
+
 }
 
 //================================================================================
