@@ -7,7 +7,6 @@
 //
 
 #include "GameMainScene.h"
-
 #include "Tooth.h"
 #include "ToothManager.h"
 #include "Plaque.h"

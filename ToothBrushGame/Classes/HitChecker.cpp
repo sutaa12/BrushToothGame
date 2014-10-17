@@ -16,7 +16,7 @@
 #include "Gum.h"
 #include "Enemy.h"
 #include "Plaque.h"
-#include "HelloWorldScene.h"
+#include "GameMainScene.h"
 #include "LifeBar.h"
 
 //================================================================================
@@ -62,12 +62,12 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
         // 当たり判定
         if(plaqueRect.intersectsRect(touchRect))
         {
-            if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+            if(nDirectionType == GameMainScene::SWIPE_DIRECTION_LEFT || nDirectionType == GameMainScene::SWIPE_DIRECTION_RIGHT)
             {
                 ppPlaque[nPlaqueNum]->addDamage(1);
             }
 
-            else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+            else if(nDirectionType == GameMainScene::SWIPE_DIRECTION_UP || GameMainScene::SWIPE_DIRECTION_DOWN)
             {
                 ppPlaque[nPlaqueNum]->addDamage(3);
             }
@@ -83,12 +83,12 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
 
     if (gumRect.intersectsRect(touchRect))
     {
-        if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+        if(nDirectionType == GameMainScene::SWIPE_DIRECTION_LEFT || nDirectionType == GameMainScene::SWIPE_DIRECTION_RIGHT)
         {
             (m_pToothManager->getTopGum())->addDamage(1);
         }
 
-        else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+        else if(nDirectionType == GameMainScene::SWIPE_DIRECTION_UP || GameMainScene::SWIPE_DIRECTION_DOWN)
         {
             (m_pToothManager->getTopGum())->addDamage(3);
         }
@@ -103,12 +103,12 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
 
     if (gumRect.intersectsRect(touchRect))
     {
-        if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+        if(nDirectionType == GameMainScene::SWIPE_DIRECTION_LEFT || nDirectionType == GameMainScene::SWIPE_DIRECTION_RIGHT)
         {
             (m_pToothManager->getBottomGum())->addDamage(1);
         }
 
-        else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+        else if(nDirectionType == GameMainScene::SWIPE_DIRECTION_UP || GameMainScene::SWIPE_DIRECTION_DOWN)
         {
             (m_pToothManager->getBottomGum())->addDamage(3);
         }
