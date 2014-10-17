@@ -105,6 +105,10 @@ void ToothManager::uninit(void)
 //================================================================================
 void ToothManager::update(void)
 {
+    m_pTopGum->update();
+    m_pTopTooth->update();
+    m_pBottomTooth->update();
+    m_pBottomGum->update();
 }
 
 //================================================================================

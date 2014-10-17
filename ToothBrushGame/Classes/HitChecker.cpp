@@ -13,9 +13,11 @@
 #include "EnemyManager.h"
 #include "PlaqueManager.h"
 #include "Tooth.h"
+#include "Gum.h"
 #include "Enemy.h"
 #include "Plaque.h"
 #include "HelloWorldScene.h"
+#include "LifeBar.h"
 
 //================================================================================
 // コンストラクタ
@@ -40,6 +42,7 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
 {
     Plaque** ppPlaque = m_pPlaqueManager->getPlaqueTop();
 
+    // 歯垢との当たり判定
     for(int nPlaqueNum = 0;nPlaqueNum < m_pPlaqueManager->getPlaqueMaxNum();nPlaqueNum++)
     {
         // 使われていないならスキップ
@@ -72,6 +75,46 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType)
             {
 
             }
+        }
+    }
+
+    // 上歯茎との当たり判定
+    Rect gumRect = ((m_pToothManager->getTopGum())->getSprite())->getBoundingBox();
+
+    if (gumRect.intersectsRect(touchRect))
+    {
+        if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+        {
+            (m_pToothManager->getTopGum())->addDamage(1);
+        }
+
+        else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+        {
+            (m_pToothManager->getTopGum())->addDamage(3);
+        }
+        else
+        {
+
+        }
+    }
+
+    // 下歯茎との当たり判定
+    gumRect = ((m_pToothManager->getBottomGum())->getSprite())->getBoundingBox();
+
+    if (gumRect.intersectsRect(touchRect))
+    {
+        if(nDirectionType == HelloWorld::SWIPE_DIRECTION_LEFT || nDirectionType == HelloWorld::SWIPE_DIRECTION_RIGHT)
+        {
+            (m_pToothManager->getBottomGum())->addDamage(1);
+        }
+
+        else if(nDirectionType == HelloWorld::SWIPE_DIRECTION_UP || HelloWorld::SWIPE_DIRECTION_DOWN)
+        {
+            (m_pToothManager->getBottomGum())->addDamage(3);
+        }
+        else
+        {
+
         }
     }
 }

@@ -47,10 +47,16 @@ public:
     Vec2 getPos(void){return m_pos;}
     
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+
+    void addDamage(int nDamage = 1);
+
+    static const unsigned int DAMAGE_PERMISSION_TIME = 30;
     
 private:
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;
+
+    int m_nDamageTimer;
 };
 #endif /* defined(__ToothBrushGame__Gum__) */
