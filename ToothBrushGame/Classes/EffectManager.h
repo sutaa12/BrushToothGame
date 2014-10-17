@@ -52,9 +52,9 @@ public:
     void spawn(int nSpawnNum = Effect_MAX,Vec2 pos = Vec2(0,0),Color3B col = Color3B(255,255,255));
 public:
     //敵の最大数
-    static const int Effect_MAX = 50;
+    static const int Effect_MAX = 150;
     //開始する時間感覚
-    static const int TIME_SPAN = 50;
+    static const int TIME_SPAN = 100;
 private:
     
     //敵の配列

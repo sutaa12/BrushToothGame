@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "GameMainScene.h"
 #include "Random.h"
 
 USING_NS_CC;
@@ -20,7 +20,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLView::create("My Game");
+        glview = GLView::create("BrushToothGame");
         director->setOpenGLView(glview);
         
         //glview->setDesignResolutionSize(320, 480, ResolutionPolicy::SHOW_ALL);
@@ -34,7 +34,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = GameMainScene::createScene();
     
     // run
     director->runWithScene(scene);

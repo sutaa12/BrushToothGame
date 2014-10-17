@@ -63,9 +63,9 @@ public:
     //ライフの最大値
     static const int MAX_LIFE = 3;
     //時間の最大値
-    static const int MAX_TIME = 100;
+    static const int MAX_TIME = 25;
     //移動の最大値
-    static const int MAX_MOVE = 20;
+    static const int MAX_MOVE = 10;
     static const int DAMEGE = 1;
     
 };

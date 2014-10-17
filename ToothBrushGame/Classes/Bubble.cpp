@@ -110,7 +110,7 @@ void Bubble::setSpawn(Vec2 pos,Color3B col)
     m_nLife = RandomMT::getRaodom(1, MAX_LIFE);
     m_move = Vec2(RandomMT::getRandom(-Bubble::MAX_MOVE,Bubble::MAX_MOVE),RandomMT::getRandom(1,Bubble::MAX_MOVE));
     m_pSprite->setColor(col);
-    float fSize = RandomMT::getRandom(0.5,0.05);
+    float fSize = RandomMT::getRandom(0.25,0.03);
     m_pSprite->setScale(fSize, fSize);
 }
 //================================================================================
