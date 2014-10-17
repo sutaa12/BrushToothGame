@@ -50,7 +50,11 @@ bool UIManager::init(void)
      *  UI Score Generation
      **/
     // スコア生成
-    m_pScore = Score::create(Vec2(0, 0), 1, m_pLayer);
+    m_pScore = Score::create(Vec2(100, visibleSize.height - 32), 1, m_pLayer);
+    // "SCORE"の表示
+    m_pLayer->addChild(m_pScore->getScore());
+    // スコアポイントの表示
+    m_pLayer->addChild(m_pScore->getPoint());
 
     /**
      *  UI Item Generation
@@ -74,7 +78,7 @@ bool UIManager::init(void)
     // スプライトサイズ取得
     Rect MenuBarSpriteRect = m_pMenuBar->getSprite()->getBoundingBox();
     //座標変換(左上を持ってきているため、中心にそろえる処理)
-    m_pMenuBar->setPos(Vec2(320, visibleSize.height - 32));
+    m_pMenuBar->setPos(Vec2(565, visibleSize.height - 32));
     // スプライトの再配置
     m_pMenuBar->refreshSpritePos();
     // スプライトの登録
@@ -105,6 +109,7 @@ void UIManager::uninit(void)
 void UIManager::update(void)
 {
     m_pLifeBar->update();
+    m_pScore->update();
 }
 
 //================================================================================

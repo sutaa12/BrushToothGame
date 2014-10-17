@@ -10,6 +10,8 @@
 #include "Random.h"
 #include "common.h"
 #include "LifeBar.h"
+#include "Score.h"
+
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -73,6 +75,7 @@ void Enemy::uninit(void)
 //================================================================================
 void Enemy::disappear(void)
 {
+    Score::addScore(10);
     m_nLife = 0;
     m_bDeath = true;
     unsigned short uOpacity = m_pSprite->getOpacity();

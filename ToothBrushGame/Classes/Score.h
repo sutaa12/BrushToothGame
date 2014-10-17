@@ -40,7 +40,12 @@ public:
     static Score* create(const Vec2& startLeftTopPos,int nNumber,Layer* layer);
     
     Number** getNumber(void){return &m_ppNumbers[0];}
-        
+    LabelTTF* getScore(){return m_pScoreLabel ;}
+    LabelTTF* getPoint(){return m_pPointLabel ;}
+
+    static void addScore(int num){m_nScorePoint += num;}
+
+
 private:
     Vec2 m_startLeftTopPos;
     
@@ -49,6 +54,10 @@ private:
     Layer* m_pLayer;
     
     int m_nMaxNumber;//数字の桁数
+
+    LabelTTF* m_pScoreLabel;
+    LabelTTF* m_pPointLabel;
+    static int m_nScorePoint;
 };
 
 #endif /* defined(__ToothBrushGame__Score__) */
