@@ -54,6 +54,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6193EE2519F4120C00E98E07 /* TitleScene.cpp */; };
+		6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6193EE3119F4174C00E98E07 /* ResultScene.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -281,6 +283,10 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		6193EE2519F4120C00E98E07 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
+		6193EE2619F4120C00E98E07 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
+		6193EE3119F4174C00E98E07 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = ../Classes/ResultScene.cpp; sourceTree = "<group>"; };
+		6193EE3219F4174C00E98E07 /* ResultScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultScene.h; path = ../Classes/ResultScene.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -412,47 +418,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C36E0AC619F0C43500E5040C /* AppDelegate.cpp */,
-				C36E0AC719F0C43500E5040C /* AppDelegate.h */,
-				C36E0AC819F0C43500E5040C /* Boss.cpp */,
-				C36E0AC919F0C43500E5040C /* Boss.h */,
-				C36E0ACA19F0C43500E5040C /* Bubble.cpp */,
-				C36E0ACB19F0C43500E5040C /* Bubble.h */,
-				C36E0ACC19F0C43500E5040C /* common.h */,
-				C36E0B5019F0C5F100E5040C /* HitChecker.cpp */,
-				C36E0B5119F0C5F100E5040C /* HitChecker.h */,
-				C36E0ACD19F0C43500E5040C /* EffectManager.cpp */,
-				C36E0ACE19F0C43500E5040C /* EffectManager.h */,
-				C36E0ACF19F0C43500E5040C /* Enemy.cpp */,
-				C36E0AD019F0C43500E5040C /* Enemy.h */,
-				C36E0AD119F0C43500E5040C /* EnemyManager.cpp */,
-				C36E0AD219F0C43500E5040C /* EnemyManager.h */,
-				C36E0AD319F0C43500E5040C /* GameMainScene.cpp */,
-				C36E0AD419F0C43500E5040C /* GameMainScene.h */,
-				C36E0AD519F0C43500E5040C /* Gum.cpp */,
-				C36E0AD619F0C43500E5040C /* Gum.h */,
-				C36E0ADB19F0C43500E5040C /* Item.cpp */,
-				C36E0ADC19F0C43500E5040C /* Item.h */,
-				C36E0ADD19F0C43500E5040C /* LifeBar.cpp */,
-				C36E0ADE19F0C43500E5040C /* LifeBar.h */,
-				C36E0ADF19F0C43500E5040C /* MenuBar.cpp */,
-				C36E0AE019F0C43500E5040C /* MenuBar.h */,
-				C36E0AE119F0C43500E5040C /* Number.cpp */,
-				C36E0AE219F0C43500E5040C /* Number.h */,
-				C36E0AE319F0C43500E5040C /* Plaque.cpp */,
-				C36E0AE419F0C43500E5040C /* Plaque.h */,
-				C36E0AE519F0C43500E5040C /* PlaqueManager.cpp */,
-				C36E0AE619F0C43500E5040C /* PlaqueManager.h */,
-				C36E0AE719F0C43500E5040C /* Random.cpp */,
-				C36E0AE819F0C43500E5040C /* Random.h */,
-				C36E0AE919F0C43500E5040C /* Score.cpp */,
-				C36E0AEA19F0C43500E5040C /* Score.h */,
-				C36E0AEB19F0C43500E5040C /* Tooth.cpp */,
-				C36E0AEC19F0C43500E5040C /* Tooth.h */,
-				C36E0AED19F0C43500E5040C /* ToothManager.cpp */,
-				C36E0AEE19F0C43500E5040C /* ToothManager.h */,
-				C36E0AEF19F0C43500E5040C /* UIManager.cpp */,
-				C36E0AF019F0C43500E5040C /* UIManager.h */,
+				6193EE2E19F412DC00E98E07 /* System */,
+				6193EE2D19F412D000E98E07 /* ResultScene */,
+				6193EE2C19F412C900E98E07 /* TitleScene */,
+				6193EE2B19F412C400E98E07 /* Common */,
+				6193EE2A19F412BC00E98E07 /* GameMainScene */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -564,6 +534,102 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		6193EE2A19F412BC00E98E07 /* GameMainScene */ = {
+			isa = PBXGroup;
+			children = (
+				6193EE3019F413C300E98E07 /* Object */,
+				6193EE2F19F413A500E98E07 /* Manager */,
+				C36E0B5019F0C5F100E5040C /* HitChecker.cpp */,
+				C36E0B5119F0C5F100E5040C /* HitChecker.h */,
+				C36E0AD319F0C43500E5040C /* GameMainScene.cpp */,
+				C36E0AD419F0C43500E5040C /* GameMainScene.h */,
+			);
+			name = GameMainScene;
+			sourceTree = "<group>";
+		};
+		6193EE2B19F412C400E98E07 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C36E0AE719F0C43500E5040C /* Random.cpp */,
+				C36E0AE819F0C43500E5040C /* Random.h */,
+				C36E0ACC19F0C43500E5040C /* common.h */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		6193EE2C19F412C900E98E07 /* TitleScene */ = {
+			isa = PBXGroup;
+			children = (
+				6193EE2519F4120C00E98E07 /* TitleScene.cpp */,
+				6193EE2619F4120C00E98E07 /* TitleScene.h */,
+			);
+			name = TitleScene;
+			sourceTree = "<group>";
+		};
+		6193EE2D19F412D000E98E07 /* ResultScene */ = {
+			isa = PBXGroup;
+			children = (
+				6193EE3119F4174C00E98E07 /* ResultScene.cpp */,
+				6193EE3219F4174C00E98E07 /* ResultScene.h */,
+			);
+			name = ResultScene;
+			sourceTree = "<group>";
+		};
+		6193EE2E19F412DC00E98E07 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				C36E0AC619F0C43500E5040C /* AppDelegate.cpp */,
+				C36E0AC719F0C43500E5040C /* AppDelegate.h */,
+			);
+			name = System;
+			sourceTree = "<group>";
+		};
+		6193EE2F19F413A500E98E07 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C36E0ACD19F0C43500E5040C /* EffectManager.cpp */,
+				C36E0ACE19F0C43500E5040C /* EffectManager.h */,
+				C36E0AD119F0C43500E5040C /* EnemyManager.cpp */,
+				C36E0AD219F0C43500E5040C /* EnemyManager.h */,
+				C36E0AE519F0C43500E5040C /* PlaqueManager.cpp */,
+				C36E0AE619F0C43500E5040C /* PlaqueManager.h */,
+				C36E0AED19F0C43500E5040C /* ToothManager.cpp */,
+				C36E0AEE19F0C43500E5040C /* ToothManager.h */,
+				C36E0AEF19F0C43500E5040C /* UIManager.cpp */,
+				C36E0AF019F0C43500E5040C /* UIManager.h */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		6193EE3019F413C300E98E07 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				C36E0AC819F0C43500E5040C /* Boss.cpp */,
+				C36E0AC919F0C43500E5040C /* Boss.h */,
+				C36E0ACA19F0C43500E5040C /* Bubble.cpp */,
+				C36E0ACB19F0C43500E5040C /* Bubble.h */,
+				C36E0ACF19F0C43500E5040C /* Enemy.cpp */,
+				C36E0AD019F0C43500E5040C /* Enemy.h */,
+				C36E0AD519F0C43500E5040C /* Gum.cpp */,
+				C36E0AD619F0C43500E5040C /* Gum.h */,
+				C36E0ADB19F0C43500E5040C /* Item.cpp */,
+				C36E0ADC19F0C43500E5040C /* Item.h */,
+				C36E0ADD19F0C43500E5040C /* LifeBar.cpp */,
+				C36E0ADE19F0C43500E5040C /* LifeBar.h */,
+				C36E0ADF19F0C43500E5040C /* MenuBar.cpp */,
+				C36E0AE019F0C43500E5040C /* MenuBar.h */,
+				C36E0AE119F0C43500E5040C /* Number.cpp */,
+				C36E0AE219F0C43500E5040C /* Number.h */,
+				C36E0AE319F0C43500E5040C /* Plaque.cpp */,
+				C36E0AE419F0C43500E5040C /* Plaque.h */,
+				C36E0AE919F0C43500E5040C /* Score.cpp */,
+				C36E0AEA19F0C43500E5040C /* Score.h */,
+				C36E0AEB19F0C43500E5040C /* Tooth.cpp */,
+				C36E0AEC19F0C43500E5040C /* Tooth.h */,
+			);
+			name = Object;
+			sourceTree = "<group>";
 		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
@@ -832,8 +898,10 @@
 				C36E0B0319F0C43500E5040C /* Tooth.cpp in Sources */,
 				C36E0AFF19F0C43500E5040C /* Plaque.cpp in Sources */,
 				C36E0AF619F0C43500E5040C /* EnemyManager.cpp in Sources */,
+				6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */,
 				C36E0AFE19F0C43500E5040C /* Number.cpp in Sources */,
 				C36E0AF419F0C43500E5040C /* EffectManager.cpp in Sources */,
+				6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

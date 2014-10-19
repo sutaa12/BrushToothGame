@@ -17,6 +17,8 @@
 #include "LifeBar.h"
 #include "UIManager.h"
 #include "EffectManager.h"
+#include "ResultScene.h"
+#include "TitleScene.h"
 USING_NS_CC;
 //================================================================================
 // シーン生成
@@ -116,10 +118,14 @@ bool GameMainScene::init()
     //UI生成
     m_pUIManager = UIManager::create(this);
     
+    m_nTimer = 0;
+    
     return true;
 }
 
-
+//================================================================================
+// ゲーム終了処理
+//================================================================================
 void GameMainScene::menuCloseCallback(Ref* pSender)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
@@ -189,6 +195,18 @@ void GameMainScene::update(float fTime)
     m_pUIManager->update();
     //エフェクト更新
     m_EffectManager->update();
+    if(m_nTimer != 0)
+    {
+        m_nTimer++;
+        if(m_nTimer > 120)
+        {
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(),Color3B::WHITE));
+            this->getEventDispatcher()->removeAllEventListeners();
+            this->removeAllChildren();
+            
+        }
+
+    }
 }
 
 //================================================================================
@@ -197,6 +215,7 @@ void GameMainScene::update(float fTime)
 
 bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
+    m_nTimer++;
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
     
@@ -294,6 +313,7 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     
     m_bHit = false;
+    m_nTimer = 0;
 }
 
 //================================================================================
@@ -301,7 +321,7 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 //================================================================================
 void GameMainScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
-    
+    m_nTimer = 0;
 }
 
 //================================================================================

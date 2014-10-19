@@ -71,6 +71,8 @@ private:
     
     Boss* m_pBoss;
     
+    int m_nTimer;
+    
     bool m_bMove;
     bool m_bBossDisp;
     
