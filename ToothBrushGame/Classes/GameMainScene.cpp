@@ -118,7 +118,7 @@ bool GameMainScene::init()
     //UI生成
     m_pUIManager = UIManager::create(this);
     
-    m_nTimer = 0;
+    m_nTimer = 1;
     
     return true;
 }
@@ -181,7 +181,7 @@ void GameMainScene::update(float fTime)
         }
     }
     //敵の更新
-    m_pEnemyManager->update();
+    //m_pEnemyManager->update();
     
     
     
@@ -200,9 +200,12 @@ void GameMainScene::update(float fTime)
         m_nTimer++;
         if(m_nTimer > 120)
         {
-            Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(),Color3B::WHITE));
+            m_nTimer = 0;
             this->getEventDispatcher()->removeAllEventListeners();
             this->removeAllChildren();
+            this->unscheduleUpdate();
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(),Color3B::WHITE));
+
             
         }
 
