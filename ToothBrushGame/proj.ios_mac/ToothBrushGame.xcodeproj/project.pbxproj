@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		187E1D1319F4E0E5000B2A38 /* CountDown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187E1D1119F4E0E5000B2A38 /* CountDown.cpp */; };
 		189D375D19F0B28200ADD955 /* MenuBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 189D375B19F0B28200ADD955 /* MenuBar.png */; };
 		189D375E19F0B28200ADD955 /* ScoreBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 189D375C19F0B28200ADD955 /* ScoreBar.png */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
@@ -243,6 +244,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		187E1D1119F4E0E5000B2A38 /* CountDown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountDown.cpp; path = ../Classes/CountDown.cpp; sourceTree = "<group>"; };
+		187E1D1219F4E0E5000B2A38 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountDown.h; path = ../Classes/CountDown.h; sourceTree = "<group>"; };
 		189D375B19F0B28200ADD955 /* MenuBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBar.png; sourceTree = "<group>"; };
 		189D375C19F0B28200ADD955 /* ScoreBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScoreBar.png; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
@@ -542,6 +545,8 @@
 				6193EE2F19F413A500E98E07 /* Manager */,
 				C36E0B5019F0C5F100E5040C /* HitChecker.cpp */,
 				C36E0B5119F0C5F100E5040C /* HitChecker.h */,
+				187E1D1119F4E0E5000B2A38 /* CountDown.cpp */,
+				187E1D1219F4E0E5000B2A38 /* CountDown.h */,
 				C36E0AD319F0C43500E5040C /* GameMainScene.cpp */,
 				C36E0AD419F0C43500E5040C /* GameMainScene.h */,
 			);
@@ -878,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C36E0AF819F0C43500E5040C /* Gum.cpp in Sources */,
+				187E1D1319F4E0E5000B2A38 /* CountDown.cpp in Sources */,
 				C36E0AFC19F0C43500E5040C /* LifeBar.cpp in Sources */,
 				C36E0B0019F0C43500E5040C /* PlaqueManager.cpp in Sources */,
 				C36E0AF519F0C43500E5040C /* Enemy.cpp in Sources */,
@@ -995,7 +1001,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6800c772-8be9-4ba4-a6e4-e92d5b352bf1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -1026,7 +1032,7 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = "";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "6800c772-8be9-4ba4-a6e4-e92d5b352bf1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
