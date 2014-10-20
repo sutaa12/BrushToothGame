@@ -107,6 +107,9 @@ void Enemy::update(void)
         //HPが０なら消滅
         if(m_nLife <= 0)
         {
+            //敵に攻撃したときのSE
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("hit_1.wav");
+
             m_nLife = 0;
             disappear();
         }
