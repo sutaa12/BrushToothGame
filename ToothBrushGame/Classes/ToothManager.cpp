@@ -20,8 +20,10 @@ static const int TOOTHMANAGER_DISPLAY_CENTER_X = (320);
 ToothManager::ToothManager(void)
 {
     // メンバ変数の初期化
+    m_pTopGum = nullptr;
     m_pTopTooth = nullptr;
     m_pBottomTooth = nullptr;
+    m_pBottomGum = nullptr;
     m_pLayer = nullptr;
 }
 
@@ -30,7 +32,29 @@ ToothManager::ToothManager(void)
 //================================================================================
 ToothManager::~ToothManager()
 {
+    if(m_pTopGum != nullptr)
+    {
+        delete  m_pTopGum;
+        m_pTopGum = nullptr;
+    }
 
+    if(m_pTopTooth != nullptr)
+    {
+        delete  m_pTopTooth;
+        m_pTopTooth = nullptr;
+    }
+
+    if(m_pBottomTooth != nullptr)
+    {
+        delete  m_pBottomTooth;
+        m_pBottomTooth = nullptr;
+    }
+
+    if(m_pBottomGum != nullptr)
+    {
+        delete  m_pBottomGum;
+        m_pBottomGum = nullptr;
+    }
 }
 
 //================================================================================

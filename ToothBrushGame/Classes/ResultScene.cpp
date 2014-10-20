@@ -96,7 +96,8 @@ void ResultScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void ResultScene::update(float fTime)
 {
-    
+    auto hoge = this->getEventDispatcher();
+    hoge = hoge;
 }
 
 //================================================================================
@@ -107,6 +108,9 @@ bool ResultScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
+
+    auto hoge = this;
+    auto hogehoge = hoge->getName();
 
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
