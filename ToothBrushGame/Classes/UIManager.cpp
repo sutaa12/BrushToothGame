@@ -56,19 +56,6 @@ bool UIManager::init(void)
     // スコアポイントの表示
     m_pLayer->addChild(m_pScore->getPoint());
 
-    /**
-     *  UI Item Generation
-     **/
-    // UIアイテム生成処理
-    m_pItem = Item::create();
-    // スプライトサイズ取得
-    Rect itemSpriteRect = m_pItem->getSprite()->getBoundingBox();
-    //座標変換(左上を持ってきているため、中心にそろえる処理)
-    m_pItem->setPos(Vec2(320, m_pItem->getSprite()->getContentSize().height / 2 + 1));
-    // スプライトの再配置
-    m_pItem->refreshSpritePos();
-    // スプライトの登録
-    m_pLayer->addChild(m_pItem->getSprite());
 
     /**
      *  UI Menubar Generation
@@ -88,8 +75,24 @@ bool UIManager::init(void)
     /**
      *  UI LifeBar Generation
      **/
-    // ライフバー生成
-    m_pLifeBar = LifeBar::create(m_pLayer,Vec2(320,240));
+    // ライフバー生成  画面左上から計算し直打ち
+    m_pLifeBar = LifeBar::create(m_pLayer,Vec2(320, visibleSize.height - 704 - 16));
+
+
+    /**
+     *  UI Item Generation
+     **/
+    // UIアイテム生成処理
+    m_pItem = Item::create();
+    // スプライトサイズ取得
+    Rect itemSpriteRect = m_pItem->getSprite()->getBoundingBox();
+    //座標変換(左上を持ってきているため、中心にそろえる処理) 画面左上から直打ち
+    m_pItem->setPos(Vec2(320, visibleSize.height - 768 - 79));
+    // スプライトの再配置
+    m_pItem->refreshSpritePos();
+    // スプライトの登録
+    m_pLayer->addChild(m_pItem->getSprite());
+
 
     // 正常終了
     return true;
