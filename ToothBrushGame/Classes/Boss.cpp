@@ -117,7 +117,7 @@ void Boss::update(void)
 //================================================================================
 void Boss::choiceAction(void)
 {
-    m_actionMode = RandomMT::getRandom(0, Boss::ACTION_MAX);
+    m_actionMode = RandomMT::getRandom(0, 3);
     m_time = RandomMT::getRandom(0, Boss::MAX_TIME);
     m_move = Vec2(RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE),RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE));
 }

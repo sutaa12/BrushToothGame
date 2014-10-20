@@ -160,7 +160,7 @@ bool GameMainScene::init()
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
 
-    m_pEnemyManager = EnemyManager::create(this,50);
+    m_pEnemyManager = EnemyManager::create(this,25);
 
     //================================================================================
     //敵関係はこれより前に生成
