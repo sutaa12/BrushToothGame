@@ -37,9 +37,9 @@ public:
     void update();  //更新
     void disappear();   //消滅
 
-    static Boss* create(EnemyManager* pEnemymaanager,const Vec2& pos = Vec2(0.0f,0.0f));
+    static Boss* create(const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
-
+    
     void setPos(Vec2 pos){m_pos = pos;}
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
     void setPosX(float x){m_pos.x = x;}
@@ -50,6 +50,9 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
     bool getDisapper(void){return m_bDeath;}
+    
+    //ボスに敵管理ポインタセット
+    void setEnemyManager(EnemyManager* pEnemymaanager){m_pEnemyManager = pEnemymaanager;}
     
     //行動選択関数
     void choiceAction(void);

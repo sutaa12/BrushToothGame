@@ -133,7 +133,7 @@ bool GameMainScene::init()
     m_pPlaqueManager = PlaqueManager::create(200, this);
 
     
-    m_pBoss = Boss::create(m_pEnemyManager,Vec2(350,500));
+    m_pBoss = Boss::create(Vec2(350,500));
     this->addChild(m_pBoss->getSprite());
     m_pBoss->disappear();
     
@@ -145,6 +145,8 @@ bool GameMainScene::init()
     this->addChild(m_pBubbleSprite);
 
     m_pEnemyManager = EnemyManager::create(this,50);
+    //ボスのポインタセット
+    m_pBoss->setEnemyManager(m_pEnemyManager);
 
     //================================================================================
     //敵関係はこれより前に生成

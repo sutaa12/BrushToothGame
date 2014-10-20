@@ -200,14 +200,14 @@ void Boss::setSpawn(Vec2 pos)
 //================================================================================
 // 生成処理
 //================================================================================
-Boss* Boss::create(EnemyManager* pEnemyManager,const Vec2& pos)
+Boss* Boss::create(const Vec2& pos)
 {
     // インスタンスの生成
     Boss* pBoss = new Boss();
     
     // メンバ変数の代入
     pBoss->m_pos = pos;
-    pBoss->m_pEnemyManager = pEnemyManager;
+    pBoss->m_pEnemyManager = nullptr;
     // 初期化
     pBoss->init();
     

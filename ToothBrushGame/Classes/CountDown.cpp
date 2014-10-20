@@ -12,7 +12,7 @@
 #include "Number.h"
 
 static const int CountDown_DISPLAY_CENTER_X = (320);
-//int Score::m_nScorePoint = 0;
+int CountDown::m_nScorePoint = 0;
 
 //================================================================================
 // コンストラクタ
