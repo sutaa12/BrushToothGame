@@ -8,6 +8,9 @@
 
 #include "TitleScene.h"
 #include "GameMainScene.h"
+
+#include "Enemy.h"
+
 USING_NS_CC;
 //================================================================================
 // シーン生成
@@ -68,6 +71,15 @@ bool TitleScene::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(TitleScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(TitleScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
+
+    Sprite* pSprite;
+    pSprite = Sprite::create();
+    pSprite->setTextureRect(Rect(0,0,200,300));
+    pSprite->setColor(Color3B::GREEN);
+    pSprite->setPosition(Vec2(400,400));
+    this->addChild(pSprite);
+
+
     return true;
 }
 

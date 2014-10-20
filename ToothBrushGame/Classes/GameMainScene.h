@@ -49,6 +49,9 @@ public:
         SWIPE_DIRECTION_RIGHT,
         SWIPE_DIRECTION_MAX,
     }SWIPE_DIRECTION;
+
+
+    void setResume(void);
     
 private:
     Point m_touchPos;
@@ -84,5 +87,7 @@ private:
     void onTouchEnded(Touch* pTouch,Event* pEvent);
     
     SWIPE_DIRECTION calcSwipeDirection(float fAngle);
+
+    Layer* m_pPauseLayer;
 };
 #endif /* defined(__ToothBrushGame__GameMainScene__) */

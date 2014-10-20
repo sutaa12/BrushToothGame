@@ -69,7 +69,14 @@ bool ResultScene::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(ResultScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(ResultScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
-    
+
+    Sprite* pSprite;
+    pSprite = Sprite::create();
+    pSprite->setTextureRect(Rect(0,0,200,300));
+    pSprite->setColor(Color3B::BLUE);
+    pSprite->setPosition(Vec2(400,400));
+    this->addChild(pSprite);
+
     return true;
 }
 

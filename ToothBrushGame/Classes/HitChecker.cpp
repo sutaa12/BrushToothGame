@@ -18,6 +18,8 @@
 #include "Plaque.h"
 #include "GameMainScene.h"
 #include "LifeBar.h"
+#include "UIManager.h"
+#include "MenuBar.h"
 
 //================================================================================
 // コンストラクタ
@@ -151,15 +153,33 @@ void HitChecker::hitCheckTap(Rect touchRect)
 }
 
 //================================================================================
+// メニューバータップチェック処理
+//================================================================================
+bool HitChecker::checkTapOnMenuBar(Point touchPoint)
+{
+    MenuBar* pMenuBar = m_pUIManager->getMenuBar();
+
+    Rect menuBarRect = (pMenuBar->getSprite())->getBoundingBox();
+
+    if(menuBarRect.containsPoint(touchPoint))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+//================================================================================
 // 生成処理
 //================================================================================
-HitChecker* HitChecker::create(EnemyManager* pEnemyManager, ToothManager* pToothManager, PlaqueManager* pPlaqueManager)
+HitChecker* HitChecker::create(EnemyManager* pEnemyManager, ToothManager* pToothManager, PlaqueManager* pPlaqueManager,UIManager* pUIManager)
 {
     HitChecker* pHitChecker = new HitChecker();
 
     pHitChecker->m_pEnemyManager = pEnemyManager;
     pHitChecker->m_pToothManager = pToothManager;
     pHitChecker->m_pPlaqueManager = pPlaqueManager;
+    pHitChecker->m_pUIManager = pUIManager;
 
     return pHitChecker;
 }
