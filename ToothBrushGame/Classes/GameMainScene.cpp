@@ -114,7 +114,23 @@ bool GameMainScene::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
+
+    //リセットボタン生成
+    auto resetItem = MenuItemImage::create(
+                                           "CloseNormal.png",
+                                           "CloseSelected.png",
+                                           CC_CALLBACK_1(GameMainScene::menuResetCallback, this));
     
+    resetItem->setPosition(Vec2(origin.x + visibleSize.width - resetItem->getContentSize().width * 2  ,
+                                origin.y + resetItem->getContentSize().height/2));
+    
+    resetItem->setColor(Color3B(255,0,0));
+    
+    // create menu, it's an autorelease object
+    auto menuR = Menu::create(resetItem, NULL);
+    menuR->setPosition(Vec2::ZERO);
+    this->addChild(menuR, 1);
+ 
     // 更新処理の追加
     this->scheduleUpdate();
     
@@ -157,7 +173,7 @@ bool GameMainScene::init()
     m_bMove = false;
     m_touchPos = Point(0.0f,0.0f);
     m_oldTouchPos = m_touchPos;
-    m_swipeDirection = SWIPE_DIRECTION_NONE;
+    m_swipeDirection    = SWIPE_DIRECTION_NONE;
     m_oldSwipeDirection = m_swipeDirection;
     
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
@@ -186,7 +202,24 @@ void GameMainScene::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+//================================================================================
+// ゲームリセット処理
+//================================================================================
+void GameMainScene::menuResetCallback(Ref* pSender)
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
+#endif
+    
+    this->getEventDispatcher()->removeAllEventListeners();
+    this->removeAllChildren();
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+    
+    this->unscheduleUpdate();
 
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#endif
+}
 //================================================================================
 // ゲーム更新
 //================================================================================
@@ -256,7 +289,6 @@ void GameMainScene::update(float fTime)
         }
 
     }
-     */
 m_nTimer++;
     if(m_nTimer != 0)
     {
@@ -272,6 +304,7 @@ m_nTimer++;
         }
 
     }
+    */
 }
 
 //================================================================================

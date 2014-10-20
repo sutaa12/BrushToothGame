@@ -85,7 +85,10 @@ void EnemyManager::update(void)
 
     for(int nloop = 0;nloop < EnemyManager::ENEMY_MAX;nloop++)
     {
+        if(m_pEnemy[nloop])
+        {
            m_pEnemy[nloop]->update();
+        }
     }
     
 }
@@ -116,7 +119,7 @@ void EnemyManager::spawn(int nSpawnNum)
     int nEnemyNum = 0;
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
-        if(m_pEnemy[nloop]->getDisapper())
+        if(m_pEnemy[nloop] && m_pEnemy[nloop]->getDisapper())
         {
             m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
             nEnemyNum++;
@@ -135,7 +138,7 @@ int EnemyManager::getEnemyNum(void)
     int numEnemy = 0;
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
-        if(!m_pEnemy[nloop]->getDisapper())
+        if(m_pEnemy[nloop] && !m_pEnemy[nloop]->getDisapper())
         {
             numEnemy++;
         }
@@ -149,7 +152,7 @@ void EnemyManager::setEnemyClear(void)
 {
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
-        if(!m_pEnemy[nloop]->getDisapper())
+        if(m_pEnemy[nloop] && !m_pEnemy[nloop]->getDisapper())
         {
             m_pEnemy[nloop]->disappear();
         }
