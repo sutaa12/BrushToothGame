@@ -8,6 +8,7 @@
 //********************************************************************************
 // インクルード
 //********************************************************************************
+#include "TextureFile.h"
 #include "LifeBar.h"
 int LifeBar::m_nLife = 100;
 //================================================================================
@@ -36,8 +37,8 @@ LifeBar::~LifeBar()
 bool LifeBar::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("hpbar.png");
-    m_pBackLifeBar = Sprite::create("hpbar.png");
+    m_pSprite = Sprite::create(TEX_HP_BAR);
+    m_pBackLifeBar = Sprite::create(TEX_HP_BAR);
     
     // エラーチェック
     if(m_pSprite == nullptr)

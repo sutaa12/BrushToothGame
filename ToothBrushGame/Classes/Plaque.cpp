@@ -5,7 +5,7 @@
 //  Created by 川原 岳大 on 2014/10/14.
 //
 //
-
+#include "TextureFile.h"
 #include "Plaque.h"
 
 //================================================================================
@@ -34,7 +34,7 @@ Plaque::~Plaque()
 bool Plaque::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("Plaque.png");
+    m_pSprite = Sprite::create(TEX_PLAQUE_WAIT_01);
 
     // エラーチェック
     if(m_pSprite == nullptr)

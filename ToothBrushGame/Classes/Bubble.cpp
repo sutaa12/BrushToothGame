@@ -5,7 +5,7 @@
 //  Created by 鈴木愛忠 on 2014/10/17.
 //
 //
-
+#include "TextureFile.h"
 #include "Bubble.h"
 #include "Random.h"
 #include "common.h"
@@ -38,7 +38,7 @@ Bubble::~Bubble()
 bool Bubble::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("bubble_01.png");
+    m_pSprite = Sprite::create(TEX_BUBBLE_01);
     
     // エラーチェック
     if(m_pSprite == nullptr)

@@ -5,7 +5,7 @@
 //  Created by 鈴木愛忠 on 2014/10/20.
 //
 //
-
+#include "TextureFile.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
 
@@ -71,14 +71,31 @@ bool TitleScene::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(TitleScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(TitleScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
+    
+    //背景生成
+    m_pTitleBack = Sprite::create(TEX_TITLE_BACK);
+    m_pTitleBack->setPosition(Vec2(m_pTitleBack->getContentSize().width / 2,visibleSize.height - m_pTitleBack->getContentSize().height / 2));
+    this->addChild(m_pTitleBack);
+    //ロゴ生成
+    m_pTitleLogo = Sprite::create(TEX_TITLE_LOGO);
+    m_pTitleLogo->setPosition(Vec2(m_pTitleLogo->getContentSize().width / 2,visibleSize.height - 50 - m_pTitleLogo->getContentSize().height / 2));
+    this->addChild(m_pTitleLogo);
+    
+    ccBezierConfig config;
+    config.controlPoint_1 = Point(0 , 100); //開始位置
+    config.controlPoint_2 = Point(0 , -100);  //曲線のベクトル
+    config.endPosition = Point(0,0);   //終了位置
+    m_pTitleLogo->runAction(RepeatForever::create(BezierBy::create(5.0f,config)));
+    
+    //キャラ生成
+    m_pTitleCharacter = Sprite::create(TEX_TITLE_CHARACTAR);
+    m_pTitleCharacter->setPosition(Vec2(m_pTitleCharacter->getContentSize().width / 2,visibleSize.height - m_pTitleCharacter->getContentSize().height / 2));
+    this->addChild(m_pTitleCharacter);
 
-    Sprite* pSprite;
-    pSprite = Sprite::create();
-    pSprite->setTextureRect(Rect(0,0,200,300));
-    pSprite->setColor(Color3B::GREEN);
-    pSprite->setPosition(Vec2(400,400));
-    this->addChild(pSprite);
-
+    //ボタン生成
+    m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
+    m_pButton0->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
+    this->addChild(m_pButton0);
 
     return true;
 }

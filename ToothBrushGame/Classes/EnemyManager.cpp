@@ -10,6 +10,7 @@
 //********************************************************************************
 // インクルード
 //********************************************************************************
+#include "common.h"
 #include "EnemyManager.h"
 #include "Enemy.h"
 #include "Random.h"
@@ -40,11 +41,7 @@ EnemyManager::~EnemyManager()
 {
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
-        if(m_pEnemy[nloop])
-        {
-            delete m_pEnemy[nloop];
-            m_pEnemy[nloop] = nullptr;
-        }
+        SAFE_DELETE(m_pEnemy[nloop]);
     }
 }
 
@@ -112,13 +109,18 @@ EnemyManager* EnemyManager::create(Layer* layer,int numEnemy)
 //================================================================================
 void EnemyManager::spawn(int nSpawnNum)
 {
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = m_pEnemy[0]->getSprite()->getContentSize() / 2;
+    Vec2 MaxPos = Vec2(visibleSize.width - origin.x,visibleSize.height - 128 - origin.y);
+    Vec2 MinPos = Vec2(origin.x,MaxPos.y - 512 + origin.y);
+
     clampf(nSpawnNum, 0, ENEMY_MAX);
     int nEnemyNum = 0;
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
         if(m_pEnemy[nloop]->getDisapper())
         {
-            m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
+            m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(MinPos.x, MaxPos.x),RandomMT::getRandom(MinPos.y,MaxPos.y)));
             nEnemyNum++;
         }
         if(nEnemyNum >= nSpawnNum)

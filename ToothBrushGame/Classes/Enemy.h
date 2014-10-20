@@ -88,9 +88,9 @@ public:
     static const int MAX_TIME = 100;
     //移動の最大値
     static const int MIN_X = 0;
-    static const int MAX_X = 600;
-    static const int MIN_Y = 200;
-    static const int MAX_Y = 900;
+    static const int MAX_X = 640;
+    static const int MIN_Y = 0;
+    static const int MAX_Y = 512;
     static const int MAX_MOVE = 20;
     static const int DAMEGE = 1;
     static const unsigned short OPACITY_SPEED = 255;

@@ -5,7 +5,7 @@
 //  Created by 川原 岳大 on 2014/10/14.
 //
 //
-
+#include "TextureFile.h"
 #include "Boss.h"
 #include "Random.h"
 #include "common.h"
@@ -46,7 +46,7 @@ Boss::~Boss()
 bool Boss::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("Boss.png");
+    m_pSprite = Sprite::create(TEX_BOSS_WAIT_01);
     
     // エラーチェック
     if(m_pSprite == nullptr)

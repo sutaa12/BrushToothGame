@@ -36,7 +36,12 @@ private:
     Point m_touchPos;
     Point m_oldTouchPos;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
-
+    
+    Sprite* m_pTitleLogo;
+    Sprite* m_pTitleBack;
+    Sprite* m_pTitleCharacter;
+    Sprite* m_pButton0;
+    
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);

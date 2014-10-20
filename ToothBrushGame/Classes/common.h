@@ -22,6 +22,24 @@ inline void CHECK_MAX_POS(T1 &vec0,T2 &vecMin,T2 &vecMax)
             vec0 = vecMin;
         }
 }
-
-
+//セーフデリート
+template<class T>
+inline void SAFE_DELETE(T &p)
+{
+    if(p != nullptr)
+    {
+        delete p;
+        p = nullptr;
+    }
+}
+//セーフデリートアレイ
+template<class T>
+inline void SAFE_DELETE_ARRAY(T &p)
+{
+    if(p != nullptr)
+    {
+        delete[] p;
+        p = nullptr;
+    }
+}
 #endif

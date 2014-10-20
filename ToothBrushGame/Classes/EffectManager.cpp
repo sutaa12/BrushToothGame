@@ -5,7 +5,7 @@
 //  Created by 鈴木愛忠 on 2014/10/17.
 //
 //
-
+#include "common.h"
 #include "EffectManager.h"
 #include "Bubble.h"
 #include "Random.h"
@@ -35,11 +35,7 @@ EffectManager::~EffectManager()
 {
     for(int nloop = 0;nloop < Effect_MAX;nloop++)
     {
-        if(m_pEffect[nloop])
-        {
-            delete m_pEffect[nloop];
-            m_pEffect[nloop] = nullptr;
-        }
+        SAFE_DELETE(m_pEffect[nloop]);
     }
 }
 

@@ -8,6 +8,7 @@
 //********************************************************************************
 // インクルード
 //********************************************************************************
+#include "common.h"
 #include "ToothManager.h"
 #include "Tooth.h"
 #include "Gum.h"
@@ -32,29 +33,10 @@ ToothManager::ToothManager(void)
 //================================================================================
 ToothManager::~ToothManager()
 {
-    if(m_pTopGum != nullptr)
-    {
-        delete m_pTopGum;
-        m_pTopGum = nullptr;
-    }
-
-    if(m_pTopTooth != nullptr)
-    {
-        delete m_pTopTooth;
-        m_pTopTooth = nullptr;
-    }
-
-    if(m_pBottomTooth != nullptr)
-    {
-        delete m_pBottomTooth;
-        m_pBottomTooth = nullptr;
-    }
-
-    if(m_pBottomGum != nullptr)
-    {
-        delete m_pBottomGum;
-        m_pBottomGum = nullptr;
-    }
+    SAFE_DELETE(m_pTopGum);
+    SAFE_DELETE(m_pTopTooth);
+    SAFE_DELETE(m_pBottomTooth);
+    SAFE_DELETE(m_pBottomGum);
 }
 
 //================================================================================

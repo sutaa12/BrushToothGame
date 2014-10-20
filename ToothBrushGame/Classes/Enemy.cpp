@@ -5,7 +5,7 @@
 //  Created by 川原 岳大 on 2014/10/14.
 //
 //
-
+#include "TextureFile.h"
 #include "Enemy.h"
 #include "Random.h"
 #include "common.h"
@@ -44,7 +44,7 @@ Enemy::~Enemy()
 bool Enemy::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("Enemy.png");
+    m_pSprite = Sprite::create(TEX_ENEMY_WAIT_01);
 
     // エラーチェック
     if(m_pSprite == nullptr)
@@ -129,8 +129,13 @@ void Enemy::choiceAction(void)
 //================================================================================
 void Enemy::moveAction(void)
 {
-    Vec2 minSize = Vec2(Enemy::MIN_X + m_pSprite->getContentSize().width / 2,Enemy::MIN_Y + m_pSprite->getContentSize().height / 2);
-    Vec2 maxSize = Vec2(Enemy::MAX_X - m_pSprite->getContentSize().width / 2,Enemy::MAX_Y - m_pSprite->getContentSize().height / 2);
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Vec2 origin = m_pSprite->getContentSize() / 2;
+    Vec2 MaxPos = Vec2(visibleSize.width - origin.x,visibleSize.height - 128 - origin.y);
+    Vec2 MinPos = Vec2(origin.x,MaxPos.y - 512 + origin.y);
+
+    Vec2 minSize = Vec2(MinPos.x,MinPos.y);
+    Vec2 maxSize = Vec2(MaxPos.x,MaxPos.y);
 
     m_pos += m_move;
     if(m_pos.x >= maxSize.x || m_pos.x <= minSize.x)

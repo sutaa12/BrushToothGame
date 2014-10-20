@@ -8,12 +8,12 @@
 //********************************************************************************
 // インクルード
 //********************************************************************************
+#include "common.h"
 #include "PlaqueManager.h"
 #include "Plaque.h"
 #include "Random.h"
 #include "ToothManager.h"
 #include "Gum.h"
-
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -30,12 +30,9 @@ PlaqueManager::~PlaqueManager()
 {
     for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
     {
-        delete m_ppPlaque[nCnt];
-        m_ppPlaque[nCnt] = nullptr;
+        SAFE_DELETE(m_ppPlaque[nCnt]);
     }
-
-    delete m_ppPlaque;
-    m_ppPlaque = nullptr;
+    SAFE_DELETE(m_ppPlaque);
 }
 
 //================================================================================

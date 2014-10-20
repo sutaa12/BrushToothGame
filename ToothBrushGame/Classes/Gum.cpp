@@ -5,7 +5,7 @@
 //  Created by 丸山 潤 on 2014/10/14.
 //
 //
-
+#include "TextureFile.h"
 #include "Gum.h"
 #include "LifeBar.h"
 
@@ -33,7 +33,7 @@ Gum::~Gum()
 bool Gum::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("haguki.png");
+    m_pSprite = Sprite::create(TEX_GUM_TOP);
     
     // エラーチェック
     if(m_pSprite == nullptr)
