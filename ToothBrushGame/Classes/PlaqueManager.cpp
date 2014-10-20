@@ -82,7 +82,7 @@ PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Layer* pLayer)
 {
     PlaqueManager* pPlaqueManager = new PlaqueManager();
 
-    pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum = 1200;
+    pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum;
     pPlaqueManager->m_pLayer = pLayer;
 
     pPlaqueManager->init();

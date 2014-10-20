@@ -84,8 +84,8 @@ bool GameMainScene::init()
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
-    
-    m_pEnemyManager = EnemyManager::create(this,50);
+    m_pPlaqueManager = PlaqueManager::create(200, this);
+
     
     m_pBoss = Boss::create(m_pEnemyManager,Vec2(350,500));
     this->addChild(m_pBoss->getSprite());
@@ -97,6 +97,11 @@ bool GameMainScene::init()
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
+
+    m_pEnemyManager = EnemyManager::create(this,50);
+
+    //================================================================================
+    //敵関係はこれより前に生成
     
     //エフェクト生成
     m_EffectManager = EffectManager::create(this, 0);
@@ -110,8 +115,6 @@ bool GameMainScene::init()
     m_oldSwipeDirection = m_swipeDirection;
     
     this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
-    
-    m_pPlaqueManager = PlaqueManager::create(60, this);
     
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
     
@@ -195,6 +198,8 @@ void GameMainScene::update(float fTime)
     m_pUIManager->update();
     //エフェクト更新
     m_EffectManager->update();
+    /*
+    //しばらくタッチしていると次のシーンにしたかった（できていない）
     if(m_nTimer != 0)
     {
         m_nTimer++;
@@ -207,6 +212,7 @@ void GameMainScene::update(float fTime)
         }
 
     }
+     */
 }
 
 //================================================================================
