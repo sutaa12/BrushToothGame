@@ -20,6 +20,52 @@
 #include "ResultScene.h"
 #include "TitleScene.h"
 USING_NS_CC;
+
+GameMainScene::~GameMainScene()
+{
+    if(m_pEnemyManager != nullptr)
+    {
+        delete m_pEnemyManager;
+        m_pEnemyManager = nullptr;
+    }
+
+    if(m_pToothManager != nullptr)
+    {
+        delete m_pToothManager;
+        m_pToothManager = nullptr;
+    }
+
+    if(m_pPlaqueManager != nullptr)
+    {
+        delete m_pPlaqueManager;
+        m_pPlaqueManager = nullptr;
+    }
+
+    if(m_pUIManager != nullptr)
+    {
+        delete m_pUIManager;
+        m_pUIManager = nullptr;
+    }
+
+    if(m_pBoss != nullptr)
+    {
+        delete m_pBoss;
+        m_pBoss = nullptr;
+    }
+
+    if(m_pHitChecker != nullptr)
+    {
+        delete m_pHitChecker;
+        m_pHitChecker = nullptr;
+    }
+
+    if(m_EffectManager != nullptr)
+    {
+        delete m_EffectManager;
+        m_EffectManager = nullptr;
+    }
+}
+
 //================================================================================
 // シーン生成
 //================================================================================
@@ -113,8 +159,6 @@ bool GameMainScene::init()
     m_oldTouchPos = m_touchPos;
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     m_oldSwipeDirection = m_swipeDirection;
-    
-    this->addChild(Plaque::create(Vec2(64, 64))->getSprite());
     
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager);
     
@@ -213,6 +257,21 @@ void GameMainScene::update(float fTime)
 
     }
      */
+m_nTimer++;
+    if(m_nTimer != 0)
+    {
+
+        if(m_nTimer > 120)
+        {
+            this->getEventDispatcher()->removeAllEventListeners();
+            this->removeAllChildren();
+            Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(),Color3B::WHITE));
+
+            this->unscheduleUpdate();
+
+        }
+
+    }
 }
 
 //================================================================================

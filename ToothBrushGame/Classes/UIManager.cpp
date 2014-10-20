@@ -35,7 +35,29 @@ UIManager::UIManager(void)
 //================================================================================
 UIManager::~UIManager()
 {
+    if(m_pScore != nullptr)
+    {
+        delete m_pScore;
+        m_pScore = nullptr;
+    }
 
+    if(m_pMenuBar != nullptr)
+    {
+        delete m_pMenuBar;
+        m_pMenuBar = nullptr;
+    }
+
+    if(m_pLifeBar != nullptr)
+    {
+        delete m_pLifeBar;
+        m_pLifeBar = nullptr;
+    }
+
+    if(m_pItem != nullptr)
+    {
+        delete  m_pItem;
+        m_pItem = nullptr;
+    }
 }
 
 //================================================================================
