@@ -19,8 +19,12 @@
 #include "EffectManager.h"
 #include "ResultScene.h"
 #include "TitleScene.h"
+#include "PauseScene.h"
 USING_NS_CC;
 
+//================================================================================
+// デストラクタ
+//================================================================================
 GameMainScene::~GameMainScene()
 {
     if(m_pEnemyManager != nullptr)
@@ -120,7 +124,7 @@ bool GameMainScene::init()
     
     // タッチ機能の有効化
     m_pTouchEventOneByOne =  EventListenerTouchOneByOne::create();
-    m_pTouchEventOneByOne->setSwallowTouches(true);
+    m_pTouchEventOneByOne->setSwallowTouches(false);
     m_pTouchEventOneByOne->onTouchBegan = CC_CALLBACK_2(GameMainScene::onTouchBegin,this);
     m_pTouchEventOneByOne->onTouchMoved = CC_CALLBACK_2(GameMainScene::onTouchMoved,this);
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(GameMainScene::onTouchCancelled, this);
@@ -164,7 +168,9 @@ bool GameMainScene::init()
     m_pUIManager = UIManager::create(this);
 
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager,m_pUIManager);
-    
+
+    m_pPauseLayer = nullptr;
+
     m_nTimer = 0;
     
     return true;
@@ -294,7 +300,10 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // ポーズメニューを開く
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
-
+        m_pPauseLayer = PauseScene::createLayer();
+        this->addChild(m_pPauseLayer);
+        this->pause();
+        return true;
     }
     
     m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
