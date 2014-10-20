@@ -60,7 +60,7 @@ bool ToothManager::init(void)
     // スプライトサイズ取得
     Rect toothSpriteRect = m_pTopTooth->getSprite()->getBoundingBox();
     
-    // 座標変換
+    // 座標変換 上歯茎の下に配置
     m_pTopTooth->setPos(TOOTHMANAGER_DISPLAY_CENTER_X,
                         m_pTopGum->getPos().y - gumSpriteRect.size.height / 2 - (toothSpriteRect.size.height / 2));
     
