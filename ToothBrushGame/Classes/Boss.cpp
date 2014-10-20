@@ -117,7 +117,7 @@ void Boss::update(void)
 //================================================================================
 void Boss::choiceAction(void)
 {
-    m_actionMode = RandomMT::getRandom(0, 3);
+    m_actionMode = RandomMT::getRandom(0, Boss::ACTION_MAX);
     m_time = RandomMT::getRandom(0, Boss::MAX_TIME);
     m_move = Vec2(RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE),RandomMT::getRandom(-Boss::MAX_MOVE,Boss::MAX_MOVE));
 }
@@ -200,14 +200,13 @@ void Boss::setSpawn(Vec2 pos)
 //================================================================================
 // 生成処理
 //================================================================================
-Boss* Boss::create(EnemyManager* pEnemyManager,const Vec2& pos)
+Boss* Boss::create(const Vec2& pos)
 {
     // インスタンスの生成
     Boss* pBoss = new Boss();
     
     // メンバ変数の代入
     pBoss->m_pos = pos;
-    pBoss->m_pEnemyManager = pEnemyManager;
     // 初期化
     pBoss->init();
     
