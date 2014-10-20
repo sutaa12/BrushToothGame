@@ -105,10 +105,12 @@ bool TitleScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-    
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
+    
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+
     return true;
 }
 
