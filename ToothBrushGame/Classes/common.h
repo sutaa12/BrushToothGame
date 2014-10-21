@@ -42,4 +42,13 @@ inline void SAFE_DELETE_ARRAY(T &p)
         p = nullptr;
     }
 }
+
+//シーンリスト
+enum SCENE_LIST
+{
+    SCENE_NONE = 0,
+    SCENE_TITLE,
+    SCENE_GAME,
+    SCENE_RESULT
+};
 #endif

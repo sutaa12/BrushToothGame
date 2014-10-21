@@ -14,10 +14,12 @@
 #define TEX_TOOTH_BOTTOM ("tooth_01.png")
 #define TEX_GUM_TOP ("haguki.png")
 #define TEX_GUM_BOTTOM ("haguki.png")
+#define TEX_TONGER_BACK ("tongue.png")
 //敵関係
 #define TEX_ENEMY_WAIT_01 ("Enemy.png")
 #define TEX_PLAQUE_WAIT_01 ("Plaque.png")
 #define TEX_BOSS_WAIT_01 ("Boss.png")
+
 //エフェクト関係
 #define TEX_BUBBLE_01 ("bubble_01.png")
 //UI関係
@@ -29,4 +31,14 @@
 #define TEX_ITEM_BACK ("UI_Item.png")
 #define TEX_HP_BAR ("hpbar.png")
 #define TEX_SCORE_NUMBERS ("")
+
+#define TEX_RESULT_RETRY_BUTTON ("ButtonRetryGame.png")
+#define TEX_RESULT_TITLE_BUTTON ("ButtonReturnTitle.png")
+
+#define TEX_RESULT_CLEAR_BACK ("TitleBack.png")
+#define TEX_RESULT_CLEAR_LOGO ("")
+#define TEX_RESULT_CLEAR_BUTTON_0 ("")
+#define TEX_RESULT_GAMEOVER_BACK ("TitleBack.png")
+#define TEX_RESULT_GAMEOVER_LOGO ("")
+#define TEX_RESULT_GAMEOVER_BUTTON_0 ("")
 #endif

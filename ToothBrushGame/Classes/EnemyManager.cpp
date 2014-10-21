@@ -53,14 +53,11 @@ bool EnemyManager::init(void)
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
         m_pEnemy[nloop] = Enemy::create(Vec2(0,0));
+        m_pEnemy[nloop]->disappear();
         m_pLayer->addChild(m_pEnemy[nloop]->getSprite());
         
     }
-    for(int nloop = 0;nloop < m_numEnemy;nloop++)
-    {
-        m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(Enemy::MIN_X, Enemy::MAX_X),RandomMT::getRandom(Enemy::MIN_Y,Enemy::MAX_Y)));
-    }
-    
+    spawn(m_numEnemy);
     // 正常終了
     return true;
 }

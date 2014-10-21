@@ -51,7 +51,7 @@ bool Bubble::init(void)
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
     
-    m_pSprite->setOpacity(255);
+    m_pSprite->setOpacity(0);
     
     // 正常終了
     return true;

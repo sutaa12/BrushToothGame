@@ -85,7 +85,7 @@ bool TitleScene::init()
     config.controlPoint_1 = Point(0 , 100); //開始位置
     config.controlPoint_2 = Point(0 , -100);  //曲線のベクトル
     config.endPosition = Point(0,0);   //終了位置
-    m_pTitleLogo->runAction(RepeatForever::create(BezierBy::create(5.0f,config)));
+    m_pTitleLogo->runAction(RepeatForever::create(BezierBy::create(6.0f,config)));
     
     //キャラ生成
     m_pTitleCharacter = Sprite::create(TEX_TITLE_CHARACTAR);
@@ -95,6 +95,8 @@ bool TitleScene::init()
     //ボタン生成
     m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
     m_pButton0->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
+    Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
+    m_pButton0->runAction(RepeatForever::create(pSequence));
     this->addChild(m_pButton0);
 
     return true;

@@ -55,11 +55,6 @@ bool UIManager::init(void)
      **/
     // スコア生成
     m_pScore = Score::create(Vec2(100, visibleSize.height - 32), 1, m_pLayer);
-    // "SCORE"の表示
-    m_pLayer->addChild(m_pScore->getScore());
-    // スコアポイントの表示
-    m_pLayer->addChild(m_pScore->getPoint());
-
 
     /**
      *  UI Menubar Generation

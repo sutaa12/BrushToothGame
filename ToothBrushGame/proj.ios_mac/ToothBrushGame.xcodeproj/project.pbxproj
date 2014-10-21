@@ -80,6 +80,11 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */; };
+		C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B331019F5FE3500DEDAF8 /* RankObject.cpp */; };
+		C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */; };
+		C33B331619F6091B00DEDAF8 /* ButtonReturnTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */; };
+		C33B331B19F645B000DEDAF8 /* tongue.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B331A19F645B000DEDAF8 /* tongue.png */; };
 		C36E0AF119F0C43500E5040C /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AC619F0C43500E5040C /* AppDelegate.cpp */; };
 		C36E0AF219F0C43500E5040C /* Boss.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AC819F0C43500E5040C /* Boss.cpp */; };
 		C36E0AF319F0C43500E5040C /* Bubble.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0ACA19F0C43500E5040C /* Bubble.cpp */; };
@@ -323,6 +328,13 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankManager.cpp; path = ../Classes/RankManager.cpp; sourceTree = "<group>"; };
+		C33B330C19F5FDDD00DEDAF8 /* RankManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankManager.h; path = ../Classes/RankManager.h; sourceTree = "<group>"; };
+		C33B331019F5FE3500DEDAF8 /* RankObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankObject.cpp; path = ../Classes/RankObject.cpp; sourceTree = "<group>"; };
+		C33B331119F5FE3500DEDAF8 /* RankObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankObject.h; path = ../Classes/RankObject.h; sourceTree = "<group>"; };
+		C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonRetryGame.png; sourceTree = "<group>"; };
+		C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonReturnTitle.png; sourceTree = "<group>"; };
+		C33B331A19F645B000DEDAF8 /* tongue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tongue.png; sourceTree = "<group>"; };
 		C36E0AC619F0C43500E5040C /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		C36E0AC719F0C43500E5040C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		C36E0AC819F0C43500E5040C /* Boss.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Boss.cpp; path = ../Classes/Boss.cpp; sourceTree = "<group>"; };
@@ -438,10 +450,10 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6193EE2B19F412C400E98E07 /* Common */,
 				6193EE2E19F412DC00E98E07 /* System */,
 				6193EE2D19F412D000E98E07 /* ResultScene */,
 				6193EE2C19F412C900E98E07 /* TitleScene */,
-				6193EE2B19F412C400E98E07 /* Common */,
 				6193EE2A19F412BC00E98E07 /* GameMainScene */,
 			);
 			name = Classes;
@@ -596,6 +608,8 @@
 		6193EE2D19F412D000E98E07 /* ResultScene */ = {
 			isa = PBXGroup;
 			children = (
+				C33B330F19F5FDEE00DEDAF8 /* Object */,
+				C33B330E19F5FDE400DEDAF8 /* Manager */,
 				6193EE3119F4174C00E98E07 /* ResultScene.cpp */,
 				6193EE3219F4174C00E98E07 /* ResultScene.h */,
 			);
@@ -660,6 +674,9 @@
 		6193EE3C19F5B43D00E98E07 /* hd */ = {
 			isa = PBXGroup;
 			children = (
+				C33B331A19F645B000DEDAF8 /* tongue.png */,
+				C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */,
+				C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */,
 				6193EE6919F5BDB600E98E07 /* ButtonTouchStart.png */,
 				6193EE3D19F5B43D00E98E07 /* Boss.png */,
 				6193EE3E19F5B43D00E98E07 /* bubble_01.png */,
@@ -709,6 +726,24 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		C33B330E19F5FDE400DEDAF8 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */,
+				C33B330C19F5FDDD00DEDAF8 /* RankManager.h */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		C33B330F19F5FDEE00DEDAF8 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				C33B331019F5FE3500DEDAF8 /* RankObject.cpp */,
+				C33B331119F5FE3500DEDAF8 /* RankObject.h */,
+			);
+			name = Object;
 			sourceTree = "<group>";
 		};
 		C3AFC7B919EFBFC00017FB78 /* fonts */ = {
@@ -901,6 +936,8 @@
 				C3AFC7C819EFBFC00017FB78 /* Marker Felt.ttf in Resources */,
 				6193EE5319F5B43D00E98E07 /* CloseSelected.png in Resources */,
 				6193EE6819F5B54000E98E07 /* hit_1.wav in Resources */,
+				C33B331B19F645B000DEDAF8 /* tongue.png in Resources */,
+				C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				6193EE5519F5B43D00E98E07 /* haguki.png in Resources */,
@@ -912,6 +949,7 @@
 				6193EE5019F5B43D00E98E07 /* bubble_01.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				6193EE5719F5B43D00E98E07 /* MenuBar.png in Resources */,
+				C33B331619F6091B00DEDAF8 /* ButtonReturnTitle.png in Resources */,
 				6193EE5619F5B43D00E98E07 /* hpbar.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
@@ -951,9 +989,11 @@
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				C36E0AFD19F0C43500E5040C /* MenuBar.cpp in Sources */,
 				C36E0B0119F0C43500E5040C /* Random.cpp in Sources */,
+				C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */,
 				C36E0AF319F0C43500E5040C /* Bubble.cpp in Sources */,
 				C36E0AFB19F0C43500E5040C /* Item.cpp in Sources */,
 				C36E0AF719F0C43500E5040C /* GameMainScene.cpp in Sources */,
+				C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				C36E0B0519F0C43500E5040C /* UIManager.cpp in Sources */,
 				C36E0B0419F0C43500E5040C /* ToothManager.cpp in Sources */,

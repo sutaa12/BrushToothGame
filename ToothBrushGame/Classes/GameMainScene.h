@@ -81,6 +81,8 @@ private:
     
     bool m_bHit;
     
+    void setResultScene(bool bGameOverFlag = false);
+    
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);
