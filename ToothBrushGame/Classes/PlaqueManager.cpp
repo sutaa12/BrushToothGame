@@ -75,12 +75,15 @@ void PlaqueManager::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Layer* pLayer)
+PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Gum* pStartPosGum,Layer* pLayer)
 {
     PlaqueManager* pPlaqueManager = new PlaqueManager();
 
     pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum;
     pPlaqueManager->m_pLayer = pLayer;
+
+    Rect gumSpriteRect = (pStartPosGum->getSprite())->getBoundingBox();
+    pPlaqueManager->m_startLeftBottomPos = pPlaqueManager->calcLeftBottomPos(pStartPosGum->getPos(),gumSpriteRect);
 
     pPlaqueManager->init();
 
@@ -100,16 +103,13 @@ void PlaqueManager::createPlaque(void)
     getRandGlidNum(randNum, 0, 1209, m_nPlaqueMaxNum);
     std::set<int>::iterator it = randNum.begin();
 
-    // 下歯茎の左上座標をスタート地点にする
-    Vec2 startVec = Vec2(0,320);
-
     // 生成チェック
     for(int nCnt = 0;nCnt < m_nPlaqueMaxNum;nCnt++)
     {
         int nWork = (*it);
         int nWorkX = nWork / 31;
         int nWorkY = nWork - nWorkX * 31;
-        Vec2 workVec  = startVec;
+        Vec2 workVec  = m_startLeftBottomPos;
         workVec.x += nWorkX * 16 + 16;
         workVec.y += nWorkY * 16 + 16;
 
@@ -140,7 +140,15 @@ void PlaqueManager::getRandGlidNum(std::set<int>& result,int nMin,int nMax,int n
     }
 }
 
+//================================================================================
+// 左下座標計算処理
+//================================================================================
+Vec2 PlaqueManager::calcLeftBottomPos(Vec2 centerPos,Rect rect)
+{
+    Vec2 work;
 
+    work.x = centerPos.x - rect.size.width / 2;
+    work.y = centerPos.y + rect.size.height / 2;
 
-
-
+    return work;
+}

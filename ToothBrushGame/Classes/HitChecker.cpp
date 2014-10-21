@@ -183,10 +183,3 @@ HitChecker* HitChecker::create(EnemyManager* pEnemyManager, ToothManager* pTooth
 
     return pHitChecker;
 }
-
-
-
-
-
-
-

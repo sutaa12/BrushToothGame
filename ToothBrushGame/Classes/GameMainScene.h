@@ -20,6 +20,7 @@ class HitChecker;
 class UIManager;
 class LifeBar;
 class EffectManager;
+class CountDown;
 
 class GameMainScene : public cocos2d::Layer
 {
@@ -39,6 +40,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameMainScene);
+
+    void createCountDown(float fTime);
     
     typedef enum
     {
@@ -49,9 +52,6 @@ public:
         SWIPE_DIRECTION_RIGHT,
         SWIPE_DIRECTION_MAX,
     }SWIPE_DIRECTION;
-
-
-    void setResume(void);
     
 private:
     Point m_touchPos;
@@ -73,7 +73,7 @@ private:
     Vec2 m_bubblePos;
     
     Boss* m_pBoss;
-    
+
     int m_nTimer;
     
     bool m_bMove;
@@ -91,5 +91,7 @@ private:
     SWIPE_DIRECTION calcSwipeDirection(float fAngle);
 
     Layer* m_pPauseLayer;
+    Layer* m_pCountDown;
+    bool m_bCountDownEnd;
 };
 #endif /* defined(__ToothBrushGame__GameMainScene__) */
