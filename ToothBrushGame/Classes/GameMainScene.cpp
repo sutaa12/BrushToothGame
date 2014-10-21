@@ -102,7 +102,7 @@ bool GameMainScene::init()
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
-    m_pPlaqueManager = PlaqueManager::create(200, this);
+    m_pPlaqueManager = PlaqueManager::create(200,m_pToothManager->getBottomGum(), this);
 
     
     m_pBoss = Boss::create(Vec2(350,500));
