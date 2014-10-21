@@ -397,6 +397,9 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     return SWIPE_DIRECTION_NONE;
 }
 
+//================================================================================
+// カウントダウン生成処理
+//================================================================================
 void GameMainScene::createCountDown(float fTime)
 {
     m_pCountDown = CountDown::createLayer(5,m_pHitChecker);
