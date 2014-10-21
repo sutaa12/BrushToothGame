@@ -2,6 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "Sound.h"
 
 /**
 @brief    The cocos2d Application.
@@ -32,6 +33,11 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+
+    //サウンドプリロード関数
+    void SoundPreload();
+    //プリロードしたデータ解放関数
+    void SoundUnload();
 };
 
 #endif // _APP_DELEGATE_H_

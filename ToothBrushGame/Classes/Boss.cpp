@@ -6,6 +6,7 @@
 //
 //
 #include "TextureFile.h"
+#include "Sound.h"
 #include "Boss.h"
 #include "Random.h"
 #include "common.h"
@@ -107,6 +108,8 @@ void Boss::update(void)
         //HPが０なら消滅
         if(m_nLife <= 0)
         {
+            //敵に攻撃したときのSE
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_ENEMY_DOWN_1);
             m_nLife = 0;
             disappear();
         }
