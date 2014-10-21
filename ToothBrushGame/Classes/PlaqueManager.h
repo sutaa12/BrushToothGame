@@ -25,6 +25,7 @@ using namespace cocos2d;
 // 前方クラス宣言
 //********************************************************************************
 class Plaque;
+class Gum;
 
 //********************************************************************************
 // クラス宣言
@@ -39,8 +40,7 @@ public:
     void uninit(void);
     void update(void);
 
-    static PlaqueManager* create(int nPlaqueMaxNum,Layer* pLayer);
-
+    static PlaqueManager* create(int nPlaqueMaxNum,Gum* pStartPosGum,Layer* pLayer);
 
     Plaque** getPlaqueTop(void){return &m_ppPlaque[0];}
     int getPlaqueNum(void){return m_nPlaqueNum;}
@@ -53,8 +53,10 @@ private:
     int m_nPlaqueNum;
     int m_nPlaqueMaxNum;
     Layer* m_pLayer;
+    Vec2 m_startLeftBottomPos;
 
     void createPlaque(void);
+    Vec2 calcLeftBottomPos(Vec2 centerPos,Rect rect);
 
     void getRandGlidNum(std::set<int>& result,int nMin,int nMax,int nNum);
 };
