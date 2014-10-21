@@ -2,6 +2,7 @@
 #include "GameMainScene.h"
 #include "TitleScene.h"
 #include "Random.h"
+#include "Sound.h"
 
 USING_NS_CC;
 
@@ -11,6 +12,7 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
+
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
@@ -67,4 +69,70 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+//SE、BGMをプリロードする
+void SoundPreload() {
+
+//BGM
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_1);
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_2);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_3);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_4);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_5);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_6);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_7);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_8);
+
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_2);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_3);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_4);
+
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_GAME_CLEAR_1);
+
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_STAGE_SELECT_1);
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_STAGE_SELECT_2);
+
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_RESULT_1);
+
+
+
+//SE
+    //ボタン
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_2);
+
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_START_BUTTON_1);
+
+    //敵
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_2);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_3);
+
+    //ボス
+
+    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_DOWN_1);
+
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_APPEAR_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_GAME_OVER_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_GAME_OVER_2);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_DAMAGE_1);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_1);
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_2);
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_3);
+        CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_FANFARE_1);
+            CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_1);
+
+
+
+
+}
+//データ解放
+void SoundUnload() {
+    //ボタン
+    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BUTTON_1);
+    //敵
+    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_ENEMY_DOWN_1);
+    //ボス
 }
