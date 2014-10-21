@@ -95,7 +95,6 @@ bool PauseScene::init()
     m_pReturnGameSprite->setPosition(Vec2(400,800));
     this->addChild(m_pReturnGameSprite);
 
-
     return true;
 }
 
@@ -205,7 +204,7 @@ void PauseScene::returnGame(void)
     this->removeAllChildren();
     this->unscheduleUpdate();
 
-    Scene* pParent = static_cast<Scene*>(this->getParent());
+    Node* pParent = static_cast<Node*>(this->getParent());
     pParent->removeChild(this);
     pParent->resume();
 }

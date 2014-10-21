@@ -21,6 +21,7 @@
 #include "ResultScene.h"
 #include "TitleScene.h"
 #include "PauseScene.h"
+#include "CountDown.h"
 USING_NS_CC;
 
 //================================================================================
@@ -141,7 +142,10 @@ bool GameMainScene::init()
     m_pPauseLayer = nullptr;
 
     m_nTimer = 0;
-    
+
+    // 生成が終わった後にカウントダウンを生成する
+    this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
+
     return true;
 }
 
@@ -167,7 +171,6 @@ void GameMainScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void GameMainScene::update(float fTime)
 {
-    
     // 歯の更新
     m_pToothManager->update();
     // 歯垢の更新
@@ -202,11 +205,10 @@ void GameMainScene::update(float fTime)
             m_pBoss->setSpawn(Vec2(350,500));
         }
     }
+    
     //敵の更新
     m_pEnemyManager->update();
-    
-    
-    
+
     //ボスの更新
     if(m_bBossDisp && !m_pBoss->getDisapper())
     {
@@ -229,18 +231,34 @@ m_nTimer++;
 bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     m_nTimer++;
+    
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-    
+
+    // カウントダウンが終わってるかチェック
+    if(m_bCountDownEnd == false)
+    {
+        m_bCountDownEnd = true;
+
+        for(auto children : this->getChildren())
+        {
+            if(children == m_pCountDown)
+            {
+                m_bCountDownEnd = false;
+                return true;
+            }
+        }
+    }
+
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(10);
-    
+
     m_EffectManager->spawn(40,m_touchPos);
 
     // ポーズメニューを開く
-    if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
+    if(m_pHitChecker->checkTapOnMenuBar(m_touchPos) && m_bCountDownEnd == true)
     {
         m_pPauseLayer = PauseScene::createLayer();
         this->addChild(m_pPauseLayer);
@@ -283,7 +301,6 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     m_pBubbleSprite->setPosition(m_bubblePos);
     
     m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
-    
     
     CCLOG("現タッチ位置(%f,%f)",m_touchPos.x,m_touchPos.y);
     CCLOG("旧タッチ位置(%f,%f)",m_oldTouchPos.x,m_oldTouchPos.y);
@@ -378,4 +395,13 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     }
     
     return SWIPE_DIRECTION_NONE;
+}
+
+void GameMainScene::createCountDown(float fTime)
+{
+    m_pCountDown = CountDown::createLayer(5,m_pHitChecker);
+    this->addChild(m_pCountDown);
+    this->pause();
+
+    m_bCountDownEnd = false;
 }
