@@ -106,8 +106,8 @@ EnemyManager* EnemyManager::create(Layer* layer,int numEnemy)
 //================================================================================
 void EnemyManager::spawn(int nSpawnNum)
 {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = m_pEnemy[0]->getSprite()->getContentSize() / 2;
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     Vec2 MaxPos = Vec2(visibleSize.width - origin.x,visibleSize.height - 128 - origin.y);
     Vec2 MinPos = Vec2(origin.x,MaxPos.y - 512 + origin.y);
 

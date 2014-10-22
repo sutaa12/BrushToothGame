@@ -3,7 +3,7 @@
 #include "TitleScene.h"
 #include "Random.h"
 #include "Sound.h"
-
+#include "common.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -26,7 +26,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLView::create("BrushToothGame");
         director->setOpenGLView(glview);
         
-        //glview->setDesignResolutionSize(640, 960, ResolutionPolicy::SHOW_ALL);
+        glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
     }
     
     std::vector< std::string > searchPath;    //リソースのパスを格納するvector

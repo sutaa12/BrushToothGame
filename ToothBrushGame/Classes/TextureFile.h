@@ -29,7 +29,12 @@
 #define TEX_TITLE_CHARACTAR ("TitleChara.png")
 #define TEX_MENU_BUTTON ("MenuBar.png")
 #define TEX_ITEM_BACK ("UI_Item.png")
+#define TEX_GAME_TOP_BACK ("GameTopBack.png")
+#define TEX_GAME_BOTTOM_BACK ("GameBottomBack.png")
 #define TEX_HP_BAR ("hpbar.png")
+#define TEX_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
+#define TEX_BUTTON_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
+
 #define TEX_SCORE_NUMBERS ("")
 
 #define TEX_RESULT_RETRY_BUTTON ("ButtonRetryGame.png")

@@ -48,9 +48,8 @@ bool ResultScene::init()
         return false;
     }
     
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     //終了ボタン生成
     auto closeItem = MenuItemImage::create(
@@ -204,7 +203,8 @@ void ResultScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 //================================================================================
 void ResultScene::initGameOver(void)
 {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     Sprite* pSprite;
     pSprite = Sprite::create(TEX_RESULT_CLEAR_BACK);
@@ -219,7 +219,8 @@ void ResultScene::initGameOver(void)
 //================================================================================
 void ResultScene::initGameClear(void)
 {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     Sprite* pSprite;
     pSprite = Sprite::create(TEX_RESULT_CLEAR_BACK);

@@ -10,6 +10,7 @@
 #define __ToothBrushGame__TitleScene__
 
 #include "cocos2d.h"
+#include "common.h"
 
 using namespace cocos2d;
 
