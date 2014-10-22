@@ -9,7 +9,7 @@
 #include "TitleScene.h"
 #include "GameMainScene.h"
 
-#include "Enemy.h"
+#include "StageSelect.h"
 
 USING_NS_CC;
 //================================================================================
@@ -125,7 +125,7 @@ void TitleScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void TitleScene::update(float fTime)
 {
- 
+
 }
 
 //================================================================================
@@ -141,6 +141,11 @@ bool TitleScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     this->removeAllChildren();
     
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+
+//    int nStageMax = 3;
+//
+//    m_pTitleLogo->pause();
+//    this->addChild(StageSelect::createLayer(nStageMax));
 
     return true;
 }
