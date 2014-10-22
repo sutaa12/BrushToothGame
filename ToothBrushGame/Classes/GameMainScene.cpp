@@ -92,7 +92,7 @@ bool GameMainScene::init()
     
     // タッチ機能の有効化
     m_pTouchEventOneByOne =  EventListenerTouchOneByOne::create();
-    m_pTouchEventOneByOne->setSwallowTouches(false);
+    m_pTouchEventOneByOne->setSwallowTouches(true);
     m_pTouchEventOneByOne->onTouchBegan = CC_CALLBACK_2(GameMainScene::onTouchBegin,this);
     m_pTouchEventOneByOne->onTouchMoved = CC_CALLBACK_2(GameMainScene::onTouchMoved,this);
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(GameMainScene::onTouchCancelled, this);
@@ -235,19 +235,13 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
 
-    // カウントダウンが終わってるかチェック
-    if(m_bCountDownEnd == false)
+    // ポーズメニューを開く
+    if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
-        m_bCountDownEnd = true;
-
-        for(auto children : this->getChildren())
-        {
-            if(children == m_pCountDown)
-            {
-                m_bCountDownEnd = false;
-                return true;
-            }
-        }
+        m_pPauseLayer = PauseScene::createLayer();
+        this->addChild(m_pPauseLayer);
+        this->pause();
+        return true;
     }
 
     // 泡スプライトの追従
@@ -256,15 +250,6 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     m_pBubbleSprite->setOpacity(10);
 
     m_EffectManager->spawn(40,m_touchPos);
-
-    // ポーズメニューを開く
-    if(m_pHitChecker->checkTapOnMenuBar(m_touchPos) && m_bCountDownEnd == true)
-    {
-        m_pPauseLayer = PauseScene::createLayer();
-        this->addChild(m_pPauseLayer);
-        this->pause();
-        return true;
-    }
     
     m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     

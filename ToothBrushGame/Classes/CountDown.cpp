@@ -50,7 +50,7 @@ bool CountDown::init(void)
 
     // タッチ機能の有効化
     m_pTouchEventOneByOne =  EventListenerTouchOneByOne::create();
-    m_pTouchEventOneByOne->setSwallowTouches(false);
+    m_pTouchEventOneByOne->setSwallowTouches(true);
     m_pTouchEventOneByOne->onTouchBegan = CC_CALLBACK_2(CountDown::onTouchBegin,this);
     m_pTouchEventOneByOne->onTouchMoved = CC_CALLBACK_2(CountDown::onTouchMoved,this);
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(CountDown::onTouchCancelled, this);
@@ -120,7 +120,7 @@ void CountDown::uninit(void)
 //================================================================================
 void CountDown::update(float fTime)
 {
-    if(m_nTimer % 15 == 0)
+    if(m_nTimer % 60 == 0)
     {
         if(m_bEnd == true)
         {
@@ -139,8 +139,6 @@ void CountDown::update(float fTime)
             m_bEnd = true;
         }
     }
-
-    m_pTouchEventOneByOne->setSwallowTouches(true);
 
     m_nTimer++;
 }
@@ -179,7 +177,6 @@ bool CountDown::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     if(m_pHitChecker->checkTapOnMenuBar(pTouch->getLocation()))
     {
-        m_pTouchEventOneByOne->setSwallowTouches(false);
         this->addChild(PauseScene::createLayer());
         this->pause();
         return true;
