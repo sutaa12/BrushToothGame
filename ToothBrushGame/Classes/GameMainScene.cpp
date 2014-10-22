@@ -5,7 +5,7 @@
 //  Created by 鈴木 愛忠 on 2014/10/17.
 //
 //
-
+#include "TextureFile.h"
 #include "common.h"
 #include "GameMainScene.h"
 #include "Tooth.h"
@@ -21,6 +21,7 @@
 #include "ResultScene.h"
 #include "TitleScene.h"
 #include "PauseScene.h"
+#include "Score.h"
 #include "CountDown.h"
 USING_NS_CC;
 
@@ -99,6 +100,12 @@ bool GameMainScene::init()
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(GameMainScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
     
+    //舌ベロ生成
+    Sprite* pTonger = Sprite::create(TEX_TONGER_BACK);
+    
+    pTonger->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 128 - 256));
+    this->addChild(pTonger);
+    
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
@@ -110,7 +117,7 @@ bool GameMainScene::init()
     m_pBoss->disappear();
     
     // タッチ時の判定生成
-    m_pBubbleSprite = Sprite::create("bubble_01.png");
+    m_pBubbleSprite = Sprite::create(TEX_BUBBLE_01);
     m_bubblePos = Vec2(0.0f,0.0f);
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
@@ -219,6 +226,16 @@ void GameMainScene::update(float fTime)
     m_pUIManager->update();
     //エフェクト更新
     m_EffectManager->update();
+    
+    //死んでいたら
+    if(m_bBossDisp && m_pBoss->getDisapper())
+    {
+        setResultScene(false);
+    }else
+    if(LifeBar::getLife() <= 0)
+    {
+        setResultScene(true);
+    }
 
 m_nTimer++;
 
@@ -381,7 +398,17 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     
     return SWIPE_DIRECTION_NONE;
 }
-
+//================================================================================
+// 結果へ移行
+//================================================================================
+void GameMainScene::setResultScene(bool bGameOverFlag)
+{
+    this->getEventDispatcher()->removeAllEventListeners();
+    this->removeAllChildren();
+    this->unscheduleUpdate();
+    
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,Score::getScoreNum()),Color3B::WHITE));
+}
 //================================================================================
 // カウントダウン生成処理
 //================================================================================

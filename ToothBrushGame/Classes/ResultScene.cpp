@@ -5,17 +5,23 @@
 //  Created by 鈴木愛忠 on 2014/10/20.
 //
 //
-
+#include "TextureFile.h"
 #include "ResultScene.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
+#include "RankManager.h"
 USING_NS_CC;
+bool ResultScene::m_bGameOverFlag = false;
+int ResultScene::m_nScore;
 //================================================================================
 // シーン生成
 //================================================================================
 
-Scene* ResultScene::createScene()
+Scene* ResultScene::createScene(bool bGameOverFlag,int nScoreNumber)
 {
+    m_bGameOverFlag = bGameOverFlag;
+    m_nScore = nScoreNumber;
+    
     // 'scene' is an autorelease object
     auto scene = Scene::create();
     
@@ -41,6 +47,7 @@ bool ResultScene::init()
     {
         return false;
     }
+    
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -69,14 +76,60 @@ bool ResultScene::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(ResultScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(ResultScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
+  
+    //フラグに応じてゲームオーバ処理分岐
+    void (ResultScene::*pFuncInit)();
+    if(!m_bGameOverFlag)
+    {
+        pFuncInit = &ResultScene::initGameClear;
+        m_pFuncUpdate = &ResultScene::updateGameClear;
+        
+    }else{
+        pFuncInit = &ResultScene::initGameOver;
+        m_pFuncUpdate = &ResultScene::updateGameOver;
+        
+    }
+    
+    (this->*pFuncInit)();
+    
+    //スコアとランク表示
+    m_pRankManager = RankManager::create(Vec2(origin.x + 100,origin.y + 600),m_nScore, this);
+    
+    //ボタン表示
+    MenuItemSprite* pButtonRetry;
+    MenuItemSprite* pButtonTitle;
+    
+    //タップ前のスプライト
+    Sprite* pNormalSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
+    pNormalSprite->setOpacity(180);
+    pNormalSprite->setColor(Color3B(250,150,150));
+    
+    //タップ時のスプライト
+    Sprite* pSelectedSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
+    pSelectedSprite->setColor(Color3B(255,200,200));
+    pButtonRetry = MenuItemSprite::create(pNormalSprite,pSelectedSprite,CC_CALLBACK_0(ResultScene::ButtonRetry,this));
+    
+    Menu* pButton = Menu::create(pButtonRetry,NULL);
+    addChild(pButton);
+    
+    //タイトルボタン
+    //タップ前のスプライト
+    Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 280));
+    pNormalSprite2->setColor(Color3B(150,150,250));
 
-    Sprite* pSprite;
-    pSprite = Sprite::create();
-    pSprite->setTextureRect(Rect(0,0,200,300));
-    pSprite->setColor(Color3B::BLUE);
-    pSprite->setPosition(Vec2(400,400));
-    this->addChild(pSprite);
+    pNormalSprite2->setOpacity(180);
+    
+    //タップ時のスプライト
+    Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    pSelectedSprite2->setColor(Color3B(200,200,255));
 
+    pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(ResultScene::ButtonTitle,this));
+
+    pButton = Menu::create(pButtonTitle,NULL);
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
+    addChild(pButton);
+    
     return true;
 }
 
@@ -103,7 +156,7 @@ void ResultScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void ResultScene::update(float fTime)
 {
-    
+    (this->*m_pFuncUpdate)();
 }
 
 //================================================================================
@@ -114,12 +167,6 @@ bool ResultScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-
-    this->getEventDispatcher()->removeAllEventListeners();
-    this->removeAllChildren();
-
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
-
     return true;
 }
 
@@ -151,3 +198,80 @@ void ResultScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
     
 }
+
+//================================================================================
+// ゲームオーバ初期化
+//================================================================================
+void ResultScene::initGameOver(void)
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    
+    Sprite* pSprite;
+    pSprite = Sprite::create(TEX_RESULT_CLEAR_BACK);
+    pSprite->setColor(Color3B::RED);
+    pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
+    this->addChild(pSprite);
+
+}
+
+//================================================================================
+// ゲームクリア初期化
+//================================================================================
+void ResultScene::initGameClear(void)
+{
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    
+    Sprite* pSprite;
+    pSprite = Sprite::create(TEX_RESULT_CLEAR_BACK);
+    pSprite->setColor(Color3B::YELLOW);
+    pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
+    this->addChild(pSprite);
+
+}
+
+//================================================================================
+// ゲームオーバ更新
+//================================================================================
+void ResultScene::updateGameOver(void)
+{
+    
+}
+
+//================================================================================
+// ゲームクリア更新
+//================================================================================
+void ResultScene::updateGameClear(void)
+{
+    m_pRankManager->update();
+}
+
+//================================================================================
+// リトライボタン処理
+//================================================================================
+void ResultScene::ButtonRetry(void)
+{
+    setNextScene(SCENE_GAME);
+}
+//================================================================================
+// タイトルボタン処理
+//================================================================================
+void ResultScene::ButtonTitle(void)
+{
+    setNextScene(SCENE_TITLE);
+}
+//================================================================================
+// 次のシーンへ
+//================================================================================
+void ResultScene::setNextScene(SCENE_LIST sceneList)
+{
+    this->getEventDispatcher()->removeAllEventListeners();
+    this->removeAllChildren();
+    this->unscheduleUpdate();
+    if(sceneList == SCENE_TITLE)
+    {
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
+    }else{
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+    }
+}
+

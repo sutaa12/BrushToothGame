@@ -37,14 +37,14 @@ public:
     void uninit(void);
     void update(void);
     
-    static Score* create(const Vec2& startLeftTopPos,int nNumber,Layer* layer);
+    static Score* create(const Vec2& startLeftTopPos,int nNumber,Layer* layer,int nScore = 0);
     
     Number** getNumber(void){return &m_ppNumbers[0];}
     LabelTTF* getScore(){return m_pScoreLabel ;}
     LabelTTF* getPoint(){return m_pPointLabel ;}
 
     static void addScore(int num){m_nScorePoint += num;}
-
+    static int getScoreNum(void){return m_nScorePoint;}
 
 private:
     Vec2 m_startLeftTopPos;
