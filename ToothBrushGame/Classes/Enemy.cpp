@@ -153,7 +153,6 @@ void Enemy::moveAction(void)
     CHECK_MAX_POS(m_pos.y,minSize.y,maxSize.y);
     getSprite()->setPosition(m_pos);
     m_time--;
-   
 }
 //================================================================================
 //攻撃

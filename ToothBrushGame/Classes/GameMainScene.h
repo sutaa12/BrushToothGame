@@ -90,6 +90,5 @@ private:
     Layer* m_pPauseLayer;
     Layer* m_pCountDown;
     bool m_bCountDownEnd;
-    ToothPowder* m_pToothPowder;
 };
 #endif /* defined(__ToothBrushGame__GameMainScene__) */

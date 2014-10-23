@@ -37,7 +37,6 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pUIManager);
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
-    SAFE_DELETE(m_pToothPowder);
 }
 
 //================================================================================
@@ -143,11 +142,9 @@ bool GameMainScene::init()
 
     m_nTimer = 0;
     
-    //歯磨き粉アイテム生成処理
-    m_pToothPowder = ToothPowder::create(this,Vec2(visibleSize.width / 2,origin.y + 64));
 
     // 生成が終わった後にカウントダウンを生成する
-    this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
+    //this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
 
     return true;
 }
@@ -239,7 +236,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     
     m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     
-    m_pToothPowder->chkPowderTouchFlag(m_touchPos);
+    m_pUIManager->getToothPowder()->chkPowderTouchFlag(m_touchPos);
     return true;
 }
 
@@ -258,7 +255,7 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
-    if(m_pToothPowder->getPowderTouchFlag())
+    if(m_pUIManager->getToothPowder()->getPowderTouchFlag())
     {
         m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
     }
@@ -296,9 +293,9 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
                       swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
     
-    if(m_pToothPowder->getPowderTouchFlag())
+    if(m_pUIManager->getToothPowder()->getPowderTouchFlag())
     {
-        m_pToothPowder->setPos(m_touchPos);
+        m_pUIManager->getToothPowder()->setPos(m_touchPos);
     }
     
     // スワイプ時の当たり判定
@@ -316,7 +313,7 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
     
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     
-    m_pToothPowder->disappear();
+    m_pUIManager->getToothPowder()->disappear();
     
     m_bHit = false;
     m_nTimer = 0;
@@ -328,7 +325,7 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 void GameMainScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
     m_nTimer = 0;
-    m_pToothPowder->disappear();
+    m_pUIManager->getToothPowder()->disappear();
     
 }
 
