@@ -10,6 +10,7 @@
 #define __ToothBrushGame__Enemy__
 
 #include "cocos2d.h"
+#include "TextureFile.h"
 
 using namespace cocos2d;
 
@@ -17,16 +18,43 @@ using namespace cocos2d;
 class Enemy
 {
 private:
+    //敵の行動状態
     enum ACTION_MODE
     {
         ACTION_NONE = 0,
         ACTION_MOVE,
-        ACTION_ATTACK,
         ACTION_DELAY,
         ACTION_MAX
     };
-
 public:
+    //敵の種類
+    enum ENEMY_KIND
+    {
+        ENEMY_KIND_NORMAL_ONE,
+        ENEMY_KIND_LAIR_ONE,
+        ENEMY_KIND_MAX
+    };
+    //敵の画像リスト
+    const char* ENEMY_IMAGE_LIST[ENEMY_KIND_MAX][2] =
+    {
+        {
+            TEX_ENEMY_WAIT_01,
+            TEX_ENEMY_WAIT_01
+        },
+        {
+            TEX_ENEMY_WAIT_01,
+            TEX_ENEMY_WAIT_01
+        }
+    };
+public:
+    
+    //敵の個別情報
+    struct ENEMY_STATUS
+    {
+        Vec2 EnemySpeed;
+        int EnemyLife;
+    };
+    
     Enemy();   //コンストラクタ
     ~Enemy();  //デストラクタ
 
@@ -34,8 +62,7 @@ public:
     void uninit();  //
     void update();  //更新
     void disappear();   //消滅
-
-    static Enemy* create(const Vec2& pos = Vec2(0.0f,0.0f));
+    static Enemy* create(const Vec2& pos = Vec2(0.0f,0.0f),ENEMY_KIND nKindEnemy = ENEMY_KIND_NORMAL_ONE);
     Sprite* getSprite(void){return m_pSprite;}
     
     //セッター　ゲッター
@@ -58,13 +85,17 @@ public:
     void attackAction(void);
     //待機
     void delayAction(void);
-    
+    //倒された
+    void setEnemyDown();
+
     //位置を画像に適用
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
     //出現
-    void setSpawn(Vec2 pos);
+    void setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos);
     //ダメージ処理
     void addDamage(int nDamage = 1);
+    //倒れたフラグを拾う
+    bool getEnemyDownFlag(void){return m_bDown;}
 
 private:
     void (Enemy::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
@@ -76,10 +107,23 @@ private:
     int m_time;
     //行動状態
     int m_actionMode;
+    //敵が倒れたフラグ
+    bool m_bDown;
     //生きてるか死んでるかのフラグ
     bool m_bDeath;
     //HP
     int m_nLife;
+    
+    //敵の種類
+    ENEMY_KIND m_nEnemyKind;
+    
+    //敵の数取得
+    static int getEnemyKindDownNum(Enemy::ENEMY_KIND nEnemyKind){return m_nEnemyDown[nEnemyKind];}
+    static int getEnemyAllDownNum(void){int nEnemyAllNum = 0;for(int nloop = 0; nloop < Enemy::ENEMY_KIND_MAX;nloop++){nEnemyAllNum += m_nEnemyDown[nloop];}return nEnemyAllNum;};
+    //倒した敵の数を種類分
+    static int m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
+    static void initEnemyDownNum(void){for(int nloop = 0; nloop < ENEMY_KIND_MAX;nloop++){m_nEnemyDown[nloop] = 0;}}
+
 //定数
 public:
     //ライフの最大値
@@ -94,7 +138,6 @@ public:
     static const int MAX_MOVE = 20;
     static const int DAMEGE = 1;
     static const unsigned short OPACITY_SPEED = 255;
-
 };
 
 
