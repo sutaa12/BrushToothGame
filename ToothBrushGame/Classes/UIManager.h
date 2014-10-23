@@ -27,6 +27,7 @@ class MenuBar;
 class LifeBar;
 class Item;
 class ToothPowder;
+class CharacterStatus;
 
 //********************************************************************************
 // クラス宣言
@@ -49,6 +50,7 @@ public:
     ToothPowder* getToothPowder(void){return m_pToothPowder;}
     Sprite* getGameTopBackSprite(void){return m_pGameTopBack;}
     Sprite* getGameBottomBackSprite(void){return m_pGameBottomBack;}
+    CharacterStatus* getCharacterStatus(void){return m_pCharacterStatus;}
 
 private:
     Sprite* m_pGameTopBack;
@@ -60,6 +62,7 @@ private:
     Layer* m_pLayer;
     static const int GAME_MENU_BOTTOM_Y = 192 / 2;
     ToothPowder* m_pToothPowder;
+    CharacterStatus* m_pCharacterStatus;
 
 };
 

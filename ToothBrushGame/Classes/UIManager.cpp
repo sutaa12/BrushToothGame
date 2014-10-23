@@ -17,6 +17,7 @@
 #include "LifeBar.h"
 #include "Item.h"
 #include "ToothPowder.h"
+#include "CharacterStatus.h"
 
 //================================================================================
 // コンストラクタ
@@ -30,6 +31,7 @@ UIManager::UIManager(void)
     m_pLayer = nullptr;
     m_pGameBottomBack = nullptr;
     m_pGameTopBack = nullptr;
+    m_pCharacterStatus = nullptr;
 }
 
 //================================================================================
@@ -41,6 +43,7 @@ UIManager::~UIManager()
     SAFE_DELETE(m_pMenuBar);
     SAFE_DELETE(m_pLifeBar);
     SAFE_DELETE(m_pToothPowder);
+    SAFE_DELETE(m_pCharacterStatus);
 
 }
 
@@ -91,6 +94,12 @@ bool UIManager::init(void)
     
     //歯磨き粉アイテム生成処理
     m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 2,origin.y + 64));
+
+    // キャラクター生成。下部UIの右下から計算
+    Rect bottomUIRect = m_pGameBottomBack->getBoundingBox();
+    Vec2 bottomUIPos = Vec2(bottomUIRect.origin.x + bottomUIRect.size.width,bottomUIRect.origin.y);
+    m_pCharacterStatus = CharacterStatus::create(bottomUIPos,CharacterStatus::PATTERN_CRY);
+    m_pLayer->addChild(m_pCharacterStatus->getSprite());
 
     // 正常終了
     return true;
