@@ -12,23 +12,30 @@
 #include "common.h"
 #include "LifeBar.h"
 #include "Score.h"
-
+int Enemy::m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
+const Enemy::ENEMY_STATUS ENEMY_STATUS_LIST[Enemy::ENEMY_KIND_MAX] =
+{
+    {Vec2(2,2),1},
+    {Vec2(2,2),1},
+};
 //================================================================================
 // コンストラクタ
 //================================================================================
 Enemy::Enemy(void)
 {
+    
     // メンバ変数の初期化
     m_pSprite = nullptr;
     
     //関数ポインタセット
     m_pFunc[0] = &Enemy::choiceAction;
     m_pFunc[1] = &Enemy::moveAction;
-    m_pFunc[2] = &Enemy::attackAction;
-    m_pFunc[3] = &Enemy::delayAction;
+    m_pFunc[2] = &Enemy::delayAction;
     m_actionMode = 0;
     m_time = 0;
     m_nLife = 0;
+    m_bDeath = true;
+    m_bDown = true;
 }
 
 //================================================================================
@@ -38,7 +45,6 @@ Enemy::~Enemy()
 {
     
 }
-
 //================================================================================
 // 初期化処理
 //================================================================================
@@ -53,7 +59,7 @@ bool Enemy::init(void)
         // スプライト生成エラー
         return false;
     }
-
+    
     m_bDeath = true;
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
@@ -72,23 +78,14 @@ void Enemy::uninit(void)
 }
 
 //================================================================================
-//消滅処理
+//倒される処理
 //================================================================================
 void Enemy::disappear(void)
 {
-    Score::addScore(10);
-    m_nLife = 0;
+    
+    //死亡フラグセット
     m_bDeath = true;
-    unsigned short uOpacity = m_pSprite->getOpacity();
-    if(uOpacity >= 0)
-    {
-        uOpacity -= OPACITY_SPEED;
-    }
-    m_pSprite->setOpacity(uOpacity);
-    if(uOpacity <= 0)
-    {
-        uOpacity = 0;
-    }
+    //画像をきり替え
 }
 //================================================================================
 // 更新処理
@@ -123,7 +120,6 @@ void Enemy::choiceAction(void)
 {
     m_actionMode = RandomMT::getRandom(0, ACTION_MAX - 1);
     m_time = RandomMT::getRandom(0, Enemy::MAX_TIME);
-    m_move = Vec2(RandomMT::getRandom(-Enemy::MAX_MOVE,Enemy::MAX_MOVE),RandomMT::getRandom(-Enemy::MAX_MOVE,Enemy::MAX_MOVE));
 }
 //================================================================================
 //移動
@@ -184,28 +180,51 @@ void Enemy::addDamage(int nDamage)
 //================================================================================
 // 敵再配置処理
 //================================================================================
-void Enemy::setSpawn(Vec2 pos)
+void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
 {
+    m_nEnemyKind = nEnemyKind;
     m_bDeath = false;
     m_pos = pos;
     m_pSprite->setPosition(pos);
     m_pSprite->setOpacity(255);
     m_nLife = RandomMT::getRaodom(1, MAX_LIFE);
-   
+    m_move = ENEMY_STATUS_LIST[m_nEnemyKind].EnemySpeed;
+    m_bDeath = false;
+    m_pSprite->setTexture(ENEMY_IMAGE_LIST[nEnemyKind][0]);
 }
 //================================================================================
 // 生成処理
 //================================================================================
-Enemy* Enemy::create(const Vec2& pos)
+Enemy* Enemy::create(const Vec2& pos,ENEMY_KIND nKindEnemy)
 {
     // インスタンスの生成
     Enemy* pEnemy = new Enemy();
 
     // メンバ変数の代入
     pEnemy->m_pos = pos;
+    pEnemy->m_nEnemyKind = nKindEnemy;
 
     // 初期化
     pEnemy->init();
     
     return pEnemy;
 }
+//================================================================================
+//敵が消える処理
+//================================================================================
+void Enemy::setEnemyDown(void)
+{
+    Score::addScore(10);
+    m_nLife = 0;
+    m_bDeath = true;
+    m_bDown = true;
+    unsigned short uOpacity = m_pSprite->getOpacity();
+    if(uOpacity >= 0)
+    {
+        uOpacity = 0;
+    }
+    m_pSprite->setOpacity(uOpacity);
+    m_nEnemyDown[m_nEnemyKind]++;
+    
+}
+

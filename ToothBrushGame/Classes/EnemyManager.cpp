@@ -57,7 +57,8 @@ bool EnemyManager::init(void)
         m_pLayer->addChild(m_pEnemy[nloop]->getSprite());
         
     }
-    spawn(m_numEnemy);
+    spawn(Enemy::ENEMY_KIND_NORMAL_ONE,m_numEnemy / 2);
+    spawn(Enemy::ENEMY_KIND_LAIR_ONE,m_numEnemy / 2);
     // 正常終了
     return true;
 }
@@ -104,7 +105,7 @@ EnemyManager* EnemyManager::create(Layer* layer,int numEnemy)
 //================================================================================
 // 敵生成処理
 //================================================================================
-void EnemyManager::spawn(int nSpawnNum)
+void EnemyManager::spawn(Enemy::ENEMY_KIND nEnemyKind,int nSpawnNum)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
@@ -115,9 +116,9 @@ void EnemyManager::spawn(int nSpawnNum)
     int nEnemyNum = 0;
     for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
     {
-        if(m_pEnemy[nloop]->getDisapper())
+        if(m_pEnemy[nloop]->getEnemyDownFlag())
         {
-            m_pEnemy[nloop]->setSpawn(Vec2(RandomMT::getRandom(MinPos.x, MaxPos.x),RandomMT::getRandom(MinPos.y,MaxPos.y)));
+            m_pEnemy[nloop]->setSpawn(nEnemyKind,Vec2(RandomMT::getRandom(MinPos.x, MaxPos.x),RandomMT::getRandom(MinPos.y,MaxPos.y)));
             nEnemyNum++;
         }
         if(nEnemyNum >= nSpawnNum)
@@ -150,7 +151,7 @@ void EnemyManager::setEnemyClear(void)
     {
         if(!m_pEnemy[nloop]->getDisapper())
         {
-            m_pEnemy[nloop]->disappear();
+            m_pEnemy[nloop]->setEnemyDown();
         }
     }
 }

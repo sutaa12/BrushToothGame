@@ -13,7 +13,7 @@
 // インクルード
 //********************************************************************************
 #include "cocos2d.h"
-
+#include "Enemy.h"
 //********************************************************************************
 // 名前空間の使用
 //********************************************************************************
@@ -22,7 +22,6 @@ using namespace cocos2d;
 //********************************************************************************
 // 前方クラス宣言
 //********************************************************************************
-class Enemy;
 
 //********************************************************************************
 // クラス宣言
@@ -49,12 +48,13 @@ public:
     //すべての敵を消す
     void setEnemyClear(void);
     
-    void spawn(int nSpawnNum = ENEMY_MAX);
+    void spawn(Enemy::ENEMY_KIND nEnemyKind = Enemy::ENEMY_KIND_NORMAL_ONE,int nSpawnNum = ENEMY_MAX);
+    
 public:
     //敵の最大数
-    static const int ENEMY_MAX = 50;
+    static const int ENEMY_MAX = 100;
     //開始する時間感覚
-    static const int TIME_SPAN = 50;
+    static const int TIME_SPAN = 100;
 private:
 
     //敵の配列
@@ -66,6 +66,7 @@ private:
     int m_nTime;
     
     int m_nTimeSpan;
+
 };
 
 #endif /* defined(__ToothBrushGame__EnemyManager__) */
