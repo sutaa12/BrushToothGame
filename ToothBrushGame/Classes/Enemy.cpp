@@ -190,7 +190,7 @@ void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
     m_pSprite->setOpacity(255);
     m_nLife = RandomMT::getRaodom(1, MAX_LIFE);
     m_move = ENEMY_STATUS_LIST[m_nEnemyKind].EnemySpeed;
-    m_bDeath = false;
+    m_bDown = false;
     m_pSprite->setTexture(ENEMY_IMAGE_LIST[nEnemyKind][0]);
 }
 //================================================================================

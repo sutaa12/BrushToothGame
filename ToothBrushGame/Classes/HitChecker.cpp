@@ -220,13 +220,8 @@ void HitChecker::checkEnemyDown(void)
             continue;
         }
 
-        // 既に死んでいるならスキップ
-        if(ppEnemy[nEnemyNum]->getDisapper())
-        {
-            continue;
-        }
-
-        if(ppEnemy[nEnemyNum]->getEnemyDownFlag())
+        //敵死んでいてなおかつ消えてなかったら
+        if(ppEnemy[nEnemyNum]->getDisapper() && !ppEnemy[nEnemyNum]->getEnemyDownFlag())
         {
             ppEnemy[nEnemyNum]->setEnemyDown();
         }
