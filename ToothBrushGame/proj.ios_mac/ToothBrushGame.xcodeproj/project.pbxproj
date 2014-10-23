@@ -124,6 +124,8 @@
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		C31B643519F8C58F00A8D67A /* AchievementsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B643319F8C58F00A8D67A /* AchievementsScene.cpp */; };
+		C32E525019F8E6A300A93F0E /* AchievementList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E524E19F8E6A300A93F0E /* AchievementList.cpp */; };
+		C32E525319F8E6C400A93F0E /* AchievementListManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */; };
 		C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */; };
 		C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B331019F5FE3500DEDAF8 /* RankObject.cpp */; };
 		C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */; };
@@ -419,6 +421,10 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C31B643319F8C58F00A8D67A /* AchievementsScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementsScene.cpp; path = ../Classes/AchievementsScene.cpp; sourceTree = "<group>"; };
 		C31B643419F8C58F00A8D67A /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementsScene.h; path = ../Classes/AchievementsScene.h; sourceTree = "<group>"; };
+		C32E524E19F8E6A300A93F0E /* AchievementList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementList.cpp; path = ../Classes/AchievementList.cpp; sourceTree = "<group>"; };
+		C32E524F19F8E6A300A93F0E /* AchievementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementList.h; path = ../Classes/AchievementList.h; sourceTree = "<group>"; };
+		C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementListManager.cpp; path = ../Classes/AchievementListManager.cpp; sourceTree = "<group>"; };
+		C32E525219F8E6C400A93F0E /* AchievementListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementListManager.h; path = ../Classes/AchievementListManager.h; sourceTree = "<group>"; };
 		C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankManager.cpp; path = ../Classes/RankManager.cpp; sourceTree = "<group>"; };
 		C33B330C19F5FDDD00DEDAF8 /* RankManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankManager.h; path = ../Classes/RankManager.h; sourceTree = "<group>"; };
 		C33B331019F5FE3500DEDAF8 /* RankObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankObject.cpp; path = ../Classes/RankObject.cpp; sourceTree = "<group>"; };
@@ -876,10 +882,10 @@
 		C31B643019F8C52400A8D67A /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
+				C32E524819F8CDDD00A93F0E /* Manager */,
 				C32E524919F8CE6800A93F0E /* Object */,
 				C31B643319F8C58F00A8D67A /* AchievementsScene.cpp */,
 				C31B643419F8C58F00A8D67A /* AchievementsScene.h */,
-				C32E524819F8CDDD00A93F0E /* Manager */,
 			);
 			name = Achievements;
 			sourceTree = "<group>";
@@ -887,6 +893,8 @@
 		C32E524819F8CDDD00A93F0E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */,
+				C32E525219F8E6C400A93F0E /* AchievementListManager.h */,
 			);
 			name = Manager;
 			sourceTree = "<group>";
@@ -894,6 +902,8 @@
 		C32E524919F8CE6800A93F0E /* Object */ = {
 			isa = PBXGroup;
 			children = (
+				C32E524E19F8E6A300A93F0E /* AchievementList.cpp */,
+				C32E524F19F8E6A300A93F0E /* AchievementList.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1206,6 +1216,7 @@
 				C36E0AF719F0C43500E5040C /* GameMainScene.cpp in Sources */,
 				C31B643519F8C58F00A8D67A /* AchievementsScene.cpp in Sources */,
 				C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */,
+				C32E525019F8E6A300A93F0E /* AchievementList.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				C36E0B0519F0C43500E5040C /* UIManager.cpp in Sources */,
 				C36E0B0419F0C43500E5040C /* ToothManager.cpp in Sources */,
@@ -1216,6 +1227,7 @@
 				C36E0AF619F0C43500E5040C /* EnemyManager.cpp in Sources */,
 				6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */,
 				C36E0AFE19F0C43500E5040C /* Number.cpp in Sources */,
+				C32E525319F8E6C400A93F0E /* AchievementListManager.cpp in Sources */,
 				C36E0AF419F0C43500E5040C /* EffectManager.cpp in Sources */,
 				6193EE7619F7F03500E98E07 /* CharacterStatus.cpp in Sources */,
 				6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */,
