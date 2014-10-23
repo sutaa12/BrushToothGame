@@ -206,6 +206,34 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
 }
 
 //================================================================================
+// エネミー死亡チェック処理
+//================================================================================
+void HitChecker::checkEnemyDown(void)
+{
+    Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
+
+    for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
+    {
+        // 使われていないならスキップ
+        if(ppEnemy[nEnemyNum] == nullptr)
+        {
+            continue;
+        }
+
+        // 既に死んでいるならスキップ
+        if(ppEnemy[nEnemyNum]->getDisapper())
+        {
+            continue;
+        }
+
+        if(ppEnemy[nEnemyNum]->getEnemyDownFlag())
+        {
+            ppEnemy[nEnemyNum]->setEnemyDown();
+        }
+    }
+}
+
+//================================================================================
 // 生成処理
 //================================================================================
 HitChecker* HitChecker::create(EnemyManager* pEnemyManager, ToothManager* pToothManager, PlaqueManager* pPlaqueManager,UIManager* pUIManager)
