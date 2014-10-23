@@ -36,6 +36,7 @@ Enemy::Enemy(void)
     m_nLife = 0;
     m_bDeath = true;
     m_bDown = true;
+    m_bFollowPowder = false;
 }
 
 //================================================================================
