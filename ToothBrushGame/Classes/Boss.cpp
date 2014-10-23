@@ -177,7 +177,7 @@ void Boss::spawnAction(void)
     //攻撃
     if(m_time % 50 == 0)
     {
-        m_pEnemyManager->spawn(1);
+        //m_pEnemyManager->spawn(1);
     }
     m_time--;
 }

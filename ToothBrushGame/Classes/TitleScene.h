@@ -32,7 +32,11 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(TitleScene);
+    
+    void menuButtonAchievements(void);
+    void menuButtonGame(void);
 
+    
 private:
     Point m_touchPos;
     Point m_oldTouchPos;

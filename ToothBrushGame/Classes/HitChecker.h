@@ -40,9 +40,11 @@ public:
 
     static HitChecker* create(EnemyManager* pEnemyManager,ToothManager* pToothManager,PlaqueManager* pPlaqueManager,UIManager* pUIManager);
 
-    void hitCheckSwipe(Rect touchRect,int nDirectionType);
+    void hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowder);
     void hitCheckTap(Rect touchRect);
+    void hitCheckTouchEnded(Rect touchRect,bool bTouchPowder);
 
+    void checkEnemyFollowPowder(Point touchPoint,bool bToothPowder);
     bool checkTapOnMenuBar(Point touchPoint);
 
 private:

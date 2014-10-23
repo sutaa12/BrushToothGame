@@ -197,6 +197,8 @@ void GameMainScene::update(float fTime)
     m_pUIManager->update();
     //エフェクト更新
     m_EffectManager->update();
+
+    m_pHitChecker->checkEnemyFollowPowder(m_touchPos, m_pUIManager->getToothPowder()->getPowderTouchFlag());
     
     if(LifeBar::getLife() <= 0)
     {
@@ -237,6 +239,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     
     m_pUIManager->getToothPowder()->chkPowderTouchFlag(m_touchPos);
+    
     return true;
 }
 
@@ -292,14 +295,33 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     Rect swipeRect;
     swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
                       swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
-    
+
+
+    // 歯磨き粉スプライト座標調整
     if(m_pUIManager->getToothPowder()->getPowderTouchFlag())
     {
-        m_pUIManager->getToothPowder()->setPos(m_touchPos);
+        Rect gameTopRect = m_pUIManager->getGameTopBackSprite()->getBoundingBox();
+        Rect gameBottomRect = m_pUIManager->getGameBottomBackSprite()->getBoundingBox();
+        Rect toothPowderRect = m_pUIManager->getToothPowder()->getSprite()->getBoundingBox();
+        Point workPoint = m_touchPos;
+
+        // ゲーム上部UIに引っかかるなら戻す
+        if(gameTopRect.origin.y < workPoint.y + toothPowderRect.size.height / 2)
+        {
+            workPoint.y = gameTopRect.origin.y - toothPowderRect.size.height / 2;
+        }
+
+        // ゲーム下部UIに引っかかるなら戻す
+        if(gameBottomRect.origin.y + gameBottomRect.size.height > workPoint.y - toothPowderRect.size.height / 2)
+        {
+            workPoint.y = gameBottomRect.origin.y + gameBottomRect.size.height + toothPowderRect.size.height / 2;
+        }
+
+        m_pUIManager->getToothPowder()->setPos(workPoint);
     }
-    
+
     // スワイプ時の当たり判定
-    m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection);
+    m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection,m_pUIManager->getToothPowder()->getPowderTouchFlag());
 }
 
 //================================================================================
@@ -308,6 +330,8 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
 
 void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 {
+    m_pHitChecker->hitCheckTouchEnded(m_pBubbleSprite->getBoundingBox(),m_pUIManager->getToothPowder()->getPowderTouchFlag());
+
     // タッチしていないので泡スプライトを透明に
     m_pBubbleSprite->setOpacity(0);
     
@@ -324,6 +348,8 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 //================================================================================
 void GameMainScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
+    m_pHitChecker->hitCheckTouchEnded(m_pBubbleSprite->getBoundingBox(),m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    
     m_nTimer = 0;
     m_pUIManager->getToothPowder()->disappear();
     

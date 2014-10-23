@@ -47,6 +47,8 @@ public:
     MenuBar* getMenuBar(void){return m_pMenuBar;}
     LifeBar* getLifeBar(void){return m_pLifeBar;}
     ToothPowder* getToothPowder(void){return m_pToothPowder;}
+    Sprite* getGameTopBackSprite(void){return m_pGameTopBack;}
+    Sprite* getGameBottomBackSprite(void){return m_pGameBottomBack;}
 
 private:
     Sprite* m_pGameTopBack;
