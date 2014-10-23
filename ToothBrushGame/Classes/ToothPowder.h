@@ -36,6 +36,7 @@ public:
     
     static ToothPowder* create(Layer* pLayer,const Vec2& pos = Vec2(0.0f,0.0f));
     Sprite* getSprite(void){return m_pSprite;}
+    Sprite* getItemIconSprite(void){return m_pItemIcon;}
     
     void setPos(Vec2 pos);
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
