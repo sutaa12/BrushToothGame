@@ -21,7 +21,7 @@ LifeBar::LifeBar(void)
     m_pSprite = nullptr;
     m_pBackLifeBar = nullptr;
     m_pProgressTimer = nullptr;
-    m_nLife = m_nMaxLife;
+    m_nLife = 100;
 }
 
 //================================================================================
@@ -52,13 +52,14 @@ bool LifeBar::init(void)
     m_pSprite->setPosition(m_pos);
     m_pBackLifeBar->setPosition(m_pos);
     m_pBackLifeBar->setColor(Color3B(100, 100, 100));
-    
+    m_nLife = 100;
+
     m_pLayer->addChild(m_pBackLifeBar);
     //タイマー作成
     m_pProgressTimer = ProgressTimer::create(m_pSprite);
     
     //最初は0パーセント
-    m_pProgressTimer->setPercentage(m_nLife);
+    m_pProgressTimer->setPercentage(0);
     
     //タイマーの形（棒状に設定）
     m_pProgressTimer->setType(ProgressTimer::Type::BAR);
@@ -71,7 +72,7 @@ bool LifeBar::init(void)
     
     //タイマーを配置
     m_pProgressTimer->setPosition(m_pos);
-    m_pProgressTimer->setTag(m_nMaxLife);
+    m_pProgressTimer->setTag(100);
     
     m_pLayer->addChild(m_pProgressTimer);
     // 正常終了
