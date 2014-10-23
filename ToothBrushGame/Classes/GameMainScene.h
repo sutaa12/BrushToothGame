@@ -56,6 +56,8 @@ public:
 private:
     Point m_touchPos;
     Point m_oldTouchPos;
+    Vec3 m_acc;
+    Vec3 m_oldAcc;
     SWIPE_DIRECTION m_swipeDirection;
     SWIPE_DIRECTION m_oldSwipeDirection;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
@@ -84,6 +86,7 @@ private:
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);
     void onTouchEnded(Touch* pTouch,Event* pEvent);
+    void onAcceleration(Acceleration*acc, Event *unused_event);
     
     SWIPE_DIRECTION calcSwipeDirection(float fAngle);
 

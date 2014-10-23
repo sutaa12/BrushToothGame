@@ -99,7 +99,12 @@ bool GameMainScene::init()
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(GameMainScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(GameMainScene::onTouchEnded, this);
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
-    
+
+    // 加速度センサーの有効化
+    Device::setAccelerometerEnabled(true);
+    auto pAccelerometerEventListener = EventListenerAcceleration::create(CC_CALLBACK_2(GameMainScene::onAcceleration, this));
+    this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(pAccelerometerEventListener, this);
+
     //舌ベロ生成
     Sprite* pTonger = Sprite::create(TEX_TONGER_BACK);
     
@@ -353,6 +358,18 @@ void GameMainScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
     m_nTimer = 0;
     m_pUIManager->getToothPowder()->disappear();
     
+}
+
+//================================================================================
+// 加速度センサー割り込み処理
+//================================================================================
+void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
+{
+    m_oldAcc = m_acc;
+    m_acc = Vec3(acc->x,acc->y,acc->z);
+
+    int hoge;
+    hoge = hoge;
 }
 
 //================================================================================
