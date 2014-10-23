@@ -16,6 +16,7 @@
 #include "MenuBar.h"
 #include "LifeBar.h"
 #include "Item.h"
+#include "ToothPowder.h"
 
 //================================================================================
 // コンストラクタ
@@ -39,6 +40,8 @@ UIManager::~UIManager()
     SAFE_DELETE(m_pScore);
     SAFE_DELETE(m_pMenuBar);
     SAFE_DELETE(m_pLifeBar);
+    SAFE_DELETE(m_pToothPowder);
+
 }
 
 //================================================================================
@@ -85,6 +88,9 @@ bool UIManager::init(void)
      **/
     // ライフバー生成  画面左上から計算し直打ち
     m_pLifeBar = LifeBar::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
+    
+    //歯磨き粉アイテム生成処理
+    m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 2,origin.y + 64));
 
     // 正常終了
     return true;

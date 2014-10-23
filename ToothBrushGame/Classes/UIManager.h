@@ -26,6 +26,7 @@ class Score;
 class MenuBar;
 class LifeBar;
 class Item;
+class ToothPowder;
 
 //********************************************************************************
 // クラス宣言
@@ -45,6 +46,7 @@ public:
     Score* getScore(void){return m_pScore;}
     MenuBar* getMenuBar(void){return m_pMenuBar;}
     LifeBar* getLifeBar(void){return m_pLifeBar;}
+    ToothPowder* getToothPowder(void){return m_pToothPowder;}
 
 private:
     Sprite* m_pGameTopBack;
@@ -55,6 +57,8 @@ private:
     LifeBar* m_pLifeBar;
     Layer* m_pLayer;
     static const int GAME_MENU_BOTTOM_Y = 192 / 2;
+    ToothPowder* m_pToothPowder;
+
 };
 
 
