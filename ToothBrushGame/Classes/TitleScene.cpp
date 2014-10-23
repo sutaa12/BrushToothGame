@@ -9,7 +9,7 @@
 #include "TitleScene.h"
 #include "GameMainScene.h"
 
-#include "Enemy.h"
+#include "StageSelect.h"
 
 USING_NS_CC;
 //================================================================================
@@ -44,8 +44,8 @@ bool TitleScene::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     //終了ボタン生成
     auto closeItem = MenuItemImage::create(
@@ -125,7 +125,7 @@ void TitleScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void TitleScene::update(float fTime)
 {
- 
+
 }
 
 //================================================================================
@@ -141,6 +141,11 @@ bool TitleScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     this->removeAllChildren();
     
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+
+//    int nStageMax = 3;
+//
+//    m_pTitleLogo->pause();
+//    this->addChild(StageSelect::createLayer(nStageMax));
 
     return true;
 }

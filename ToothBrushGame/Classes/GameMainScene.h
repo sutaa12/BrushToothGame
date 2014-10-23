@@ -15,12 +15,12 @@ using namespace cocos2d;
 class ToothManager;
 class EnemyManager;
 class PlaqueManager;
-class Boss;
 class HitChecker;
 class UIManager;
 class LifeBar;
 class EffectManager;
 class CountDown;
+class ToothPowder;
 
 class GameMainScene : public cocos2d::Layer
 {
@@ -72,12 +72,9 @@ private:
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;
     
-    Boss* m_pBoss;
-
     int m_nTimer;
     
     bool m_bMove;
-    bool m_bBossDisp;
     
     bool m_bHit;
     

@@ -8,6 +8,8 @@
 
 #ifndef ToothBrushGame_common_h
 #define ToothBrushGame_common_h
+#include <cocos2d.h>
+USING_NS_CC;
 
 //ベクトルの最大値チェック　超えていたら押し戻す
 template <class T1,class T2>
@@ -51,4 +53,15 @@ enum SCENE_LIST
     SCENE_GAME,
     SCENE_RESULT
 };
+
+//定数定義
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 960;
+
+const int SCREN_WIDTH_CENTER = SCREEN_WIDTH / 2;
+const int SCREN_HEIGHT_CENTER = SCREEN_HEIGHT / 2;
+
+const Size SCREEN_SIZE = Size(SCREEN_WIDTH,SCREEN_HEIGHT);
+const Size SCREEN_CENTER = Size(SCREN_WIDTH_CENTER,SCREN_HEIGHT_CENTER);
+
 #endif

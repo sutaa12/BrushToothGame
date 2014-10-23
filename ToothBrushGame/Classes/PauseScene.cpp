@@ -67,7 +67,7 @@ bool PauseScene::init()
     m_pTouchEventOneByOne->onTouchMoved = CC_CALLBACK_2(PauseScene::onTouchMoved,this);
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(PauseScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(PauseScene::onTouchEnded, this);
-    this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 10);
+    this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 1);
 
     // 薄暗いスプライトを作成
     m_pMaskSprite = Sprite::create();
