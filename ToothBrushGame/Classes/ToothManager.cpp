@@ -90,7 +90,6 @@ bool ToothManager::init(void)
     // 下歯茎生成処理
     m_pBottomGum = Gum::create(Vec2(TOOTHMANAGER_DISPLAY_CENTER_X,
                                     m_pBottomTooth->getPos().y - toothSpriteRect.size.height / 2 - gumSpriteRect.size.height / 2));
-    
     // スプライトの登録
     m_pLayer->addChild(m_pBottomGum->getSprite());
  

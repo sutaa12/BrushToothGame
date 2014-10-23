@@ -44,8 +44,8 @@ bool TitleScene::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     //終了ボタン生成
     auto closeItem = MenuItemImage::create(

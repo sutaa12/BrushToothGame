@@ -45,17 +45,16 @@ public:
     Score* getScore(void){return m_pScore;}
     MenuBar* getMenuBar(void){return m_pMenuBar;}
     LifeBar* getLifeBar(void){return m_pLifeBar;}
-    Item* getItem(void){return m_pItem;}
 
 private:
+    Sprite* m_pGameTopBack;
+    Sprite* m_pGameBottomBack;
     
     Score* m_pScore;
     MenuBar* m_pMenuBar;
-
     LifeBar* m_pLifeBar;
-    Item* m_pItem;
-
     Layer* m_pLayer;
+    static const int GAME_MENU_BOTTOM_Y = 192 / 2;
 };
 
 

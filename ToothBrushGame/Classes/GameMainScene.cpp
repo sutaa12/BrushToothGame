@@ -23,6 +23,7 @@
 #include "PauseScene.h"
 #include "Score.h"
 #include "CountDown.h"
+#include "ToothPowder.h"
 USING_NS_CC;
 
 //================================================================================
@@ -34,9 +35,9 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pToothManager);
     SAFE_DELETE(m_pPlaqueManager);
     SAFE_DELETE(m_pUIManager);
-    SAFE_DELETE(m_pBoss);
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
+    SAFE_DELETE(m_pToothPowder);
 }
 
 //================================================================================
@@ -71,8 +72,8 @@ bool GameMainScene::init()
         return false;
     }
     
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     //終了ボタン生成
     auto closeItem = MenuItemImage::create(
@@ -103,19 +104,14 @@ bool GameMainScene::init()
     //舌ベロ生成
     Sprite* pTonger = Sprite::create(TEX_TONGER_BACK);
     
-    pTonger->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 128 - 256));
+    pTonger->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 256 - pTonger->getContentSize().height / 2));
     this->addChild(pTonger);
     
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
     m_bHit = false;
-    m_pPlaqueManager = PlaqueManager::create(200,m_pToothManager->getBottomGum(), this);
+    m_pPlaqueManager = PlaqueManager::create(1,m_pToothManager->getBottomGum(), this);
 
-    
-    m_pBoss = Boss::create(Vec2(350,500));
-    this->addChild(m_pBoss->getSprite());
-    m_pBoss->disappear();
-    
     // タッチ時の判定生成
     m_pBubbleSprite = Sprite::create(TEX_BUBBLE_01);
     m_bubblePos = Vec2(0.0f,0.0f);
@@ -123,9 +119,7 @@ bool GameMainScene::init()
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
 
-    m_pEnemyManager = EnemyManager::create(this,50);
-    //ボスのポインタセット
-    m_pBoss->setEnemyManager(m_pEnemyManager);
+    m_pEnemyManager = EnemyManager::create(this,20);
 
     //================================================================================
     //敵関係はこれより前に生成
@@ -134,7 +128,6 @@ bool GameMainScene::init()
     m_EffectManager = EffectManager::create(this, 0);
     
     //フラグ初期化
-    m_bBossDisp = false;
     m_bMove = false;
     m_touchPos = Point(0.0f,0.0f);
     m_oldTouchPos = m_touchPos;
@@ -149,6 +142,9 @@ bool GameMainScene::init()
     m_pPauseLayer = nullptr;
 
     m_nTimer = 0;
+    
+    //歯磨き粉アイテム生成処理
+    m_pToothPowder = ToothPowder::create(this,Vec2(visibleSize.width / 2,origin.y + 64));
 
     // 生成が終わった後にカウントダウンを生成する
     this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
@@ -196,42 +192,15 @@ void GameMainScene::update(float fTime)
             nPlaqurNum++;
         }
     }
-    if(!m_bBossDisp && nPlaqurNum <= 0)
-    {
-        m_bMove = true;
-        
-        m_pToothManager->moveToothAndGum(1.0f, Vec2(0, 120));
-        
-        // ボス出現判定
-        if(!m_bBossDisp)
-        {
-            //敵を消す
-            m_pEnemyManager->setEnemyClear();
-            // ボスの生成
-            m_bBossDisp = true;
-            m_pBoss->setSpawn(Vec2(350,500));
-        }
-    }
     
     //敵の更新
     m_pEnemyManager->update();
-
-    //ボスの更新
-    if(m_bBossDisp && !m_pBoss->getDisapper())
-    {
-        m_pBoss->update();
-    }
     
     //UI更新
     m_pUIManager->update();
     //エフェクト更新
     m_EffectManager->update();
     
-    //死んでいたら
-    if(m_bBossDisp && m_pBoss->getDisapper())
-    {
-        setResultScene(false);
-    }else
     if(LifeBar::getLife() <= 0)
     {
         setResultScene(true);
@@ -260,7 +229,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
         this->pause();
         return true;
     }
-
+    
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
@@ -270,19 +239,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     
     m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     
-    // ボスが出現しているとき
-    if(m_bBossDisp)
-    {
-        // ボススプライトのサイズ取得
-        Rect bossSpriteRect = m_pBoss->getSprite()->getBoundingBox();
-        
-        // ボス当たり判定
-        if(bossSpriteRect.containsPoint(m_touchPos) && !m_pBoss->getDisapper())
-        {
-            // ボスにダメージ
-            m_pBoss->addDamage();
-        }
-    }
+    m_pToothPowder->chkPowderTouchFlag(m_touchPos);
     return true;
 }
 
@@ -301,9 +258,10 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
-    
-    m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
-    
+    if(m_pToothPowder->getPowderTouchFlag())
+    {
+        m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
+    }
     CCLOG("現タッチ位置(%f,%f)",m_touchPos.x,m_touchPos.y);
     CCLOG("旧タッチ位置(%f,%f)",m_oldTouchPos.x,m_oldTouchPos.y);
     
@@ -338,6 +296,11 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     swipeRect.setRect(m_touchPos.x - swipVec.x - bubbleRect.size.width / 2 ,m_touchPos.y - swipVec.y  - bubbleRect.size.height / 2,
                       swipVec.x + bubbleRect.size.width, swipVec.y + bubbleRect.size.height);
     
+    if(m_pToothPowder->getPowderTouchFlag())
+    {
+        m_pToothPowder->setPos(m_touchPos);
+    }
+    
     // スワイプ時の当たり判定
     m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection);
 }
@@ -353,6 +316,8 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
     
     m_swipeDirection = SWIPE_DIRECTION_NONE;
     
+    m_pToothPowder->disappear();
+    
     m_bHit = false;
     m_nTimer = 0;
 }
@@ -363,6 +328,8 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 void GameMainScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 {
     m_nTimer = 0;
+    m_pToothPowder->disappear();
+    
 }
 
 //================================================================================
