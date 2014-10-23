@@ -9,7 +9,7 @@
 #ifndef __ToothBrushGame__GameMainScene__
 #define __ToothBrushGame__GameMainScene__
 #include "cocos2d.h"
-
+#include "GameDifficult.h"
 using namespace cocos2d;
 
 class ToothManager;
@@ -25,6 +25,16 @@ class ToothPowder;
 class GameMainScene : public cocos2d::Layer
 {
 public:
+    typedef enum
+    {
+        SWIPE_DIRECTION_NONE = 0,
+        SWIPE_DIRECTION_UP,
+        SWIPE_DIRECTION_DOWN,
+        SWIPE_DIRECTION_LEFT,
+        SWIPE_DIRECTION_RIGHT,
+        SWIPE_DIRECTION_MAX,
+    }SWIPE_DIRECTION;
+    
     GameMainScene(){};
     ~GameMainScene();
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -43,17 +53,24 @@ public:
 
     void createCountDown(float fTime);
     
-    typedef enum
-    {
-        SWIPE_DIRECTION_NONE = 0,
-        SWIPE_DIRECTION_UP,
-        SWIPE_DIRECTION_DOWN,
-        SWIPE_DIRECTION_LEFT,
-        SWIPE_DIRECTION_RIGHT,
-        SWIPE_DIRECTION_MAX,
-    }SWIPE_DIRECTION;
-    
 private:
+    //メンバ関数
+    void setResultScene(bool bGameOverFlag = false);
+    
+    //ゲームのフェーズ更新
+    void updateGamePhase(void);
+    //現在のフェーズチェック
+    void chkGamePhase(void);
+    
+    bool onTouchBegin(Touch* pTouch,Event* pEvent);
+    void onTouchMoved(Touch* pTouch,Event* pEvent);
+    void onTouchCancelled(Touch* pTouch,Event* pEvent);
+    void onTouchEnded(Touch* pTouch,Event* pEvent);
+    void onAcceleration(Acceleration*acc, Event *unused_event);
+    static const int SWIPE_PERMISSION_DISTANCE = (3);
+    SWIPE_DIRECTION calcSwipeDirection(float fAngle);
+    
+    //メンバ変数
     Point m_touchPos;
     Point m_oldTouchPos;
     Vec3 m_acc;
@@ -61,9 +78,6 @@ private:
     SWIPE_DIRECTION m_swipeDirection;
     SWIPE_DIRECTION m_oldSwipeDirection;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
-    
-    static const int SWIPE_PERMISSION_DISTANCE = (3);
-    
     ToothManager* m_pToothManager;
     EnemyManager* m_pEnemyManager;
     PlaqueManager* m_pPlaqueManager;
@@ -80,19 +94,13 @@ private:
     bool m_bMove;
     
     bool m_bHit;
-    
-    void setResultScene(bool bGameOverFlag = false);
-    
-    bool onTouchBegin(Touch* pTouch,Event* pEvent);
-    void onTouchMoved(Touch* pTouch,Event* pEvent);
-    void onTouchCancelled(Touch* pTouch,Event* pEvent);
-    void onTouchEnded(Touch* pTouch,Event* pEvent);
-    void onAcceleration(Acceleration*acc, Event *unused_event);
-    
-    SWIPE_DIRECTION calcSwipeDirection(float fAngle);
 
     Layer* m_pPauseLayer;
     Layer* m_pCountDown;
     bool m_bCountDownEnd;
+    
+    int m_nGamePhase;//フェーズ数
+    int m_nGameTime;//ゲーム終了までのタイム
+
 };
 #endif /* defined(__ToothBrushGame__GameMainScene__) */

@@ -24,10 +24,18 @@
 #include "Score.h"
 #include "CountDown.h"
 #include "ToothPowder.h"
+#include "GameDifficult.h"
 USING_NS_CC;
 
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
+#define GAME_TIME_MAX (90)
 
+static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
+{
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,3,15,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,2,30,Point(150,150)},
+};
 //================================================================================
 // デストラクタ
 //================================================================================
@@ -90,6 +98,13 @@ bool GameMainScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
+    Enemy::initEnemyDownNum();
+    
+    //始めるフェーズから
+    m_nGamePhase = PHASE_ONE;
+
+    m_nGameTime = GamePhaseData[m_nGamePhase].spawnTime;//終わりの時間になるまで加算
+    
     // 更新処理の追加
     this->scheduleUpdate();
     
@@ -129,7 +144,7 @@ bool GameMainScene::init()
     m_acc = m_oldAcc;
     m_nShakeCnt = 0;
 
-    m_pEnemyManager = EnemyManager::create(this,20);
+    m_pEnemyManager = EnemyManager::create(this,0);
 
     //================================================================================
     //敵関係はこれより前に生成
@@ -215,8 +230,8 @@ void GameMainScene::update(float fTime)
     {
         setResultScene(true);
     }
-
-m_nTimer++;
+    
+    updateGamePhase();
 
 }
 
@@ -443,4 +458,52 @@ void GameMainScene::createCountDown(float fTime)
     this->pause();
 
     m_bCountDownEnd = false;
+}
+
+//================================================================================
+// ゲームフェーズ更新
+//================================================================================
+void GameMainScene::updateGamePhase(void)
+{
+    m_nTimer++;
+    
+    if(m_nTimer % 60 == 0)
+    {
+        m_nGameTime++;
+    }
+    chkGamePhase();
+}
+//================================================================================
+// ゲームフェーズチェック
+//================================================================================
+void GameMainScene::chkGamePhase(void)
+{
+    int nEnemyDown = 0;
+    
+    if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
+    {
+        m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,GamePhaseData[m_nGamePhase].pos);
+        if(m_nGamePhase <= PHASE_MAX)
+        {
+            m_nGamePhase++;
+        }
+    }
+    
+    for(int nloop = 0; nloop < PHASE_MAX;nloop++)
+    {
+        nEnemyDown += GamePhaseData[nloop].spawn;
+    }
+    int EnemyAll = 0;
+    for(int nloop = 0 ; nloop < Enemy::ENEMY_KIND_LAIR_ONE;nloop++)
+    {
+        EnemyAll = Enemy::getEnemyKindDisappearNum(nloop);
+    }
+    if(  EnemyAll >= nEnemyDown)
+    {
+        setResultScene(true);
+    }else
+    if(m_nGameTime >= GAME_TIME_MAX)
+    {
+        setResultScene(true);
+    }
 }

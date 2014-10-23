@@ -51,7 +51,7 @@ public:
     //敵の個別情報
     struct ENEMY_STATUS
     {
-        Vec2 EnemySpeed;
+        int move;
         int EnemyLife;
     };
     
@@ -100,13 +100,26 @@ public:
     void setFollowPowder(bool bFollow){m_bFollowPowder = bFollow;}
     bool getFollowPowder(void){return m_bFollowPowder;}
     
+    //敵の数取得
+    static int getEnemyKindDownNum(int nEnemyKind){return m_nEnemyDown[nEnemyKind];}
+    static int getEnemyAllDownNum(void){int nEnemyAllNum = 0;for(int nloop = 0; nloop < Enemy::ENEMY_KIND_MAX;nloop++){nEnemyAllNum += m_nEnemyDown[nloop];}return nEnemyAllNum;};
+    //敵の数取得
+    static int getEnemyKindDisappearNum(int nEnemyKind){return m_nEnemyDisappear[nEnemyKind];}
+    static int getEnemyAllDisappearNum(void){int nEnemyAllNum = 0;for(int nloop = 0; nloop < Enemy::ENEMY_KIND_MAX;nloop++){nEnemyAllNum += m_nEnemyDisappear[nloop];}return nEnemyAllNum;};
+    //倒した敵の数を種類分
+    static int m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
+    static int m_nEnemyDisappear[Enemy::ENEMY_KIND_MAX];
+
+    static void initEnemyDownNum(void){for(int nloop = 0; nloop < ENEMY_KIND_MAX;nloop++){m_nEnemyDown[nloop] = 0;m_nEnemyDisappear[nloop] = 0;}}
+
 private:
     void (Enemy::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
     Sprite* m_pSprite;
     Vec2 m_pos;
-    Vec2 m_move;
+    int m_move;
     Vec3 m_rot;
     bool m_bFollowPowder;
+    
     //時間
     int m_time;
     //行動状態
@@ -121,13 +134,8 @@ private:
     //敵の種類
     ENEMY_KIND m_nEnemyKind;
     
-    //敵の数取得
-    static int getEnemyKindDownNum(Enemy::ENEMY_KIND nEnemyKind){return m_nEnemyDown[nEnemyKind];}
-    static int getEnemyAllDownNum(void){int nEnemyAllNum = 0;for(int nloop = 0; nloop < Enemy::ENEMY_KIND_MAX;nloop++){nEnemyAllNum += m_nEnemyDown[nloop];}return nEnemyAllNum;};
-    //倒した敵の数を種類分
-    static int m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
-    static void initEnemyDownNum(void){for(int nloop = 0; nloop < ENEMY_KIND_MAX;nloop++){m_nEnemyDown[nloop] = 0;}}
-
+    float m_fRot;//角度
+    
 //定数
 public:
     //ライフの最大値

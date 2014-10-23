@@ -100,7 +100,7 @@ bool TitleScene::init()
     
     //ボタン生成
     m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
- Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
+    Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
     m_pButton0->runAction(RepeatForever::create(pSequence));
     
     //タップ時のスプライト

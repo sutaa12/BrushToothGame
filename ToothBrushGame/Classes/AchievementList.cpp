@@ -11,6 +11,7 @@
 bool AchievementList::init()
 {
     m_window_size = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    m_window_size.height -= 128;
 
     //画面サイズサイズを取得
     TableView* tableView = TableView::create(this, m_window_size);
@@ -23,6 +24,8 @@ bool AchievementList::init()
     tableView->setDelegate(this);
     m_pLayer->addChild(tableView);
     tableView->reloadData();
+    tableView->setPosition(Vec2(0,128));
+
     
     return true;
 }
@@ -36,14 +39,15 @@ AchievementList* AchievementList::create(Layer* layer)
 
 // セルの大きさを設定する
 Size AchievementList::cellSizeForTable(TableView *table){
-    return Size(m_window_size.width, 25);
+    return Size(m_window_size.width, CELL_SIZE);
 }
 
 // 1セルに表示させるValueをセット
 TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
 {
     std::string id = StringUtils::format("%zd", idx);
-    std::string text = StringUtils::format("Line %zd", idx);
+    std::string Title = StringUtils::format("Title %zd", idx);
+    std::string text = StringUtils::format("Message %zd", idx);
     TableViewCell *cell = table->dequeueCell();
     
     cell = new TableViewCell();
@@ -56,32 +60,32 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     
     Sprite* bg = Sprite::create();
     bg->setAnchorPoint(Point(0, 0));
-    bg->setTextureRect(Rect(0, 0, m_window_size.width, 24));
+    bg->setTextureRect(Rect(0, 0, m_window_size.width, CELL_SIZE));
     bg->setColor(background_color);
     bg->setTag(100);
     cell->addChild(bg);
     
-    // ボーダーライン
-    Sprite* line = Sprite::create();
-    line->setAnchorPoint(Point(0, 0));
-    line->setTextureRect(Rect(0, 0, m_window_size.width, 1));
-    line->setColor(Color3B(0,0,0));
-    cell->addChild(line);
     
     // ID部分
-    auto *label_1 = LabelTTF::create(id.c_str(), "Arial", 20);
+    auto *label_1 = LabelTTF::create(id.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
     label_1->setAnchorPoint(Point(0, 0));
-    label_1->setPosition(Point(50, 0));
+    label_1->setPosition(Point(25,label_1->getContentSize().height / 2));
     label_1->setColor(Color3B(0,0,0));
     cell->addChild(label_1);
     
-    // テキスト部分
-    auto *label_2 = LabelTTF::create(text.c_str(), "Arial", 20);
+    // タイトル部分
+    auto *label_2 = LabelTTF::create(Title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
     label_2->setAnchorPoint(Point(0, 0));
-    label_2->setPosition(Point(100, 0));
+    label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
     label_2->setColor(Color3B(0,0,0));
     cell->addChild(label_2);
     
+    // メッセージ部分
+    auto *label_3 = LabelTTF::create(text.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
+    label_3->setAnchorPoint(Point(0, 0));
+    label_3->setPosition(Point(50 + label_1->getContentSize().width,5));
+    label_3->setColor(Color3B(0,0,0));
+    cell->addChild(label_3);
     return cell;
 }
 

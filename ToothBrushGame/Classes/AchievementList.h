@@ -39,6 +39,9 @@ public:
 private:
     Size m_window_size;
     Layer* m_pLayer;
+    static const int CELL_SIZE = 120;
+    static const int ACHIEVE_TITLE_SIZE = CELL_SIZE / 2;
+    static const int ACHIEVE_MESSAGE_SIZE = CELL_SIZE / 5;
     
 };
 #endif /* defined(__ToothBrushGame__AchievementList__) */

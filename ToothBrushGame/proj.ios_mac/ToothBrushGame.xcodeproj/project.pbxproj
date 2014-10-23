@@ -125,7 +125,6 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		C31B643519F8C58F00A8D67A /* AchievementsScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C31B643319F8C58F00A8D67A /* AchievementsScene.cpp */; };
 		C32E525019F8E6A300A93F0E /* AchievementList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E524E19F8E6A300A93F0E /* AchievementList.cpp */; };
-		C32E525319F8E6C400A93F0E /* AchievementListManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */; };
 		C32E525819F8FE4400A93F0E /* AchievementDataBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E525619F8FE4400A93F0E /* AchievementDataBase.cpp */; };
 		C32E525F19F8FF0D00A93F0E /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = C32E525E19F8FF0D00A93F0E /* sqlite3.c */; };
 		C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */; };
@@ -382,6 +381,7 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		6101C49819F98B5F00D3325A /* GameDifficult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameDifficult.h; path = ../Classes/GameDifficult.h; sourceTree = "<group>"; };
 		6193EE2519F4120C00E98E07 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
 		6193EE2619F4120C00E98E07 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		6193EE3119F4174C00E98E07 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = ../Classes/ResultScene.cpp; sourceTree = "<group>"; };
@@ -425,8 +425,6 @@
 		C31B643419F8C58F00A8D67A /* AchievementsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementsScene.h; path = ../Classes/AchievementsScene.h; sourceTree = "<group>"; };
 		C32E524E19F8E6A300A93F0E /* AchievementList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementList.cpp; path = ../Classes/AchievementList.cpp; sourceTree = "<group>"; };
 		C32E524F19F8E6A300A93F0E /* AchievementList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementList.h; path = ../Classes/AchievementList.h; sourceTree = "<group>"; };
-		C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementListManager.cpp; path = ../Classes/AchievementListManager.cpp; sourceTree = "<group>"; };
-		C32E525219F8E6C400A93F0E /* AchievementListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementListManager.h; path = ../Classes/AchievementListManager.h; sourceTree = "<group>"; };
 		C32E525619F8FE4400A93F0E /* AchievementDataBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchievementDataBase.cpp; path = ../Classes/AchievementDataBase.cpp; sourceTree = "<group>"; };
 		C32E525719F8FE4400A93F0E /* AchievementDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchievementDataBase.h; path = ../Classes/AchievementDataBase.h; sourceTree = "<group>"; };
 		C32E525C19F8FF0D00A93F0E /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3ext.h; path = ../Classes/sqlite3ext.h; sourceTree = "<group>"; };
@@ -871,6 +869,7 @@
 				C36E0B5119F0C5F100E5040C /* HitChecker.h */,
 				187E1D1119F4E0E5000B2A38 /* CountDown.cpp */,
 				187E1D1219F4E0E5000B2A38 /* CountDown.h */,
+				6101C49819F98B5F00D3325A /* GameDifficult.h */,
 			);
 			name = GameSystem;
 			sourceTree = "<group>";
@@ -901,8 +900,6 @@
 		C32E524819F8CDDD00A93F0E /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				C32E525119F8E6C400A93F0E /* AchievementListManager.cpp */,
-				C32E525219F8E6C400A93F0E /* AchievementListManager.h */,
 				C32E525619F8FE4400A93F0E /* AchievementDataBase.cpp */,
 				C32E525719F8FE4400A93F0E /* AchievementDataBase.h */,
 			);
@@ -1249,7 +1246,6 @@
 				C36E0AF619F0C43500E5040C /* EnemyManager.cpp in Sources */,
 				6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */,
 				C36E0AFE19F0C43500E5040C /* Number.cpp in Sources */,
-				C32E525319F8E6C400A93F0E /* AchievementListManager.cpp in Sources */,
 				C36E0AF419F0C43500E5040C /* EffectManager.cpp in Sources */,
 				6193EE7619F7F03500E98E07 /* CharacterStatus.cpp in Sources */,
 				6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */,
