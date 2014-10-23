@@ -8,6 +8,7 @@
 #include "TextureFile.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
+#include "AchievementsScene.h"
 
 #include "StageSelect.h"
 
@@ -92,16 +93,70 @@ bool TitleScene::init()
     m_pTitleCharacter->setPosition(Vec2(m_pTitleCharacter->getContentSize().width / 2,visibleSize.height - m_pTitleCharacter->getContentSize().height / 2));
     this->addChild(m_pTitleCharacter);
 
+    
+    //ボタン表示
+    MenuItemSprite* pButtonRetry;
+    MenuItemSprite* pButtonTitle;
+    
     //ボタン生成
     m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
-    m_pButton0->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
-    Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
+ Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
     m_pButton0->runAction(RepeatForever::create(pSequence));
-    this->addChild(m_pButton0);
+    
+    //タップ時のスプライト
+    Sprite* pSelectedSprite = Sprite::create(TEX_BUTTON_TOUCH_START);
+    pSelectedSprite->setColor(Color3B(255,200,200));
 
+    pButtonRetry = MenuItemSprite::create(m_pButton0,pSelectedSprite,CC_CALLBACK_0(TitleScene::menuButtonGame,this));
+    
+    Menu* pButton = Menu::create(pButtonRetry,NULL);
+    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
+    addChild(pButton);
+    
+    //タイトルボタン
+    //タップ前のスプライト
+    Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    pNormalSprite2->setColor(Color3B(150,150,250));
+    
+    pNormalSprite2->setOpacity(180);
+    
+    //タップ時のスプライト
+    Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    pSelectedSprite2->setColor(Color3B(200,200,255));
+    
+    pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(TitleScene::menuButtonAchievements,this));
+    
+    pButton = Menu::create(pButtonTitle,NULL);
+    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
+    addChild(pButton);
+    
     return true;
 }
+//================================================================================
+// 実績移動
+//================================================================================
 
+void TitleScene::menuButtonAchievements(void)
+{
+    this->getEventDispatcher()->removeAllEventListeners();
+    this->removeAllChildren();
+    
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,AchievementsScene::createScene(),Color3B::WHITE));
+
+}
+
+//================================================================================
+// ゲーム移動
+//================================================================================
+
+void TitleScene::menuButtonGame(void)
+{
+    this->getEventDispatcher()->removeAllEventListeners();
+    this->removeAllChildren();
+    
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+    
+}
 //================================================================================
 // ゲーム終了処理
 //================================================================================
@@ -125,7 +180,7 @@ void TitleScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void TitleScene::update(float fTime)
 {
-
+    
 }
 
 //================================================================================
@@ -136,11 +191,6 @@ bool TitleScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-
-    this->getEventDispatcher()->removeAllEventListeners();
-    this->removeAllChildren();
-    
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
 
 //    int nStageMax = 3;
 //

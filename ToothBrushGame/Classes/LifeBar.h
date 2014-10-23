@@ -58,5 +58,6 @@ private:
     Vec3 m_rot;
     static int m_nLife;
     Layer* m_pLayer;
+    int m_nMaxLife;
 };
 #endif /* defined(__ToothBrushGame__LifeBar__) */

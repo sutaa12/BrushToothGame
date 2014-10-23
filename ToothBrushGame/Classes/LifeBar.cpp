@@ -11,7 +11,7 @@
 #include "TextureFile.h"
 #include "Sound.h"
 #include "LifeBar.h"
-int LifeBar::m_nLife = 100;
+int LifeBar::m_nLife = 0;
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -21,7 +21,7 @@ LifeBar::LifeBar(void)
     m_pSprite = nullptr;
     m_pBackLifeBar = nullptr;
     m_pProgressTimer = nullptr;
-    m_nLife = 100;
+    m_nLife = m_nMaxLife;
 }
 
 //================================================================================
@@ -71,7 +71,7 @@ bool LifeBar::init(void)
     
     //タイマーを配置
     m_pProgressTimer->setPosition(m_pos);
-    m_pProgressTimer->setTag(100);
+    m_pProgressTimer->setTag(m_nMaxLife);
     
     m_pLayer->addChild(m_pProgressTimer);
     // 正常終了
