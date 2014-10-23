@@ -144,7 +144,7 @@ bool GameMainScene::init()
     m_nTimer = 0;
     
     //歯磨き粉アイテム生成処理
-    m_pToothPowder = ToothPowder::create(this);
+    m_pToothPowder = ToothPowder::create(this,Vec2(visibleSize.width / 2,origin.y + 64));
 
     // 生成が終わった後にカウントダウンを生成する
     this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
@@ -258,9 +258,10 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
-    
-    m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
-    
+    if(m_pToothPowder->getPowderTouchFlag())
+    {
+        m_EffectManager->spawn(10,m_touchPos,Color3B(220,220,255));
+    }
     CCLOG("現タッチ位置(%f,%f)",m_touchPos.x,m_touchPos.y);
     CCLOG("旧タッチ位置(%f,%f)",m_oldTouchPos.x,m_oldTouchPos.y);
     

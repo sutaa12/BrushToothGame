@@ -84,7 +84,7 @@ bool UIManager::init(void)
      *  UI LifeBar Generation
      **/
     // ライフバー生成  画面左上から計算し直打ち
-    m_pLifeBar = LifeBar::create(m_pLayer,Vec2(320, visibleSize.height - 704 - 16));
+    m_pLifeBar = LifeBar::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
 
     // 正常終了
     return true;

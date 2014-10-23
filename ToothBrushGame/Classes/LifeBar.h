@@ -34,7 +34,7 @@ public:
     void update(void);
     
     static LifeBar* create(Layer* layer,const Vec2& pos = Vec2(0.0f,0.0f));
-    Sprite* getSprite(void){return m_pSprite;}
+    Sprite* getSprite(void){return m_pBackLifeBar;}
     
     void setPos(Vec2 pos){m_pos = pos;}
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
