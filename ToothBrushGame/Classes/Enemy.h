@@ -96,13 +96,17 @@ public:
     void addDamage(int nDamage = 1);
     //倒れたフラグを拾う
     bool getEnemyDownFlag(void){return m_bDown;}
-
+    
+    void setFollowPowder(bool bFollow){m_bFollowPowder = bFollow;}
+    bool getFollowPowder(void){return m_bFollowPowder;}
+    
 private:
     void (Enemy::*m_pFunc[ACTION_MAX])();	// 関数ポインタ
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec2 m_move;
     Vec3 m_rot;
+    bool m_bFollowPowder;
     //時間
     int m_time;
     //行動状態
