@@ -45,6 +45,7 @@ public:
     void hitCheckTouchEnded(Rect touchRect,bool bTouchPowder);
 
     void checkEnemyFollowPowder(Point touchPoint,bool bToothPowder);
+    void checkEnemyDown(void);
     bool checkTapOnMenuBar(Point touchPoint);
 
 private:

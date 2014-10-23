@@ -75,6 +75,7 @@ private:
     Vec2 m_bubblePos;
     
     int m_nTimer;
+    int m_nShakeCnt;
     
     bool m_bMove;
     

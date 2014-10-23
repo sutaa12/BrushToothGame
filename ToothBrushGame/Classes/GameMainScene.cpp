@@ -26,6 +26,8 @@
 #include "ToothPowder.h"
 USING_NS_CC;
 
+#define SHAKE_PERMISSION_DISTANCE (0.3f)
+
 //================================================================================
 // デストラクタ
 //================================================================================
@@ -122,6 +124,10 @@ bool GameMainScene::init()
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
     this->addChild(m_pBubbleSprite);
+
+    m_acc = Vec3(0,0,0);
+    m_acc = m_oldAcc;
+    m_nShakeCnt = 0;
 
     m_pEnemyManager = EnemyManager::create(this,20);
 
@@ -368,8 +374,19 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     m_oldAcc = m_acc;
     m_acc = Vec3(acc->x,acc->y,acc->z);
 
-    int hoge;
-    hoge = hoge;
+    Vec3 work = m_acc - m_oldAcc;
+    float fDistance = (work.x * work.x + work.y * work.y + work.z * work.z);
+
+    if(fDistance > SHAKE_PERMISSION_DISTANCE)
+    {
+        m_nShakeCnt++;
+    }
+
+    if(m_nShakeCnt > 3)
+    {
+        m_pHitChecker->checkEnemyDown();
+        m_nShakeCnt = 0;
+    }
 }
 
 //================================================================================
