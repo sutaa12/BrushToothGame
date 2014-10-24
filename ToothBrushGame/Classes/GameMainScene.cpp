@@ -22,6 +22,7 @@
 #include "TitleScene.h"
 #include "PauseScene.h"
 #include "Score.h"
+#include "Sound.h"
 #include "CountDown.h"
 #include "ToothPowder.h"
 #include "GameDifficult.h"
@@ -239,6 +240,8 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // ポーズメニューを開く
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
+        //SE
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         m_pPauseLayer = PauseScene::createLayer();
         this->addChild(m_pPauseLayer);
         this->pause();

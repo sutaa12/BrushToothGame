@@ -9,6 +9,7 @@
 #include "PauseScene.h"
 #include "GameMainScene.h"
 #include "TitleScene.h"
+#include "Sound.h"
 
 USING_NS_CC;
 //================================================================================
@@ -134,6 +135,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect returnGameSpriteRect = m_pReturnGameSprite->getBoundingBox();
     if(returnGameSpriteRect.containsPoint(m_touchPos))
     {
+        //SE
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         returnGame();
         return true;
     }
@@ -141,6 +144,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect retryGameSpriteRect = m_pRetryGameSprite->getBoundingBox();
     if(retryGameSpriteRect.containsPoint(m_touchPos))
     {
+        //SE
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         retryGame();
         return true;
     }
@@ -148,6 +153,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect returnTitleSpriteRect = m_pReturnTitleSprite->getBoundingBox();
     if(returnTitleSpriteRect.containsPoint(m_touchPos))
     {
+        //SE
+        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         returnTitle();
         return true;
     }
