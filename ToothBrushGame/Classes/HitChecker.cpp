@@ -88,6 +88,8 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
 void HitChecker::hitCheckTap(Rect touchRect)
 {
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
+    Point point = touchRect.origin;
+    point += touchRect.size / 2;
 
     for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
     {
@@ -106,7 +108,8 @@ void HitChecker::hitCheckTap(Rect touchRect)
         Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
 
         // 当たり判定
-        if(enemyRect.intersectsRect(touchRect))
+        //if(enemyRect.intersectsRect(touchRect))
+        if(enemyRect.containsPoint(point))
         {
             ppEnemy[nEnemyNum]->addDamage();
         }
