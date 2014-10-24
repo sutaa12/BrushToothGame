@@ -31,12 +31,12 @@ USING_NS_CC;
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
-    {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(150,200)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(200,150)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(150,250)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,600)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(200,300)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,400)},
 };
 //================================================================================
 // デストラクタ
@@ -468,8 +468,6 @@ void GameMainScene::updateGamePhase(void)
 //================================================================================
 void GameMainScene::chkGamePhase(void)
 {
-    int nEnemyDown = 0;
-    
     if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
     {
         m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,GamePhaseData[m_nGamePhase].pos);
@@ -478,15 +476,19 @@ void GameMainScene::chkGamePhase(void)
             m_nGamePhase++;
         }
     }
-    
+    int nEnemyDown = 0;
+
     for(int nloop = 0; nloop < PHASE_MAX;nloop++)
     {
-        nEnemyDown += GamePhaseData[nloop].spawn;
+        if(GamePhaseData[nloop].enemykind < Enemy::ENEMY_KIND_LAIR_ONE)
+        {
+            nEnemyDown += GamePhaseData[nloop].spawn;
+        }
     }
     int EnemyAll = 0;
     for(int nloop = 0 ; nloop < Enemy::ENEMY_KIND_LAIR_ONE;nloop++)
     {
-        EnemyAll = Enemy::getEnemyKindDisappearNum(nloop);
+        EnemyAll = Enemy::getEnemyKindDownNum(nloop);
     }
     if(  EnemyAll >= nEnemyDown)
     {
