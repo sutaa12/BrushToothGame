@@ -500,7 +500,7 @@ void GameMainScene::chkGamePhase(void)
     }
     if(  EnemyAll >= nEnemyDown)
     {
-        setResultScene(true);
+        setResultScene(false);
     }else
     if(m_nGameTime >= GAME_TIME_MAX)
     {

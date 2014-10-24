@@ -216,13 +216,13 @@ void Enemy::addDamage(int nDamage)
 //================================================================================
 void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
 {
+    m_pSprite->stopAllActions();
     m_nEnemyKind = nEnemyKind;
     m_fRot = RandomMT::getRandom(-DATA_PI, DATA_PI);
     m_move = ENEMY_STATUS_LIST[m_nEnemyKind].move;
     m_bDeath = false;
     m_pos = pos;
     m_pSprite->setPosition(pos);
-    m_pSprite->setOpacity(255);
     m_nLife = ENEMY_STATUS_LIST[m_nEnemyKind].EnemyLife;
 
     m_bDown = false;
@@ -230,6 +230,9 @@ void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
     m_pSprite->setColor(Color3B(255,255,255));
     m_bFollowPowder = false;
     m_time = 0;
+    Sequence* pSequence = Sequence::create(ScaleTo::create(0.01f,0.01),ScaleTo::create(0.5f,1.0), NULL);
+    m_pSprite->runAction(Spawn::create(FadeIn::create(0.5),pSequence, NULL));
+
 
 }
 //================================================================================
@@ -263,17 +266,13 @@ void Enemy::setEnemyDown(void)
     m_nLife = 0;
     m_bDeath = true;
     m_bDown = true;
-    unsigned short uOpacity = m_pSprite->getOpacity();
-    if(uOpacity >= 0)
-    {
-        uOpacity = 0;
-    }
-    m_pSprite->setOpacity(uOpacity);
+    
     m_nEnemyDown[m_nEnemyKind]++;
     m_pSprite->stopAllActions();
     m_time = 0;
     m_bFollowPowder = false;
-
-
+    m_pSprite->runAction(Spawn::create(FadeOut::create(1.0),MoveBy::create(1.5, Vec2(0,-500)), NULL));
+    
+    
 }
 

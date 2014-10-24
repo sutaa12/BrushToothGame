@@ -118,8 +118,7 @@ private:
     Vec2 m_pos;
     int m_move;
     Vec3 m_rot;
-    bool m_bFollowPowder;
-    
+    bool m_bFollowPowder;    
     //時間
     int m_time;
     //行動状態

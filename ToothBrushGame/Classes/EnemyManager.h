@@ -66,6 +66,9 @@ private:
     int m_nTime;
     
     int m_nTimeSpan;
+    
+    int m_nSpriteMax;
+    int m_nSpriteMin;
 
 };
 

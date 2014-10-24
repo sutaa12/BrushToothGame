@@ -56,6 +56,10 @@ bool EnemyManager::init(void)
         m_pLayer->addChild(m_pEnemy[nloop]->getSprite());
         
     }
+    m_nSpriteMin = m_pEnemy[0]->getSprite()->getZOrder();
+    
+    m_nSpriteMax = m_pEnemy[ENEMY_MAX - 1]->getSprite()->getZOrder();
+
     // 正常終了
     return true;
 }
@@ -111,7 +115,7 @@ void EnemyManager::spawn(Enemy::ENEMY_KIND nEnemyKind,int nSpawnNum,Vec2 pos)
 
     clampf(nSpawnNum, 0, ENEMY_MAX);
     int nEnemyNum = 0;
-    for(int nloop = 0;nloop < ENEMY_MAX;nloop++)
+    for(int nloop = ENEMY_MAX - 1 ;nloop >= 0 ;nloop--)
     {
         if(m_pEnemy[nloop]->getEnemyDownFlag())
         {

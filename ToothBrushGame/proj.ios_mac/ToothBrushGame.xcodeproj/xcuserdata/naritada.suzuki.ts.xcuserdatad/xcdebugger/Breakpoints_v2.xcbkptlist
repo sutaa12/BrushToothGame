@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "Enemy::attackAction(void)"
+            landmarkName = "Enemy::moveAction(void)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -222,9 +222,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "Enemy::update(void)"
-            landmarkType = "5">
+            endingLineNumber = "104">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -239,7 +237,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "99"
             endingLineNumber = "99"
-            landmarkName = "Enemy::update(void)"
+            landmarkName = "Enemy::disappear(void)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -271,7 +269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "263"
             endingLineNumber = "263"
-            landmarkName = "GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)"
+            landmarkName = "GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
