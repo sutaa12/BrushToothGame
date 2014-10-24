@@ -53,7 +53,7 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
     Rect powderSprite = m_pUIManager->getToothPowder()->getItemIconSprite()->getBoundingBox();
     Vec2 powderSpritePos = powderSprite.origin + powderSprite.size / 2;
 
-    for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
+    for(int nEnemyNum = EnemyManager::ENEMY_MAX - 1;nEnemyNum >= 0;nEnemyNum--)
     {
         // 使われていないならスキップ
         if(ppEnemy[nEnemyNum] == nullptr)
@@ -91,7 +91,7 @@ void HitChecker::hitCheckTap(Rect touchRect)
     Point point = touchRect.origin;
     point += touchRect.size / 2;
 
-    for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
+    for(int nEnemyNum = EnemyManager::ENEMY_MAX - 1;nEnemyNum >= 0;nEnemyNum--)
     {
         // 使われていないならスキップ
         if(ppEnemy[nEnemyNum] == nullptr)
@@ -99,20 +99,29 @@ void HitChecker::hitCheckTap(Rect touchRect)
             continue;
         }
 
-        // 既に死んでいるならスキップ
-        if(ppEnemy[nEnemyNum]->getDisapper())
+        // 既に消えているならスキップ
+        if(ppEnemy[nEnemyNum]->getEnemyDownFlag())
         {
             continue;
         }
 
         Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
 
-        // 当たり判定
-        //if(enemyRect.intersectsRect(touchRect))
-        if(enemyRect.containsPoint(point))
+        // 当たっていなかったらスキップ
+        if(!enemyRect.containsPoint(point))
         {
-            ppEnemy[nEnemyNum]->addDamage();
+            continue;
         }
+
+        // 既に死んでいるなら当たり判定を終了する
+        if(ppEnemy[nEnemyNum]->getDisapper())
+        {
+            return;
+        }
+
+        ppEnemy[nEnemyNum]->addDamage();
+
+        return;
     }
 }
 
