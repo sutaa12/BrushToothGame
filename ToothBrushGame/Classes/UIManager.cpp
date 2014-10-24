@@ -97,8 +97,8 @@ bool UIManager::init(void)
 
     // キャラクター生成。下部UIの右下から計算
     Rect bottomUIRect = m_pGameBottomBack->getBoundingBox();
-    Vec2 bottomUIPos = Vec2(bottomUIRect.origin.x + bottomUIRect.size.width,bottomUIRect.origin.y);
-    m_pCharacterStatus = CharacterStatus::create(bottomUIPos,CharacterStatus::PATTERN_CRY);
+    Vec2 characterDispPos = Vec2(origin.x + bottomUIRect.size.width,origin.y);
+    m_pCharacterStatus = CharacterStatus::create(characterDispPos,CharacterStatus::CHARACTERSTATUS_PATTERN_CRY);
     m_pLayer->addChild(m_pCharacterStatus->getSprite());
 
     // 正常終了
