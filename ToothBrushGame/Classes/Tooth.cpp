@@ -33,7 +33,7 @@ Tooth::~Tooth()
 bool Tooth::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_TOOTH_TOP);
+    m_pSprite = Sprite::create();
     
     // エラーチェック
     if(m_pSprite == nullptr)

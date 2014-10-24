@@ -40,24 +40,14 @@ public:
     
     static ToothManager* create(const Vec2& startLeftTopPos,Layer* layer);
     
-    Tooth* getTopTooth(void){return m_pTopTooth;}
-    Tooth* getBootomTooth(void){return m_pBottomTooth;}
-    Gum* getTopGum(void){return m_pTopGum;}
-    Gum* getBottomGum(void){return m_pBottomGum;}
-    
-    void addTopGumPosAndTopToothPos(const Vec2& vec);
-    void addBottomGumPosAndBottomToothPos(const Vec2& vec);
-    void moveToothAndGum(float time, Vec2 pos);
+    Sprite* getToothSprite(void){return m_pTooth;}
+    Sprite* getTongerSprite(void){return m_pTonger;}
     
 private:
     Vec2 m_startLeftTopPos;
-
-    Tooth* m_pTopTooth;
-    Tooth* m_pBottomTooth;
-    
-    Gum* m_pTopGum;
-    Gum* m_pBottomGum;
-    
     Layer* m_pLayer;
+    
+    Sprite* m_pTonger;
+    Sprite* m_pTooth;
 };
 #endif /* defined(__test__ToothManager__) */

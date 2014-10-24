@@ -59,6 +59,8 @@ bool ToothPowder::init(void)
     
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
+    m_pSprite->setScale(2.0f,1.5f);
+
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);
     

@@ -10,13 +10,12 @@
 #define ToothBrushGame_TextureFile_h
 
 //歯関係
-#define TEX_TOOTH_TOP ("tooth_01.png")
-#define TEX_TOOTH_BOTTOM ("tooth_01.png")
-#define TEX_GUM_TOP ("haguki.png")
-#define TEX_GUM_BOTTOM ("haguki.png")
 #define TEX_TONGER_BACK ("tongue.png")
+#define TEX_TOOTH_FRONT ("Tooth.png")
 //敵関係
-#define TEX_ENEMY_WAIT_01 ("Enemy.png")
+#define TEX_ENEMY_WAIT_00 ("VirusNormalWait0.png")
+#define TEX_ENEMY_WAIT_01 ("virusNormalWait1.png")
+#define TEX_ENEMY_LAIR_WAIT_00 ("VirusLairWait0.png")
 #define TEX_PLAQUE_WAIT_01 ("Plaque.png")
 #define TEX_BOSS_WAIT_01 ("Boss.png")
 

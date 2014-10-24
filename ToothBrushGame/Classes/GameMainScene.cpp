@@ -28,13 +28,16 @@
 USING_NS_CC;
 
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
-#define GAME_TIME_MAX (90)
+#define GAME_TIME_MAX (70)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
     {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,3,15,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,2,30,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(150,150)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,150)},
 };
 //================================================================================
 // デストラクタ
@@ -121,17 +124,11 @@ bool GameMainScene::init()
     Device::setAccelerometerEnabled(true);
     auto pAccelerometerEventListener = EventListenerAcceleration::create(CC_CALLBACK_2(GameMainScene::onAcceleration, this));
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(pAccelerometerEventListener, this);
-
-    //舌ベロ生成
-    Sprite* pTonger = Sprite::create(TEX_TONGER_BACK);
-    
-    pTonger->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 256 - pTonger->getContentSize().height / 2));
-    this->addChild(pTonger);
     
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::create(Vec2(0.0f,visibleSize.height - 64),this);
+    m_pToothManager = ToothManager::create(Vec2(visibleSize.width / 2,visibleSize.height - 128),this);
     m_bHit = false;
-    m_pPlaqueManager = PlaqueManager::create(1,m_pToothManager->getBottomGum(), this);
+    m_pPlaqueManager = PlaqueManager::create(1,m_pToothManager->getToothSprite(), this);
 
     // タッチ時の判定生成
     m_pBubbleSprite = Sprite::create(TEX_BUBBLE_01);
@@ -145,7 +142,6 @@ bool GameMainScene::init()
     m_nShakeCnt = 0;
 
     m_pEnemyManager = EnemyManager::create(this,0);
-
     //================================================================================
     //敵関係はこれより前に生成
     

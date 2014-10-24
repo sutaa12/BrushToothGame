@@ -107,7 +107,6 @@
 		6193EE5B19F5B43D00E98E07 /* TitleChara.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4919F5B43D00E98E07 /* TitleChara.png */; };
 		6193EE5C19F5B43D00E98E07 /* TitleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4A19F5B43D00E98E07 /* TitleLogo.png */; };
 		6193EE5D19F5B43D00E98E07 /* Tooth.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4B19F5B43D00E98E07 /* Tooth.png */; };
-		6193EE5E19F5B43D00E98E07 /* tooth_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4C19F5B43D00E98E07 /* tooth_01.png */; };
 		6193EE5F19F5B43D00E98E07 /* UI_Item.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4D19F5B43D00E98E07 /* UI_Item.png */; };
 		6193EE6019F5B43D00E98E07 /* UI_ScoreAndMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE4E19F5B43D00E98E07 /* UI_ScoreAndMenu.png */; };
 		6193EE6619F5B54000E98E07 /* se_plaque_down_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE6319F5B54000E98E07 /* se_plaque_down_1.mp3 */; };
@@ -127,6 +126,9 @@
 		C32E525019F8E6A300A93F0E /* AchievementList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E524E19F8E6A300A93F0E /* AchievementList.cpp */; };
 		C32E525819F8FE4400A93F0E /* AchievementDataBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C32E525619F8FE4400A93F0E /* AchievementDataBase.cpp */; };
 		C32E525F19F8FF0D00A93F0E /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = C32E525E19F8FF0D00A93F0E /* sqlite3.c */; };
+		C32E526819FA0C9300A93F0E /* VirusLairWait0.png in Resources */ = {isa = PBXBuildFile; fileRef = C32E526519FA0C9300A93F0E /* VirusLairWait0.png */; };
+		C32E526919FA0C9300A93F0E /* VirusNormalWait0.png in Resources */ = {isa = PBXBuildFile; fileRef = C32E526619FA0C9300A93F0E /* VirusNormalWait0.png */; };
+		C32E526A19FA0C9300A93F0E /* virusNormalWait1.png in Resources */ = {isa = PBXBuildFile; fileRef = C32E526719FA0C9300A93F0E /* virusNormalWait1.png */; };
 		C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */; };
 		C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C33B331019F5FE3500DEDAF8 /* RankObject.cpp */; };
 		C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */ = {isa = PBXBuildFile; fileRef = C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */; };
@@ -403,7 +405,6 @@
 		6193EE4919F5B43D00E98E07 /* TitleChara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TitleChara.png; sourceTree = "<group>"; };
 		6193EE4A19F5B43D00E98E07 /* TitleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TitleLogo.png; sourceTree = "<group>"; };
 		6193EE4B19F5B43D00E98E07 /* Tooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tooth.png; sourceTree = "<group>"; };
-		6193EE4C19F5B43D00E98E07 /* tooth_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tooth_01.png; sourceTree = "<group>"; };
 		6193EE4D19F5B43D00E98E07 /* UI_Item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UI_Item.png; sourceTree = "<group>"; };
 		6193EE4E19F5B43D00E98E07 /* UI_ScoreAndMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UI_ScoreAndMenu.png; sourceTree = "<group>"; };
 		6193EE6319F5B54000E98E07 /* se_plaque_down_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_plaque_down_1.mp3; sourceTree = "<group>"; };
@@ -430,6 +431,9 @@
 		C32E525C19F8FF0D00A93F0E /* sqlite3ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3ext.h; path = ../Classes/sqlite3ext.h; sourceTree = "<group>"; };
 		C32E525D19F8FF0D00A93F0E /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = ../Classes/sqlite3.h; sourceTree = "<group>"; };
 		C32E525E19F8FF0D00A93F0E /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sqlite3.c; path = ../Classes/sqlite3.c; sourceTree = "<group>"; };
+		C32E526519FA0C9300A93F0E /* VirusLairWait0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusLairWait0.png; sourceTree = "<group>"; };
+		C32E526619FA0C9300A93F0E /* VirusNormalWait0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusNormalWait0.png; sourceTree = "<group>"; };
+		C32E526719FA0C9300A93F0E /* virusNormalWait1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = virusNormalWait1.png; sourceTree = "<group>"; };
 		C33B330B19F5FDDD00DEDAF8 /* RankManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankManager.cpp; path = ../Classes/RankManager.cpp; sourceTree = "<group>"; };
 		C33B330C19F5FDDD00DEDAF8 /* RankManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RankManager.h; path = ../Classes/RankManager.h; sourceTree = "<group>"; };
 		C33B331019F5FE3500DEDAF8 /* RankObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RankObject.cpp; path = ../Classes/RankObject.cpp; sourceTree = "<group>"; };
@@ -785,6 +789,9 @@
 				C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */,
 				C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */,
 				6193EE6919F5BDB600E98E07 /* ButtonTouchStart.png */,
+				C32E526519FA0C9300A93F0E /* VirusLairWait0.png */,
+				C32E526619FA0C9300A93F0E /* VirusNormalWait0.png */,
+				C32E526719FA0C9300A93F0E /* virusNormalWait1.png */,
 				6193EE3D19F5B43D00E98E07 /* Boss.png */,
 				6193EE3E19F5B43D00E98E07 /* bubble_01.png */,
 				6193EE4019F5B43D00E98E07 /* CloseNormal.png */,
@@ -799,7 +806,6 @@
 				6193EE4919F5B43D00E98E07 /* TitleChara.png */,
 				6193EE4A19F5B43D00E98E07 /* TitleLogo.png */,
 				6193EE4B19F5B43D00E98E07 /* Tooth.png */,
-				6193EE4C19F5B43D00E98E07 /* tooth_01.png */,
 				6193EE4D19F5B43D00E98E07 /* UI_Item.png */,
 				6193EE4E19F5B43D00E98E07 /* UI_ScoreAndMenu.png */,
 			);
@@ -1130,6 +1136,7 @@
 				184AA5AC19F63E4F0058E024 /* se_swipe_1.mp3 in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
+				C32E526819FA0C9300A93F0E /* VirusLairWait0.png in Resources */,
 				6193EE6719F5B54000E98E07 /* decision.mp3 in Resources */,
 				6193EE6619F5B54000E98E07 /* se_plaque_down_1.mp3 in Resources */,
 				184AA5AD19F63E4F0058E024 /* se_swipe_2.wav in Resources */,
@@ -1177,6 +1184,7 @@
 				6193EE5619F5B43D00E98E07 /* hpbar.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				185830A019F64BE300A0A703 /* bgm_boss_scene_3.mp3 in Resources */,
+				C32E526A19FA0C9300A93F0E /* virusNormalWait1.png in Resources */,
 				184AA5D919F63EE50058E024 /* se_enemy_down_3.mp3 in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				184AA5D819F63EE50058E024 /* se_button_1.mp3 in Resources */,
@@ -1193,10 +1201,10 @@
 				184AA5E619F63F580058E024 /* voice_boss_game_over_1.mp3 in Resources */,
 				6193EE5C19F5B43D00E98E07 /* TitleLogo.png in Resources */,
 				184AA5E519F63F580058E024 /* voice_boss_appear_1.mp3 in Resources */,
-				6193EE5E19F5B43D00E98E07 /* tooth_01.png in Resources */,
 				184AA5A019F62C5B0058E024 /* se_game_start_1.mp3 in Resources */,
 				184AA5E819F63F580058E024 /* voice_game_start_1.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				C32E526919FA0C9300A93F0E /* VirusNormalWait0.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

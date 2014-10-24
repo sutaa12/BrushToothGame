@@ -33,7 +33,7 @@ Gum::~Gum()
 bool Gum::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_GUM_TOP);
+    m_pSprite = Sprite::create();
     
     // エラーチェック
     if(m_pSprite == nullptr)

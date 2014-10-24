@@ -90,7 +90,6 @@ EffectManager* EffectManager::create(Layer* layer,int numEffect)
     
     // 初期化
     pEffectManager->init();
-    
     return pEffectManager;
 }
 

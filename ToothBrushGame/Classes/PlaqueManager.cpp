@@ -75,15 +75,15 @@ void PlaqueManager::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Gum* pStartPosGum,Layer* pLayer)
+PlaqueManager* PlaqueManager::create(int nPlaqueMaxNum,Sprite* pSprite,Layer* pLayer)
 {
     PlaqueManager* pPlaqueManager = new PlaqueManager();
 
     pPlaqueManager->m_nPlaqueMaxNum = nPlaqueMaxNum;
     pPlaqueManager->m_pLayer = pLayer;
 
-    Rect gumSpriteRect = (pStartPosGum->getSprite())->getBoundingBox();
-    pPlaqueManager->m_startLeftBottomPos = pPlaqueManager->calcLeftBottomPos(pStartPosGum->getPos(),gumSpriteRect);
+    Rect gumSpriteRect = (pSprite->getBoundingBox());
+//    pPlaqueManager->m_startLeftBottomPos = pPlaqueManager->calcLeftBottomPos(pStartPosGum->getPos(),gumSpriteRect);
 
     pPlaqueManager->init();
 
