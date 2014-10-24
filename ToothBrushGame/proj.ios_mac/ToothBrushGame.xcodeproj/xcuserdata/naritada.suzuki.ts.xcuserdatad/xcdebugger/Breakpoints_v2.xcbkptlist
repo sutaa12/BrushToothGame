@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "435818009.067701"
+            timestampString = "435819589.270184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "GameMainScene::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -264,11 +264,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "435818314.212892"
+            timestampString = "435819589.270184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "259"
-            endingLineNumber = "259"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)"
             landmarkType = "5">
          </BreakpointContent>
@@ -408,11 +408,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "435818387.960757"
+            timestampString = "435819589.270184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "481"
-            endingLineNumber = "481"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "GameMainScene::chkGamePhase(void)"
             landmarkType = "5">
          </BreakpointContent>

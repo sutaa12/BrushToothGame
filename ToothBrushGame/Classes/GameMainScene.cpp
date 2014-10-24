@@ -28,15 +28,14 @@
 USING_NS_CC;
 
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
-#define GAME_TIME_MAX (70)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
     {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(150,200)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(200,150)},
     {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,150)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(150,150)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(150,250)},
     {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,150)},
 };
 //================================================================================
@@ -221,11 +220,6 @@ void GameMainScene::update(float fTime)
     m_EffectManager->update();
 
     m_pHitChecker->checkEnemyFollowPowder(m_touchPos, m_pUIManager->getToothPowder()->getPowderTouchFlag());
-    
-    if(LifeBar::getLife() <= 0)
-    {
-        setResultScene(true);
-    }
     
     updateGamePhase();
 
