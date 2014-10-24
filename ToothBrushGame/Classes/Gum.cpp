@@ -89,7 +89,6 @@ void Gum::addDamage(int nDamage)
 {
     if(m_nDamageTimer >= DAMAGE_PERMISSION_TIME)
     {
-        LifeBar::addLife(-nDamage);
         m_nDamageTimer = 0;
     }
 }

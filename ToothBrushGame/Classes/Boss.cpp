@@ -157,7 +157,6 @@ void Boss::attackAction(void)
     //攻撃
     if(m_time % 20 == 0)
     {
-        LifeBar::addLife(-1);
     }
 
     m_time--;
