@@ -93,6 +93,11 @@ CharacterStatus* CharacterStatus::create(const Vec2& startRigthBottomPos,Charact
 //================================================================================
 void CharacterStatus::setPattern(CHARACTERSTATUS_PATTERN pattern)
 {
+    if (pattern >= CHARACTERSTATUS_PATTERN_MAX)
+    {
+        return;
+    }
+
     m_pattern = pattern;
     m_pSprite->setTexture(IMAGE_LIST[pattern]);
     setJump(1.0f,Vec2(0,0),60,2);
