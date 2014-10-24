@@ -87,3 +87,27 @@ CharacterStatus* CharacterStatus::create(const Vec2& startRigthBottomPos,Charact
 
     return pCharacterStatus;
 }
+
+//================================================================================
+// 幼女表情パターンセット処理
+//================================================================================
+void CharacterStatus::setPattern(CHARACTERSTATUS_PATTERN pattern)
+{
+    if (pattern >= CHARACTERSTATUS_PATTERN_MAX)
+    {
+        return;
+    }
+
+    m_pattern = pattern;
+    m_pSprite->setTexture(IMAGE_LIST[pattern]);
+    setJump(1.0f,Vec2(0,0),60,2);
+}
+
+//================================================================================
+// ジャンプアクションセット処理
+//================================================================================
+void CharacterStatus::setJump(float fTime,Vec2 move,int nHigh,int nCount)
+{
+    auto action = JumpBy::create(fTime,move, nHigh, nCount);
+    m_pSprite->runAction(action);
+}
