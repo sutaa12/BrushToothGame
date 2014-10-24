@@ -4,11 +4,13 @@
 //
 //  Created by 鈴木愛忠 on 2014/10/20.
 //
-//
+// メモ： BGM用の音なりだす関数あったからBGMはBGM用の再生のやつに変える
+
 #include "TextureFile.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "AchievementsScene.h"
+#include "Sound.h"
 
 #include "StageSelect.h"
 
@@ -129,7 +131,10 @@ bool TitleScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
-    
+
+    //タイトル画面BGM
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(BGM_TITLE_1 );
+
     return true;
 }
 //================================================================================
@@ -138,6 +143,8 @@ bool TitleScene::init()
 
 void TitleScene::menuButtonAchievements(void)
 {
+    //SE
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_START_BUTTON_1);
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     
@@ -151,10 +158,15 @@ void TitleScene::menuButtonAchievements(void)
 
 void TitleScene::menuButtonGame(void)
 {
+    //SE
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_START_BUTTON_1);
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
+    // EFFECTの場合
+//    CocosDenshion::SimpleAudioEngine::sharedEngine()
+  //  ->stopEffect(BGM_TITLE_1);
     
 }
 //================================================================================

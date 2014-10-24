@@ -48,22 +48,25 @@
 #define SE_START_BUTTON_1 ("se_game_start_1.mp3")
 
 
-
+/*
 //歯垢
 #define SE_PLAQUE_DOWN_1 ("se_plaque_down_1.mp3")
 #define SE_PLAQUE_DOWN_2 ("se_plaque_down_2.mp3")
 #define SE_PLAQUE_DOWN_3 ("se_plaque_down_3.mp3")
+*/
 
 //敵
 #define SE_ENEMY_DOWN_1 ("hit_1.wav")
 #define SE_ENEMY_DOWN_2 ("se_enemy_down_3.mp3")
 #define SE_ENEMY_DOWN_3 ("se_enemy_down.wav")
 
+/*
 //ボス
 #define SE_BOSS_DOWN_1 ("se_damage_1.mp3")
 #define SE_BOSS_APPEAR_1 ("voice_boss_appear_1.mp3")
 #define SE_BOSS_GAME_OVER_1 ("voice_boss_game_over_1.mp3")
 #define SE_BOSS_GAME_OVER_2 ("voice_boss_game_over_2.mp3")
+*/
 
 //ダメージ
 #define SE_DAMAGE_1 ("se_damage_1.mp3")
