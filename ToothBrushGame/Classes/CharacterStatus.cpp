@@ -93,7 +93,7 @@ CharacterStatus* CharacterStatus::create(const Vec2& startRigthBottomPos,Charact
 //================================================================================
 void CharacterStatus::setPattern(CHARACTERSTATUS_PATTERN pattern)
 {
-    if (pattern >= CHARACTERSTATUS_PATTERN_MAX)
+    if (pattern >= CHARACTERSTATUS_PATTERN_MAX || pattern < 0)
     {
         return;
     }
