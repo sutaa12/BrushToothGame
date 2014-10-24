@@ -56,8 +56,12 @@ private:
     ProgressTimer* m_pProgressTimer;
     Vec2 m_pos;
     Vec3 m_rot;
-    static int m_nLife;
+    static float m_nLife;
     Layer* m_pLayer;
     int m_nMaxLife;
+    int m_nStartTimer;
+    int m_nCurrentTime;
+    int m_nTimer;
+    LabelTTF* m_pPercentTxt;
 };
 #endif /* defined(__ToothBrushGame__LifeBar__) */

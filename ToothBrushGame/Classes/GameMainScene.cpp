@@ -28,7 +28,6 @@
 USING_NS_CC;
 
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
-#define GAME_TIME_MAX (90)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
