@@ -10,6 +10,7 @@
 #define ToothBrushGame_common_h
 #include <cocos2d.h>
 USING_NS_CC;
+#define DATA_PI (3.1415926535f)
 
 //ベクトルの最大値チェック　超えていたら押し戻す
 template <class T1,class T2>
@@ -44,7 +45,23 @@ inline void SAFE_DELETE_ARRAY(T &p)
         p = nullptr;
     }
 }
-
+//角度チェック
+template <class T>
+inline void ROT_CHK(T &rot)
+{
+    if(rot > DATA_PI || rot < -DATA_PI)
+    {
+        if(rot > DATA_PI)
+        {
+            rot -= 2 * DATA_PI;
+        }
+        else
+            if(rot < -DATA_PI)
+            {
+                rot += 2 * DATA_PI;
+            }
+    }
+};
 //シーンリスト
 enum SCENE_LIST
 {

@@ -13,6 +13,7 @@
 #include <common.h>
 
 using namespace cocos2d;
+class AchievementList;
 
 class AchievementsScene : public cocos2d::Layer
 {
@@ -41,6 +42,8 @@ private:
     Point m_touchPos;
     Point m_oldTouchPos;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
+    
+    AchievementList* m_pAchievementList;
     
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);

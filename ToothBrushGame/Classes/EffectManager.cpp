@@ -95,7 +95,7 @@ EffectManager* EffectManager::create(Layer* layer,int numEffect)
 }
 
 //================================================================================
-// 敵生成処理
+// エフェクト生成処理
 //================================================================================
 void EffectManager::spawn(int nSpawnNum,Vec2 pos,Color3B col)
 {

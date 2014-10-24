@@ -65,6 +65,8 @@ private:
     int m_nTime;
     
     int m_nTimeSpan;
+    
+    
 };
 
 #endif /* defined(__ToothBrushGame__EffectManager__) */

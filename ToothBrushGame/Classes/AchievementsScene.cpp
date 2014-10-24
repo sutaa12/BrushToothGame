@@ -9,6 +9,7 @@
 
 #include "TextureFile.h"
 #include "AchievementsScene.h"
+#include "AchievementList.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
@@ -78,6 +79,9 @@ bool AchievementsScene::init()
     pSprite->setColor(Color3B::YELLOW);
     pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
     this->addChild(pSprite);
+    
+    //リスト作成
+    m_pAchievementList = AchievementList::create(this);
     
     //ボタン表示
     MenuItemSprite* pButtonTitle;

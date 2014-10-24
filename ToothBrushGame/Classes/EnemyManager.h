@@ -48,7 +48,7 @@ public:
     //すべての敵を消す
     void setEnemyClear(void);
     
-    void spawn(Enemy::ENEMY_KIND nEnemyKind = Enemy::ENEMY_KIND_NORMAL_ONE,int nSpawnNum = ENEMY_MAX);
+    void spawn(Enemy::ENEMY_KIND nEnemyKind = Enemy::ENEMY_KIND_NORMAL_ONE,int nSpawnNum = ENEMY_MAX,Vec2 pos = Vec2(-1, -1));
     
 public:
     //敵の最大数
@@ -66,6 +66,9 @@ private:
     int m_nTime;
     
     int m_nTimeSpan;
+    
+    int m_nSpriteMax;
+    int m_nSpriteMin;
 
 };
 
