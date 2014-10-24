@@ -21,6 +21,7 @@ class LifeBar;
 class EffectManager;
 class CountDown;
 class ToothPowder;
+#define GAME_TIME_MAX (90)
 
 class GameMainScene : public cocos2d::Layer
 {
