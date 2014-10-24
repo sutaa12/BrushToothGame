@@ -17,7 +17,8 @@ int Enemy::m_nEnemyDisappear[Enemy::ENEMY_KIND_MAX];
 const Enemy::ENEMY_STATUS ENEMY_STATUS_LIST[Enemy::ENEMY_KIND_MAX] =
 {
     {1,1},
-    {2,1},
+    {2,2},
+    {3,4},
 };
 //================================================================================
 // コンストラクタ
@@ -52,8 +53,9 @@ Enemy::~Enemy()
 //================================================================================
 bool Enemy::init(void)
 {
+    
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_ENEMY_WAIT_01);
+    m_pSprite = Sprite::create(TEX_ENEMY_WAIT_00);
 
     // エラーチェック
     if(m_pSprite == nullptr)
@@ -272,7 +274,5 @@ void Enemy::setEnemyDown(void)
     m_time = 0;
     m_bFollowPowder = false;
     m_pSprite->runAction(Spawn::create(FadeOut::create(1.0),MoveBy::create(1.5, Vec2(0,-500)), NULL));
-    
-    
 }
 

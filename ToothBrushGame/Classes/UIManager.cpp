@@ -63,7 +63,7 @@ bool UIManager::init(void)
 
     m_pGameTopBack = Sprite::create(TEX_GAME_TOP_BACK);
     
-    m_pGameBottomBack->setPosition(Vec2(visibleSize.width / 2,origin.y + GAME_MENU_BOTTOM_Y - m_pGameTopBack->getContentSize().height / 2));
+    m_pGameBottomBack->setPosition(Vec2(visibleSize.width / 2,origin.y + 160 - m_pGameTopBack->getContentSize().height / 2));
     m_pLayer->addChild(m_pGameBottomBack);
     
     m_pGameTopBack->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - m_pGameTopBack->getContentSize().height / 2));
@@ -93,12 +93,12 @@ bool UIManager::init(void)
     m_pLifeBar = LifeBar::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
     
     //歯磨き粉アイテム生成処理
-    m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 2,origin.y + 64));
+    m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 3,origin.y + 128));
 
     // キャラクター生成。下部UIの右下から計算
     Rect bottomUIRect = m_pGameBottomBack->getBoundingBox();
-    Vec2 bottomUIPos = Vec2(bottomUIRect.origin.x + bottomUIRect.size.width,bottomUIRect.origin.y);
-    m_pCharacterStatus = CharacterStatus::create(bottomUIPos,CharacterStatus::PATTERN_CRY);
+    Vec2 characterDispPos = Vec2(origin.x + bottomUIRect.size.width,origin.y);
+    m_pCharacterStatus = CharacterStatus::create(characterDispPos,CharacterStatus::CHARACTERSTATUS_PATTERN_CRY);
     m_pLayer->addChild(m_pCharacterStatus->getSprite());
 
     // 正常終了

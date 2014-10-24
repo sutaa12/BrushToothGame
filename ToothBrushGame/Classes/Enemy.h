@@ -31,6 +31,7 @@ public:
     enum ENEMY_KIND
     {
         ENEMY_KIND_NORMAL_ONE,
+        ENEMY_KIND_NORMAL_TWO,
         ENEMY_KIND_LAIR_ONE,
         ENEMY_KIND_MAX
     };
@@ -38,12 +39,17 @@ public:
     const char* ENEMY_IMAGE_LIST[ENEMY_KIND_MAX][2] =
     {
         {
-            TEX_ENEMY_WAIT_01,
-            TEX_ENEMY_WAIT_01
+            TEX_ENEMY_WAIT_00,
+            TEX_ENEMY_WAIT_00
         },
         {
             TEX_ENEMY_WAIT_01,
             TEX_ENEMY_WAIT_01
+        },
+
+        {
+            TEX_ENEMY_LAIR_WAIT_00,
+            TEX_ENEMY_LAIR_WAIT_00
         }
     };
 public:

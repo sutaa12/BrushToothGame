@@ -25,7 +25,6 @@ using namespace cocos2d;
 // 前方クラス宣言
 //********************************************************************************
 class Plaque;
-class Gum;
 
 //********************************************************************************
 // クラス宣言
@@ -40,7 +39,7 @@ public:
     void uninit(void);
     void update(void);
 
-    static PlaqueManager* create(int nPlaqueMaxNum,Gum* pStartPosGum,Layer* pLayer);
+    static PlaqueManager* create(int nPlaqueMaxNum,Sprite* pSprite,Layer* pLayer);
 
     Plaque** getPlaqueTop(void){return &m_ppPlaque[0];}
     int getPlaqueNum(void){return m_nPlaqueNum;}

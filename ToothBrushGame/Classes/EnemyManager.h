@@ -52,7 +52,7 @@ public:
     
 public:
     //敵の最大数
-    static const int ENEMY_MAX = 100;
+    static const int ENEMY_MAX = 200;
     //開始する時間感覚
     static const int TIME_SPAN = 100;
 private:
