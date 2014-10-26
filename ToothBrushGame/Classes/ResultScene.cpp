@@ -10,6 +10,7 @@
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
+#include "Sound.h"
 USING_NS_CC;
 bool ResultScene::m_bGameOverFlag = false;
 int ResultScene::m_nScore;
@@ -128,6 +129,19 @@ bool ResultScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
     addChild(pButton);
+    
+    
+     //今、BGMが流れているかどうか
+     if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+     
+         //音楽を止める
+         SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+     
+     }
+    
+    //BGMをループ再生 第二引数がループするかどうか判定
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_RESULT_1, true);
+    
     
     return true;
 }

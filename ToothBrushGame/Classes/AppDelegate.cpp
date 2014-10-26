@@ -64,7 +64,9 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    // BGM・SE一時停止
+    SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+    SimpleAudioEngine::getInstance()->pauseAllEffects();
 }
 
 // this function will be called when the app is active again
@@ -72,48 +74,54 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    // BGM・SE再開
+    SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+    SimpleAudioEngine::getInstance()->resumeAllEffects();
 }
 
 //SE、BGMをプリロードする
 void SoundPreload() {
 
-    //BGM
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_4);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_5);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_6);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_7);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_BOSS_SCENE_8);
+    //音量を設定 1.0 ~ 0.0
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.4);
+    
+    // BGMの場合
+    /*
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_1);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_2);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_3);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_4);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_5);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_6);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_7);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_8);
+    */
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_ENEMY_SCENE_1);
+        SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_ENEMY_SCENE_5);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_GAME_CLEAR_1);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_STAGE_SELECT_1);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_STAGE_SELECT_2);
+    SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_RESULT_1);
+    
+    
 
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_ENEMY_SCENE_4);
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_GAME_CLEAR_1);
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_STAGE_SELECT_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_STAGE_SELECT_2);
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_RESULT_1);
-
-
-
-    //SE
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_2);
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_START_BUTTON_1);
-
-
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_3);
-
+    // EFFECTの場合
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
+    
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_START_BUTTON_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_3);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_DAMAGE_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_3);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_FANFARE_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
 
 /*
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_DOWN_1);
@@ -122,12 +130,6 @@ void SoundPreload() {
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_GAME_OVER_1);
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_GAME_OVER_2);
  */
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_DAMAGE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_FANFARE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_1);
 
 
 
@@ -146,10 +148,11 @@ void SoundUnload() {
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_BOSS_SCENE_7);
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_BOSS_SCENE_8);
 */
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_4);
+    /*
+    SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_2);
+    SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_3);
+    SimpleAudioEngine::getInstance()->unloadEffect(BGM_ENEMY_SCENE_4);
 
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_GAME_CLEAR_1);
 
@@ -157,9 +160,8 @@ void SoundUnload() {
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(BGM_STAGE_SELECT_2);
 
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(BGM_RESULT_1);
-
-
-
+*/
+    
     //SE
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BUTTON_1);
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BUTTON_2);
@@ -177,11 +179,11 @@ void SoundUnload() {
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BOSS_GAME_OVER_1);
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BOSS_GAME_OVER_2);
   */
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_DAMAGE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_DAMAGE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_2);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_3);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_1);
 
 }

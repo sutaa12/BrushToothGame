@@ -168,6 +168,21 @@ bool GameMainScene::init()
     // 生成が終わった後にカウントダウンを生成する
     //this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
 
+    
+    //今、BGMが流れているかどうか
+    if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+        
+        //音楽を止める
+        SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+        
+    }
+    
+        //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
+        
+    
+
     return true;
 }
 
@@ -241,7 +256,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
         //SE
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+        SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         m_pPauseLayer = PauseScene::createLayer();
         this->addChild(m_pPauseLayer);
         this->pause();
@@ -390,10 +405,15 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
         m_nShakeCnt++;
     }
 
+    //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
         m_pHitChecker->checkEnemyDown();
         m_nShakeCnt = 0;
+        
+        //SE
+        SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+        SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
     }
 }
 

@@ -155,6 +155,10 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     {
         //SE
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+        
+        //音楽を止める
+        SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+        
         returnTitle();
         return true;
     }

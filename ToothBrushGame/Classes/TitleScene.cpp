@@ -131,9 +131,19 @@ bool TitleScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
-
-    //タイトル画面BGM
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(BGM_TITLE_1 );
+    
+    //今、BGMが流れているかどうか
+    if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+        
+        //音楽を止める
+        //  SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+        
+    }else{
+        
+        //タイトル画面BGMをループ再生
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
+        
+    }
 
     return true;
 }
