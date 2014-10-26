@@ -168,6 +168,20 @@ bool GameMainScene::init()
     // 生成が終わった後にカウントダウンを生成する
     //this->scheduleOnce(schedule_selector(GameMainScene::createCountDown), 0.0f);
 
+    
+    //今、BGMが流れているかどうか
+    if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+        
+        //音楽を止める
+        SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+        
+    }
+        
+        //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_4, true);
+        
+    
+
     return true;
 }
 

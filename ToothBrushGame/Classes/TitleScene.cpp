@@ -132,19 +132,19 @@ bool TitleScene::init()
     pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
     
-    
+    /*
     //今、BGMが流れているかどうか
     if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
         
         //音楽を止める
         SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
         
-    }else{
-        
-        //タイトル画面BGMをループ再生
+    }
+      */  
+        //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         
-    }
+    
     
 
 

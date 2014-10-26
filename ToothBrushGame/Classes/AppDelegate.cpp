@@ -171,11 +171,11 @@ void SoundUnload() {
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BOSS_GAME_OVER_1);
     CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_BOSS_GAME_OVER_2);
   */
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_DAMAGE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_2);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_3);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);
-    CocosDenshion::SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_DAMAGE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_2);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_3);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_1);
 
 }
