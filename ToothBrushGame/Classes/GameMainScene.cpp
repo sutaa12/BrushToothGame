@@ -176,7 +176,7 @@ bool GameMainScene::init()
         SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
         
     }
-        
+    
         //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_4, true);
         
