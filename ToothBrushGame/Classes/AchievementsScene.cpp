@@ -10,7 +10,6 @@
 #include "TextureFile.h"
 #include "AchievementsScene.h"
 #include "AchievementList.h"
-#include "GameStatusList.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
@@ -82,8 +81,6 @@ bool AchievementsScene::init()
     this->addChild(pSprite);
     //リスト作成
     m_pAchievementList = AchievementList::create(this);
-    //リスト作成
-    m_pGameStatusList = GameStatusList::create(this);
     
     //ボタン表示
     MenuItemSprite* pButtonTitle;

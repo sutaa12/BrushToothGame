@@ -8,6 +8,7 @@
 
 #include <time.h>
 #include "AchievementDataBase.h"
+#include "AchieveLayer.h"
 const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
 {
     "ACHIEVE_TYPE_NONE",//実績タイプ
@@ -62,13 +63,21 @@ std::string strsprintf(const char* format,...){
     free(alloc);
     return retStr;
 }
-
+//初期化
 void AchievementDataBaseList::init()
 {
     //実績情報の配列数数える
     m_nAchivementSize = sizeof(AchievementData) / sizeof(AchievementData[0]);
     m_pAchievemntDate = new std::string[m_nAchivementSize];
     m_pAchievemntFlag = new bool[m_nAchivementSize];
+    loadAchievement();
+    // 共有レイヤー追加
+    Director::sharedDirector()->setNotificationNode(Node::create());
+    // 共有レイヤー内にデバッグ用レイヤー追加
+    AchieveLayer *achieveLayer = AchieveLayer::create();
+    achieveLayer->setTag(999);
+    DisplayLinkDirector::sharedDirector()->getNotificationNode()->addChild((Node*)achieveLayer);
+    achieveLayer->onEnter();
 }
 //実績リスト入手
 AchievementDataBaseList::ACHIEVE_STATUS AchievementDataBaseList::getAchievement(int achieveInfo){
@@ -83,6 +92,8 @@ std::string AchievementDataBaseList::getAchievementName(int achieveInfo){
 void AchievementDataBaseList::addAchievement(ACHIEVEMENT_KIND achievement)
 {
     m_nAchievementCont[achievement]++;
+    chkAchievement(achievement);
+    saveAchievement();
 }
 
 void AchievementDataBaseList::dispAchievement(void)
@@ -143,6 +154,7 @@ void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
                                            timeObject->tm_min , timeObject->tm_sec);
                     
                     m_pAchievemntDate[nloop].swap(time);
+                    dispAchievement();
                 }
             }
             

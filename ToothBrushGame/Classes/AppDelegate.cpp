@@ -48,6 +48,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     AchievementDataBaseList::init();
+    AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_TURN_ON);
     
     // create a scene. it's an autorelease object
     //auto scene = GameMainScene::createScene();

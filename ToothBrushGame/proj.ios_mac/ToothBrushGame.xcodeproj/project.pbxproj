@@ -90,7 +90,7 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
-		615A3EF319FD98DB00CFCC8C /* GameStatusList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615A3EF119FD98DB00CFCC8C /* GameStatusList.cpp */; };
+		615A3EF819FDAE7000CFCC8C /* AchieveLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 615A3EF619FDAE7000CFCC8C /* AchieveLayer.cpp */; };
 		6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6193EE2519F4120C00E98E07 /* TitleScene.cpp */; };
 		6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6193EE3119F4174C00E98E07 /* ResultScene.cpp */; };
 		6193EE3819F53FAB00E98E07 /* PauseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6193EE3619F53FAB00E98E07 /* PauseScene.cpp */; };
@@ -385,8 +385,8 @@
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		6101C49819F98B5F00D3325A /* GameDifficult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameDifficult.h; path = ../Classes/GameDifficult.h; sourceTree = "<group>"; };
-		615A3EF119FD98DB00CFCC8C /* GameStatusList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameStatusList.cpp; path = ../Classes/GameStatusList.cpp; sourceTree = "<group>"; };
-		615A3EF219FD98DB00CFCC8C /* GameStatusList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStatusList.h; path = ../Classes/GameStatusList.h; sourceTree = "<group>"; };
+		615A3EF619FDAE7000CFCC8C /* AchieveLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AchieveLayer.cpp; path = ../Classes/AchieveLayer.cpp; sourceTree = "<group>"; };
+		615A3EF719FDAE7000CFCC8C /* AchieveLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AchieveLayer.h; path = ../Classes/AchieveLayer.h; sourceTree = "<group>"; };
 		6193EE2519F4120C00E98E07 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TitleScene.cpp; path = ../Classes/TitleScene.cpp; sourceTree = "<group>"; };
 		6193EE2619F4120C00E98E07 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TitleScene.h; path = ../Classes/TitleScene.h; sourceTree = "<group>"; };
 		6193EE3119F4174C00E98E07 /* ResultScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResultScene.cpp; path = ../Classes/ResultScene.cpp; sourceTree = "<group>"; };
@@ -920,8 +920,8 @@
 			children = (
 				C32E524E19F8E6A300A93F0E /* AchievementList.cpp */,
 				C32E524F19F8E6A300A93F0E /* AchievementList.h */,
-				615A3EF119FD98DB00CFCC8C /* GameStatusList.cpp */,
-				615A3EF219FD98DB00CFCC8C /* GameStatusList.h */,
+				615A3EF619FDAE7000CFCC8C /* AchieveLayer.cpp */,
+				615A3EF719FDAE7000CFCC8C /* AchieveLayer.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1232,6 +1232,7 @@
 				187E1D1319F4E0E5000B2A38 /* CountDown.cpp in Sources */,
 				C36E0AFC19F0C43500E5040C /* LifeBar.cpp in Sources */,
 				C36E0B0019F0C43500E5040C /* PlaqueManager.cpp in Sources */,
+				615A3EF819FDAE7000CFCC8C /* AchieveLayer.cpp in Sources */,
 				6193EE3819F53FAB00E98E07 /* PauseScene.cpp in Sources */,
 				C36E0AF519F0C43500E5040C /* Enemy.cpp in Sources */,
 				C36E0AF119F0C43500E5040C /* AppDelegate.cpp in Sources */,
@@ -1253,7 +1254,6 @@
 				C36E0B0519F0C43500E5040C /* UIManager.cpp in Sources */,
 				C36E0B0419F0C43500E5040C /* ToothManager.cpp in Sources */,
 				C36E0B5219F0C5F100E5040C /* HitChecker.cpp in Sources */,
-				615A3EF319FD98DB00CFCC8C /* GameStatusList.cpp in Sources */,
 				C36E0AF219F0C43500E5040C /* Boss.cpp in Sources */,
 				C36E0B0319F0C43500E5040C /* Tooth.cpp in Sources */,
 				C36E0AFF19F0C43500E5040C /* Plaque.cpp in Sources */,
