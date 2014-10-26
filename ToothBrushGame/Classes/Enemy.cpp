@@ -170,18 +170,6 @@ void Enemy::moveAction(void)
     m_time--;
 }
 //================================================================================
-//攻撃
-//================================================================================
-/*void Enemy::attackAction(void)
-{
-    //攻撃
-    if(m_time % 50 == 0)
-    {
-        LifeBar::addLife(-1);
-    }
-    m_time--;
-}*/
-//================================================================================
 //待機
 //================================================================================
 void Enemy::delayAction(void)
@@ -264,7 +252,6 @@ void Enemy::setEnemyDown(void)
     {
         disappear();
     }
-    Score::addScore(10);
     m_nLife = 0;
     m_bDeath = true;
     m_bDown = true;
@@ -273,6 +260,6 @@ void Enemy::setEnemyDown(void)
     m_pSprite->stopAllActions();
     m_time = 0;
     m_bFollowPowder = false;
-    m_pSprite->runAction(Spawn::create(FadeOut::create(1.0),MoveBy::create(1.5, Vec2(0,-500)), NULL));
+    m_pSprite->runAction(Spawn::create(FadeOut::create(0.8),MoveBy::create(1.0, Vec2(0,-300)), NULL));
 }
 

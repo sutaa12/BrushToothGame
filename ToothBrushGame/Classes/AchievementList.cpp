@@ -6,12 +6,13 @@
 //
 //
 
+#include "AchievementDataBase.h"
 #include "AchievementList.h"
 // on "init" you need to initialize your instance
 bool AchievementList::init()
 {
     m_window_size = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
-    m_window_size.height -= 128;
+    m_window_size.height -= 128 + 50 * (ACHIEVEMENT_MAX);
 
     //画面サイズサイズを取得
     TableView* tableView = TableView::create(this, m_window_size);
@@ -45,10 +46,10 @@ Size AchievementList::cellSizeForTable(TableView *table){
 // 1セルに表示させるValueをセット
 TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
 {
+    AchievementDataBaseList::ACHIEVE_STATUS achivestatus = AchievementDataBaseList::getAchievement((int)idx);
     std::string id = StringUtils::format("%zd", idx);
-    std::string Title = StringUtils::format("Title %zd", idx);
-    std::string text = StringUtils::format("Message %zd", idx);
     TableViewCell *cell = table->dequeueCell();
+    
     
     cell = new TableViewCell();
     cell->autorelease();
@@ -74,14 +75,14 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     cell->addChild(label_1);
     
     // タイトル部分
-    auto *label_2 = LabelTTF::create(Title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
+    auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
     label_2->setAnchorPoint(Point(0, 0));
     label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
     label_2->setColor(Color3B(0,0,0));
     cell->addChild(label_2);
     
     // メッセージ部分
-    auto *label_3 = LabelTTF::create(text.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
+    auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
     label_3->setAnchorPoint(Point(0, 0));
     label_3->setPosition(Point(50 + label_1->getContentSize().width,5));
     label_3->setColor(Color3B(0,0,0));
@@ -91,7 +92,7 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
 
 // セル数
 ssize_t AchievementList::numberOfCellsInTableView(TableView *table){
-    return 40;
+    return AchievementDataBaseList::getAchievementMax();
 }
 
 // セルがタッチされた時のcallback

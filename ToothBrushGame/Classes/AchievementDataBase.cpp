@@ -6,68 +6,146 @@
 //
 //
 
+#include <time.h>
 #include "AchievementDataBase.h"
-#include "sqlite3.h"
-/*
-sqlite3* db = NULL;
-std::string path = CCFileUtils::sharedFileUtils()->getWritablePath()+SQLITE; std::string data; int id = 1;
-if ( sqlite3_open( path.c_str() ,&db) == SQLITE_OK )
+const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
 {
-    sqlite3_stmt* stmt = NULL;
-    if (sqlite3_prepare_v2(db, "SELECT hoge FROM test WHERE id=?", -1, &stmt, NULL) == SQLITE_OK)
-    {
-        sqlite3_bind_int(stmt, 1, id );
-        int ret = sqlite3_step(stmt); if ( ret ==SQLITE_DONE || ret == SQLITE_ROW )
-        {
-            data = (const char *) sqlite3_column_text(stmt, 0);
-        }
-        sqlite3_reset(stmt);
+    "ACHIEVE_TYPE_NONE",//実績タイプ
+    "ACHIEVE_TYPE_TURN_ON",//起動回数
+    "ACHIEVE_TYPE_GAME_PLAY",//プレイ回数
+    "ACHIEVEMENT_TYPE_ENEMY_DOWN",//倒した敵の総数
+    "ACHIEVEMENT_TYPE_ENEMY_NORMAL_ONE_DOWN",//普通の種類の敵の倒した数
+    "ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN",
+    "ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN",//レア種類の敵を倒した数
+    "ACHIEVEMENT_TYPE_ENEMY_LAIR_TWO_DOWN",
+    "ACHIEVEMENT_TYPE_TAP_GIRL_TITLE",//タイトルの女の子のタップ回数
+    "ACHIEVEMENT_TYPE_SWIPE_GIRL_TITLE",//タイトルの女の子のスワイプ回数
+    "ACHIEVEMENT_TYPE_TAP_GIRL_GAMESTATUS",//ステータスの女の子のタップ回数
+    "ACHIEVEMENT_TYPE_SWIPE_GIRL_GAMESTATUS",//ステータスの女の子スワイプ回数
+};
+
+const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
+{
+    "ACHIEVE_TYPE_NONE",//実績タイプ
+    "きどうしたかいすう",//起動回数
+    "みがいたかいすう",//プレイ回数
+    "ばいばいしたばいきんさん",//倒した敵の総数
+    "ばいばいしたよわいばいきんさん",//普通の種類の敵の倒した数
+    "ばいばいしたふつうのばいきんさん",
+    "ばいばいしたれあなばいきんさん",//レア種類の敵を倒した数
+    "ばいばいしたれあなつよいばいきんさん",
+    "歯磨き以外でお前に触られた数",//タイトルの女の子のタップ回数
+    "歯磨き以外でお前になでられた数",//タイトルの女の子のスワイプ回数
+    "歯磨き中にお前に触られた数",//ステータスの女の子のタップ回数
+    "歯磨き中でお前になでられた数",//ステータスの女の子スワイプ回数
+};
+
+int AchievementDataBaseList::m_nAchievementCont[ACHIEVEMENT_MAX];
+int AchievementDataBaseList::m_nAchivementSize;
+bool* AchievementDataBaseList::m_pAchievemntFlag;
+std::string* AchievementDataBaseList::m_pAchievemntDate;
+AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
+{
+    {"実績1",ACHIEVE_TYPE_TURN_ON,1,"","はじめてのはみがき","ゲームを始めて起動する"},
+    {"実績2",ACHIEVE_TYPE_GAME_PLAY,1,"","たのしいはみがき","ゲームを始めて開始する"},
+};
+
+std::string strsprintf(const char* format,...){
+    va_list ap;
+    va_start(ap, format);
+    char* alloc;
+    if(vasprintf(&alloc,format,ap) == -1) {
+        return std::string("");
     }
-    sqlite3_finalize(stmt);
+    va_end(ap);
+    std::string retStr = std::string(alloc);
+    free(alloc);
+    return retStr;
 }
-sqlite3_close(db);
-*/
-void AchievementDataBaseList::init(void)
+
+void AchievementDataBaseList::init()
 {
-    // SQLITE3
-    sqlite3 *pDB = NULL;
-    char* errMsg = NULL;
-    std::string sqlstr;
-    int result;
+    //実績情報の配列数数える
+    m_nAchivementSize = sizeof(AchievementData) / sizeof(AchievementData[0]);
+    m_pAchievemntDate = new std::string[m_nAchivementSize];
+    m_pAchievemntFlag = new bool[m_nAchivementSize];
+}
+//実績リスト入手
+AchievementDataBaseList::ACHIEVE_STATUS AchievementDataBaseList::getAchievement(int achieveInfo){
+    return AchievementData[achieveInfo];
+}
+
+//実績リスト入手
+std::string AchievementDataBaseList::getAchievementName(int achieveInfo){
+    return ACHIEVEMENT_STATUSNAME[achieveInfo];
+}
+
+void AchievementDataBaseList::addAchievement(ACHIEVEMENT_KIND achievement)
+{
+    m_nAchievementCont[achievement]++;
+}
+
+void AchievementDataBaseList::dispAchievement(void)
+{
     
-    std::string dbPath = FileUtils::sharedFileUtils()->getWritablePath();
-    dbPath.append("Test.db");
-    result = sqlite3_open(dbPath.c_str(),&pDB);
-    if (result != SQLITE_OK){
-        CCLOG("OPENING WRONG, %d, MSG:%s",result,errMsg);
-    }else{
-        CCLOG("OK! %d, %s",result,errMsg);
+}
+
+void AchievementDataBaseList::saveAchievement()
+{
+    //保存先の生成
+    UserDefault *userDef = UserDefault::getInstance();
+    for(int nloop = 0;nloop < ACHIEVEMENT_MAX;nloop++)
+    {
+        userDef->setIntegerForKey(ACHIEVEMENT_NAME[nloop], m_nAchievementCont[nloop]);
     }
-    
-    // 読み書きファイルパスの表示
-    CCLog("%s",dbPath.c_str());
-    
-    result=sqlite3_exec( pDB, "create table MyTable_1( ID integer primary key autoincrement, name nvarchar(32) ) " , NULL, NULL, &errMsg );
-    if( result != SQLITE_OK )
-        CCLOG( "失敗　:%d ，原因:%s\n" , result, errMsg );
-    
-    //insert
-    sqlstr=" insert into MyTable_1( name ) values ( 'いちご' ) ";
-    result = sqlite3_exec( pDB, sqlstr.c_str() , NULL, NULL, &errMsg );
-    if(result != SQLITE_OK )
-        CCLOG( "失敗　:%d ，原因:%s\n" , result, errMsg );
-    
-    //insert
-    sqlstr=" insert into MyTable_1( name ) values ( 'ぶどう' ) ";
-    result = sqlite3_exec( pDB, sqlstr.c_str() , NULL, NULL, &errMsg );
-    if(result != SQLITE_OK )
-        CCLOG( "失敗　:%d ，原因:%s\n" , result, errMsg );
-    
-    //insert
-    sqlstr=" insert into MyTable_1( name ) values ( 'ばなな' ) ";
-    result = sqlite3_exec( pDB, sqlstr.c_str() , NULL, NULL, &errMsg );
-    if(result != SQLITE_OK )
-        CCLOG( "失敗　:%d ，原因:%s\n" , result, errMsg );
-    
-    sqlite3_close(pDB);
+    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    {
+        userDef->setBoolForKey(AchievementData[nloop].name,m_pAchievemntFlag[nloop]);
+        userDef->setStringForKey(AchievementData[nloop].name,m_pAchievemntDate[nloop]);
+    }
+    //書き込み
+    userDef->flush();
+}
+
+void AchievementDataBaseList::loadAchievement()
+{
+    //ロードの生成
+    UserDefault *userDef = UserDefault::getInstance();
+    for(int nloop = 0;nloop < ACHIEVEMENT_MAX;nloop++)
+    {
+        m_nAchievementCont[nloop] = userDef->getIntegerForKey(ACHIEVEMENT_NAME[nloop], 0);
+    }
+    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    {
+        m_pAchievemntFlag[nloop] = userDef->getBoolForKey(AchievementData[nloop].name,false);
+        m_pAchievemntDate[nloop] = userDef->getStringForKey(AchievementData[nloop].name,"");
+    }
+}
+
+void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
+{
+    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    {
+        if(AchievementData[nloop].achieveFlagKind == achieve)
+        {
+            if(!m_pAchievemntFlag[nloop])
+            {
+                if(m_nAchievementCont[nloop] >= AchievementData[nloop].unlockNum)
+                {
+                    m_pAchievemntFlag[nloop] = true;
+                    time_t curTime;
+                    tm *timeObject;
+                    time(&curTime);
+                    timeObject = localtime(&curTime);
+                    std::string time = strsprintf("%d年 %d月 %d日 %d : %d : %d" ,
+                                           timeObject->tm_year + 1900 , timeObject->tm_mon + 1 ,
+                                           timeObject->tm_mday , timeObject->tm_hour ,
+                                           timeObject->tm_min , timeObject->tm_sec);
+                    
+                    m_pAchievemntDate[nloop].swap(time);
+                }
+            }
+            
+        }
+    }
 }

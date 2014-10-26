@@ -10,6 +10,7 @@
 #include "TextureFile.h"
 #include "AchievementsScene.h"
 #include "AchievementList.h"
+#include "GameStatusList.h"
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
@@ -79,9 +80,10 @@ bool AchievementsScene::init()
     pSprite->setColor(Color3B::YELLOW);
     pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
     this->addChild(pSprite);
-    
     //リスト作成
     m_pAchievementList = AchievementList::create(this);
+    //リスト作成
+    m_pGameStatusList = GameStatusList::create(this);
     
     //ボタン表示
     MenuItemSprite* pButtonTitle;
@@ -100,7 +102,7 @@ bool AchievementsScene::init()
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(AchievementsScene::ButtonTitle,this));
     
     Menu* pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 50));
     addChild(pButton);
     
     return true;

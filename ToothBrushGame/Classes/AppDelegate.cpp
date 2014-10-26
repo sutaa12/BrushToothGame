@@ -4,6 +4,7 @@
 #include "Random.h"
 #include "Sound.h"
 #include "common.h"
+#include "AchievementDataBase.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -24,11 +25,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLView::create("BrushToothGame");
-        director->setOpenGLView(glview);
-        
-        glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
     }
-    
+
+        glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
+        director->setOpenGLView(glview);
+
     std::vector< std::string > searchPath;    //リソースのパスを格納するvector
     //画像フォルダ指定
     searchPath.push_back("hd");
@@ -46,6 +47,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    AchievementDataBaseList::init();
+    
     // create a scene. it's an autorelease object
     //auto scene = GameMainScene::createScene();
         auto scene = TitleScene::createScene();

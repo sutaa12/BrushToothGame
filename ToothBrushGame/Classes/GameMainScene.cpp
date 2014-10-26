@@ -407,7 +407,9 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if(fAngle <= 45 && fAngle >= -45)
     {
         CCLOG("上方向");
+        m_pHitChecker->checkEnemyDown();
         return SWIPE_DIRECTION_UP;
+
     }
     
     if(fAngle <= 135 && fAngle >= 45)
@@ -491,7 +493,7 @@ void GameMainScene::chkGamePhase(void)
     int EnemyAll = 0;
     for(int nloop = 0 ; nloop < Enemy::ENEMY_KIND_LAIR_ONE;nloop++)
     {
-        EnemyAll = Enemy::getEnemyKindDownNum(nloop);
+        EnemyAll += Enemy::getEnemyKindDownNum(nloop);
     }
     if(  EnemyAll >= nEnemyDown)
     {

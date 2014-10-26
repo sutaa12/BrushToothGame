@@ -14,6 +14,7 @@
 
 using namespace cocos2d;
 class AchievementList;
+class GameStatusList;
 
 class AchievementsScene : public cocos2d::Layer
 {
@@ -44,7 +45,8 @@ private:
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
     
     AchievementList* m_pAchievementList;
-    
+    GameStatusList* m_pGameStatusList;
+
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);
