@@ -21,6 +21,7 @@
 #include "UIManager.h"
 #include "MenuBar.h"
 #include "ToothPowder.h"
+#include "Sound.h"
 
 //================================================================================
 // コンストラクタ
@@ -197,10 +198,19 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
         {
             continue;
         }
-
+        //
         if(ppEnemy[nEnemyNum]->getFollowPowder())
         {
             ppEnemy[nEnemyNum]->setPos(powderSpritePos);
+            if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+                
+                
+            }else{
+                
+                
+            }
+            //敵がくっついたら　SE
+            SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
     }
 }

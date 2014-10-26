@@ -97,6 +97,7 @@ void Enemy::disappear(void)
     {
     m_move = RandomMT::getRandom(40,60);
     m_time = 100;
+        
     }else{
         m_time = 0;
     }
@@ -196,7 +197,7 @@ void Enemy::addDamage(int nDamage)
 {
     m_nLife -= nDamage;
     //敵に攻撃したときのSE
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_ENEMY_DOWN_1);
+    SimpleAudioEngine::getInstance()->playEffect(SE_ENEMY_DOWN_1);
 
     if(!m_bDeath)
     {

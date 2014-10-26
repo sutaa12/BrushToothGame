@@ -255,7 +255,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
         //SE
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+        SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         m_pPauseLayer = PauseScene::createLayer();
         this->addChild(m_pPauseLayer);
         this->pause();
@@ -404,10 +404,14 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
         m_nShakeCnt++;
     }
 
+    //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
         m_pHitChecker->checkEnemyDown();
         m_nShakeCnt = 0;
+        
+        //SE
+        SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
     }
 }
 

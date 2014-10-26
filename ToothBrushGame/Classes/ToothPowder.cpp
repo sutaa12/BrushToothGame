@@ -122,6 +122,7 @@ void ToothPowder::chkPowderTouchFlag(Point pos)
     if(rectPowder.containsPoint(pos))
     {
         m_bPowderTouchFlag = true;
+        
     }
     
 }

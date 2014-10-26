@@ -98,7 +98,7 @@ void SoundPreload() {
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_STAGE_SELECT_2);
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_RESULT_1);
 
-    
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
     // EFFECTの場合
     SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_2);
