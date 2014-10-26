@@ -85,8 +85,11 @@ void ToothPowder::uninit(void)
 void ToothPowder::update(void)
 {
     //m_pToothSprite->setPosition(m_pos);
-    
-    
+  /*
+    if (m_bPowderTouchFlag == false){
+        //効果音を止める
+        SimpleAudioEngine::getInstance()->stopEffect(true);
+    }*/
 }
 
 //================================================================================
@@ -112,6 +115,7 @@ void ToothPowder::setPos(Vec2 pos)
 {
     m_pItemIcon->setOpacity(90);
     m_pItemIcon->setPosition(pos);
+    
 }
 //================================================================================
 // 判定チェック
@@ -123,6 +127,10 @@ void ToothPowder::chkPowderTouchFlag(Point pos)
     {
         m_bPowderTouchFlag = true;
         
+       // if (m_bPowderTouchFlag == true) {
+            SimpleAudioEngine::getInstance()->playEffect(SE_POWDER_2);
+            
+        //}
     }
     
 }

@@ -79,7 +79,7 @@ void AppDelegate::applicationWillEnterForeground() {
 void SoundPreload() {
 
     //音量を設定 1.0 ~ 0.0
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.4);
     
     // BGMの場合
     /*
@@ -93,13 +93,17 @@ void SoundPreload() {
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_BOSS_SCENE_8);
     */
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_ENEMY_SCENE_1);
+        SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_ENEMY_SCENE_5);
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_GAME_CLEAR_1);
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_STAGE_SELECT_1);
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_STAGE_SELECT_2);
     SimpleAudioEngine::getInstance()->preloadBackgroundMusic(BGM_RESULT_1);
+    
+    
 
-    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
     // EFFECTの場合
+    SimpleAudioEngine::getInstance()->setEffectsVolume(0.3);
+    
     SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_START_BUTTON_1);
@@ -112,8 +116,8 @@ void SoundPreload() {
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_3);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_FANFARE_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_1);
-    SimpleAudioEngine::getInstance()->preloadEffect(SE_BUTTON_1);
-    
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
 
 /*
     CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect(SE_BOSS_DOWN_1);

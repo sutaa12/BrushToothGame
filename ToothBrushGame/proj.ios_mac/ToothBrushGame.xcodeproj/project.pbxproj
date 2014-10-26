@@ -119,6 +119,9 @@
 		6193EE7C19F864CD00E98E07 /* StatusLittleGirl_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE7819F864CD00E98E07 /* StatusLittleGirl_00.png */; };
 		6193EE7D19F864CD00E98E07 /* GameBottomBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE7919F864CD00E98E07 /* GameBottomBack.png */; };
 		6193EE7E19F864CD00E98E07 /* ToothPowderIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6193EE7A19F864CD00E98E07 /* ToothPowderIcon.png */; };
+		770596A619FD2DDB0070B5CC /* se_powder_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 770596A419FD2DDB0070B5CC /* se_powder_1.mp3 */; };
+		770596A719FD2DDB0070B5CC /* se_powder_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 770596A519FD2DDB0070B5CC /* se_powder_2.mp3 */; };
+		770596AB19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 770596AA19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -419,6 +422,9 @@
 		6193EE7819F864CD00E98E07 /* StatusLittleGirl_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusLittleGirl_00.png; sourceTree = "<group>"; };
 		6193EE7919F864CD00E98E07 /* GameBottomBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameBottomBack.png; sourceTree = "<group>"; };
 		6193EE7A19F864CD00E98E07 /* ToothPowderIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToothPowderIcon.png; sourceTree = "<group>"; };
+		770596A419FD2DDB0070B5CC /* se_powder_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_powder_1.mp3; sourceTree = "<group>"; };
+		770596A519FD2DDB0070B5CC /* se_powder_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_powder_2.mp3; sourceTree = "<group>"; };
+		770596AA19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_enemy_scene_5.mp3; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -815,6 +821,7 @@
 		6193EE6119F5B54000E98E07 /* bgm */ = {
 			isa = PBXGroup;
 			children = (
+				770596AA19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 */,
 				1858308B19F64BE300A0A703 /* bgm_boss_scene_1.mp3 */,
 				1858308C19F64BE300A0A703 /* bgm_boss_scene_2.mp3 */,
 				1858308D19F64BE300A0A703 /* bgm_boss_scene_3.mp3 */,
@@ -862,6 +869,8 @@
 				6193EE6319F5B54000E98E07 /* se_plaque_down_1.mp3 */,
 				6193EE6419F5B54000E98E07 /* decision.mp3 */,
 				6193EE6519F5B54000E98E07 /* hit_1.wav */,
+				770596A419FD2DDB0070B5CC /* se_powder_1.mp3 */,
+				770596A519FD2DDB0070B5CC /* se_powder_2.mp3 */,
 			);
 			path = se;
 			sourceTree = "<group>";
@@ -1144,6 +1153,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				184AA5DB19F63EE50058E024 /* se_plaque_down_2.mp3 in Resources */,
 				184AA5A719F63E430058E024 /* se_damage_1.mp3 in Resources */,
+				770596A619FD2DDB0070B5CC /* se_powder_1.mp3 in Resources */,
 				184AA5A419F62CB80058E024 /* puyon1.mp3 in Resources */,
 				184AA5AE19F63E4F0058E024 /* se_swipe_3.mp3 in Resources */,
 				185830A819F64BE300A0A703 /* bgm_enemy_scene_2.mp3 in Resources */,
@@ -1189,7 +1199,9 @@
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				184AA5D819F63EE50058E024 /* se_button_1.mp3 in Resources */,
 				6193EE7D19F864CD00E98E07 /* GameBottomBack.png in Resources */,
+				770596AB19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 in Resources */,
 				185830AD19F64BE300A0A703 /* bgm_stageselect_1.mp3 in Resources */,
+				770596A719FD2DDB0070B5CC /* se_powder_2.mp3 in Resources */,
 				184AA5DC19F63EE50058E024 /* se_plaque_down_3.mp3 in Resources */,
 				185830A119F64BE300A0A703 /* bgm_boss_scene_4.mp3 in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,

@@ -178,7 +178,8 @@ bool GameMainScene::init()
     }
     
         //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
-        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_4, true);
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         
     
 
@@ -411,6 +412,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
         m_nShakeCnt = 0;
         
         //SE
+        SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
     }
 }

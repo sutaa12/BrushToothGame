@@ -33,6 +33,7 @@ using namespace CocosDenshion;
 #define BGM_ENEMY_SCENE_2 ("bgm_enemy_scene_2.mp3")
 #define BGM_ENEMY_SCENE_3 ("bgm_enemy_scene_3.mp3")
 #define BGM_ENEMY_SCENE_4 ("bgm_enemy_scene_4.mp3")
+#define BGM_ENEMY_SCENE_5 ("bgm_enemy_scene_5.mp3")
 
 #define BGM_GAME_CLEAR_1 ("bgm_game_clear_1.mp3")
 
@@ -80,6 +81,9 @@ using namespace CocosDenshion;
 #define SE_SWIPE_1 ("se_swipe_1.mp3")
 #define SE_SWIPE_2 ("se_swipe_2.wav")
 #define SE_SWIPE_3 ("se_swipe_3.mp3")
+
+#define SE_POWDER_1 ("se_powder_1.mp3")
+#define SE_POWDER_2 ("se_powder_2.mp3")
 
 #define SE_FANFARE_1 ("se_fanfare_1.mp3")
 
