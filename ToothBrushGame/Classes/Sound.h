@@ -9,6 +9,10 @@
 #ifndef ToothBrushGame_Sound_h
 #define ToothBrushGame_Sound_h
 
+
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 //********************************************************************************
 // BGM
 //********************************************************************************

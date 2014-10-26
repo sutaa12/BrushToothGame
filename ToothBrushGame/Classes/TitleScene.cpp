@@ -131,9 +131,22 @@ bool TitleScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
+    
+    
+    //今、BGMが流れているかどうか
+    if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
+        
+        //音楽を止める
+        SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+        
+    }else{
+        
+        //タイトル画面BGMを再生
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1);
+        
+    }
+    
 
-    //タイトル画面BGM
-    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(BGM_TITLE_1 );
 
     return true;
 }
@@ -149,7 +162,9 @@ void TitleScene::menuButtonAchievements(void)
     this->removeAllChildren();
     
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,AchievementsScene::createScene(),Color3B::WHITE));
-
+    
+    //音楽を止める
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
 }
 
 //================================================================================
