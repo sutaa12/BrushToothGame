@@ -12,6 +12,7 @@
 
 #include "SimpleAudioEngine.h"
 
+//CocosDenshion::を書くのが面倒な人用
 using namespace CocosDenshion;
 //********************************************************************************
 // BGM

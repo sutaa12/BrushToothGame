@@ -141,8 +141,8 @@ bool TitleScene::init()
         
     }else{
         
-        //タイトル画面BGMを再生
-        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1);
+        //タイトル画面BGMをループ再生
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         
     }
     
