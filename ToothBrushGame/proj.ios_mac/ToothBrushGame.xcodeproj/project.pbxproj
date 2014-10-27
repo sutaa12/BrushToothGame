@@ -51,6 +51,10 @@
 		18C9C83619FE3A3A007A1C42 /* se_shine_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83119FE3A3A007A1C42 /* se_shine_3.mp3 */; };
 		18C9C83719FE3A3A007A1C42 /* se_shine_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83219FE3A3A007A1C42 /* se_shine_1.mp3 */; };
 		18C9C83819FE3A3A007A1C42 /* se_shine_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83319FE3A3A007A1C42 /* se_shine_2.mp3 */; };
+		18C9C83D19FE3BC5007A1C42 /* get_archivement_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83919FE3BC5007A1C42 /* get_archivement_2.mp3 */; };
+		18C9C83E19FE3BC5007A1C42 /* get_archivement_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83A19FE3BC5007A1C42 /* get_archivement_4.mp3 */; };
+		18C9C83F19FE3BC5007A1C42 /* get_archivement_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83B19FE3BC5007A1C42 /* get_archivement_1.mp3 */; };
+		18C9C84019FE3BC5007A1C42 /* get_archivement_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83C19FE3BC5007A1C42 /* get_archivement_3.mp3 */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -362,6 +366,10 @@
 		18C9C83119FE3A3A007A1C42 /* se_shine_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_3.mp3; sourceTree = "<group>"; };
 		18C9C83219FE3A3A007A1C42 /* se_shine_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_1.mp3; sourceTree = "<group>"; };
 		18C9C83319FE3A3A007A1C42 /* se_shine_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_2.mp3; sourceTree = "<group>"; };
+		18C9C83919FE3BC5007A1C42 /* get_archivement_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = get_archivement_2.mp3; sourceTree = "<group>"; };
+		18C9C83A19FE3BC5007A1C42 /* get_archivement_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = get_archivement_4.mp3; sourceTree = "<group>"; };
+		18C9C83B19FE3BC5007A1C42 /* get_archivement_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = get_archivement_1.mp3; sourceTree = "<group>"; };
+		18C9C83C19FE3BC5007A1C42 /* get_archivement_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = get_archivement_3.mp3; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -881,6 +889,10 @@
 				184AA5D419F63EE50058E024 /* se_enemy_down_3.mp3 */,
 				184AA5D519F63EE50058E024 /* se_item_select_1.mp3 */,
 				184AA5D619F63EE50058E024 /* se_plaque_down_2.mp3 */,
+				18C9C83919FE3BC5007A1C42 /* get_archivement_2.mp3 */,
+				18C9C83A19FE3BC5007A1C42 /* get_archivement_4.mp3 */,
+				18C9C83B19FE3BC5007A1C42 /* get_archivement_1.mp3 */,
+				18C9C83C19FE3BC5007A1C42 /* get_archivement_3.mp3 */,
 				184AA5D719F63EE50058E024 /* se_plaque_down_3.mp3 */,
 				184AA5A919F63E4F0058E024 /* se_swipe_1.mp3 */,
 				184AA5AA19F63E4F0058E024 /* se_swipe_2.wav */,
@@ -1162,6 +1174,7 @@
 				6193EE6A19F5BDB600E98E07 /* ButtonTouchStart.png in Resources */,
 				18C9C83419FE3A3A007A1C42 /* se_shine_4.mp3 in Resources */,
 				6193EE7B19F864CD00E98E07 /* GameTopBack.png in Resources */,
+				18C9C83F19FE3BC5007A1C42 /* get_archivement_1.mp3 in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				185830AA19F64BE300A0A703 /* bgm_enemy_scene_4.mp3 in Resources */,
 				6193EE4F19F5B43D00E98E07 /* Boss.png in Resources */,
@@ -1180,6 +1193,8 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				184AA5DB19F63EE50058E024 /* se_plaque_down_2.mp3 in Resources */,
 				184AA5A719F63E430058E024 /* se_damage_1.mp3 in Resources */,
+				18C9C84019FE3BC5007A1C42 /* get_archivement_3.mp3 in Resources */,
+				18C9C83E19FE3BC5007A1C42 /* get_archivement_4.mp3 in Resources */,
 				770596A619FD2DDB0070B5CC /* se_powder_1.mp3 in Resources */,
 				184AA5A419F62CB80058E024 /* puyon1.mp3 in Resources */,
 				184AA5AE19F63E4F0058E024 /* se_swipe_3.mp3 in Resources */,
@@ -1214,6 +1229,7 @@
 				1858309F19F64BE300A0A703 /* bgm_boss_scene_2.mp3 in Resources */,
 				6193EE6019F5B43D00E98E07 /* UI_ScoreAndMenu.png in Resources */,
 				6193EE5819F5B43D00E98E07 /* Plaque.png in Resources */,
+				18C9C83D19FE3BC5007A1C42 /* get_archivement_2.mp3 in Resources */,
 				6193EE5019F5B43D00E98E07 /* bubble_01.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				6193EE5719F5B43D00E98E07 /* MenuBar.png in Resources */,
