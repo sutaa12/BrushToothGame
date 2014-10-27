@@ -75,6 +75,8 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
         if(enemyRect.intersectsRect(touchRect) && ppEnemy[nEnemyNum]->getFollowPowder() == false)
         {
             ppEnemy[nEnemyNum]->setFollowPowder(true);
+            //音量調整
+            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
             //敵がくっついたら　SE
             SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }

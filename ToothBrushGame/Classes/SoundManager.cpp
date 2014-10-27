@@ -20,7 +20,7 @@ using namespace CocosDenshion;
 void SoundManager::init()
 {
     //音量を設定 1.0 ~ 0.0
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.4);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.0);
 
     // BGMの場合
     /*
@@ -134,6 +134,8 @@ void SoundManager::playSoundID(SOUND_LABEL soundlabel)
 {
     if(m_nSoundId[soundlabel] == 0)
     {
+    //音量を設定 1.0 ~ 0.0
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(SE_VOLUME_MAX);
     m_nSoundId[soundlabel] = SimpleAudioEngine::getInstance()->playEffect(SOUND_NAME[soundlabel], true);
     }
 }

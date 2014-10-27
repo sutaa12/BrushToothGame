@@ -17,6 +17,13 @@ using namespace CocosDenshion;
 //********************************************************************************
 // BGM
 //********************************************************************************
+#define BGM_VOLUME_MIN (0.1f)
+#define BGM_VOLUME_MAX (1.0f)
+
+#define SE_VOLUME_HALF (0.5f)
+#define SE_VOLUME_MAX (1.0f)
+#define SE_ENEMY_DOWN_VOLUME_1 (0.5f)
+
 #define BGM_TITLE_1 ("bgm_title_1.mp3")
 #define BGM_TITLE_2 ("bgm_title_2.mp3")
 
