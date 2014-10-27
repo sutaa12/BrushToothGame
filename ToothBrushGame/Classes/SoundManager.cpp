@@ -135,7 +135,7 @@ void SoundManager::playSoundID(SOUND_LABEL soundlabel)
     if(m_nSoundId[soundlabel] == 0)
     {
     //音量を設定 1.0 ~ 0.0
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(SE_VOLUME_MAX);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
     m_nSoundId[soundlabel] = SimpleAudioEngine::getInstance()->playEffect(SOUND_NAME[soundlabel], true);
     }
 }
