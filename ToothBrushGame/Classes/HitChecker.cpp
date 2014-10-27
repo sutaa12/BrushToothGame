@@ -22,6 +22,7 @@
 #include "MenuBar.h"
 #include "ToothPowder.h"
 #include "Sound.h"
+#include "SoundManager.h"
 
 //================================================================================
 // コンストラクタ
@@ -71,9 +72,11 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
         Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
 
         // 当たり判定
-        if(enemyRect.intersectsRect(touchRect))
+        if(enemyRect.intersectsRect(touchRect) && ppEnemy[nEnemyNum]->getFollowPowder() == false)
         {
             ppEnemy[nEnemyNum]->setFollowPowder(true);
+            //敵がくっついたら　SE
+            SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
 
         if(ppEnemy[nEnemyNum]->getFollowPowder())
@@ -136,6 +139,9 @@ void HitChecker::hitCheckTouchEnded(Rect touchRect,bool bToothPowder)
     {
         return;
     }
+
+    //歯磨き粉ボムはなしたらSE止める
+    SoundManager::stopSoundID(ID_SE_POWDER_2);
 
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
 
@@ -210,19 +216,10 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
         {
             continue;
         }
-        //
+
         if(ppEnemy[nEnemyNum]->getFollowPowder())
         {
             ppEnemy[nEnemyNum]->setPos(powderSpritePos);
-            if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
-                
-                
-            }else{
-                
-                
-            }
-            //敵がくっついたら　SE
-            SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
     }
 }
