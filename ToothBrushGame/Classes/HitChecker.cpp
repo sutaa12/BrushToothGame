@@ -71,9 +71,11 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
         Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
 
         // 当たり判定
-        if(enemyRect.intersectsRect(touchRect))
+        if(enemyRect.intersectsRect(touchRect) && ppEnemy[nEnemyNum]->getFollowPowder() == false)
         {
             ppEnemy[nEnemyNum]->setFollowPowder(true);
+            //敵がくっついたら　SE
+            SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
 
         if(ppEnemy[nEnemyNum]->getFollowPowder())
@@ -210,7 +212,7 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
         {
             continue;
         }
-        //
+
         if(ppEnemy[nEnemyNum]->getFollowPowder())
         {
             ppEnemy[nEnemyNum]->setPos(powderSpritePos);
@@ -221,8 +223,6 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
                 
                 
             }
-            //敵がくっついたら　SE
-            SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
     }
 }
