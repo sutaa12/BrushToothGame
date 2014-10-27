@@ -13,6 +13,7 @@
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
+#include "Sound.h"
 USING_NS_CC;
 //================================================================================
 // シーン生成
@@ -175,6 +176,9 @@ void AchievementsScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 //================================================================================
 void AchievementsScene::ButtonTitle(void)
 {
+    //SE
+    SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();

@@ -266,12 +266,20 @@ void ResultScene::updateGameClear(void)
 void ResultScene::ButtonRetry(void)
 {
     setNextScene(SCENE_GAME);
+
+    //SE
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
 }
 //================================================================================
 // タイトルボタン処理
 //================================================================================
 void ResultScene::ButtonTitle(void)
 {
+    //SE
+    SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+
+    //音楽を止める
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
     setNextScene(SCENE_TITLE);
 }
 //================================================================================
