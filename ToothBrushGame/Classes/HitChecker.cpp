@@ -22,6 +22,7 @@
 #include "MenuBar.h"
 #include "ToothPowder.h"
 #include "Sound.h"
+#include "SoundManager.h"
 
 //================================================================================
 // コンストラクタ
@@ -139,6 +140,9 @@ void HitChecker::hitCheckTouchEnded(Rect touchRect,bool bToothPowder)
         return;
     }
 
+    //歯磨き粉ボムはなしたらSE止める
+    SoundManager::stopSoundID(ID_SE_POWDER_2);
+
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
 
     for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
@@ -216,13 +220,6 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
         if(ppEnemy[nEnemyNum]->getFollowPowder())
         {
             ppEnemy[nEnemyNum]->setPos(powderSpritePos);
-            if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
-                
-                
-            }else{
-                
-                
-            }
         }
     }
 }

@@ -12,6 +12,7 @@
 #include "TextureFile.h"
 #include "Sound.h"
 #include "ToothPowder.h"
+#include "SoundManager.h"
 
 //================================================================================
 // コンストラクタ
@@ -126,11 +127,8 @@ void ToothPowder::chkPowderTouchFlag(Point pos)
     if(rectPowder.containsPoint(pos))
     {
         m_bPowderTouchFlag = true;
-        
-       // if (m_bPowderTouchFlag == true) {
-            SimpleAudioEngine::getInstance()->playEffect(SE_POWDER_2);
-            
-        //}
+        SoundManager::playSoundID(ID_SE_POWDER_2);
+
     }
     
 }

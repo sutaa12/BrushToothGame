@@ -45,6 +45,7 @@
 		185830AF19F64BE300A0A703 /* bgm_title_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1858309C19F64BE300A0A703 /* bgm_title_1.mp3 */; };
 		185830B019F64BE300A0A703 /* bgm_title_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1858309D19F64BE300A0A703 /* bgm_title_2.mp3 */; };
 		187E1D1319F4E0E5000B2A38 /* CountDown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 187E1D1119F4E0E5000B2A38 /* CountDown.cpp */; };
+		18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -349,6 +350,8 @@
 		1858309D19F64BE300A0A703 /* bgm_title_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bgm_title_2.mp3; sourceTree = "<group>"; };
 		187E1D1119F4E0E5000B2A38 /* CountDown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CountDown.cpp; path = ../Classes/CountDown.cpp; sourceTree = "<group>"; };
 		187E1D1219F4E0E5000B2A38 /* CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountDown.h; path = ../Classes/CountDown.h; sourceTree = "<group>"; };
+		18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
+		18C9C82D19FDEB32007A1C42 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -731,6 +734,8 @@
 		6193EE2E19F412DC00E98E07 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */,
+				18C9C82D19FDEB32007A1C42 /* SoundManager.h */,
 				C36E0AC619F0C43500E5040C /* AppDelegate.cpp */,
 				C36E0AC719F0C43500E5040C /* AppDelegate.h */,
 			);
@@ -1257,6 +1262,7 @@
 				C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */,
 				C36E0AF319F0C43500E5040C /* Bubble.cpp in Sources */,
 				C36E0AFB19F0C43500E5040C /* Item.cpp in Sources */,
+				18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */,
 				C36E0AF719F0C43500E5040C /* GameMainScene.cpp in Sources */,
 				C31B643519F8C58F00A8D67A /* AchievementsScene.cpp in Sources */,
 				C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */,
