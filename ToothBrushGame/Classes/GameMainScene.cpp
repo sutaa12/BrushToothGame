@@ -50,6 +50,8 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pUIManager);
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
+    //すべてのSEを止める
+    SimpleAudioEngine::getInstance()->stopAllEffects();
 }
 
 //================================================================================
