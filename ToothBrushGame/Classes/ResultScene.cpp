@@ -14,12 +14,15 @@
 USING_NS_CC;
 bool ResultScene::m_bGameOverFlag = false;
 int ResultScene::m_nScore;
+int ResultScene::m_nTimeBornus;
+
 //================================================================================
 // シーン生成
 //================================================================================
 
-Scene* ResultScene::createScene(bool bGameOverFlag,int nScoreNumber)
+Scene* ResultScene::createScene(bool bGameOverFlag,int nScoreNumber,int nTimeBornus)
 {
+    m_nTimeBornus = nTimeBornus;
     m_bGameOverFlag = bGameOverFlag;
     m_nScore = nScoreNumber;
     

@@ -21,7 +21,7 @@ public:
     ResultScene(){};
     ~ResultScene(){};
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
-    static cocos2d::Scene* createScene(bool bGameOverFlag = false,int nScore = 0);
+    static cocos2d::Scene* createScene(bool bGameOverFlag = false,int nScore = 0,int nTimeBornus = 0);
     
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
@@ -50,7 +50,8 @@ private:
     Point m_oldTouchPos;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
     static int m_nScore;
-    
+    //残り時間ボーナス
+    static int m_nTimeBornus;
     static bool m_bGameOverFlag;
     //クリア時のランク表示
     RankManager* m_pRankManager;

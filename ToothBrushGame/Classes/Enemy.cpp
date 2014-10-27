@@ -12,13 +12,14 @@
 #include "common.h"
 #include "LifeBar.h"
 #include "Score.h"
+#include "AchievementDataBase.h"
 int Enemy::m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
 int Enemy::m_nEnemyDisappear[Enemy::ENEMY_KIND_MAX];
 const Enemy::ENEMY_STATUS ENEMY_STATUS_LIST[Enemy::ENEMY_KIND_MAX] =
 {
-    {1,1},
-    {2,2},
-    {3,4},
+    {1,1,ACHIEVEMENT_TYPE_ENEMY_NORMAL_ONE_DOWN},
+    {2,2,ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN},
+    {3,4,ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN},
 };
 //================================================================================
 // コンストラクタ
@@ -102,6 +103,8 @@ void Enemy::disappear(void)
         m_time = 0;
     }
     m_nEnemyDisappear[m_nEnemyKind]++;
+    AchievementDataBaseList::addAchievement(ENEMY_STATUS_LIST[m_nEnemyKind].achievement);
+    
 }
 //================================================================================
 // 更新処理

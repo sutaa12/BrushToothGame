@@ -22,6 +22,18 @@ enum ACHIEVEMENT_KIND
     ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN,
     ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN,//レア種類の敵を倒した数
     ACHIEVEMENT_TYPE_ENEMY_LAIR_TWO_DOWN,
+    ACHIEVEMENT_TYPE_USE_UGAI,//うがいを使用した回数
+    ACHIEVEMENT_TYPE_USE_TOOTHPOWDER,//歯磨きボムを使用した回数
+    ACHIEVEMENT_TYPE_USE_TOUP,//タップした回数
+    ACHIEVEMENT_TYPE_GAME_TOP_SCORE,//１ゲームのトップスコア
+    ACHIEVEMENT_TYPE_GAME_TOP_ENEMY_DOWN,//１ゲームの敵の最高で倒した数
+    ACHIEVEMENT_TYPE_GAME_TOP_ENEMY_DOWN_BOM,//１ゲームでボムで倒した敵の数
+    ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM,//１ゲームでボムを使用した最も少ない回数
+    ACHIEVEMENT_TYPE_GAME_MAX_USE_BOM,//１ゲームでボムを使用した最も多い回数
+    ACHIEVEMENT_TYPE_GAME_USE_UGAI,//うがいを使用した回数
+    ACHIEVEMENT_TYPE_GAME_MAX_USE_ENEMY_DOWN_BOM,//１ゲームでボム使用で倒した敵で最も多い回数
+    ACHIEVEMENT_TYPE_GAME_TIME,//ゲームにかかった最短タイム
+    ACHIEVEMENT_TYPE_GAME_ENEMY_NOT_DOWN,//うがいしなかった敵の数
     ACHIEVEMENT_TYPE_TAP_GIRL_TITLE,//タイトルの女の子のタップ回数
     ACHIEVEMENT_TYPE_SWIPE_GIRL_TITLE,//タイトルの女の子のスワイプ回数
     ACHIEVEMENT_TYPE_TAP_GIRL_GAMESTATUS,//ステータスの女の子のタップ回数
@@ -40,7 +52,6 @@ public:
         char* boolname;//保存時のbool名
         ACHIEVEMENT_KIND achieveFlagKind;
         int unlockNum;//解除に必要な数
-        std::string date;//解除日
         std::string title;//実績名
         std::string message;//実績内容
     };
@@ -56,13 +67,19 @@ public:
     static int getAchieveInfo(int achieve){return m_nAchievementCont[achieve];}
     //実績判定取得
     static bool getAchieveBool(int achieve){return m_pAchievemntFlag[achieve];}
+    //実績日付取得
+    static std::string getAchieveDate(int achieve){return m_pAchievemntDate[achieve];}
     //実績ゲット
     static ACHIEVE_STATUS getAchievement(int achieveInfo);
     //実績名ゲット
     static std::string getAchievementName(int achieveInfo);
 
-    //実績情報取得
+    //実績情報に加算
     static void addAchievement(ACHIEVEMENT_KIND achievement);//回数カウント
+    //実績情報に挿入
+    static void setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum);//回数カウント
+    static void setAchievementMax(ACHIEVEMENT_KIND achievement,int nNum);//回数カウント
+
     //実績画面表示
     static void dispAchievement(int nUnlcok);
     //保存

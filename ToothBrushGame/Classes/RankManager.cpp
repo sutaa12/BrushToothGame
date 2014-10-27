@@ -12,6 +12,7 @@
 #include "RankManager.h"
 #include "RankObject.h"
 #include "Score.h"
+#include "DetailScore.h"
 
 //================================================================================
 // コンストラクタ
@@ -39,12 +40,13 @@ RankManager::~RankManager()
 //================================================================================
 bool RankManager::init(void)
 {
+    m_pTimeScore = DetailScore::create(Vec2(0,0),0,0,0);
     const char cRank[RANK_MAX]=
     {
         'S','A','B','C','D'
     };
     m_pScore = Score::create(Vec2(m_startLeftTopPos.x,m_startLeftTopPos.y), m_nRankManagerPoint,m_pLayer,m_nRankManagerPoint);
-    int nNum = 0;
+    int nNum = RANK_D;
     if(m_nRankManagerPoint <= SCORE_RANK_D)
     {
         nNum = RANK_D;
@@ -64,6 +66,7 @@ bool RankManager::init(void)
                     nNum = RANK_S;
                 }
     m_pRankObject = RankObject::create(Vec2(m_pScore->getPoint()->getPosition().x +m_pScore->getPoint()->getContentSize().width + 100,m_startLeftTopPos.y), cRank[nNum], m_pLayer);
+    
     
     // 正常終了
     return true;
@@ -89,7 +92,6 @@ void RankManager::update(void)
 //================================================================================
 RankManager* RankManager::create(const Vec2& startLeftTopPos,int nRankScore,Layer* layer)
 {
-    // 歯マネージャーのインスタンス化
     RankManager* pRankManager = new RankManager();
     
     // メンバー変数の代入

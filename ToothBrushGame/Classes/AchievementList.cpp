@@ -110,22 +110,28 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     label_1->setPosition(Point(25,label_1->getContentSize().height / 2));
     label_1->setColor(Color3B(0,0,0));
     cell->addChild(label_1);
-        if(!AchievementDataBaseList::getAchieveBool((int)idx - ACHIEVEMENT_MAX + 1))
+        if(AchievementDataBaseList::getAchieveBool((int)idx - ACHIEVEMENT_MAX + 1))
         {
             
-    // タイトル部分
-    auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
-    label_2->setAnchorPoint(Point(0, 0));
-    label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
-    label_2->setColor(Color3B(0,0,0));
-    cell->addChild(label_2);
-    
-    // メッセージ部分
-    auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
-    label_3->setAnchorPoint(Point(0, 0));
-    label_3->setPosition(Point(50 + label_1->getContentSize().width,5));
-    label_3->setColor(Color3B(0,0,0));
-    cell->addChild(label_3);
+            // タイトル部分
+            auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
+            label_2->setAnchorPoint(Point(0, 0));
+            label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
+            label_2->setColor(Color3B(0,0,0));
+            cell->addChild(label_2);
+
+            // メッセージ部分
+            auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
+            label_3->setAnchorPoint(Point(0, 0));
+            label_3->setPosition(Point(30 + label_1->getContentSize().width,5));
+            label_3->setColor(Color3B(0,0,0));
+            cell->addChild(label_3);
+            // 日付部分
+            auto *label_4 = LabelTTF::create(AchievementDataBaseList::getAchieveDate((int)idx - ACHIEVEMENT_MAX + 1).c_str(), "Arial", ACHIEVE_MESSAGE_SIZE / 2);
+            label_4->setAnchorPoint(Point(0, 0));
+            label_4->setPosition(Point(100 + label_3->getContentSize().width,5));
+            label_4->setColor(Color3B(0,0,0));
+            cell->addChild(label_4);
         }else{
         
         // タイトル部分

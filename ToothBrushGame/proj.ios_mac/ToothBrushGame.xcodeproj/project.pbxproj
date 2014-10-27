@@ -160,6 +160,7 @@
 		C36E0B0519F0C43500E5040C /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AEF19F0C43500E5040C /* UIManager.cpp */; };
 		C36E0B5219F0C5F100E5040C /* HitChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0B5019F0C5F100E5040C /* HitChecker.cpp */; };
 		C3AFC7C819EFBFC00017FB78 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */; };
+		C3DCB0D919FE4B7500C48DEC /* DetailScore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -495,6 +496,8 @@
 		C36E0B5019F0C5F100E5040C /* HitChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HitChecker.cpp; path = ../Classes/HitChecker.cpp; sourceTree = "<group>"; };
 		C36E0B5119F0C5F100E5040C /* HitChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitChecker.h; path = ../Classes/HitChecker.h; sourceTree = "<group>"; };
 		C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
+		C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DetailScore.cpp; path = ../Classes/DetailScore.cpp; sourceTree = "<group>"; };
+		C3DCB0D819FE4B7500C48DEC /* DetailScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailScore.h; path = ../Classes/DetailScore.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -964,6 +967,8 @@
 			children = (
 				C33B331019F5FE3500DEDAF8 /* RankObject.cpp */,
 				C33B331119F5FE3500DEDAF8 /* RankObject.h */,
+				C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */,
+				C3DCB0D819FE4B7500C48DEC /* DetailScore.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1276,6 +1281,7 @@
 				C36E0B0319F0C43500E5040C /* Tooth.cpp in Sources */,
 				C36E0AFF19F0C43500E5040C /* Plaque.cpp in Sources */,
 				C36E0AF619F0C43500E5040C /* EnemyManager.cpp in Sources */,
+				C3DCB0D919FE4B7500C48DEC /* DetailScore.cpp in Sources */,
 				6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */,
 				C36E0AFE19F0C43500E5040C /* Number.cpp in Sources */,
 				C36E0AF419F0C43500E5040C /* EffectManager.cpp in Sources */,

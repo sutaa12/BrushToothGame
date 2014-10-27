@@ -432,7 +432,7 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if(fAngle <= 45 && fAngle >= -45)
     {
         CCLOG("上方向");
-        m_pHitChecker->checkEnemyDown();
+
         return SWIPE_DIRECTION_UP;
 
     }
@@ -452,6 +452,7 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if((fAngle <= -135 && fAngle >= -180) || (fAngle <= 180 && fAngle >= 135))
     {
         CCLOG("下方向");
+        m_pHitChecker->checkEnemyDown();
         return SWIPE_DIRECTION_DOWN;
     }
     

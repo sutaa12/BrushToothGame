@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "TextureFile.h"
+#include "AchievementDataBase.h"
 
 using namespace cocos2d;
 
@@ -59,6 +60,7 @@ public:
     {
         int move;
         int EnemyLife;
+        ACHIEVEMENT_KIND achievement;
     };
     
     Enemy();   //コンストラクタ
