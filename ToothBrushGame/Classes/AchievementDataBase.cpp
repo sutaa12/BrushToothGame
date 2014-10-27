@@ -77,7 +77,7 @@ void AchievementDataBaseList::init()
     // 共有レイヤー内にデバッグ用レイヤー追加
     m_pAchieveLayer = AchieveLayer::create();
     m_pAchieveLayer->setTag(999);
-    DisplayLinkDirector::getInstance()->getNotificationNode()->addChild((Node*)m_pAchieveLayer);
+    DisplayLinkDirector::getInstance()->getNotificationNode()->addChild((Node*)m_pAchieveLayer,9999);
     m_pAchieveLayer->onEnter();
 }
 //実績リスト入手

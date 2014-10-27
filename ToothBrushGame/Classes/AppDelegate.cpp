@@ -51,11 +51,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     AchievementDataBaseList::init();
     //実績スコアリセット
     AchievementDataBaseList::resetAchievement();
+    
     AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_TURN_ON);
     
     // create a scene. it's an autorelease object
     //auto scene = GameMainScene::createScene();
-        auto scene = TitleScene::createScene();
+    auto scene = TitleScene::createScene();
     // run
     director->runWithScene(scene);
 

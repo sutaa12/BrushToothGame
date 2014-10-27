@@ -50,24 +50,24 @@ bool AchieveLayer::init()
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
     m_pAchieve = Sprite::create();
-    m_pAchieve->setTextureRect(Rect(0,0,200,100));
+    m_pAchieve->setTextureRect(Rect(0,0,ACHIEVE_LAYER_POS_WIDTH,100));
     m_pAchieve->setColor(Color3B::WHITE);
-    m_pAchieve->setPosition(Vec2(origin.x -200,origin.y + 850));
+    m_pAchieve->setPosition(Vec2(origin.x -ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 850));
     
     // 文字列
     m_pTitle = LabelTTF::create("実績解除", "ariel", 24);
     //左上の位置に設定
-    m_pTitle->setPosition(Vec2(origin.x - 200,origin.y + 850));
+    m_pTitle->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 880));
 
     // 文字列
     m_pMessage = LabelTTF::create("", "ariel", 24);
     //左上の位置に設定
-    m_pMessage->setPosition(Vec2(m_pTitle->getPosition().x + m_pTitle->getContentSize().width,origin.y + 850));
+    m_pMessage->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 840));
     
-    this->addChild(m_pAchieve,9995);
-    this->addChild(m_pMessage,9996);
-    this->addChild(m_pTitle,9997);
-    return true;
+    this->addChild(m_pAchieve,9996);
+    this->addChild(m_pMessage,9997);
+    this->addChild(m_pTitle,9998);
+        return true;
 }
 
 //================================================================================
@@ -130,10 +130,12 @@ void AchieveLayer::ButtonTitle(void)
 
 void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
 {
-    m_pMessage->setString(AchievementDataBaseList::getAchievement(nAchieveNum).name);
-    Sequence* pSequence = Sequence::create(MoveBy::create(3.0f,Vec2(200,m_pAchieve->getPosition().y)),MoveBy::create(3.0f,Vec2(-200,m_pAchieve->getPosition().y)), NULL);
-    m_pAchieve->runAction(pSequence);
-    m_pMessage->runAction(pSequence);
-    m_pTitle->runAction(pSequence);
+    m_pMessage->setString(AchievementDataBaseList::getAchievement(nAchieveNum).title);
+    m_pMessage->setColor(Color3B::BLACK);
+    m_pTitle->setColor(Color3B::BLACK);
+
+    m_pAchieve->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
+    m_pMessage->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
+    m_pTitle->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
 
 }

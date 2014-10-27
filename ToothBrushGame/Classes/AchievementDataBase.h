@@ -54,6 +54,8 @@ public:
     static int getAchievementMax(void){return m_nAchivementSize;}
     //ゲームデータ入手
     static int getAchieveInfo(int achieve){return m_nAchievementCont[achieve];}
+    //実績判定取得
+    static bool getAchieveBool(int achieve){return m_pAchievemntFlag[achieve];}
     //実績ゲット
     static ACHIEVE_STATUS getAchievement(int achieveInfo);
     //実績名ゲット
@@ -78,6 +80,7 @@ private:
     static bool* m_pAchievemntFlag;
     static std::string* m_pAchievemntDate;
     static AchieveLayer* m_pAchieveLayer;
+    
 
 };
 

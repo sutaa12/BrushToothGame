@@ -74,8 +74,6 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
         bg->setColor(background_color);
         bg->setTag(100);
         cell->addChild(bg);
-        
-
         // タイトル部分
         auto *label_2 = LabelTTF::create(title.c_str(), "Arial", STATUS_TITLE_SIZE);
         label_2->setAnchorPoint(Point(0, 0));
@@ -112,6 +110,9 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     label_1->setPosition(Point(25,label_1->getContentSize().height / 2));
     label_1->setColor(Color3B(0,0,0));
     cell->addChild(label_1);
+        if(!AchievementDataBaseList::getAchieveBool((int)idx - ACHIEVEMENT_MAX + 1))
+        {
+            
     // タイトル部分
     auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
     label_2->setAnchorPoint(Point(0, 0));
@@ -125,10 +126,18 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     label_3->setPosition(Point(50 + label_1->getContentSize().width,5));
     label_3->setColor(Color3B(0,0,0));
     cell->addChild(label_3);
+        }else{
+        
+        // タイトル部分
+        auto *label_2 = LabelTTF::create("LOCKED", "Arial", ACHIEVE_TITLE_SIZE);
+        label_2->setAnchorPoint(Point(0, 0));
+        label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
+        label_2->setColor(Color3B(0,0,0));
+        cell->addChild(label_2);
+        }
     }
     return cell;
 }
-
 // セル数
 ssize_t AchievementList::numberOfCellsInTableView(TableView *table){
     return AchievementDataBaseList::getAchievementMax() + (ACHIEVEMENT_MAX - 1);

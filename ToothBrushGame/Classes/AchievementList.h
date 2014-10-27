@@ -39,6 +39,7 @@ public:
 private:
     Size m_window_size;
     Layer* m_pLayer;
+    
     static const int STATUS_CELL_SIZE  = 50;
     static const int STATUS_TITLE_SIZE = STATUS_CELL_SIZE / 2;
     static const int STATUS_MESSAGE_SIZE = STATUS_CELL_SIZE / 2;
