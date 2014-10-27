@@ -68,6 +68,10 @@
 		18C9C85819FE471A007A1C42 /* VirusNomalDie0.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C84B19FE471A007A1C42 /* VirusNomalDie0.png */; };
 		18C9C85919FE471A007A1C42 /* VirusToughWait1.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C84C19FE471A007A1C42 /* VirusToughWait1.png */; };
 		18C9C85A19FE471A007A1C42 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C84D19FE471A007A1C42 /* water.png */; };
+		18C9C85F19FE487F007A1C42 /* StatusLittleGirl_Smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C85B19FE487F007A1C42 /* StatusLittleGirl_Smile.png */; };
+		18C9C86019FE487F007A1C42 /* StatusLittleGirl_Cry.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C85C19FE487F007A1C42 /* StatusLittleGirl_Cry.png */; };
+		18C9C86119FE487F007A1C42 /* StatusLittleGirl_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C85D19FE487F007A1C42 /* StatusLittleGirl_Normal.png */; };
+		18C9C86219FE487F007A1C42 /* StatusLittleGirl_Glad.png in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C85E19FE487F007A1C42 /* StatusLittleGirl_Glad.png */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -396,6 +400,10 @@
 		18C9C84B19FE471A007A1C42 /* VirusNomalDie0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusNomalDie0.png; sourceTree = "<group>"; };
 		18C9C84C19FE471A007A1C42 /* VirusToughWait1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusToughWait1.png; sourceTree = "<group>"; };
 		18C9C84D19FE471A007A1C42 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		18C9C85B19FE487F007A1C42 /* StatusLittleGirl_Smile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusLittleGirl_Smile.png; sourceTree = "<group>"; };
+		18C9C85C19FE487F007A1C42 /* StatusLittleGirl_Cry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusLittleGirl_Cry.png; sourceTree = "<group>"; };
+		18C9C85D19FE487F007A1C42 /* StatusLittleGirl_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusLittleGirl_Normal.png; sourceTree = "<group>"; };
+		18C9C85E19FE487F007A1C42 /* StatusLittleGirl_Glad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusLittleGirl_Glad.png; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -846,6 +854,10 @@
 				C33B331A19F645B000DEDAF8 /* tongue.png */,
 				C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */,
 				C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */,
+				18C9C85B19FE487F007A1C42 /* StatusLittleGirl_Smile.png */,
+				18C9C85C19FE487F007A1C42 /* StatusLittleGirl_Cry.png */,
+				18C9C85D19FE487F007A1C42 /* StatusLittleGirl_Normal.png */,
+				18C9C85E19FE487F007A1C42 /* StatusLittleGirl_Glad.png */,
 				6193EE6919F5BDB600E98E07 /* ButtonTouchStart.png */,
 				C32E526519FA0C9300A93F0E /* VirusLairWait0.png */,
 				C32E526619FA0C9300A93F0E /* VirusNormalWait0.png */,
@@ -1221,6 +1233,7 @@
 				1858309E19F64BE300A0A703 /* bgm_boss_scene_1.mp3 in Resources */,
 				184AA5DF19F63F130058E024 /* se_fanfare_1.mp3 in Resources */,
 				184AA5AC19F63E4F0058E024 /* se_swipe_1.mp3 in Resources */,
+				18C9C86019FE487F007A1C42 /* StatusLittleGirl_Cry.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				18C9C85619FE471A007A1C42 /* VirusLittleDie.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
@@ -1232,6 +1245,7 @@
 				18C9C85419FE471A007A1C42 /* VirusLairLittleDie.png in Resources */,
 				184AA5E019F63F130058E024 /* se_game_over_1.mp3 in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				18C9C85F19FE487F007A1C42 /* StatusLittleGirl_Smile.png in Resources */,
 				18C9C85819FE471A007A1C42 /* VirusNomalDie0.png in Resources */,
 				18C9C85219FE471A007A1C42 /* pika.png in Resources */,
 				184AA5DB19F63EE50058E024 /* se_plaque_down_2.mp3 in Resources */,
@@ -1264,6 +1278,7 @@
 				C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */,
 				18C9C85A19FE471A007A1C42 /* water.png in Resources */,
 				18C9C85319FE471A007A1C42 /* VirusLairDie1.png in Resources */,
+				18C9C86219FE487F007A1C42 /* StatusLittleGirl_Glad.png in Resources */,
 				185830A219F64BE300A0A703 /* bgm_boss_scene_5.mp3 in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
@@ -1274,6 +1289,7 @@
 				6193EE5A19F5B43D00E98E07 /* TitleBack.png in Resources */,
 				185830AB19F64BE300A0A703 /* bgm_game_clear_1.mp3 in Resources */,
 				6193EE5B19F5B43D00E98E07 /* TitleChara.png in Resources */,
+				18C9C86119FE487F007A1C42 /* StatusLittleGirl_Normal.png in Resources */,
 				18C9C85119FE471A007A1C42 /* kirakira.png in Resources */,
 				1858309F19F64BE300A0A703 /* bgm_boss_scene_2.mp3 in Resources */,
 				6193EE6019F5B43D00E98E07 /* UI_ScoreAndMenu.png in Resources */,

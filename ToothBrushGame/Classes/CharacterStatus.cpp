@@ -33,7 +33,7 @@ CharacterStatus::~CharacterStatus()
 bool CharacterStatus::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("StatusLittleGirl_00.png");
+    m_pSprite = Sprite::create("StatusLittleGirl_Normal.png");
 
     // エラーチェック
     if(m_pSprite == nullptr)
