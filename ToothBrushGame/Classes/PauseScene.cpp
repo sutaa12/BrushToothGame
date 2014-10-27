@@ -135,6 +135,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect returnGameSpriteRect = m_pReturnGameSprite->getBoundingBox();
     if(returnGameSpriteRect.containsPoint(m_touchPos))
     {
+        //音量調整
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
         //SE
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         returnGame();
@@ -144,6 +146,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect retryGameSpriteRect = m_pRetryGameSprite->getBoundingBox();
     if(retryGameSpriteRect.containsPoint(m_touchPos))
     {
+        //音量調整
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
         //SE
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         retryGame();
@@ -153,6 +157,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     Rect returnTitleSpriteRect = m_pReturnTitleSprite->getBoundingBox();
     if(returnTitleSpriteRect.containsPoint(m_touchPos))
     {
+        //音量調整
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
         //SE
         CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         

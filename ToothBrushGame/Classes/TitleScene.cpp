@@ -139,7 +139,8 @@ bool TitleScene::init()
         //  SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
         
     }else{
-        
+        //音量調整
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
         //タイトル画面BGMをループ再生
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         

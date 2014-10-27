@@ -177,9 +177,10 @@ bool GameMainScene::init()
         
     }
     
-        //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
-        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
-        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
+        //音量調整
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
+    //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         
     
 
@@ -255,6 +256,8 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // ポーズメニューを開く
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
+        //音量調整
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
         //SE
         SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         m_pPauseLayer = PauseScene::createLayer();
@@ -412,7 +415,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
         m_nShakeCnt = 0;
         
         //SE
-        SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
     }
 }
