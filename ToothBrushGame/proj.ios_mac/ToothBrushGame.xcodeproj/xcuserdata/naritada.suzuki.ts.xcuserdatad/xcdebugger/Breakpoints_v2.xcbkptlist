@@ -280,12 +280,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/HitChecker.cpp"
-            timestampString = "435745023.139354"
+            timestampString = "436086633.969859"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/HitChecker.cpp"
+            timestampString = "436086633.969859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
             endingLineNumber = "222"
-            landmarkName = "HitChecker::checkEnemyDown(void)"
+            landmarkName = "HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -296,12 +312,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/HitChecker.cpp"
-            timestampString = "435745023.139354"
+            timestampString = "436086633.969859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "HitChecker::checkEnemyDown(void)"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -312,28 +328,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/HitChecker.cpp"
-            timestampString = "435745023.139354"
+            timestampString = "436086633.969859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "HitChecker::checkEnemyDown(void)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/HitChecker.cpp"
-            timestampString = "435745023.139354"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "HitChecker::checkEnemyDown(void)"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
