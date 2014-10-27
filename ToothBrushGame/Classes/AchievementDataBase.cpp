@@ -9,6 +9,7 @@
 #include <time.h>
 #include "AchievementDataBase.h"
 #include "AchieveLayer.h"
+AchieveLayer* AchievementDataBaseList::m_pAchieveLayer;
 const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
 {
     "ACHIEVE_TYPE_NONE",//実績タイプ
@@ -47,8 +48,8 @@ bool* AchievementDataBaseList::m_pAchievemntFlag;
 std::string* AchievementDataBaseList::m_pAchievemntDate;
 AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
 {
-    {"実績1",ACHIEVE_TYPE_TURN_ON,1,"","はじめてのはみがき","ゲームを始めて起動する"},
-    {"実績2",ACHIEVE_TYPE_GAME_PLAY,1,"","たのしいはみがき","ゲームを始めて開始する"},
+    {"実績1","実績フラグ1",ACHIEVE_TYPE_TURN_ON,1,"","はじめてのはみがき","ゲームを始めて起動する"},
+    {"実績2","実績フラグ2",ACHIEVE_TYPE_GAME_PLAY,1,"","たのしいはみがき","ゲームを始めて開始する"},
 };
 
 std::string strsprintf(const char* format,...){
@@ -72,12 +73,12 @@ void AchievementDataBaseList::init()
     m_pAchievemntFlag = new bool[m_nAchivementSize];
     loadAchievement();
     // 共有レイヤー追加
-    Director::sharedDirector()->setNotificationNode(Node::create());
+    Director::getInstance()->setNotificationNode(Node::create());
     // 共有レイヤー内にデバッグ用レイヤー追加
-    AchieveLayer *achieveLayer = AchieveLayer::create();
-    achieveLayer->setTag(999);
-    DisplayLinkDirector::sharedDirector()->getNotificationNode()->addChild((Node*)achieveLayer);
-    achieveLayer->onEnter();
+    m_pAchieveLayer = AchieveLayer::create();
+    m_pAchieveLayer->setTag(999);
+    DisplayLinkDirector::getInstance()->getNotificationNode()->addChild((Node*)m_pAchieveLayer);
+    m_pAchieveLayer->onEnter();
 }
 //実績リスト入手
 AchievementDataBaseList::ACHIEVE_STATUS AchievementDataBaseList::getAchievement(int achieveInfo){
@@ -96,9 +97,9 @@ void AchievementDataBaseList::addAchievement(ACHIEVEMENT_KIND achievement)
     saveAchievement();
 }
 
-void AchievementDataBaseList::dispAchievement(void)
+void AchievementDataBaseList::dispAchievement(int nUnlcok)
 {
-    
+    m_pAchieveLayer->setDispAchieveLayer(nUnlcok);
 }
 
 void AchievementDataBaseList::saveAchievement()
@@ -111,7 +112,7 @@ void AchievementDataBaseList::saveAchievement()
     }
     for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
     {
-        userDef->setBoolForKey(AchievementData[nloop].name,m_pAchievemntFlag[nloop]);
+        userDef->setBoolForKey(AchievementData[nloop].boolname,m_pAchievemntFlag[nloop]);
         userDef->setStringForKey(AchievementData[nloop].name,m_pAchievemntDate[nloop]);
     }
     //書き込み
@@ -126,24 +127,44 @@ void AchievementDataBaseList::loadAchievement()
     {
         m_nAchievementCont[nloop] = userDef->getIntegerForKey(ACHIEVEMENT_NAME[nloop], 0);
     }
-    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    for(int nloop = 0;nloop < m_nAchivementSize;nloop++)
     {
-        m_pAchievemntFlag[nloop] = userDef->getBoolForKey(AchievementData[nloop].name,false);
+        m_pAchievemntFlag[nloop] = userDef->getBoolForKey(AchievementData[nloop].boolname,false);
         m_pAchievemntDate[nloop] = userDef->getStringForKey(AchievementData[nloop].name,"");
     }
 }
+void AchievementDataBaseList::resetAchievement()
+{
+    //保存先の生成
+    UserDefault *userDef = UserDefault::getInstance();
+    for(int nloop = 0;nloop < ACHIEVEMENT_MAX;nloop++)
+    {
+        m_nAchievementCont[nloop] = 0;
 
+        userDef->setIntegerForKey(ACHIEVEMENT_NAME[nloop],0);
+    }
+    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    {
+        m_pAchievemntFlag[nloop] = false;
+        m_pAchievemntDate[nloop] = "";
+
+        userDef->setBoolForKey(AchievementData[nloop].boolname,false);
+        userDef->setStringForKey(AchievementData[nloop].name,"");
+    }
+    //書き込み
+    userDef->flush();
+}
 void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
 {
     for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
     {
         if(AchievementData[nloop].achieveFlagKind == achieve)
         {
-            if(!m_pAchievemntFlag[nloop])
+            if(!m_pAchievemntFlag[achieve])
             {
-                if(m_nAchievementCont[nloop] >= AchievementData[nloop].unlockNum)
+                if(m_nAchievementCont[achieve] >= AchievementData[nloop].unlockNum)
                 {
-                    m_pAchievemntFlag[nloop] = true;
+                    m_pAchievemntFlag[achieve] = true;
                     time_t curTime;
                     tm *timeObject;
                     time(&curTime);
@@ -154,7 +175,7 @@ void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
                                            timeObject->tm_min , timeObject->tm_sec);
                     
                     m_pAchievemntDate[nloop].swap(time);
-                    dispAchievement();
+                    dispAchievement(nloop);
                 }
             }
             

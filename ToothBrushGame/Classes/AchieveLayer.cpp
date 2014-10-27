@@ -52,7 +52,7 @@ bool AchieveLayer::init()
     m_pAchieve = Sprite::create();
     m_pAchieve->setTextureRect(Rect(0,0,200,100));
     m_pAchieve->setColor(Color3B::WHITE);
-    m_pAchieve->setPosition(Vec2(origin.x - 200,origin.y + 850));
+    m_pAchieve->setPosition(Vec2(origin.x -200,origin.y + 850));
     
     // 文字列
     m_pTitle = LabelTTF::create("実績解除", "ariel", 24);
@@ -64,10 +64,9 @@ bool AchieveLayer::init()
     //左上の位置に設定
     m_pMessage->setPosition(Vec2(m_pTitle->getPosition().x + m_pTitle->getContentSize().width,origin.y + 850));
     
-    this->addChild(m_pAchieve);
-    this->addChild(m_pMessage);
-    this->addChild(m_pTitle);
-    
+    this->addChild(m_pAchieve,9995);
+    this->addChild(m_pMessage,9996);
+    this->addChild(m_pTitle,9997);
     return true;
 }
 
@@ -132,7 +131,7 @@ void AchieveLayer::ButtonTitle(void)
 void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
 {
     m_pMessage->setString(AchievementDataBaseList::getAchievement(nAchieveNum).name);
-    Sequence* pSequence = Sequence::create(MoveBy::create(1.0f,Vec2(200,0)),MoveBy::create(1.0f,Vec2(-200,0)), NULL);
+    Sequence* pSequence = Sequence::create(MoveBy::create(3.0f,Vec2(200,m_pAchieve->getPosition().y)),MoveBy::create(3.0f,Vec2(-200,m_pAchieve->getPosition().y)), NULL);
     m_pAchieve->runAction(pSequence);
     m_pMessage->runAction(pSequence);
     m_pTitle->runAction(pSequence);

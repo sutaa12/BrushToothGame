@@ -29,7 +29,7 @@ enum ACHIEVEMENT_KIND
     ACHIEVEMENT_MAX//
 };
 
-
+class AchieveLayer;
 class AchievementDataBaseList{
 public:
     
@@ -37,6 +37,7 @@ public:
     struct ACHIEVE_STATUS
     {
         char* name;//保存時の名前
+        char* boolname;//保存時のbool名
         ACHIEVEMENT_KIND achieveFlagKind;
         int unlockNum;//解除に必要な数
         std::string date;//解除日
@@ -46,7 +47,7 @@ public:
     
 public:
     AchievementDataBaseList(){}
-    ~AchievementDataBaseList(){SAFE_DELETE_ARRAY(m_pAchievemntDate);SAFE_DELETE_ARRAY(m_pAchievemntFlag);}
+    ~AchievementDataBaseList(){SAFE_DELETE_ARRAY(m_pAchievemntDate);SAFE_DELETE_ARRAY(m_pAchievemntFlag);SAFE_DELETE(m_pAchieveLayer);}
     //初期化
     static void init();
     //実績情報の数
@@ -61,19 +62,22 @@ public:
     //実績情報取得
     static void addAchievement(ACHIEVEMENT_KIND achievement);//回数カウント
     //実績画面表示
-    static void dispAchievement(void);
+    static void dispAchievement(int nUnlcok);
     //保存
     static void saveAchievement(void);
     //ロード
     static void loadAchievement(void);
     //実績条件チェック
     static void chkAchievement(ACHIEVEMENT_KIND achieve);
+    
+    static void resetAchievement();
 
 private:
     static int m_nAchivementSize;//解除実績数
     static int m_nAchievementCont[ACHIEVEMENT_MAX];
     static bool* m_pAchievemntFlag;
     static std::string* m_pAchievemntDate;
+    static AchieveLayer* m_pAchieveLayer;
 
 };
 
