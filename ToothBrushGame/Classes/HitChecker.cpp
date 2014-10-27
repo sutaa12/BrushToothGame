@@ -54,6 +54,8 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
     Rect powderSprite = m_pUIManager->getToothPowder()->getItemIconSprite()->getBoundingBox();
     Vec2 powderSpritePos = powderSprite.origin + powderSprite.size / 2;
+    Point point = touchRect.origin;
+    point += touchRect.size / 2;
 
     for(int nEnemyNum = EnemyManager::ENEMY_MAX - 1;nEnemyNum >= 0;nEnemyNum--)
     {
@@ -63,27 +65,34 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
             continue;
         }
 
-        // 既に死んでいるならスキップ
-        if(ppEnemy[nEnemyNum]->getDisapper())
+        // 既に消えているならスキップ
+        if(ppEnemy[nEnemyNum]->getEnemyDownFlag())
         {
             continue;
+        }
+
+        // 追従フラグが立っているなら追従させる
+        if(ppEnemy[nEnemyNum]->getFollowPowder())
+        {
+            ppEnemy[nEnemyNum]->setPos(powderSpritePos);
         }
 
         Rect enemyRect = (ppEnemy[nEnemyNum]->getSprite())->getBoundingBox();
 
         // 当たり判定
-        if(enemyRect.intersectsRect(touchRect) && ppEnemy[nEnemyNum]->getFollowPowder() == false)
+        if(enemyRect.containsPoint(point)&& ppEnemy[nEnemyNum]->getFollowPowder() == false)
         {
+            // 敵が既に死んでいたら処理を終了
+            if(ppEnemy[nEnemyNum]->getDisapper())
+            {
+                return;
+            }
+
             ppEnemy[nEnemyNum]->setFollowPowder(true);
             //音量調整
             SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
             //敵がくっついたら　SE
             SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
-        }
-
-        if(ppEnemy[nEnemyNum]->getFollowPowder())
-        {
-            ppEnemy[nEnemyNum]->setPos(powderSpritePos);
         }
     }
 }
