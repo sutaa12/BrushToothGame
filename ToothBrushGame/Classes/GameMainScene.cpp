@@ -27,17 +27,20 @@
 #include "ToothPowder.h"
 #include "GameDifficult.h"
 USING_NS_CC;
-
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
     {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,600)},
     {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(200,300)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(300,350)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,15,Point(200,300)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,15,20,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,20,25,Point(300,350)},
+    {Enemy::ENEMY_KIND_LAIR_TWO,30,30,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,35,35,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TREE,10,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,30,45,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,30,50,Point(150,400)},
 };
 //================================================================================
 // デストラクタ

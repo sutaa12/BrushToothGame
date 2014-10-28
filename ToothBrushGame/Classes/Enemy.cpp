@@ -96,6 +96,7 @@ void Enemy::disappear(void)
     m_bDeath = true;
     //画像をきり替え
     m_pSprite->setColor(Color3B::GRAY);
+    m_pSprite->setTexture(ENEMY_IMAGE_LIST[m_nEnemyKind][1]);
     
     if(m_bFollowPowder)
     {

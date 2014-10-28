@@ -12,7 +12,6 @@
 #include "cocos2d.h"
 #include "TextureFile.h"
 #include "AchievementDataBase.h"
-
 using namespace cocos2d;
 
 
@@ -44,28 +43,28 @@ public:
     {
         {
             TEX_ENEMY_WAIT_00,
-            TEX_ENEMY_WAIT_00
+            TEX_ENEMY_DIE_01
         },
         {
             TEX_ENEMY_WAIT_01,
             TEX_ENEMY_WAIT_01
         },
         {
-            TEX_ENEMY_WAIT_01,
-            TEX_ENEMY_WAIT_01
+            TEX_ENEMY_TOUGH_WAIT_01,
+            TEX_ENEMY_TOUGH_WAIT_01
         },
 
         {
             TEX_ENEMY_LAIR_WAIT_00,
-            TEX_ENEMY_LAIR_WAIT_00
+            TEX_ENEMY_LAIR_DIE_01
         },
         {
-            TEX_ENEMY_LAIR_WAIT_00,
-            TEX_ENEMY_LAIR_WAIT_00
+            TEX_ENEMY_LAIR_LITTLE_WAIT_01,
+            TEX_ENEMY_LAIR_LITTLE_DIE_01
         },
         {
-            TEX_ENEMY_LAIR_WAIT_00,
-            TEX_ENEMY_LAIR_WAIT_00
+            TEX_ENEMY_LITTLE_WAIT_01,
+            TEX_ENEMY_LITTLE_DIE_01
         },
     };
 public:

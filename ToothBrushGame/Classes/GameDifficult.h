@@ -20,6 +20,10 @@ enum GAME_PHASE{
     PHASE_FOR,
     PHASE_FIVE,
     PHASE_SIX,
+    PHASE_SEVEN,
+    PHASE_EIGHT,
+    PHASE_NINE,
+    PHASE_TEN,
     PHASE_MAX
 };
 

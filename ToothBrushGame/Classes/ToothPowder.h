@@ -49,12 +49,15 @@ public:
     bool getPowderTouchFlag(void){return m_bPowderTouchFlag;}
     
 private:
+    ProgressTimer* m_pProgressTimer;
     Layer* m_pLayer;
     Sprite* m_pSprite;
     Sprite* m_pItemIcon;
     Vec2 m_pos;
     Vec3 m_rot;
     bool m_bPowderTouchFlag;
+    float m_nCount;
+    static const int TOOTH_RESPONS_SEC = 5;
 };
 
 #endif /* defined(__ToothBrushGame__ToothPowder__) */
