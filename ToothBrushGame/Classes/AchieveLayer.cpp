@@ -130,6 +130,10 @@ void AchieveLayer::ButtonTitle(void)
 
 void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
 {
+    m_pAchieve->stopAllActions();
+    m_pMessage->stopAllActions();
+    m_pTitle->stopAllActions();
+    
     m_pMessage->setString(AchievementDataBaseList::getAchievement(nAchieveNum).title);
     m_pMessage->setColor(Color3B::BLACK);
     m_pTitle->setColor(Color3B::BLACK);

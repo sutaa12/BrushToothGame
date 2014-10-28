@@ -33,7 +33,10 @@ public:
     {
         ENEMY_KIND_NORMAL_ONE,
         ENEMY_KIND_NORMAL_TWO,
+        ENEMY_KIND_NORMAL_TREE,
         ENEMY_KIND_LAIR_ONE,
+        ENEMY_KIND_LAIR_TWO,
+        ENEMY_KIND_LAIR_TREE,
         ENEMY_KIND_MAX
     };
     //敵の画像リスト
@@ -47,11 +50,23 @@ public:
             TEX_ENEMY_WAIT_01,
             TEX_ENEMY_WAIT_01
         },
+        {
+            TEX_ENEMY_WAIT_01,
+            TEX_ENEMY_WAIT_01
+        },
 
         {
             TEX_ENEMY_LAIR_WAIT_00,
             TEX_ENEMY_LAIR_WAIT_00
-        }
+        },
+        {
+            TEX_ENEMY_LAIR_WAIT_00,
+            TEX_ENEMY_LAIR_WAIT_00
+        },
+        {
+            TEX_ENEMY_LAIR_WAIT_00,
+            TEX_ENEMY_LAIR_WAIT_00
+        },
     };
 public:
     

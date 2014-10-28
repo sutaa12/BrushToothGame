@@ -13,18 +13,16 @@
 #include "Sound.h"
 USING_NS_CC;
 bool ResultScene::m_bGameOverFlag = false;
-int ResultScene::m_nScore;
 int ResultScene::m_nTimeBornus;
 
 //================================================================================
 // シーン生成
 //================================================================================
 
-Scene* ResultScene::createScene(bool bGameOverFlag,int nScoreNumber,int nTimeBornus)
+Scene* ResultScene::createScene(bool bGameOverFlag,int nTimeBornus)
 {
     m_nTimeBornus = nTimeBornus;
     m_bGameOverFlag = bGameOverFlag;
-    m_nScore = nScoreNumber;
     
     // 'scene' is an autorelease object
     auto scene = Scene::create();
@@ -96,7 +94,7 @@ bool ResultScene::init()
     (this->*pFuncInit)();
     
     //スコアとランク表示
-    m_pRankManager = RankManager::create(Vec2(origin.x + 100,origin.y + 600),m_nScore, this);
+    m_pRankManager = RankManager::create(Vec2(origin.x + 100,origin.y + 600),m_nTimeBornus, this);
     
     //ボタン表示
     MenuItemSprite* pButtonRetry;
@@ -230,6 +228,7 @@ void ResultScene::initGameOver(void)
     pSprite->setColor(Color3B::RED);
     pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
     this->addChild(pSprite);
+    m_nTimeBornus = -1;
 
 }
 

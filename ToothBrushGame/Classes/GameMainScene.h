@@ -12,7 +12,7 @@
 #include "GameDifficult.h"
 using namespace cocos2d;
 
-#define GAME_TIME_MAX (60)
+#define GAME_TIME_MAX (5)
 
 class ToothManager;
 class EnemyManager;

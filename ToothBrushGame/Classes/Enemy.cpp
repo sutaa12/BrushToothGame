@@ -19,7 +19,10 @@ const Enemy::ENEMY_STATUS ENEMY_STATUS_LIST[Enemy::ENEMY_KIND_MAX] =
 {
     {1,1,ACHIEVEMENT_TYPE_ENEMY_NORMAL_ONE_DOWN},
     {2,2,ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN},
-    {3,4,ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN},
+    {3,3,ACHIEVEMENT_TYPE_ENEMY_NORMAL_TREE_DOWN},
+    {6,4,ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN},
+    {8,6,ACHIEVEMENT_TYPE_ENEMY_LAIR_TWO_DOWN},
+    {10,8,ACHIEVEMENT_TYPE_ENEMY_LAIR_TREE_DOWN},
 };
 //================================================================================
 // コンストラクタ
@@ -104,7 +107,7 @@ void Enemy::disappear(void)
     }
     m_nEnemyDisappear[m_nEnemyKind]++;
     AchievementDataBaseList::addAchievement(ENEMY_STATUS_LIST[m_nEnemyKind].achievement);
-    
+    AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_ENEMY_DOWN);
 }
 //================================================================================
 // 更新処理

@@ -35,6 +35,7 @@ public:
     bool init(void);
     void uninit(void);
     void update(void);
+    LabelTTF* getDetailName(void){return m_pDetailScoreLabel;}
     
     static DetailScore* create(const Vec2& startLeftTopPos,char* DetailName,int nPoint,Layer* layer);
     

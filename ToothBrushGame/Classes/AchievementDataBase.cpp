@@ -18,8 +18,10 @@ const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
     "ACHIEVEMENT_TYPE_ENEMY_DOWN",//倒した敵の総数
     "ACHIEVEMENT_TYPE_ENEMY_NORMAL_ONE_DOWN",//普通の種類の敵の倒した数
     "ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN",
+    "ACHIEVEMENT_TYPE_ENEMY_NORMAL_TREE_DOWN",
     "ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN",//レア種類の敵を倒した数
     "ACHIEVEMENT_TYPE_ENEMY_LAIR_TWO_DOWN",
+    "ACHIEVEMENT_TYPE_ENEMY_LAIR_TREE_DOWN",
     "ACHIEVEMENT_TYPE_USE_UGAI",//うがいを使用した回数
     "ACHIEVEMENT_TYPE_USE_TOOTHPOWDER",//歯磨きボムを使用した回数
     "ACHIEVEMENT_TYPE_USE_TOUP",//タップした回数
@@ -46,6 +48,8 @@ const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
     "ばいばいしたばいきんさん",//倒した敵の総数
     "ばいばいしたよわいばいきんさん",//普通の種類の敵の倒した数
     "ばいばいしたふつうのばいきんさん",
+    "ばいばいしたつよいのばいきんさん",
+    "ばいばいしたれあなよわいばいきんさん",//レア種類の敵を倒した数
     "ばいばいしたれあなばいきんさん",//レア種類の敵を倒した数
     "ばいばいしたれあなつよいばいきんさん",
     "がらがらっぺしたかいすぅ",
@@ -84,7 +88,7 @@ AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
     {"実績9","実績フラグ9",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,100,"スコア100pt達成した！","もっとみがいてよぉ"},
     {"実績10","実績フラグ10",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1000,"スコア1000pt達成した！","おくちきれいきれい"},
     {"実績11","実績フラグ11",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,5000,"スコア5000達成した！","いっぱいみがいたね！"},
-    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,100000,"スコア10000pt達成した！","やばい。"},
+    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,100000,"スコア10000pt達成した！","やばい。"}
 };
 
 std::string strsprintf(const char* format,...){

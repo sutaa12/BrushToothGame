@@ -36,7 +36,7 @@ bool DetailScore::init(void)
     m_pDetailScoreLabel->setPosition(m_startLeftTopPos);
     
     // スコアポイント
-    m_pPointLabel = LabelTTF::create("0", "ariel", 48);
+    m_pPointLabel = LabelTTF::create("0", "ariel", 24);
     String* points = String::createWithFormat( "%d", m_nPoint);
     
     //DetailScore文字の一番後ろの位置にセット
@@ -78,7 +78,7 @@ DetailScore* DetailScore::create(const Vec2& startLeftTopPos,char* DetailName,in
     pDetailScore->m_pLayer = layer;
     pDetailScore->m_nPoint = m_nPoint;
     // DetailScore　文字列
-    pDetailScore->m_pDetailScoreLabel = LabelTTF::create(DetailName, "ariel", 48);
+    pDetailScore->m_pDetailScoreLabel = LabelTTF::create(DetailName, "ariel", 24);
 
     // 初期化
     pDetailScore->init();

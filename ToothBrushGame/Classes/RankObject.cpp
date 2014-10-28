@@ -44,7 +44,6 @@ bool RankObject::init(void)
     m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pRankObjectLabel->getContentSize().width, m_startLeftTopPos.y));
     m_pPointLabel->setString(points->getCString());
     
-    
     m_pLayer->addChild(m_pPointLabel);
     m_pLayer->addChild(m_pRankObjectLabel);
     // 正常終了

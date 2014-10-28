@@ -56,7 +56,6 @@ public:
     
     void addRankManager(int num){m_nRankManagerPoint += num;}
     
-    
 private:
     Sprite* m_pEndingBack;
     Vec2 m_startLeftTopPos;
@@ -66,5 +65,6 @@ private:
     DetailScore* m_pTimeScore;
     DetailScore* m_pEnemyScore[Enemy::ENEMY_KIND_MAX + 1];
     int m_nRankManagerPoint;
+    int m_nTimeBornus;
 };
 #endif /* defined(__ToothBrushGame__RankManager__) */
