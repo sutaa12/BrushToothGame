@@ -18,6 +18,8 @@ CharacterStatus::CharacterStatus(void)
     // メンバ変数の初期化
     m_pSprite = nullptr;
     m_bGiddy = false;
+    m_bPatternChangeEnd = false;
+    m_pattern = m_oldPattern = CHARACTERSTATUS_PATTERN_CRY;
 }
 
 //================================================================================
@@ -94,8 +96,14 @@ CharacterStatus* CharacterStatus::create(const Vec2& startRigthBottomPos,Charact
 //================================================================================
 void CharacterStatus::checkChangePattern(int nEnemyAllNum, int nEnemyDownNum)
 {
+	// パターンを更新する必要がないならば処理をしない
+	if(m_bPatternChangeEnd)
+	{
+		return;
+	}
     int nChangeBorder = nEnemyAllNum / 4;
 
+    // 0割対策
     if(nChangeBorder == 0)
     {
     	return;
@@ -110,19 +118,20 @@ void CharacterStatus::checkChangePattern(int nEnemyAllNum, int nEnemyDownNum)
     switch (nPattern)
     {
         case 0:
-            setPattern(CHARACTERSTATUS_PATTERN_CRY);
+            m_pattern = CHARACTERSTATUS_PATTERN_CRY;
             break;
 
         case 1:
-            setPattern(CHARACTERSTATUS_PATTERN_NORMAL);
+            m_pattern = CHARACTERSTATUS_PATTERN_NORMAL;
             break;
 
         case 2:
-            setPattern(CHARACTERSTATUS_PATTERN_SMAILE);
+            m_pattern = CHARACTERSTATUS_PATTERN_SMAILE;
             break;
 
         case 3:
-            setPattern(CHARACTERSTATUS_PATTERN_GLAD);
+        	// クリア時に変更するためここで変更する必要なし。
+            //m_pattern = CHARACTERSTATUS_PATTERN_GLAD;
             break;
 
         default:
@@ -145,16 +154,27 @@ void CharacterStatus::setPattern(CHARACTERSTATUS_PATTERN pattern)
         return;
     }
 
-    m_oldPattern = m_pattern;
-    m_pattern = pattern;
     m_pSprite->setTexture(IMAGE_LIST[pattern]);
 
     // 目眩時
-    if(m_pattern == CHARACTERSTATUS_PATTERN_GIDDY)
+    if(pattern == CHARACTERSTATUS_PATTERN_GIDDY)
     {
         setGiddy();
+        return;
     }
-    else
+
+    bool bJump = false;
+
+    // 目眩をする前の表情と違う場合
+    if(m_oldPattern != m_pattern)
+    {
+        bJump = true;
+    }
+
+    m_oldPattern = m_pattern;
+    m_pattern = pattern;
+
+    if(bJump)
     {
         setJump(1.0f,Vec2(0,0),60,2);
     }
@@ -176,10 +196,9 @@ void CharacterStatus::setGiddy(void)
 {
     m_bGiddy = true;
 
-    auto actionJump = JumpBy::create(0.5f,Vec2(0,0),30,1);
-    auto actionDelay = DelayTime::create(0.5f);
+    auto actionDelay = DelayTime::create(1.0f);
     CallFunc *func = CallFunc::create(CC_CALLBACK_0(CharacterStatus::recoveryGiddy, this));
-    m_pSprite->runAction(Sequence::create(actionJump,actionDelay,func, NULL));
+    m_pSprite->runAction(Sequence::create(actionDelay,func, NULL));
 }
 
 //================================================================================
@@ -187,9 +206,33 @@ void CharacterStatus::setGiddy(void)
 //================================================================================
 void CharacterStatus::recoveryGiddy(void)
 {
-    m_pSprite->setTexture(IMAGE_LIST[m_oldPattern]);
-    m_pattern = m_oldPattern;
     m_bGiddy = false;
+    setPattern(m_pattern);
 }
 
+//================================================================================
+// 現在パターン取得処理
+//================================================================================
+CharacterStatus::CHARACTERSTATUS_PATTERN CharacterStatus::getPattern(void)
+{
+    // 目眩時はメンバ変数に入っていないので直接値を返す
+	if(m_bGiddy)
+	{
+		return CHARACTERSTATUS_PATTERN_GIDDY;
+	}
 
+	return m_pattern;
+}
+
+//================================================================================
+// 無限ジャンプセット処理
+//================================================================================
+void CharacterStatus::setAnimJumpInfinity(float fTime,Vec2 move,int nHigh)
+{
+	m_pSprite->stopAllActions();
+
+    auto action = JumpBy::create(fTime, move, nHigh, 1);
+
+    m_pSprite->runAction(RepeatForever::create(action));
+
+}

@@ -63,8 +63,11 @@ public:
 
     void setJump(float fTime = 0.5f,Vec2 move = Vec2(0,0),int nHigh = 60,int nCount = 1);
     void setPattern(CHARACTERSTATUS_PATTERN pattern);
-    CHARACTERSTATUS_PATTERN getPattern(void){return m_pattern;}
+    CHARACTERSTATUS_PATTERN getPattern(void);
     void checkChangePattern(int nEnemyAllNum,int nEnemyDownNum);
+
+    void setPatternChangeEnd(bool bFlg){m_bPatternChangeEnd = bFlg;}
+    void setAnimJumpInfinity(float fTime = 0.5f,Vec2 move = Vec2(0,0),int nHigh = 60);
 
 private:
     const char* IMAGE_LIST[CHARACTERSTATUS_PATTERN_MAX] =
@@ -83,6 +86,7 @@ private:
     Vec2 m_pos;
     Vec3 m_rot;
     bool m_bGiddy;
+    bool m_bPatternChangeEnd;
     CHARACTERSTATUS_PATTERN m_oldPattern;
     CHARACTERSTATUS_PATTERN m_pattern;
 };
