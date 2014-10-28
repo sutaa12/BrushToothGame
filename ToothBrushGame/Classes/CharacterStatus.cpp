@@ -130,8 +130,16 @@ void CharacterStatus::checkChangePattern(int nEnemyAllNum, int nEnemyDownNum)
             break;
 
         case 3:
-        	// クリア時に変更するためここで変更する必要なし。
+        	// クリア時に変更するためここでクリアに変更する必要なし。
             //m_pattern = CHARACTERSTATUS_PATTERN_GLAD;
+
+            // 歯磨き粉ボムで一気に倒した時用
+            m_pattern = CHARACTERSTATUS_PATTERN_SMAILE;
+            break;
+
+        case 4:
+            // 歯磨き粉ボムで一気に倒した時用
+            m_pattern = CHARACTERSTATUS_PATTERN_SMAILE;
             break;
 
         default:
