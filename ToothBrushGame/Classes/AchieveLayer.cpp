@@ -13,6 +13,7 @@
 #include "TitleScene.h"
 #include "GameMainScene.h"
 #include "RankManager.h"
+#include "Sound.h"
 USING_NS_CC;
 //================================================================================
 // シーン生成
@@ -128,6 +129,7 @@ void AchieveLayer::ButtonTitle(void)
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
 }
 
+//実績解除表示
 void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
 {
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
@@ -150,6 +152,9 @@ void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
     m_pAchieve->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
     m_pMessage->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
     m_pTitle->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
+
+    //SE
+    SimpleAudioEngine::getInstance()->playEffect(SE_GET_ACHIEVEMENT_4);
 
 }
 
