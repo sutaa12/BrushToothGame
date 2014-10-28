@@ -57,7 +57,7 @@ private:
     Vec3 m_rot;
     bool m_bPowderTouchFlag;
     float m_nCount;
-    static const int TOOTH_RESPONS_SEC = 5;
+    static const int TOOTH_RESPONS_SEC = 3;
 };
 
 #endif /* defined(__ToothBrushGame__ToothPowder__) */

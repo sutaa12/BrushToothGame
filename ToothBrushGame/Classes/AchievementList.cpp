@@ -8,6 +8,7 @@
 
 #include "AchievementDataBase.h"
 #include "AchievementList.h"
+#include "TextureFile.h"
 // on "init" you need to initialize your instance
 bool AchievementList::init()
 {
@@ -105,13 +106,19 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     
     
     // ID部分
-    auto *label_1 = LabelTTF::create(id.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
+    auto *label_1 = LabelTTF::create("0", "Arial", ACHIEVE_TITLE_SIZE);
     label_1->setAnchorPoint(Point(0, 0));
     label_1->setPosition(Point(25,label_1->getContentSize().height / 2));
     label_1->setColor(Color3B(0,0,0));
     cell->addChild(label_1);
+        auto pSprite = Sprite::create(TEX_BADGE_1);
+        pSprite->setScale(0.5f, 0.5f);
+        pSprite->setPosition(Vec2(label_1->getPosition().x + 10,label_1->getPosition().y + 20));
+        cell->addChild(pSprite);
+        pSprite->setColor(Color3B::BLACK);
         if(AchievementDataBaseList::getAchieveBool((int)idx - ACHIEVEMENT_MAX + 1))
         {
+            pSprite->setColor(Color3B::WHITE);
             
             // タイトル部分
             auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
@@ -123,7 +130,7 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
             // メッセージ部分
             auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
             label_3->setAnchorPoint(Point(0, 0));
-            label_3->setPosition(Point(30 + label_1->getContentSize().width,5));
+            label_3->setPosition(Point(60 + label_1->getContentSize().width,4));
             label_3->setColor(Color3B(0,0,0));
             cell->addChild(label_3);
             // 日付部分

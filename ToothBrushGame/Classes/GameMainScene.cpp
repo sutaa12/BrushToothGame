@@ -32,15 +32,18 @@ USING_NS_CC;
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
     {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,600)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,15,Point(200,300)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,15,20,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TREE,20,25,Point(300,350)},
-    {Enemy::ENEMY_KIND_LAIR_TWO,30,30,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,35,35,Point(150,400)},
-    {Enemy::ENEMY_KIND_LAIR_TREE,10,40,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TREE,30,45,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TREE,30,50,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,5,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,3,15,Point(200,300)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,4,20,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,10,25,Point(300,350)},
+    {Enemy::ENEMY_KIND_LAIR_TWO,3,30,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,10,35,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TREE,2,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,40,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,2,45,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,5,50,Point(150,400)},
 };
 //================================================================================
 // デストラクタ
@@ -416,6 +419,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
         m_pHitChecker->checkEnemyDown();
         m_nShakeCnt = 0;
         

@@ -46,10 +46,15 @@ bool RankManager::init(void)
       2,4,6,
         10,15,30
     };
-    char* sEnemy[Enemy::ENEMY_KIND_MAX] =
+    char* sEnemy[Enemy::ENEMY_KIND_MAX + 1] =
     {
-      "ばいばいしたよわいばいきん","ばいばいしたばいきん","ばいばいしたつよいばいきん",
-      "ばいばいしたれあばいきん","ばいばいしたれあばいきん２","ばいばいしたれあばいきん３",
+      "ばいばいしたよわいばいきん　",
+      "ばいばいしたばいきん　　　　",
+      "ばいばいしたつよいばいきん　",
+      "ばいばいしたれあばいきん　　",
+      "ばいばいしたれあばいきん２　",
+      "ばいばいしたれあばいきん３　",
+      "ばいばいしたぜんぶのばいきん"
     };
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
@@ -62,13 +67,13 @@ bool RankManager::init(void)
     {
         time = 0;
     }
-    m_pTimeScore = DetailScore::create(Vec2(origin.x + 60,origin.y + 950),"Time",time,m_pLayer);
+    m_pTimeScore = DetailScore::create(Vec2(origin.x + 200,origin.y + 930),"たいむぼぉなすぅ　　　　　　　",time,m_pLayer);
     for(int nloop = 0;nloop < Enemy::ENEMY_KIND_MAX;nloop++)
     {
         m_pEnemyScore[nloop] = DetailScore::create(Vec2(origin.x + 200,origin.y - 50 + m_pTimeScore->getDetailName()->getPosition().y - (nloop *50)),sEnemy[nloop],Enemy::getEnemyKindDownNum(nloop),m_pLayer);
         m_nRankManagerPoint += Enemy::getEnemyKindDownNum(nloop) * nEnemyBounus[nloop];
     }
-    m_pEnemyScore[Enemy::ENEMY_KIND_MAX] = DetailScore::create(Vec2(origin.x + 200,origin.y + m_pEnemyScore[Enemy::ENEMY_KIND_MAX - 1]->getDetailName()->getPosition().y - 50),"ばいばいしたぜんぶのばいきん",Enemy::getEnemyAllDownNum(),m_pLayer);
+    m_pEnemyScore[Enemy::ENEMY_KIND_MAX] = DetailScore::create(Vec2(origin.x + 200,origin.y + m_pEnemyScore[Enemy::ENEMY_KIND_MAX - 1]->getDetailName()->getPosition().y - 50),sEnemy[Enemy::ENEMY_KIND_MAX],Enemy::getEnemyAllDownNum(),m_pLayer);
     time *= TIME_BORNUS;
     m_nRankManagerPoint += time;
     const char cRank[RANK_MAX]=

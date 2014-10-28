@@ -129,6 +129,7 @@ void UIManager::update(void)
 {
     //m_pLifeBar->update();
     m_pScore->update();
+    m_pToothPowder->update();
 }
 
 //================================================================================

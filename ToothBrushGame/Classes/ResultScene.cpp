@@ -11,6 +11,7 @@
 #include "GameMainScene.h"
 #include "RankManager.h"
 #include "Sound.h"
+#include "AchievementDataBase.h"
 USING_NS_CC;
 bool ResultScene::m_bGameOverFlag = false;
 int ResultScene::m_nTimeBornus;
@@ -66,6 +67,8 @@ bool ResultScene::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
+    
+    AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_TIME, GAME_TIME_MAX - m_nTimeBornus);
     
     // 更新処理の追加
     this->scheduleUpdate();
@@ -130,7 +133,6 @@ bool ResultScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
     addChild(pButton);
-    
     
      //今、BGMが流れているかどうか
      if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
@@ -298,6 +300,7 @@ void ResultScene::setNextScene(SCENE_LIST sceneList)
     {
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
     }else{
+        AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_GAME_PLAY);
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
     }
 }

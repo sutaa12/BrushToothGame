@@ -13,6 +13,7 @@
 #include "Sound.h"
 #include "ToothPowder.h"
 #include "SoundManager.h"
+#include "AchievementDataBase.h"
 
 //================================================================================
 // コンストラクタ
@@ -35,10 +36,14 @@ ToothPowder::~ToothPowder()
 //================================================================================
 void ToothPowder::disappear(void)
 {
+    if(m_bPowderTouchFlag)
+    {
+        m_nCount = 1;
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_TOOTHPOWDER);
+    }
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);
     m_bPowderTouchFlag = false;
-    m_nCount = 1;
     
 }
 
@@ -51,19 +56,21 @@ bool ToothPowder::init(void)
     m_nCount = 0;
     m_bPowderTouchFlag = false;
     
-    Sprite* pSprite = Sprite::create(TEX_HP_BAR);
-    m_pLayer->addChild(pSprite);
+    Sprite* pSprite = Sprite::create(TEX_BUTTON_ITEM_TOOTHPOWDER);
+
     //タイマー作成
     m_pProgressTimer = ProgressTimer::create(pSprite);
     
     //最初は0パーセント
-    m_pProgressTimer->setPercentage(100);
+    m_pProgressTimer->setPercentage(0);
     
     //タイマーの形（棒状に設定）
     m_pProgressTimer->setType(ProgressTimer::Type::BAR);
     
     //バーの伸びる方向（x方向に設定）
-    m_pProgressTimer->setBarChangeRate(Point(1, 0));
+    m_pProgressTimer->setBarChangeRate(Point(0, 1));
+
+    m_pProgressTimer->setScale(2.0f,1.5f);
     
     //タイマーの基準点（左側に設定）
     m_pProgressTimer->setMidpoint(Point(0, 0));
@@ -81,7 +88,7 @@ bool ToothPowder::init(void)
         // スプライト生成エラー
         return false;
     }
-    m_pItemIcon->setColor(Color3B::GRAY);
+    m_pSprite->setColor(Color3B::GRAY);
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
     m_pSprite->setScale(2.0f,1.5f);
@@ -92,7 +99,6 @@ bool ToothPowder::init(void)
     m_pLayer->addChild(m_pSprite);
     m_pLayer->addChild(m_pItemIcon);
     m_pLayer->addChild(m_pProgressTimer);
-    
     // 正常終了
     return true;
 }
@@ -113,7 +119,7 @@ void ToothPowder::update(void)
     if(m_nCount != 0)
     {
         m_nCount++;
-        float fPer = m_nCount / TOOTH_RESPONS_SEC * 100;
+        float fPer = m_nCount / (60 * TOOTH_RESPONS_SEC) * 100;
         m_pProgressTimer->setPercentage(fPer);
 
         if(m_nCount > 60 * TOOTH_RESPONS_SEC)

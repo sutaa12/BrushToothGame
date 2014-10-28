@@ -130,9 +130,18 @@ void AchieveLayer::ButtonTitle(void)
 
 void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
 {
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
+
     m_pAchieve->stopAllActions();
     m_pMessage->stopAllActions();
     m_pTitle->stopAllActions();
+    m_pAchieve->setPosition(Vec2(origin.x -ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 850));
+    //左上の位置に設定
+    m_pTitle->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 880));
+    
+    //左上の位置に設定
+    m_pMessage->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 840));
+    
     
     m_pMessage->setString(AchievementDataBaseList::getAchievement(nAchieveNum).title);
     m_pMessage->setColor(Color3B::BLACK);
@@ -143,3 +152,4 @@ void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
     m_pTitle->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
 
 }
+
