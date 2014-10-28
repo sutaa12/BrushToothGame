@@ -70,7 +70,7 @@ bool ToothPowder::init(void)
     //バーの伸びる方向（x方向に設定）
     m_pProgressTimer->setBarChangeRate(Point(0, 1));
 
-    m_pProgressTimer->setScale(2.0f,1.5f);
+    m_pProgressTimer->setScale(0.9f,0.85f);
     
     //タイマーの基準点（左側に設定）
     m_pProgressTimer->setMidpoint(Point(0, 0));
@@ -91,7 +91,7 @@ bool ToothPowder::init(void)
     m_pSprite->setColor(Color3B::GRAY);
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
-    m_pSprite->setScale(2.0f,1.5f);
+    m_pSprite->setScale(0.9f,0.85f);
 
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);

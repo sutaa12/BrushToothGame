@@ -51,7 +51,7 @@
 #define TEX_GAME_TOP_BACK ("GameTopBack.png")
 #define TEX_GAME_BOTTOM_BACK ("GameBottomBack.png")
 #define TEX_HP_BAR ("hpbar.png")
-#define TEX_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
+#define TEX_ITEM_TOOTHPOWDER ("ToothBrush.png")
 #define TEX_BUTTON_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
 
 #define TEX_LITTLEGIRL_CRY ("StatusLittleGirl_Cry.png")
