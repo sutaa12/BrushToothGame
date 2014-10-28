@@ -125,11 +125,14 @@ std::string AchievementDataBaseList::getAchievementName(int achieveInfo){
     return ACHIEVEMENT_STATUSNAME[achieveInfo];
 }
 
-void AchievementDataBaseList::addAchievement(ACHIEVEMENT_KIND achievement)
+void AchievementDataBaseList::addAchievement(ACHIEVEMENT_KIND achievement,bool bSave)
 {
     m_nAchievementCont[achievement]++;
     chkAchievement(achievement);
-    saveAchievement();
+    if(bSave)
+    {
+        saveAchievement();
+    }
 }
 
 void AchievementDataBaseList::dispAchievement(int nUnlcok)
@@ -217,21 +220,27 @@ void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
     }
 }
 
-void AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum)
+void AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum,bool bSave)
 {
     if(nNum < m_nAchievementCont[achievement])
     {
         m_nAchievementCont[achievement] = nNum;
         chkAchievement(achievement);
-        saveAchievement();
+        if(bSave)
+        {
+            saveAchievement();
+        }
     }
 }
-void AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_KIND achievement,int nNum)
+void AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_KIND achievement,int nNum,bool bSave)
 {
     if(nNum > m_nAchievementCont[achievement])
     {
     m_nAchievementCont[achievement] = nNum;
     chkAchievement(achievement);
-    saveAchievement();
+        if(bSave)
+        {
+            saveAchievement();
+        }
     }
 }

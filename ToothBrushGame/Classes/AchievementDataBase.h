@@ -75,10 +75,10 @@ public:
     static std::string getAchievementName(int achieveInfo);
 
     //実績情報に加算
-    static void addAchievement(ACHIEVEMENT_KIND achievement);//回数カウント
+    static void addAchievement(ACHIEVEMENT_KIND achievement,bool bSave = false);//回数カウント
     //実績情報に挿入
-    static void setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum);//回数カウント
-    static void setAchievementMax(ACHIEVEMENT_KIND achievement,int nNum);//回数カウント
+    static void setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum,bool bSave = false);//回数カウント
+    static void setAchievementMax(ACHIEVEMENT_KIND achievement,int nNum,bool bSave = false);//回数カウント
 
     //実績画面表示
     static void dispAchievement(int nUnlcok);

@@ -491,6 +491,8 @@ void GameMainScene::updateGamePhase(void)
     if(m_nTimer % 60 == 0)
     {
         m_nGameTime++;
+        AchievementDataBaseList::saveAchievement();
+        
     }
     chkGamePhase();
 }
