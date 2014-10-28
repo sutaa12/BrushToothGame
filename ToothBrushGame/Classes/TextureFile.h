@@ -17,6 +17,7 @@
 #define TEX_ENEMY_DIE_01 ("Virus_Nomal_Die_1.png")
 #define TEX_ENEMY_WAIT_01 ("Virus_Black_Wait_1.png")
 #define TEX_ENEMY_TOUGH_WAIT_01 ("Virus_Tough_Wait_1.png")
+#define TEX_ENEMY_TOUGH_DIE_01 ("Virus_Tough_Die_1.png")
 #define TEX_ENEMY_LAIR_WAIT_00 ("Virus_Lair_Wait_1.png")
 #define TEX_ENEMY_LAIR_DIE_01 ("Virus_Lair_Die_1.png")
 #define TEX_ENEMY_LAIR_LITTLE_WAIT_01 ("Virus_Lair_Little_Wait_1.png")

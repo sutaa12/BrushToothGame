@@ -51,7 +51,7 @@ public:
         },
         {
             TEX_ENEMY_TOUGH_WAIT_01,
-            TEX_ENEMY_TOUGH_WAIT_01
+            TEX_ENEMY_TOUGH_DIE_01
         },
 
         {
