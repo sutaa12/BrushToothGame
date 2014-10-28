@@ -37,7 +37,9 @@
 
 //UI関係
 #define TEX_BADGE_1 ("ba.png")
-
+#define TEX_CLOCK_1 ("Clock_1.png")
+#define TEX_CLOCK_2 ("Clock_2.png")
+#define TEX_CLOCK_3 ("Clock_3.png")
 #define TEX_BUTTON_TOUCH_START ("ButtonTouchStart.png")
 #define TEX_TITLE_LOGO ("TitleLogo.png")
 #define TEX_TITLE_BACK ("TitleBack.png")

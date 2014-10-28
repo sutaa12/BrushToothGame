@@ -76,11 +76,6 @@ bool UIManager::init(void)
 
 
     /**
-     *  UI Clock Generation
-     **/
-
-
-    /**
      *  UI Menubar Generation
      **/
     // UIアイテム生成処理
@@ -99,7 +94,7 @@ bool UIManager::init(void)
      *  UI LifeBar Generation
      **/
     // ライフバー生成  画面左上から計算し直打ち
-    m_pClock = Clock::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
+    m_pClock = Clock::create(m_pLayer,Vec2(visibleSize.width / 2 + 32, visibleSize.height - 32));
 
     //歯磨き粉アイテム生成処理
     m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 3,origin.y + 128));
@@ -127,7 +122,7 @@ void UIManager::uninit(void)
 //================================================================================
 void UIManager::update(void)
 {
-    //m_pLifeBar->update();
+    m_pClock->update();
     m_pScore->update();
     m_pToothPowder->update();
 }
