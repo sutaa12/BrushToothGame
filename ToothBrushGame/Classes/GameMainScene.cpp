@@ -528,7 +528,7 @@ void GameMainScene::chkGamePhase(void)
     {
         setResultScene(false);
     }else
-    if(m_nGameTime >= GAME_TIME_MAX)
+    if(m_nGameTime > GAME_TIME_MAX)
     {
         setResultScene(true);
     }
