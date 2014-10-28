@@ -29,6 +29,7 @@
 #include "CharacterStatus.h"
 #include "VirusToothManager.h"
 #include "VirusTooth.h"
+#include "Clock.h"
 USING_NS_CC;
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
@@ -140,7 +141,7 @@ bool GameMainScene::init()
     // 歯マネージャーのインスタンス化
     m_pToothManager = ToothManager::create(Vec2(visibleSize.width / 2,visibleSize.height - 128),this);
     m_bHit = false;
-    m_pPlaqueManager = PlaqueManager::create(1,m_pToothManager->getToothSprite(), this);
+    m_pPlaqueManager = PlaqueManager::create(0,m_pToothManager->getToothSprite(), this);
 
     // タッチ時の判定生成
     m_pBubbleSprite = Sprite::create(TEX_BUBBLE_01);
@@ -194,7 +195,7 @@ bool GameMainScene::init()
     //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
     SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         
-    
+    m_nUgaiCounter = 0;
 
     return true;
 }
@@ -423,14 +424,19 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
+        if(m_nUgaiCounter == 0)
+        {
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
         m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
         m_pHitChecker->checkEnemyDown();
-        m_nShakeCnt = 0;
         
         //SE
         SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
+            m_nUgaiCounter = 1;
+        }
+        m_nShakeCnt = 0;
+
     }
 }
 
@@ -478,7 +484,7 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,Score::getScoreNum()),Color3B::WHITE));
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,m_pUIManager->getClock()->getColockNow()),Color3B::WHITE));
 }
 //================================================================================
 // カウントダウン生成処理
@@ -498,7 +504,14 @@ void GameMainScene::createCountDown(float fTime)
 void GameMainScene::updateGamePhase(void)
 {
     m_nTimer++;
-    
+    if(m_nUgaiCounter != 0)
+    {
+    m_nUgaiCounter++;
+        if(m_nUgaiCounter > UGAI_DELAY)
+        {
+            m_nUgaiCounter = 0;
+        }
+    }
     if(m_nTimer % 60 == 0)
     {
         m_nGameTime++;
@@ -539,7 +552,7 @@ void GameMainScene::chkGamePhase(void)
     {
         setResultScene(false);
     }else
-    if(m_nGameTime > GAME_TIME_MAX)
+    if(m_pUIManager->getClock()->getColockNow() < 0)
     {
         setResultScene(true);
     }

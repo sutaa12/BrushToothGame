@@ -72,7 +72,7 @@ private:
     void onAcceleration(Acceleration*acc, Event *unused_event);
     static const int SWIPE_PERMISSION_DISTANCE = (3);
     SWIPE_DIRECTION calcSwipeDirection(float fAngle);
-    
+    static const int UGAI_DELAY = 60;
     //メンバ変数
     Point m_touchPos;
     Point m_oldTouchPos;
@@ -102,6 +102,7 @@ private:
     Layer* m_pPauseLayer;
     Layer* m_pCountDown;
     bool m_bCountDownEnd;
+    int m_nUgaiCounter;
     
     int m_nGamePhase;//フェーズ数
     int m_nGameTime;//ゲーム終了までのタイム

@@ -127,7 +127,7 @@ void VirusToothManager::spawn(Vec2 pos)
         {
             if(pos.x == -1 && pos.y == -1)
             {
-                int rand = RandomMT::getRaodom(0,m_nVirusPosMax);
+                int rand = RandomMT::getRaodom(0,m_nVirusPosMax - 1);
                 posPown = m_pos - SPAWN_POINTS[rand];
             }
             m_pVirusTooth[nloop]->setSpawn(posPown);

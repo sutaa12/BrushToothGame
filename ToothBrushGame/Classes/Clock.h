@@ -50,6 +50,8 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+    
+    int getColockNow(void){return m_nCurrentTime;}
 
 private:
     Vec2 m_startLeftTopPos;

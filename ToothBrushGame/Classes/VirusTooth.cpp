@@ -114,7 +114,7 @@ void VirusTooth::setSpawn(Vec2 pos)
     m_pSprite->setColor(Color3B::GRAY);
     m_pSprite->setScale(1.0f);
     
-    Sequence* pSequence = Sequence::create(ScaleTo::create(2.0f,1.0f,1.5f),ScaleTo::create(2.0f,1.0f,1.0f), NULL);
+    Sequence* pSequence = Sequence::create(ScaleTo::create(1.0f,1.25f,1.0f),ScaleTo::create(1.0f,1.0f,1.0f), NULL);
     m_pSprite->runAction(RepeatForever::create(pSequence));
 
     

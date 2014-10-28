@@ -90,7 +90,7 @@ void Enemy::uninit(void)
 //================================================================================
 void Enemy::disappear(void)
 {
-    
+    m_pSprite->stopAllActions();
     m_nLife = 0;
     //死亡フラグセット
     m_bDeath = true;
@@ -144,8 +144,10 @@ void Enemy::update(void)
 //================================================================================
 void Enemy::choiceAction(void)
 {
-    m_actionMode = RandomMT::getRandom(0, ACTION_MAX - 1);
+    m_actionMode = ACTION_MOVE;
     m_time = RandomMT::getRandom(0, Enemy::MAX_TIME);
+    m_fRot = RandomMT::getRandom(-DATA_PI, DATA_PI);
+
     
 }
 //================================================================================
@@ -232,6 +234,10 @@ void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
     m_time = 0;
     Sequence* pSequence = Sequence::create(ScaleTo::create(0.01f,0.01),ScaleTo::create(0.5f,1.0), NULL);
     m_pSprite->runAction(Spawn::create(FadeIn::create(0.5),pSequence, NULL));
+    
+    Sequence* pSequence2 = Sequence::create(ScaleTo::create(0.5f,1.0f,0.8f),ScaleTo::create(0.5f,1.0f,1.0f), NULL);
+    m_pSprite->runAction(RepeatForever::create(pSequence2));
+
 
 
 }
