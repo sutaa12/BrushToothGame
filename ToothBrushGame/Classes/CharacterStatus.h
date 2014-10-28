@@ -76,9 +76,14 @@ private:
         TEX_LITTLEGIRL_GIDDY,
     };
 
+    void setGiddy(void);
+    void recoveryGiddy(void);
+
     Sprite* m_pSprite;
     Vec2 m_pos;
     Vec3 m_rot;
+    bool m_bGiddy;
+    CHARACTERSTATUS_PATTERN m_oldPattern;
     CHARACTERSTATUS_PATTERN m_pattern;
 };
 

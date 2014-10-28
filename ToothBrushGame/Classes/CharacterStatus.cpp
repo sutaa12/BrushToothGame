@@ -17,6 +17,7 @@ CharacterStatus::CharacterStatus(void)
 {
     // メンバ変数の初期化
     m_pSprite = nullptr;
+    m_bGiddy = false;
 }
 
 //================================================================================
@@ -127,7 +128,6 @@ void CharacterStatus::checkChangePattern(int nEnemyAllNum, int nEnemyDownNum)
         default:
             break;
     }
-
 }
 
 //================================================================================
@@ -140,9 +140,24 @@ void CharacterStatus::setPattern(CHARACTERSTATUS_PATTERN pattern)
         return;
     }
 
+    if(m_bGiddy == true)
+    {
+        return;
+    }
+
+    m_oldPattern = m_pattern;
     m_pattern = pattern;
     m_pSprite->setTexture(IMAGE_LIST[pattern]);
-    setJump(1.0f,Vec2(0,0),60,2);
+
+    // 目眩時
+    if(m_pattern == CHARACTERSTATUS_PATTERN_GIDDY)
+    {
+        setGiddy();
+    }
+    else
+    {
+        setJump(1.0f,Vec2(0,0),60,2);
+    }
 }
 
 //================================================================================
@@ -153,3 +168,28 @@ void CharacterStatus::setJump(float fTime,Vec2 move,int nHigh,int nCount)
     auto action = JumpBy::create(fTime,move, nHigh, nCount);
     m_pSprite->runAction(action);
 }
+
+//================================================================================
+// 目眩アクションセット処理
+//================================================================================
+void CharacterStatus::setGiddy(void)
+{
+    m_bGiddy = true;
+
+    auto actionJump = JumpBy::create(0.5f,Vec2(0,0),30,1);
+    auto actionDelay = DelayTime::create(0.5f);
+    CallFunc *func = CallFunc::create(CC_CALLBACK_0(CharacterStatus::recoveryGiddy, this));
+    m_pSprite->runAction(Sequence::create(actionJump,actionDelay,func, NULL));
+}
+
+//================================================================================
+// 目眩アクション復帰処理
+//================================================================================
+void CharacterStatus::recoveryGiddy(void)
+{
+    m_pSprite->setTexture(IMAGE_LIST[m_oldPattern]);
+    m_pattern = m_oldPattern;
+    m_bGiddy = false;
+}
+
+
