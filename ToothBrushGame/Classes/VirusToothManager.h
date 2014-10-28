@@ -28,18 +28,19 @@ public:
     void uninit(void);
     void update(void);
     
-    static VirusToothManager* create(Layer* layer);
+    static VirusToothManager* create(Layer* layer,Sprite* pSprite);
     
     //敵の先頭取得
-    VirusTooth* getVirusToothsTop(void){return m_pVirusTooth[0];}
+    VirusTooth* getVirusToothsTop(int nNum){return m_pVirusTooth[nNum];}
     
     void spawn(Vec2 pos);
+    bool collideAtPoint(Sprite* pSprite, Point point);
     
 public:
     //敵の最大数
     static const int VIRUSTOOTH_MAX = PHASE_MAX;
 private:
-    
+    Vec2 m_pos;
     //敵の配列
     VirusTooth* m_pVirusTooth[VIRUSTOOTH_MAX];
     
@@ -49,10 +50,7 @@ private:
     int m_nTime;
     
     int m_nTimeSpan;
-    
-    int m_nSpriteMax;
-    int m_nSpriteMin;
-    
+    int m_nVirusPosMax;
 };
 
 #endif /* defined(__ToothBrushGame__VirusToothManager__) */

@@ -27,6 +27,8 @@
 #include "ToothPowder.h"
 #include "GameDifficult.h"
 #include "CharacterStatus.h"
+#include "VirusToothManager.h"
+#include "VirusTooth.h"
 USING_NS_CC;
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
@@ -57,6 +59,7 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pUIManager);
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
+    SAFE_DELETE(m_pVirusToothManager);
     //すべてのSEを止める
     SimpleAudioEngine::getInstance()->stopAllEffects();
 }
@@ -149,7 +152,7 @@ bool GameMainScene::init()
     m_acc = Vec3(0,0,0);
     m_acc = m_oldAcc;
     m_nShakeCnt = 0;
-
+    m_pVirusToothManager = VirusToothManager::create(this,m_pToothManager->getToothSprite());
     m_pEnemyManager = EnemyManager::create(this,0);
     //================================================================================
     //敵関係はこれより前に生成
@@ -511,7 +514,8 @@ void GameMainScene::chkGamePhase(void)
 {
     if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
     {
-        m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,GamePhaseData[m_nGamePhase].pos);
+        m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->getSprite()->getPosition());
+        m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->disappear();
         if(m_nGamePhase <= PHASE_MAX)
         {
             m_nGamePhase++;

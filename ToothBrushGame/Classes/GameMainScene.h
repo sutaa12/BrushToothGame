@@ -23,6 +23,7 @@ class LifeBar;
 class EffectManager;
 class CountDown;
 class ToothPowder;
+class VirusToothManager;
 
 class GameMainScene : public cocos2d::Layer
 {
@@ -86,6 +87,7 @@ private:
     HitChecker* m_pHitChecker;
     UIManager* m_pUIManager;
     EffectManager* m_EffectManager;
+    VirusToothManager* m_pVirusToothManager;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;

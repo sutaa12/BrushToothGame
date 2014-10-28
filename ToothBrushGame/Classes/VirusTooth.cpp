@@ -45,7 +45,7 @@ bool VirusTooth::init(void)
 {
     
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_ENEMY_WAIT_00);
+    m_pSprite = Sprite::create(TEX_PLAQUE_WAIT_01);
     
     // エラーチェック
     if(m_pSprite == nullptr)
@@ -108,9 +108,15 @@ void VirusTooth::setSpawn(Vec2 pos)
     m_bDeath = false;
     m_pos = pos;
     m_pSprite->setPosition(pos);
-    
+    m_pSprite->setOpacity(255);
+
     m_bDown = false;
-    m_pSprite->setColor(Color3B(255,255,255));
+    m_pSprite->setColor(Color3B::GRAY);
+    m_pSprite->setScale(1.0f);
+    
+    Sequence* pSequence = Sequence::create(ScaleTo::create(2.0f,1.0f,1.5f),ScaleTo::create(2.0f,1.0f,1.0f), NULL);
+    m_pSprite->runAction(RepeatForever::create(pSequence));
+
     
 }
 //================================================================================
