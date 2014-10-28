@@ -14,7 +14,8 @@
 #include "UIManager.h"
 #include "Score.h"
 #include "MenuBar.h"
-#include "LifeBar.h"
+//#include "LifeBar.h"
+#include "Clock.h"
 #include "Item.h"
 #include "ToothPowder.h"
 #include "CharacterStatus.h"
@@ -27,7 +28,8 @@ UIManager::UIManager(void)
     // メンバ変数の初期化
     m_pScore = nullptr;
     m_pMenuBar = nullptr;
-    m_pLifeBar = nullptr;
+   // m_pLifeBar = nullptr;
+    m_pClock = nullptr;
     m_pLayer = nullptr;
     m_pGameBottomBack = nullptr;
     m_pGameTopBack = nullptr;
@@ -41,7 +43,7 @@ UIManager::~UIManager()
 {
     SAFE_DELETE(m_pScore);
     SAFE_DELETE(m_pMenuBar);
-    SAFE_DELETE(m_pLifeBar);
+    //SAFE_DELETE(m_pLifeBar);
     SAFE_DELETE(m_pToothPowder);
     SAFE_DELETE(m_pCharacterStatus);
 
@@ -72,6 +74,12 @@ bool UIManager::init(void)
     // スコア生成
     m_pScore = Score::create(Vec2(100, visibleSize.height - 32), 1, m_pLayer);
 
+
+    /**
+     *  UI Clock Generation
+     **/
+
+
     /**
      *  UI Menubar Generation
      **/
@@ -85,13 +93,14 @@ bool UIManager::init(void)
     m_pMenuBar->refreshSpritePos();
     // スプライトの登録
     m_pLayer->addChild(m_pMenuBar->getSprite());
-    
+
+
     /**
      *  UI LifeBar Generation
      **/
     // ライフバー生成  画面左上から計算し直打ち
-    m_pLifeBar = LifeBar::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
-    
+    m_pClock = Clock::create(m_pLayer,Vec2(visibleSize.width / 2, visibleSize.height - 64));
+
     //歯磨き粉アイテム生成処理
     m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 3,origin.y + 128));
 
@@ -118,7 +127,7 @@ void UIManager::uninit(void)
 //================================================================================
 void UIManager::update(void)
 {
-    m_pLifeBar->update();
+    //m_pLifeBar->update();
     m_pScore->update();
 }
 
