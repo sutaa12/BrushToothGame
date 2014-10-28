@@ -26,6 +26,7 @@
 #include "CountDown.h"
 #include "ToothPowder.h"
 #include "GameDifficult.h"
+#include "CharacterStatus.h"
 USING_NS_CC;
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
@@ -420,6 +421,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     if(m_nShakeCnt > 3)
     {
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
+        m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
         m_pHitChecker->checkEnemyDown();
         m_nShakeCnt = 0;
         
@@ -473,7 +475,6 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
-    
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,Score::getScoreNum()),Color3B::WHITE));
 }
 //================================================================================
@@ -538,4 +539,6 @@ void GameMainScene::chkGamePhase(void)
     {
         setResultScene(true);
     }
+
+    m_pUIManager->getCharacterStatus()->checkChangePattern(nEnemyDown,EnemyAll );
 }
