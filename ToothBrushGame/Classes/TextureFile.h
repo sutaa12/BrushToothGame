@@ -52,6 +52,12 @@
 #define TEX_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
 #define TEX_BUTTON_ITEM_TOOTHPOWDER ("ToothPowderIcon.png")
 
+#define TEX_LITTLEGIRL_CRY ("StatusLittleGirl_Cry.png")
+#define TEX_LITTLEGIRL_NORMAL ("StatusLittleGirl_Normal.png")
+#define TEX_LITTLEGIRL_SMILE ("StatusLittleGirl_Smile.png")
+#define TEX_LITTLEGIRL_GLAD ("StatusLittleGirl_Glad.png")
+#define TEX_LITTLEGIRL_GIDDY ("StatusLittleGirl_Giddy.png")
+
 #define TEX_SCORE_NUMBERS ("")
 
 #define TEX_RESULT_RETRY_BUTTON ("ButtonRetryGame.png")
