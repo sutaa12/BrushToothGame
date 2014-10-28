@@ -58,6 +58,7 @@ public:
     
     
 private:
+    Sprite* m_pEndingBack;
     Vec2 m_startLeftTopPos;
     RankObject* m_pRankObject;
     Score* m_pScore;

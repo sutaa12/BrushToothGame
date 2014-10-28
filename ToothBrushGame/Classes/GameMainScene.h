@@ -12,6 +12,8 @@
 #include "GameDifficult.h"
 using namespace cocos2d;
 
+#define GAME_TIME_MAX (60)
+
 class ToothManager;
 class EnemyManager;
 class PlaqueManager;
@@ -21,7 +23,6 @@ class LifeBar;
 class EffectManager;
 class CountDown;
 class ToothPowder;
-#define GAME_TIME_MAX (60)
 
 class GameMainScene : public cocos2d::Layer
 {

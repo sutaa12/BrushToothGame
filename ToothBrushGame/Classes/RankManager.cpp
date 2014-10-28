@@ -40,7 +40,13 @@ RankManager::~RankManager()
 //================================================================================
 bool RankManager::init(void)
 {
-    m_pTimeScore = DetailScore::create(Vec2(0,0),0,0,0);
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
+    
+    m_pEndingBack = Sprite::create(TEX_RESULT_ENDING_NORMAL_BACK);
+    m_pEndingBack->setPosition(Vec2(visibleSize.width / 2,origin.y + m_pEndingBack->getContentSize().height / 2));
+    m_pLayer->addChild(m_pEndingBack);
+    m_pTimeScore = DetailScore::create(Vec2(origin.x + 100,origin.y + 400),"Time",0,m_pLayer);
     const char cRank[RANK_MAX]=
     {
         'S','A','B','C','D'

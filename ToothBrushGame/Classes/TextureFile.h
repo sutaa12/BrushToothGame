@@ -45,4 +45,7 @@
 #define TEX_RESULT_GAMEOVER_BACK ("TitleBack.png")
 #define TEX_RESULT_GAMEOVER_LOGO ("")
 #define TEX_RESULT_GAMEOVER_BUTTON_0 ("")
+
+#define TEX_RESULT_ENDING_NORMAL_BACK ("EndingNormal.png")
+
 #endif
