@@ -33,7 +33,7 @@ CharacterStatus::~CharacterStatus()
 bool CharacterStatus::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create("StatusLittleGirl_Normal.png");
+    m_pSprite = Sprite::create(TEX_LITTLEGIRL_CRY);
 
     // エラーチェック
     if(m_pSprite == nullptr)
@@ -86,6 +86,48 @@ CharacterStatus* CharacterStatus::create(const Vec2& startRigthBottomPos,Charact
     pCharacterStatus->init();
 
     return pCharacterStatus;
+}
+
+//================================================================================
+// パターン変更チェック処理
+//================================================================================
+void CharacterStatus::checkChangePattern(int nEnemyAllNum, int nEnemyDownNum)
+{
+    int nChangeBorder = nEnemyAllNum / 4;
+
+    if(nChangeBorder == 0)
+    {
+    	return;
+    }
+
+    int nPattern = nEnemyDownNum / nChangeBorder;
+    if(nPattern == m_pattern)
+    {
+        return;
+    }
+
+    switch (nPattern)
+    {
+        case 0:
+            setPattern(CHARACTERSTATUS_PATTERN_CRY);
+            break;
+
+        case 1:
+            setPattern(CHARACTERSTATUS_PATTERN_NORMAL);
+            break;
+
+        case 2:
+            setPattern(CHARACTERSTATUS_PATTERN_SMAILE);
+            break;
+
+        case 3:
+            setPattern(CHARACTERSTATUS_PATTERN_GLAD);
+            break;
+
+        default:
+            break;
+    }
+
 }
 
 //================================================================================

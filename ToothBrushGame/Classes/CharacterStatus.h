@@ -13,6 +13,7 @@
 // インクルード
 //********************************************************************************
 #include "cocos2d.h"
+#include "TextureFile.h"
 
 //********************************************************************************
 // 名前空間の使用
@@ -31,6 +32,8 @@ public:
         CHARACTERSTATUS_PATTERN_CRY = 0,
         CHARACTERSTATUS_PATTERN_NORMAL,
         CHARACTERSTATUS_PATTERN_SMAILE,
+        CHARACTERSTATUS_PATTERN_GLAD,
+        CHARACTERSTATUS_PATTERN_GIDDY,
         CHARACTERSTATUS_PATTERN_MAX,
     }CHARACTERSTATUS_PATTERN;
 
@@ -61,13 +64,16 @@ public:
     void setJump(float fTime = 0.5f,Vec2 move = Vec2(0,0),int nHigh = 60,int nCount = 1);
     void setPattern(CHARACTERSTATUS_PATTERN pattern);
     CHARACTERSTATUS_PATTERN getPattern(void){return m_pattern;}
+    void checkChangePattern(int nEnemyAllNum,int nEnemyDownNum);
 
 private:
     const char* IMAGE_LIST[CHARACTERSTATUS_PATTERN_MAX] =
     {
-        "StatusLittleGirl_00.png",
-        "Enemy.png",
-        "Boss.png"
+        TEX_LITTLEGIRL_CRY,
+        TEX_LITTLEGIRL_NORMAL,
+        TEX_LITTLEGIRL_SMILE,
+        TEX_LITTLEGIRL_GLAD,
+        TEX_LITTLEGIRL_GIDDY,
     };
 
     Sprite* m_pSprite;
