@@ -76,7 +76,7 @@ bool TitleScene::init()
     this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 100);
     
     //背景生成
-    m_pTitleBack = Sprite::create(TEX_TITLE_BACK);
+    m_pTitleBack = Sprite::create(TEX_TITLE_BACK_2);
     m_pTitleBack->setPosition(Vec2(m_pTitleBack->getContentSize().width / 2,visibleSize.height - m_pTitleBack->getContentSize().height / 2));
     this->addChild(m_pTitleBack);
     //ロゴ生成
