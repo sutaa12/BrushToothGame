@@ -12,6 +12,8 @@
 #include "TextureFile.h"
 #include "Sound.h"
 #include "ToothPowder.h"
+#include "SoundManager.h"
+#include "AchievementDataBase.h"
 
 //================================================================================
 // コンストラクタ
@@ -34,9 +36,15 @@ ToothPowder::~ToothPowder()
 //================================================================================
 void ToothPowder::disappear(void)
 {
+    if(m_bPowderTouchFlag)
+    {
+        m_nCount = 1;
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_TOOTHPOWDER);
+    }
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);
     m_bPowderTouchFlag = false;
+    
 }
 
 
@@ -45,7 +53,31 @@ void ToothPowder::disappear(void)
 //================================================================================
 bool ToothPowder::init(void)
 {
+    m_nCount = 0;
     m_bPowderTouchFlag = false;
+    
+    Sprite* pSprite = Sprite::create(TEX_BUTTON_ITEM_TOOTHPOWDER);
+
+    //タイマー作成
+    m_pProgressTimer = ProgressTimer::create(pSprite);
+    
+    //最初は0パーセント
+    m_pProgressTimer->setPercentage(0);
+    
+    //タイマーの形（棒状に設定）
+    m_pProgressTimer->setType(ProgressTimer::Type::BAR);
+    
+    //バーの伸びる方向（x方向に設定）
+    m_pProgressTimer->setBarChangeRate(Point(0, 1));
+
+    m_pProgressTimer->setScale(2.0f,1.5f);
+    
+    //タイマーの基準点（左側に設定）
+    m_pProgressTimer->setMidpoint(Point(0, 0));
+    
+    //タイマーを配置
+    m_pProgressTimer->setPosition(m_pos);
+    m_pProgressTimer->setTag(100);
 
     // スプライトの作成
     m_pSprite = Sprite::create(TEX_BUTTON_ITEM_TOOTHPOWDER);
@@ -56,7 +88,7 @@ bool ToothPowder::init(void)
         // スプライト生成エラー
         return false;
     }
-    
+    m_pSprite->setColor(Color3B::GRAY);
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
     m_pSprite->setScale(2.0f,1.5f);
@@ -66,7 +98,7 @@ bool ToothPowder::init(void)
     
     m_pLayer->addChild(m_pSprite);
     m_pLayer->addChild(m_pItemIcon);
-    
+    m_pLayer->addChild(m_pProgressTimer);
     // 正常終了
     return true;
 }
@@ -84,6 +116,19 @@ void ToothPowder::uninit(void)
 //================================================================================
 void ToothPowder::update(void)
 {
+    if(m_nCount != 0)
+    {
+        m_nCount++;
+        float fPer = m_nCount / (60 * TOOTH_RESPONS_SEC) * 100;
+        m_pProgressTimer->setPercentage(fPer);
+
+        if(m_nCount > 60 * TOOTH_RESPONS_SEC)
+        {
+            m_nCount = 0;
+        }
+    }else{
+        m_pProgressTimer->setPercentage(100);
+    }
     //m_pToothSprite->setPosition(m_pos);
   /*
     if (m_bPowderTouchFlag == false){
@@ -122,15 +167,15 @@ void ToothPowder::setPos(Vec2 pos)
 //================================================================================
 void ToothPowder::chkPowderTouchFlag(Point pos)
 {
-    Rect rectPowder = Rect(m_pSprite->getBoundingBox());
-    if(rectPowder.containsPoint(pos))
+    if(m_nCount == 0)
     {
-        m_bPowderTouchFlag = true;
-        
-       // if (m_bPowderTouchFlag == true) {
-            SimpleAudioEngine::getInstance()->playEffect(SE_POWDER_2);
-            
-        //}
+        Rect rectPowder = Rect(m_pSprite->getBoundingBox());
+        if(rectPowder.containsPoint(pos))
+        {
+            m_bPowderTouchFlag = true;
+            SoundManager::playSoundID(ID_SE_POWDER_2);
+
+        }
     }
     
 }

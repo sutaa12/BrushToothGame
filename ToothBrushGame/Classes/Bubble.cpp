@@ -38,7 +38,7 @@ Bubble::~Bubble()
 bool Bubble::init(void)
 {
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_BUBBLE_01);
+    m_pSprite = Sprite::create(TEX_BUBBLE_02);
     
     // エラーチェック
     if(m_pSprite == nullptr)

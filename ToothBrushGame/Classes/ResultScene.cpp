@@ -11,17 +11,19 @@
 #include "GameMainScene.h"
 #include "RankManager.h"
 #include "Sound.h"
+#include "AchievementDataBase.h"
 USING_NS_CC;
 bool ResultScene::m_bGameOverFlag = false;
-int ResultScene::m_nScore;
+int ResultScene::m_nTimeBornus;
+
 //================================================================================
 // シーン生成
 //================================================================================
 
-Scene* ResultScene::createScene(bool bGameOverFlag,int nScoreNumber)
+Scene* ResultScene::createScene(bool bGameOverFlag,int nTimeBornus)
 {
+    m_nTimeBornus = nTimeBornus;
     m_bGameOverFlag = bGameOverFlag;
-    m_nScore = nScoreNumber;
     
     // 'scene' is an autorelease object
     auto scene = Scene::create();
@@ -66,6 +68,8 @@ bool ResultScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
+    AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_TIME, GAME_TIME_MAX - m_nTimeBornus);
+    
     // 更新処理の追加
     this->scheduleUpdate();
     // タッチ機能の有効化
@@ -93,7 +97,7 @@ bool ResultScene::init()
     (this->*pFuncInit)();
     
     //スコアとランク表示
-    m_pRankManager = RankManager::create(Vec2(origin.x + 100,origin.y + 600),m_nScore, this);
+    m_pRankManager = RankManager::create(Vec2(origin.x + 100,origin.y + 600),m_nTimeBornus, this);
     
     //ボタン表示
     MenuItemSprite* pButtonRetry;
@@ -130,7 +134,6 @@ bool ResultScene::init()
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
     addChild(pButton);
     
-    
      //今、BGMが流れているかどうか
      if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
      
@@ -138,7 +141,9 @@ bool ResultScene::init()
          SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
      
      }
-    
+
+    //音量調整
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MAX);
     //BGMをループ再生 第二引数がループするかどうか判定
     SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_RESULT_1, true);
     
@@ -225,6 +230,7 @@ void ResultScene::initGameOver(void)
     pSprite->setColor(Color3B::RED);
     pSprite->setPosition(Vec2(pSprite->getContentSize().width / 2,visibleSize.height - pSprite->getContentSize().height / 2));
     this->addChild(pSprite);
+    m_nTimeBornus = -1;
 
 }
 
@@ -266,12 +272,20 @@ void ResultScene::updateGameClear(void)
 void ResultScene::ButtonRetry(void)
 {
     setNextScene(SCENE_GAME);
+
+    //SE
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
 }
 //================================================================================
 // タイトルボタン処理
 //================================================================================
 void ResultScene::ButtonTitle(void)
 {
+    //SE
+    SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+
+    //音楽を止める
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
     setNextScene(SCENE_TITLE);
 }
 //================================================================================
@@ -286,6 +300,7 @@ void ResultScene::setNextScene(SCENE_LIST sceneList)
     {
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
     }else{
+        AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_GAME_PLAY);
         Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
     }
 }

@@ -83,7 +83,6 @@ bool LifeBar::init(void)
     m_pPercentTxt->setPosition(ccp(m_pProgressTimer->getPositionX(), m_pProgressTimer->getPositionY()+50));
     m_pPercentTxt->setTag(200);
     m_pLayer->addChild(m_pPercentTxt);
-    
     m_pLayer->addChild(m_pProgressTimer);
     // 正常終了
     return true;

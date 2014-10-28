@@ -11,7 +11,7 @@
 #include "GameMainScene.h"
 #include "AchievementsScene.h"
 #include "Sound.h"
-
+#include "AchievementDataBase.h"
 #include "StageSelect.h"
 
 USING_NS_CC;
@@ -139,7 +139,8 @@ bool TitleScene::init()
         //  SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
         
     }else{
-        
+        //音量調整
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
         //タイトル画面BGMをループ再生
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         
@@ -172,6 +173,8 @@ void TitleScene::menuButtonGame(void)
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_START_BUTTON_1);
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
+    
+    AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_GAME_PLAY);
     
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,GameMainScene::createScene(),Color3B::WHITE));
     // EFFECTの場合

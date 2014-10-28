@@ -42,7 +42,6 @@ bool RankObject::init(void)
     
     //RankObject文字の一番後ろの位置にセット
     m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pRankObjectLabel->getContentSize().width, m_startLeftTopPos.y));
-    
     m_pPointLabel->setString(points->getCString());
     
     m_pLayer->addChild(m_pPointLabel);

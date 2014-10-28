@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "TextureFile.h"
-
+#include "AchievementDataBase.h"
 using namespace cocos2d;
 
 
@@ -32,7 +32,10 @@ public:
     {
         ENEMY_KIND_NORMAL_ONE,
         ENEMY_KIND_NORMAL_TWO,
+        ENEMY_KIND_NORMAL_TREE,
         ENEMY_KIND_LAIR_ONE,
+        ENEMY_KIND_LAIR_TWO,
+        ENEMY_KIND_LAIR_TREE,
         ENEMY_KIND_MAX
     };
     //敵の画像リスト
@@ -40,17 +43,29 @@ public:
     {
         {
             TEX_ENEMY_WAIT_00,
-            TEX_ENEMY_WAIT_00
+            TEX_ENEMY_DIE_01
         },
         {
             TEX_ENEMY_WAIT_01,
             TEX_ENEMY_WAIT_01
         },
+        {
+            TEX_ENEMY_TOUGH_WAIT_01,
+            TEX_ENEMY_TOUGH_WAIT_01
+        },
 
         {
             TEX_ENEMY_LAIR_WAIT_00,
-            TEX_ENEMY_LAIR_WAIT_00
-        }
+            TEX_ENEMY_LAIR_DIE_01
+        },
+        {
+            TEX_ENEMY_LAIR_LITTLE_WAIT_01,
+            TEX_ENEMY_LAIR_LITTLE_DIE_01
+        },
+        {
+            TEX_ENEMY_LITTLE_WAIT_01,
+            TEX_ENEMY_LITTLE_DIE_01
+        },
     };
 public:
     
@@ -59,6 +74,7 @@ public:
     {
         int move;
         int EnemyLife;
+        ACHIEVEMENT_KIND achievement;
     };
     
     Enemy();   //コンストラクタ

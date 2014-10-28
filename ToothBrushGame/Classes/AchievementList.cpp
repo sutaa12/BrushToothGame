@@ -8,6 +8,7 @@
 
 #include "AchievementDataBase.h"
 #include "AchievementList.h"
+#include "TextureFile.h"
 // on "init" you need to initialize your instance
 bool AchievementList::init()
 {
@@ -74,8 +75,6 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
         bg->setColor(background_color);
         bg->setTag(100);
         cell->addChild(bg);
-        
-
         // タイトル部分
         auto *label_2 = LabelTTF::create(title.c_str(), "Arial", STATUS_TITLE_SIZE);
         label_2->setAnchorPoint(Point(0, 0));
@@ -107,28 +106,51 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
     
     
     // ID部分
-    auto *label_1 = LabelTTF::create(id.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
+    auto *label_1 = LabelTTF::create("0", "Arial", ACHIEVE_TITLE_SIZE);
     label_1->setAnchorPoint(Point(0, 0));
     label_1->setPosition(Point(25,label_1->getContentSize().height / 2));
     label_1->setColor(Color3B(0,0,0));
     cell->addChild(label_1);
-    // タイトル部分
-    auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
-    label_2->setAnchorPoint(Point(0, 0));
-    label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
-    label_2->setColor(Color3B(0,0,0));
-    cell->addChild(label_2);
-    
-    // メッセージ部分
-    auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
-    label_3->setAnchorPoint(Point(0, 0));
-    label_3->setPosition(Point(50 + label_1->getContentSize().width,5));
-    label_3->setColor(Color3B(0,0,0));
-    cell->addChild(label_3);
+        auto pSprite = Sprite::create(TEX_BADGE_1);
+        pSprite->setScale(0.5f, 0.5f);
+        pSprite->setPosition(Vec2(label_1->getPosition().x + 10,label_1->getPosition().y + 20));
+        cell->addChild(pSprite);
+        pSprite->setColor(Color3B::BLACK);
+        if(AchievementDataBaseList::getAchieveBool((int)idx - ACHIEVEMENT_MAX + 1))
+        {
+            pSprite->setColor(Color3B::WHITE);
+            
+            // タイトル部分
+            auto *label_2 = LabelTTF::create(achivestatus.title.c_str(), "Arial", ACHIEVE_TITLE_SIZE);
+            label_2->setAnchorPoint(Point(0, 0));
+            label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
+            label_2->setColor(Color3B(0,0,0));
+            cell->addChild(label_2);
+
+            // メッセージ部分
+            auto *label_3 = LabelTTF::create(achivestatus.message.c_str(), "Arial", ACHIEVE_MESSAGE_SIZE);
+            label_3->setAnchorPoint(Point(0, 0));
+            label_3->setPosition(Point(60 + label_1->getContentSize().width,4));
+            label_3->setColor(Color3B(0,0,0));
+            cell->addChild(label_3);
+            // 日付部分
+            auto *label_4 = LabelTTF::create(AchievementDataBaseList::getAchieveDate((int)idx - ACHIEVEMENT_MAX + 1).c_str(), "Arial", ACHIEVE_MESSAGE_SIZE / 2);
+            label_4->setAnchorPoint(Point(0, 0));
+            label_4->setPosition(Point(100 + label_3->getContentSize().width,5));
+            label_4->setColor(Color3B(0,0,0));
+            cell->addChild(label_4);
+        }else{
+        
+        // タイトル部分
+        auto *label_2 = LabelTTF::create("LOCKED", "Arial", ACHIEVE_TITLE_SIZE);
+        label_2->setAnchorPoint(Point(0, 0));
+        label_2->setPosition(Point(50 + label_1->getContentSize().width, label_2->getContentSize().height / 2));
+        label_2->setColor(Color3B(0,0,0));
+        cell->addChild(label_2);
+        }
     }
     return cell;
 }
-
 // セル数
 ssize_t AchievementList::numberOfCellsInTableView(TableView *table){
     return AchievementDataBaseList::getAchievementMax() + (ACHIEVEMENT_MAX - 1);

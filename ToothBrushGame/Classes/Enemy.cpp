@@ -12,13 +12,17 @@
 #include "common.h"
 #include "LifeBar.h"
 #include "Score.h"
+#include "AchievementDataBase.h"
 int Enemy::m_nEnemyDown[Enemy::ENEMY_KIND_MAX];
 int Enemy::m_nEnemyDisappear[Enemy::ENEMY_KIND_MAX];
 const Enemy::ENEMY_STATUS ENEMY_STATUS_LIST[Enemy::ENEMY_KIND_MAX] =
 {
-    {1,1},
-    {2,2},
-    {3,4},
+    {1,1,ACHIEVEMENT_TYPE_ENEMY_NORMAL_ONE_DOWN},
+    {2,2,ACHIEVEMENT_TYPE_ENEMY_NORMAL_TWO_DOWN},
+    {3,3,ACHIEVEMENT_TYPE_ENEMY_NORMAL_TREE_DOWN},
+    {6,4,ACHIEVEMENT_TYPE_ENEMY_LAIR_ONE_DOWN},
+    {8,6,ACHIEVEMENT_TYPE_ENEMY_LAIR_TWO_DOWN},
+    {10,8,ACHIEVEMENT_TYPE_ENEMY_LAIR_TREE_DOWN},
 };
 //================================================================================
 // コンストラクタ
@@ -92,6 +96,7 @@ void Enemy::disappear(void)
     m_bDeath = true;
     //画像をきり替え
     m_pSprite->setColor(Color3B::GRAY);
+    m_pSprite->setTexture(ENEMY_IMAGE_LIST[m_nEnemyKind][1]);
     
     if(m_bFollowPowder)
     {
@@ -102,6 +107,8 @@ void Enemy::disappear(void)
         m_time = 0;
     }
     m_nEnemyDisappear[m_nEnemyKind]++;
+    AchievementDataBaseList::addAchievement(ENEMY_STATUS_LIST[m_nEnemyKind].achievement);
+    AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_ENEMY_DOWN);
 }
 //================================================================================
 // 更新処理
@@ -175,8 +182,8 @@ void Enemy::moveAction(void)
 //================================================================================
 void Enemy::delayAction(void)
 {
-    m_time--;
-    
+    m_fRot = RandomMT::getRandom(-DATA_PI, DATA_PI);
+    m_time = 0;
 }
 //================================================================================
 //ダメージ処理
@@ -185,6 +192,8 @@ void Enemy::addDamage(int nDamage)
 {
     m_nLife -= nDamage;
     //敵に攻撃したときのSE
+    //音量調整
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_ENEMY_DOWN_VOLUME_1);
     SimpleAudioEngine::getInstance()->playEffect(SE_ENEMY_DOWN_1);
 
     if(!m_bDeath)

@@ -26,18 +26,25 @@
 #include "CountDown.h"
 #include "ToothPowder.h"
 #include "GameDifficult.h"
+#include "CharacterStatus.h"
 USING_NS_CC;
-
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
     {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,600)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,6,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,20,Point(200,300)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,20,30,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,25,40,Point(300,350)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,30,50,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,10,5,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,3,15,Point(200,300)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,4,20,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,10,25,Point(300,350)},
+    {Enemy::ENEMY_KIND_LAIR_TWO,3,30,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,10,35,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TREE,2,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,40,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,2,45,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,5,50,Point(150,400)},
 };
 //================================================================================
 // デストラクタ
@@ -50,6 +57,8 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pUIManager);
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
+    //すべてのSEを止める
+    SimpleAudioEngine::getInstance()->stopAllEffects();
 }
 
 //================================================================================
@@ -177,9 +186,10 @@ bool GameMainScene::init()
         
     }
     
-        //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
-        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
-        SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
+        //音量調整
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
+    //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
+    SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         
     
 
@@ -255,6 +265,8 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // ポーズメニューを開く
     if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
     {
+        //音量調整
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
         //SE
         SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
         m_pPauseLayer = PauseScene::createLayer();
@@ -408,11 +420,13 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
+        m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
         m_pHitChecker->checkEnemyDown();
         m_nShakeCnt = 0;
         
         //SE
-        SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
     }
 }
@@ -427,7 +441,7 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if(fAngle <= 45 && fAngle >= -45)
     {
         CCLOG("上方向");
-        m_pHitChecker->checkEnemyDown();
+
         return SWIPE_DIRECTION_UP;
 
     }
@@ -447,6 +461,7 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if((fAngle <= -135 && fAngle >= -180) || (fAngle <= 180 && fAngle >= 135))
     {
         CCLOG("下方向");
+        m_pHitChecker->checkEnemyDown();
         return SWIPE_DIRECTION_DOWN;
     }
     
@@ -460,7 +475,6 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
-    
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,Score::getScoreNum()),Color3B::WHITE));
 }
 //================================================================================
@@ -485,6 +499,8 @@ void GameMainScene::updateGamePhase(void)
     if(m_nTimer % 60 == 0)
     {
         m_nGameTime++;
+        AchievementDataBaseList::saveAchievement();
+        
     }
     chkGamePhase();
 }
@@ -519,8 +535,10 @@ void GameMainScene::chkGamePhase(void)
     {
         setResultScene(false);
     }else
-    if(m_nGameTime >= GAME_TIME_MAX)
+    if(m_nGameTime > GAME_TIME_MAX)
     {
         setResultScene(true);
     }
+
+    m_pUIManager->getCharacterStatus()->checkChangePattern(nEnemyDown,EnemyAll );
 }

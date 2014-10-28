@@ -49,6 +49,6 @@ private:
     void onTouchMoved(Touch* pTouch,Event* pEvent);
     void onTouchCancelled(Touch* pTouch,Event* pEvent);
     void onTouchEnded(Touch* pTouch,Event* pEvent);
-    
+    const int ACHIEVE_LAYER_POS_WIDTH = 300;
 };
 #endif /* defined(__ToothBrushGame__AchieveLayer__) */
