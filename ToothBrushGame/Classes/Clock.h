@@ -52,6 +52,7 @@ public:
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
 
 private:
+    Vec2 m_startLeftTopPos;
     Sprite* m_pSprite;
     Sprite* m_pBackLifeBar;
     ProgressTimer* m_pProgressTimer;

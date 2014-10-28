@@ -51,7 +51,7 @@ bool Clock::init(void)
 
 
     // スプライトの座標設定
-    m_pSprite = Sprite::create(TEX_PLAQUE_WAIT_01);
+    m_pSprite = Sprite::create(TEX_CLOCK_2);
     m_pSprite->setPosition(m_pos);
     m_pLayer->addChild(m_pSprite);
   //  m_pBackLifeBar->setPosition(m_pos);
@@ -80,8 +80,8 @@ bool Clock::init(void)
     m_pProgressTimer->setTag(100);
 */
     //パーセント表示用テキスト
-    m_pPercentTxt = LabelTTF::create("0%", "Arial", 35);
-    m_pPercentTxt->setPosition(Vec2(m_pSprite->getPosition().x + m_pSprite->getContentSize().width / 2, m_pSprite->getPosition().y));
+    m_pPercentTxt = LabelTTF::create("0秒", "Arial", 35);
+    m_pPercentTxt->setPosition(Vec2(m_pSprite->getPosition().x + m_pSprite->getContentSize().width, m_pSprite->getPosition().y));
     m_pPercentTxt->setTag(200);
     m_pLayer->addChild(m_pPercentTxt);
 
@@ -103,11 +103,12 @@ void Clock::uninit(void)
 //================================================================================
 void Clock::update(void)
 {
+
     m_nTimer ++;
     if(m_nTimer % 60 == 0){
         m_nCurrentTime --;
     }
-    m_nClock =( (float)m_nCurrentTime / m_nStartTimer) * 100.0f;
+    //m_nClock =( (float)m_nCurrentTime / m_nStartTimer) * 100.0f;
 
     //m_pProgressTimer->setPercentage(m_nClock);
 

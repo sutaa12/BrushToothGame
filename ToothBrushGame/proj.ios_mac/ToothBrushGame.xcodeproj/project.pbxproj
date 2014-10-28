@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1823EC2819FF3C8100E67BDE /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1823EC2619FF3C8100E67BDE /* Clock.cpp */; };
+		1823EC3019FF68DF00E67BDE /* Clock_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1823EC2D19FF68DF00E67BDE /* Clock_3.png */; };
+		1823EC3119FF68DF00E67BDE /* Clock_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1823EC2E19FF68DF00E67BDE /* Clock_2.png */; };
+		1823EC3219FF68DF00E67BDE /* Clock_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1823EC2F19FF68DF00E67BDE /* Clock_1.png */; };
 		184AA5A019F62C5B0058E024 /* se_game_start_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA59F19F62C5B0058E024 /* se_game_start_1.mp3 */; };
 		184AA5A419F62CB80058E024 /* puyon1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA5A319F62CB80058E024 /* puyon1.mp3 */; };
 		184AA5A719F63E430058E024 /* se_damage_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA5A519F63E430058E024 /* se_damage_1.mp3 */; };
@@ -344,6 +347,9 @@
 /* Begin PBXFileReference section */
 		1823EC2619FF3C8100E67BDE /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Clock.cpp; path = ../Classes/Clock.cpp; sourceTree = "<group>"; };
 		1823EC2719FF3C8100E67BDE /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clock.h; path = ../Classes/Clock.h; sourceTree = "<group>"; };
+		1823EC2D19FF68DF00E67BDE /* Clock_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock_3.png; sourceTree = "<group>"; };
+		1823EC2E19FF68DF00E67BDE /* Clock_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock_2.png; sourceTree = "<group>"; };
+		1823EC2F19FF68DF00E67BDE /* Clock_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clock_1.png; sourceTree = "<group>"; };
 		182EB82019F5069C0028FF5D /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = ../Classes/Sound.h; sourceTree = "<group>"; };
 		184AA59F19F62C5B0058E024 /* se_game_start_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_game_start_1.mp3; sourceTree = "<group>"; };
 		184AA5A319F62CB80058E024 /* puyon1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = puyon1.mp3; sourceTree = "<group>"; };
@@ -876,6 +882,9 @@
 				C33B331A19F645B000DEDAF8 /* tongue.png */,
 				C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */,
 				C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */,
+				1823EC2D19FF68DF00E67BDE /* Clock_3.png */,
+				1823EC2E19FF68DF00E67BDE /* Clock_2.png */,
+				1823EC2F19FF68DF00E67BDE /* Clock_1.png */,
 				18C9C85B19FE487F007A1C42 /* StatusLittleGirl_Smile.png */,
 				18C9C85C19FE487F007A1C42 /* StatusLittleGirl_Cry.png */,
 				18C9C85D19FE487F007A1C42 /* StatusLittleGirl_Normal.png */,
@@ -1272,12 +1281,15 @@
 				18C9C83719FE3A3A007A1C42 /* se_shine_1.mp3 in Resources */,
 				18C9C85419FE471A007A1C42 /* Virus_Lair_Little_Die_1.png in Resources */,
 				184AA5E019F63F130058E024 /* se_game_over_1.mp3 in Resources */,
+				1823EC3219FF68DF00E67BDE /* Clock_1.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				18C9C85F19FE487F007A1C42 /* StatusLittleGirl_Smile.png in Resources */,
 				18C9C85819FE471A007A1C42 /* Virus_Nomal_Die_1.png in Resources */,
 				18C9C85219FE471A007A1C42 /* pika.png in Resources */,
+				1823EC3119FF68DF00E67BDE /* Clock_2.png in Resources */,
 				184AA5DB19F63EE50058E024 /* se_plaque_down_2.mp3 in Resources */,
 				184AA5A719F63E430058E024 /* se_damage_1.mp3 in Resources */,
+				1823EC3019FF68DF00E67BDE /* Clock_3.png in Resources */,
 				18C9C84019FE3BC5007A1C42 /* get_archivement_3.mp3 in Resources */,
 				18C9C83E19FE3BC5007A1C42 /* get_archivement_4.mp3 in Resources */,
 				770596A619FD2DDB0070B5CC /* se_powder_1.mp3 in Resources */,
