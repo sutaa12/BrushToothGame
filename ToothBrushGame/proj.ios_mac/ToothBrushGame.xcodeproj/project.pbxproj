@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1823EC2819FF3C8100E67BDE /* Clock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1823EC2619FF3C8100E67BDE /* Clock.cpp */; };
 		184AA5A019F62C5B0058E024 /* se_game_start_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA59F19F62C5B0058E024 /* se_game_start_1.mp3 */; };
 		184AA5A419F62CB80058E024 /* puyon1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA5A319F62CB80058E024 /* puyon1.mp3 */; };
 		184AA5A719F63E430058E024 /* se_damage_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 184AA5A519F63E430058E024 /* se_damage_1.mp3 */; };
@@ -339,6 +340,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1823EC2619FF3C8100E67BDE /* Clock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Clock.cpp; path = ../Classes/Clock.cpp; sourceTree = "<group>"; };
+		1823EC2719FF3C8100E67BDE /* Clock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clock.h; path = ../Classes/Clock.h; sourceTree = "<group>"; };
 		182EB82019F5069C0028FF5D /* Sound.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Sound.h; path = ../Classes/Sound.h; sourceTree = "<group>"; };
 		184AA59F19F62C5B0058E024 /* se_game_start_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_game_start_1.mp3; sourceTree = "<group>"; };
 		184AA5A319F62CB80058E024 /* puyon1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = puyon1.mp3; sourceTree = "<group>"; };
@@ -841,6 +844,8 @@
 				C36E0AE419F0C43500E5040C /* Plaque.h */,
 				C36E0AE919F0C43500E5040C /* Score.cpp */,
 				C36E0AEA19F0C43500E5040C /* Score.h */,
+				1823EC2619FF3C8100E67BDE /* Clock.cpp */,
+				1823EC2719FF3C8100E67BDE /* Clock.h */,
 				C36E0AEB19F0C43500E5040C /* Tooth.cpp */,
 				C36E0AEC19F0C43500E5040C /* Tooth.h */,
 				6193EE7119F7EFD300E98E07 /* ToothPowder.cpp */,
@@ -1396,6 +1401,7 @@
 				C3DCB0D919FE4B7500C48DEC /* DetailScore.cpp in Sources */,
 				6193EE3319F4174C00E98E07 /* ResultScene.cpp in Sources */,
 				C36E0AFE19F0C43500E5040C /* Number.cpp in Sources */,
+				1823EC2819FF3C8100E67BDE /* Clock.cpp in Sources */,
 				C36E0AF419F0C43500E5040C /* EffectManager.cpp in Sources */,
 				6193EE7619F7F03500E98E07 /* CharacterStatus.cpp in Sources */,
 				6193EE2719F4120C00E98E07 /* TitleScene.cpp in Sources */,
