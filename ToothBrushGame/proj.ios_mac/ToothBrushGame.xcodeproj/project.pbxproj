@@ -197,6 +197,8 @@
 		C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF349F19FF202A00ECAC8C /* EndingNormal.png */; };
 		C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */; };
 		C3CF34AC19FF6ACE00ECAC8C /* VirusToothManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34AA19FF6ACE00ECAC8C /* VirusToothManager.cpp */; };
+		C3CF34B91A00714900ECAC8C /* ButtonAchieve.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF34B71A00714900ECAC8C /* ButtonAchieve.png */; };
+		C3CF34BA1A00714900ECAC8C /* ButtonReturnGame.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF34B81A00714900ECAC8C /* ButtonReturnGame.png */; };
 		C3DCB0D919FE4B7500C48DEC /* DetailScore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
@@ -573,6 +575,8 @@
 		C3CF34A619FF6ABC00ECAC8C /* VirusTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirusTooth.h; path = ../Classes/VirusTooth.h; sourceTree = "<group>"; };
 		C3CF34AA19FF6ACE00ECAC8C /* VirusToothManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirusToothManager.cpp; path = ../Classes/VirusToothManager.cpp; sourceTree = "<group>"; };
 		C3CF34AB19FF6ACE00ECAC8C /* VirusToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirusToothManager.h; path = ../Classes/VirusToothManager.h; sourceTree = "<group>"; };
+		C3CF34B71A00714900ECAC8C /* ButtonAchieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAchieve.png; sourceTree = "<group>"; };
+		C3CF34B81A00714900ECAC8C /* ButtonReturnGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonReturnGame.png; sourceTree = "<group>"; };
 		C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DetailScore.cpp; path = ../Classes/DetailScore.cpp; sourceTree = "<group>"; };
 		C3DCB0D819FE4B7500C48DEC /* DetailScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailScore.h; path = ../Classes/DetailScore.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -881,6 +885,8 @@
 		6193EE3C19F5B43D00E98E07 /* hd */ = {
 			isa = PBXGroup;
 			children = (
+				C3CF34B71A00714900ECAC8C /* ButtonAchieve.png */,
+				C3CF34B81A00714900ECAC8C /* ButtonReturnGame.png */,
 				615A3F021A0058A600CFCC8C /* ToothBrush.png */,
 				6193EE7719F864CD00E98E07 /* GameTopBack.png */,
 				6193EE7819F864CD00E98E07 /* StatusLittleGirl_00.png */,
@@ -1371,6 +1377,7 @@
 				184AA5DC19F63EE50058E024 /* se_plaque_down_3.mp3 in Resources */,
 				185830A119F64BE300A0A703 /* bgm_boss_scene_4.mp3 in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				C3CF34BA1A00714900ECAC8C /* ButtonReturnGame.png in Resources */,
 				185830AE19F64BE300A0A703 /* bgm_stageselect_2.mp3 in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				6193EE5919F5B43D00E98E07 /* ScoreBar.png in Resources */,
@@ -1379,6 +1386,7 @@
 				184AA5E619F63F580058E024 /* voice_boss_game_over_1.mp3 in Resources */,
 				6193EE5C19F5B43D00E98E07 /* TitleLogo.png in Resources */,
 				184AA5E519F63F580058E024 /* voice_boss_appear_1.mp3 in Resources */,
+				C3CF34B91A00714900ECAC8C /* ButtonAchieve.png in Resources */,
 				184AA5A019F62C5B0058E024 /* se_game_start_1.mp3 in Resources */,
 				184AA5E819F63F580058E024 /* voice_game_start_1.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,

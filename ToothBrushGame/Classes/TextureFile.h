@@ -42,6 +42,8 @@
 #define TEX_CLOCK_2 ("Clock_2.png")
 #define TEX_CLOCK_3 ("Clock_3.png")
 #define TEX_BUTTON_TOUCH_START ("ButtonTouchStart.png")
+#define TEX_BUTTON_RETURN_GAME ("ButtonReturnGame.png")
+#define TEX_BUTTON_ACIHEVE ("ButtonAchieve.png")
 #define TEX_TITLE_LOGO ("TitleLogo.png")
 #define TEX_TITLE_BACK_1 ("TitleBack.png")
 #define TEX_TITLE_BACK_2 ("TitleBack2.png")

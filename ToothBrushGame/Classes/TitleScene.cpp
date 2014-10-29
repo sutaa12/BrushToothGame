@@ -107,7 +107,7 @@ bool TitleScene::init()
     
     //タップ時のスプライト
     Sprite* pSelectedSprite = Sprite::create(TEX_BUTTON_TOUCH_START);
-    pSelectedSprite->setColor(Color3B(255,200,200));
+    pSelectedSprite->setColor(Color3B(255,255,255));
 
     pButtonRetry = MenuItemSprite::create(m_pButton0,pSelectedSprite,CC_CALLBACK_0(TitleScene::menuButtonGame,this));
     
@@ -117,19 +117,17 @@ bool TitleScene::init()
     
     //タイトルボタン
     //タップ前のスプライト
-    Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pNormalSprite2->setColor(Color3B(150,150,250));
-    
-    pNormalSprite2->setOpacity(180);
+    Sprite* pNormalSprite2 = Sprite::create(TEX_BUTTON_ACIHEVE);
+    pNormalSprite2->setColor(Color3B(200,200,255));
     
     //タップ時のスプライト
-    Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pSelectedSprite2->setColor(Color3B(200,200,255));
+    Sprite* pSelectedSprite2 = Sprite::create(TEX_BUTTON_ACIHEVE);
+    pSelectedSprite2->setColor(Color3B(250,250,255));
     
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(TitleScene::menuButtonAchievements,this));
     
     pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 780 - m_pButton0->getContentSize().height / 2));
+    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 800 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
     
     //今、BGMが流れているかどうか
