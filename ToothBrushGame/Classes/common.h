@@ -11,6 +11,7 @@
 #include <cocos2d.h>
 USING_NS_CC;
 #define DATA_PI (3.1415926535f)
+#define MIKA_FONT ("mikachan")
 
 //ベクトルの最大値チェック　超えていたら押し戻す
 template <class T1,class T2>

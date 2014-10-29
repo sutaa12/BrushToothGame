@@ -88,14 +88,14 @@ bool AchievementsScene::init()
     
     //タイトルボタン
     //タップ前のスプライト
-    Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pNormalSprite2->setColor(Color3B(150,150,250));
+    Sprite* pNormalSprite2 = Sprite::create(TEX_BACK_BUTTON);
+    pNormalSprite2->setColor(Color3B(250,250,250));
     
-    pNormalSprite2->setOpacity(180);
+    pNormalSprite2->setOpacity(200);
     
     //タップ時のスプライト
-    Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pSelectedSprite2->setColor(Color3B(200,200,255));
+    Sprite* pSelectedSprite2 = Sprite::create(TEX_BACK_BUTTON);
+    pSelectedSprite2->setColor(Color3B(255,255,255));
     
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(AchievementsScene::ButtonTitle,this));
     

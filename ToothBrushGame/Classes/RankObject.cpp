@@ -7,6 +7,7 @@
 //
 
 #include "RankObject.h"
+#include "common.h"
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -32,12 +33,12 @@ bool RankObject::init(void)
   
     
     // RankObject　文字列
-    m_pRankObjectLabel = LabelTTF::create("Rank", "ariel", 48);
+    m_pRankObjectLabel = LabelTTF::create("Rank", MIKA_FONT, 48);
     //左上の位置に設定
     m_pRankObjectLabel->setPosition(m_startLeftTopPos);
     
     // スコアポイント
-    m_pPointLabel = LabelTTF::create("0", "ariel", 96);
+    m_pPointLabel = LabelTTF::create("0",MIKA_FONT, 96);
     String* points = String::createWithFormat( "%c", this->m_cRankObjectRank);
     
     //RankObject文字の一番後ろの位置にセット

@@ -24,6 +24,7 @@
 #define TEX_ENEMY_LAIR_LITTLE_DIE_01 ("Virus_Lair_Little_Die_1.png")
 #define TEX_ENEMY_LITTLE_WAIT_01 ("Virus_Little_Wait_1.png")
 #define TEX_ENEMY_LITTLE_DIE_01 ("Virus_Little_Die_1.png")
+#define TEX_VIRUS_TOOTH ("VirusTooth.png")
 
 #define TEX_PLAQUE_WAIT_01 ("Plaque.png")
 #define TEX_BOSS_WAIT_01 ("Boss.png")
@@ -35,8 +36,11 @@
 #define TEX_KIRAKIRA_01 ("kirakira.png")
 #define TEX_PIKA_01 ("pika.png")
 #define TEX_WATER_01 ("water.png")
+#define TEX_UGAI_WATER ("WaterSprite.png")
+
 
 //UI関係
+#define TEX_ACHIEVE_WINDOW ("AchieveWindow.png")
 #define TEX_BADGE_1 ("ba.png")
 #define TEX_CLOCK_1 ("Clock_1.png")
 #define TEX_CLOCK_2 ("Clock_2.png")
@@ -48,7 +52,8 @@
 #define TEX_TITLE_BACK_1 ("TitleBack.png")
 #define TEX_TITLE_BACK_2 ("TitleBack2.png")
 #define TEX_TITLE_CHARACTAR ("TitleChara.png")
-#define TEX_MENU_BUTTON ("MenuBar.png")
+#define TEX_MENU_BUTTON ("ButtonGameMenu.png")
+#define TEX_BACK_BUTTON ("ButtonBack.png")
 #define TEX_ITEM_BACK ("UI_Item.png")
 #define TEX_GAME_TOP_BACK ("GameTopBack.png")
 #define TEX_GAME_BOTTOM_BACK ("GameBottomBack.png")

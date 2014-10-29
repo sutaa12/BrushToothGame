@@ -89,7 +89,6 @@ bool UIManager::init(void)
     // スプライトの登録
     m_pLayer->addChild(m_pMenuBar->getSprite());
 
-
     /**
      *  UI LifeBar Generation
      **/
@@ -97,11 +96,11 @@ bool UIManager::init(void)
     m_pClock = Clock::create(m_pLayer,Vec2(visibleSize.width / 2 + 32, visibleSize.height - 32));
 
     //歯磨き粉アイテム生成処理
-    m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(visibleSize.width / 3,origin.y + 192));
+    m_pToothPowder = ToothPowder::create(m_pLayer,Vec2(origin.x + (visibleSize.width / 3)*2,origin.y + 192));
 
     // キャラクター生成。下部UIの右下から計算
     Rect bottomUIRect = m_pGameBottomBack->getBoundingBox();
-    Vec2 characterDispPos = Vec2(origin.x + bottomUIRect.size.width,origin.y);
+    Vec2 characterDispPos = Vec2(origin.x,origin.y + 128);
     m_pCharacterStatus = CharacterStatus::create(characterDispPos,CharacterStatus::CHARACTERSTATUS_PATTERN_CRY);
     m_pLayer->addChild(m_pCharacterStatus->getSprite());
 

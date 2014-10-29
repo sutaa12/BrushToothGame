@@ -37,7 +37,7 @@ public:
     void setSpawn(Vec2 pos);
     //倒れたフラグを拾う
     bool getVirusToothDownFlag(void){return m_bDown;}
-
+    
 private:
     Sprite* m_pSprite;
     Vec2 m_pos;

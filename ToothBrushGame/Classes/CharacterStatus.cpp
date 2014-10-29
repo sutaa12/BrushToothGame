@@ -46,11 +46,11 @@ bool CharacterStatus::init(void)
     }
 
     // スプライトの座標設定
-    m_pos.x -= (m_pSprite->getBoundingBox()).size.width / 2;
+    m_pSprite->cocos2d::Node::setScale(YOUJO_SCALE);
+    m_pos.x += (m_pSprite->getBoundingBox()).size.width / 2;
     m_pos.x -= 16;
     m_pos.y += (m_pSprite->getBoundingBox()).size.height / 2;
     m_pSprite->setPosition(m_pos);
-
     // 正常終了
     return true;
 }
@@ -204,7 +204,7 @@ void CharacterStatus::setGiddy(void)
 {
     m_bGiddy = true;
 
-    auto actionDelay = DelayTime::create(1.0f);
+    auto actionDelay = DelayTime::create(UGAI_DELAY);
     CallFunc *func = CallFunc::create(CC_CALLBACK_0(CharacterStatus::recoveryGiddy, this));
     m_pSprite->runAction(Sequence::create(actionDelay,func, NULL));
 }

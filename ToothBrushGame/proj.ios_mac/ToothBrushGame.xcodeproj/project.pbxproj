@@ -193,6 +193,12 @@
 		C36E0B0419F0C43500E5040C /* ToothManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AED19F0C43500E5040C /* ToothManager.cpp */; };
 		C36E0B0519F0C43500E5040C /* UIManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0AEF19F0C43500E5040C /* UIManager.cpp */; };
 		C36E0B5219F0C5F100E5040C /* HitChecker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C36E0B5019F0C5F100E5040C /* HitChecker.cpp */; };
+		C385EFD01A00841400B2B61A /* ButtonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFCE1A00841400B2B61A /* ButtonBack.png */; };
+		C385EFD11A00841400B2B61A /* ButtonGameMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFCF1A00841400B2B61A /* ButtonGameMenu.png */; };
+		C385EFD51A0088C300B2B61A /* VirusTooth.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFD41A0088C300B2B61A /* VirusTooth.png */; };
+		C385EFD71A008C6800B2B61A /* AchieveWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFD61A008C6800B2B61A /* AchieveWindow.png */; };
+		C385EFDA1A00908C00B2B61A /* UgaiEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */; };
+		C385EFDC1A00911600B2B61A /* WaterSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFDB1A00911600B2B61A /* WaterSprite.png */; };
 		C3AFC7C819EFBFC00017FB78 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */; };
 		C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF349F19FF202A00ECAC8C /* EndingNormal.png */; };
 		C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */; };
@@ -569,6 +575,13 @@
 		C36E0AF019F0C43500E5040C /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIManager.h; path = ../Classes/UIManager.h; sourceTree = "<group>"; };
 		C36E0B5019F0C5F100E5040C /* HitChecker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HitChecker.cpp; path = ../Classes/HitChecker.cpp; sourceTree = "<group>"; };
 		C36E0B5119F0C5F100E5040C /* HitChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HitChecker.h; path = ../Classes/HitChecker.h; sourceTree = "<group>"; };
+		C385EFCE1A00841400B2B61A /* ButtonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonBack.png; sourceTree = "<group>"; };
+		C385EFCF1A00841400B2B61A /* ButtonGameMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonGameMenu.png; sourceTree = "<group>"; };
+		C385EFD41A0088C300B2B61A /* VirusTooth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusTooth.png; sourceTree = "<group>"; };
+		C385EFD61A008C6800B2B61A /* AchieveWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AchieveWindow.png; sourceTree = "<group>"; };
+		C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UgaiEffect.cpp; path = ../Classes/UgaiEffect.cpp; sourceTree = "<group>"; };
+		C385EFD91A00908C00B2B61A /* UgaiEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UgaiEffect.h; path = ../Classes/UgaiEffect.h; sourceTree = "<group>"; };
+		C385EFDB1A00911600B2B61A /* WaterSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WaterSprite.png; sourceTree = "<group>"; };
 		C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		C3CF349F19FF202A00ECAC8C /* EndingNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingNormal.png; sourceTree = "<group>"; };
 		C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirusTooth.cpp; path = ../Classes/VirusTooth.cpp; sourceTree = "<group>"; };
@@ -577,6 +590,7 @@
 		C3CF34AB19FF6ACE00ECAC8C /* VirusToothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirusToothManager.h; path = ../Classes/VirusToothManager.h; sourceTree = "<group>"; };
 		C3CF34B71A00714900ECAC8C /* ButtonAchieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonAchieve.png; sourceTree = "<group>"; };
 		C3CF34B81A00714900ECAC8C /* ButtonReturnGame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonReturnGame.png; sourceTree = "<group>"; };
+		C3CF34C31A007B0F00ECAC8C /* mikachan.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikachan.ttf; sourceTree = "<group>"; };
 		C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DetailScore.cpp; path = ../Classes/DetailScore.cpp; sourceTree = "<group>"; };
 		C3DCB0D819FE4B7500C48DEC /* DetailScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailScore.h; path = ../Classes/DetailScore.h; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -872,12 +886,14 @@
 				1823EC2719FF3C8100E67BDE /* Clock.h */,
 				C36E0AEB19F0C43500E5040C /* Tooth.cpp */,
 				C36E0AEC19F0C43500E5040C /* Tooth.h */,
-				6193EE7419F7F03500E98E07 /* CharacterStatus.cpp */,
 				6193EE7119F7EFD300E98E07 /* ToothPowder.cpp */,
 				6193EE7219F7EFD300E98E07 /* ToothPowder.h */,
+				6193EE7419F7F03500E98E07 /* CharacterStatus.cpp */,
 				6193EE7519F7F03500E98E07 /* CharacterStatus.h */,
 				C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */,
 				C3CF34A619FF6ABC00ECAC8C /* VirusTooth.h */,
+				C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */,
+				C385EFD91A00908C00B2B61A /* UgaiEffect.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -885,6 +901,10 @@
 		6193EE3C19F5B43D00E98E07 /* hd */ = {
 			isa = PBXGroup;
 			children = (
+				C385EFDB1A00911600B2B61A /* WaterSprite.png */,
+				C385EFD41A0088C300B2B61A /* VirusTooth.png */,
+				C385EFCE1A00841400B2B61A /* ButtonBack.png */,
+				C385EFCF1A00841400B2B61A /* ButtonGameMenu.png */,
 				C3CF34B71A00714900ECAC8C /* ButtonAchieve.png */,
 				C3CF34B81A00714900ECAC8C /* ButtonReturnGame.png */,
 				615A3F021A0058A600CFCC8C /* ToothBrush.png */,
@@ -894,6 +914,7 @@
 				6193EE7A19F864CD00E98E07 /* ToothPowderIcon.png */,
 				C33B331A19F645B000DEDAF8 /* tongue.png */,
 				C33B331319F6091B00DEDAF8 /* ButtonRetryGame.png */,
+				C385EFD61A008C6800B2B61A /* AchieveWindow.png */,
 				C33B331419F6091B00DEDAF8 /* ButtonReturnTitle.png */,
 				1823EC2D19FF68DF00E67BDE /* Clock_3.png */,
 				1823EC2E19FF68DF00E67BDE /* Clock_2.png */,
@@ -1099,6 +1120,7 @@
 		C3AFC7B919EFBFC00017FB78 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C3CF34C31A007B0F00ECAC8C /* mikachan.ttf */,
 				C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */,
 			);
 			path = fonts;
@@ -1272,7 +1294,9 @@
 				6193EE5219F5B43D00E98E07 /* CloseNormal.png in Resources */,
 				6193EE5419F5B43D00E98E07 /* Enemy.png in Resources */,
 				C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */,
+				C385EFD71A008C6800B2B61A /* AchieveWindow.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				C385EFD11A00841400B2B61A /* ButtonGameMenu.png in Resources */,
 				6193EE6A19F5BDB600E98E07 /* ButtonTouchStart.png in Resources */,
 				18C9C83419FE3A3A007A1C42 /* se_shine_4.mp3 in Resources */,
 				6193EE7B19F864CD00E98E07 /* GameTopBack.png in Resources */,
@@ -1331,6 +1355,7 @@
 				6193EE6819F5B54000E98E07 /* hit_1.wav in Resources */,
 				185830A719F64BE300A0A703 /* bgm_enemy_scene_1.mp3 in Resources */,
 				C33B331B19F645B000DEDAF8 /* tongue.png in Resources */,
+				C385EFD51A0088C300B2B61A /* VirusTooth.png in Resources */,
 				C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */,
 				188B080319FF99E20001FC9B /* TitleBack2.png in Resources */,
 				18C9C85A19FE471A007A1C42 /* water.png in Resources */,
@@ -1366,6 +1391,7 @@
 				C32E526A19FA0C9300A93F0E /* Virus_Black_Wait_1.png in Resources */,
 				184AA5D919F63EE50058E024 /* se_enemy_down_3.mp3 in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				C385EFD01A00841400B2B61A /* ButtonBack.png in Resources */,
 				184AA5D819F63EE50058E024 /* se_button_1.mp3 in Resources */,
 				6193EE7D19F864CD00E98E07 /* GameBottomBack.png in Resources */,
 				18C9C85919FE471A007A1C42 /* Virus_Tough_Wait_1.png in Resources */,
@@ -1388,6 +1414,7 @@
 				184AA5E519F63F580058E024 /* voice_boss_appear_1.mp3 in Resources */,
 				C3CF34B91A00714900ECAC8C /* ButtonAchieve.png in Resources */,
 				184AA5A019F62C5B0058E024 /* se_game_start_1.mp3 in Resources */,
+				C385EFDC1A00911600B2B61A /* WaterSprite.png in Resources */,
 				184AA5E819F63F580058E024 /* voice_game_start_1.mp3 in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 				C32E526919FA0C9300A93F0E /* Virus_Normal_Wait_1.png in Resources */,
@@ -1423,6 +1450,7 @@
 				C36E0AFD19F0C43500E5040C /* MenuBar.cpp in Sources */,
 				C32E525819F8FE4400A93F0E /* AchievementDataBase.cpp in Sources */,
 				C36E0B0119F0C43500E5040C /* Random.cpp in Sources */,
+				C385EFDA1A00908C00B2B61A /* UgaiEffect.cpp in Sources */,
 				C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */,
 				C33B331219F5FE3500DEDAF8 /* RankObject.cpp in Sources */,
 				C36E0AF319F0C43500E5040C /* Bubble.cpp in Sources */,

@@ -24,6 +24,7 @@ class EffectManager;
 class CountDown;
 class ToothPowder;
 class VirusToothManager;
+class UgaiEffect;
 
 class GameMainScene : public cocos2d::Layer
 {
@@ -88,6 +89,7 @@ private:
     UIManager* m_pUIManager;
     EffectManager* m_EffectManager;
     VirusToothManager* m_pVirusToothManager;
+    UgaiEffect* m_pUgaiEffect;
     
     Sprite* m_pBubbleSprite;
     Vec2 m_bubblePos;

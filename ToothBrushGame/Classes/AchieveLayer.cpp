@@ -7,7 +7,7 @@
 //
 
 #include "AchieveLayer.h"
-
+#include "common.h"
 #include "TextureFile.h"
 #include "AchievementList.h"
 #include "TitleScene.h"
@@ -50,18 +50,17 @@ bool AchieveLayer::init()
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
-    m_pAchieve = Sprite::create();
-    m_pAchieve->setTextureRect(Rect(0,0,ACHIEVE_LAYER_POS_WIDTH,100));
+    m_pAchieve = Sprite::create(TEX_ACHIEVE_WINDOW);
     m_pAchieve->setColor(Color3B::WHITE);
     m_pAchieve->setPosition(Vec2(origin.x -ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 850));
     
     // 文字列
-    m_pTitle = LabelTTF::create("実績解除", "ariel", 24);
+    m_pTitle = LabelTTF::create("実績解除",MIKA_FONT, 24);
     //左上の位置に設定
     m_pTitle->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 880));
 
     // 文字列
-    m_pMessage = LabelTTF::create("", "ariel", 24);
+    m_pMessage = LabelTTF::create("", MIKA_FONT, 24);
     //左上の位置に設定
     m_pMessage->setPosition(Vec2(-ACHIEVE_LAYER_POS_WIDTH / 2,origin.y + 840));
     

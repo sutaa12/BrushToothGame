@@ -239,7 +239,6 @@ void Enemy::setSpawn(ENEMY_KIND nEnemyKind,Vec2 pos)
     m_pSprite->runAction(RepeatForever::create(pSequence2));
 
 
-
 }
 //================================================================================
 // 生成処理

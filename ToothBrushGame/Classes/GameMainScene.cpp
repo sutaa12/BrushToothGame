@@ -30,6 +30,7 @@
 #include "VirusToothManager.h"
 #include "VirusTooth.h"
 #include "Clock.h"
+#include "UgaiEffect.h"
 USING_NS_CC;
 #define SHAKE_PERMISSION_DISTANCE (0.3f)
 
@@ -61,6 +62,7 @@ GameMainScene::~GameMainScene()
     SAFE_DELETE(m_pHitChecker);
     SAFE_DELETE(m_EffectManager);
     SAFE_DELETE(m_pVirusToothManager);
+    SAFE_DELETE(m_pUgaiEffect);
     //すべてのSEを止める
     SimpleAudioEngine::getInstance()->stopAllEffects();
 }
@@ -153,7 +155,7 @@ bool GameMainScene::init()
     m_acc = Vec3(0,0,0);
     m_acc = m_oldAcc;
     m_nShakeCnt = 0;
-    m_pVirusToothManager = VirusToothManager::create(this,m_pToothManager->getToothSprite());
+    m_pVirusToothManager = VirusToothManager::create(this,m_pToothManager->getTongerSprite());
     m_pEnemyManager = EnemyManager::create(this,0);
     //================================================================================
     //敵関係はこれより前に生成
@@ -161,6 +163,8 @@ bool GameMainScene::init()
     //エフェクト生成
     m_EffectManager = EffectManager::create(this, 0);
     
+    //うがい初期か
+    m_pUgaiEffect = UgaiEffect::create(this,m_pToothManager->getTongerSprite()->getPosition());
     //フラグ初期化
     m_bMove = false;
     m_touchPos = Point(0.0f,0.0f);
@@ -424,12 +428,13 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     //シェイク３回でうがい処理
     if(m_nShakeCnt > 3)
     {
-        if(m_nUgaiCounter == 0)
+        if(m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY)
         {
+        m_pUgaiEffect->setSpawn();
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
         m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
         m_pHitChecker->checkEnemyDown();
-        
+
         //SE
         SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);

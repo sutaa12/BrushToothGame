@@ -44,7 +44,7 @@ const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
 {
     "ACHIEVE_TYPE_NONE",//実績タイプ
     "きどうしたかいすぅ　　　　　　　　　　　　　　　　　　",//起動回数
-    "みがいたかいすぅ　　　　　　　　　　　　　　　　　　　",//プレイ回数
+    "はみがきしたかいすぅ　　　　　　　　　　　　　　　　　　　",//プレイ回数
     "ばいばいしたばいきんさん　　　　　　　　　　　　　　　",//倒した敵の総数
     "ばいばいしたよわいばいきんさん　　　　　　　　　　　　",//普通の種類の敵の倒した数
     "ばいばいしたふつうのばいきんさん　　　　　　　　　　　",
@@ -77,8 +77,8 @@ bool* AchievementDataBaseList::m_pAchievemntFlag;
 std::string* AchievementDataBaseList::m_pAchievemntDate;
 AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
 {
-    {"実績1","実績フラグ1",ACHIEVE_TYPE_TURN_ON,1,"はじめてのはみがき","ゲームを始めて起動する"},
-    {"実績2","実績フラグ2",ACHIEVE_TYPE_GAME_PLAY,1,"たのしいはみがき","ゲームを始める"},
+    {"実績1","実績フラグ1",ACHIEVE_TYPE_TURN_ON,1,"はじめてのはみがき","ゲームを初めて起動する"},
+    {"実績2","実績フラグ2",ACHIEVE_TYPE_GAME_PLAY,1,"たのしいはみがき","初めてゲームを始める"},
     {"実績3","実績フラグ3",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"敵を５０体倒した！","ごじゅぅたぉしたぁ！"},
     {"実績4","実績フラグ4",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"敵を１００体倒した！","ひゃぁくたぉしたぁ！"},
     {"実績5","実績フラグ5",ACHIEVEMENT_TYPE_ENEMY_DOWN,500,"敵を５００体倒した！","ごひゃぁくたぉしたぁ！"},
@@ -202,7 +202,7 @@ void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
     {
         if(AchievementData[nloop].achieveFlagKind == achieve)
         {
-            if(!m_pAchievemntFlag[achieve])
+            if(!m_pAchievemntFlag[nloop])
             {
                 if(m_nAchievementCont[achieve] >= AchievementData[nloop].unlockNum)
                 {

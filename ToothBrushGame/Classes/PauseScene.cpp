@@ -78,22 +78,16 @@ bool PauseScene::init()
     m_pMaskSprite->setPosition(Vec2(visibleSize.width / 2,visibleSize.height / 2));
     this->addChild(m_pMaskSprite);
 
-    m_pRetryGameSprite = Sprite::create();
-    m_pRetryGameSprite->setTextureRect(Rect(0,0,100,100));
-    m_pRetryGameSprite->setColor(Color3B::GREEN);
-    m_pRetryGameSprite->setPosition(Vec2(400,600));
+    m_pRetryGameSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
+    m_pRetryGameSprite->setPosition(Vec2(visibleSize.width / 2,origin.y + 600));
     this->addChild(m_pRetryGameSprite);
 
-    m_pReturnTitleSprite = Sprite::create();
-    m_pReturnTitleSprite->setTextureRect(Rect(0,0,100,100));
-    m_pReturnTitleSprite->setColor(Color3B::RED);
-    m_pReturnTitleSprite->setPosition(Vec2(400,400));
+    m_pReturnTitleSprite = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    m_pReturnTitleSprite->setPosition(Vec2(visibleSize.width / 2,origin.y + 500));
     this->addChild(m_pReturnTitleSprite);
 
-    m_pReturnGameSprite = Sprite::create();
-    m_pReturnGameSprite->setTextureRect(Rect(0,0,100,100));
-    m_pReturnGameSprite->setColor(Color3B::BLUE);
-    m_pReturnGameSprite->setPosition(Vec2(400,800));
+    m_pReturnGameSprite = Sprite::create(TEX_BUTTON_RETURN_GAME);
+    m_pReturnGameSprite->setPosition(Vec2(visibleSize.width /2,origin.y + 700));
     this->addChild(m_pReturnGameSprite);
 
     return true;
