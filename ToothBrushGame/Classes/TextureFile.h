@@ -15,7 +15,6 @@
 //敵関係
 #define TEX_ENEMY_NORMAL_WAIT_00 ("Virus_Normal_Wait_1.png")
 #define TEX_ENEMY_NORMAL_DIE_01 ("Virus_Nomal_Die_1.png")
-//#define TEX_ENEMY_WAIT_01 ("Virus_Black_Wait_1.png")
 #define TEX_ENEMY_BLUE_WAIT_01 ("Virus_Blue_Wait_1.png")
 #define TEX_ENEMY_BLUE_DIE_01 ("Virus_Blue_Die_1.png")
 #define TEX_ENEMY_TOUGH_WAIT_01 ("Virus_Tough_Wait_1.png")
@@ -32,7 +31,7 @@
 #define TEX_BOSS_WAIT_01 ("Boss.png")
 
 //エフェクト関係
-#define TEX_BUBBLE_01 ("bubble_01.png")
+//#define TEX_BUBBLE_01 ("bubble_01.png")
 #define TEX_BUBBLE_02 ("bubble.png")
 #define TEX_KIRA_01 ("kira.png")
 #define TEX_KIRAKIRA_01 ("kirakira.png")
@@ -44,9 +43,7 @@
 //UI関係
 #define TEX_ACHIEVE_WINDOW ("AchieveWindow.png")
 #define TEX_BADGE_1 ("ba.png")
-#define TEX_CLOCK_1 ("Clock_1.png")
 #define TEX_CLOCK_2 ("Clock_2.png")
-#define TEX_CLOCK_3 ("Clock_3.png")
 #define TEX_BUTTON_TOUCH_START ("ButtonTouchStart.png")
 #define TEX_BUTTON_RETURN_GAME ("ButtonReturnGame.png")
 #define TEX_BUTTON_ACIHEVE ("ButtonAchieve.png")
