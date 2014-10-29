@@ -191,7 +191,7 @@ bool GameMainScene::init()
     }
     
         //音量調整
-        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_GAMESCENE_VOLUME_3);
     //タイトル画面BGMをループ再生 第二引数がループするかどうか判定
     SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         

@@ -14,15 +14,37 @@
 
 //CocosDenshion::を書くのが面倒な人用
 using namespace CocosDenshion;
+
+
+//********************************************************************************
+// VOLUME
+//********************************************************************************
+
+//タイトル画面音量
+#define BGM_TITLE_VOLUME (0.3f)
+
+//リザルト画面音量
+#define BGM_RESULT_VOLUME (0.7f)
+
+//ゲームシーン音量
+#define BGM_GAMESCENE_VOLUME_3 (0.3f)
+
+#define BGM_VOLUME_MIN (0.1f)
+#define BGM_VOLUME_HALF (0.5f)
+#define BGM_VOLUME_MAX (1.0f)
+
+
+#define SE_VOLUME_3 (0.3f)
+#define SE_VOLUME_HALF (0.5f)
+#define SE_VOLUME_MAX (1.0f)
+#define SE_ENEMY_DOWN_VOLUME_3 (0.3f)
+#define SE_ENEMY_DOWN_VOLUME_5 (0.5f)
+
+
 //********************************************************************************
 // BGM
 //********************************************************************************
-#define BGM_VOLUME_MIN (0.1f)
-#define BGM_VOLUME_MAX (1.0f)
 
-#define SE_VOLUME_HALF (0.5f)
-#define SE_VOLUME_MAX (1.0f)
-#define SE_ENEMY_DOWN_VOLUME_1 (0.5f)
 
 #define BGM_TITLE_1 ("bgm_title_1.mp3")
 #define BGM_TITLE_2 ("bgm_title_2.mp3")
@@ -85,8 +107,10 @@ using namespace CocosDenshion;
 #define SE_DAMAGE_1 ("se_damage_1.mp3")
 
 //スワイプ
+//敵くっつくの音
 #define SE_SWIPE_1 ("se_swipe_1.mp3")
 #define SE_SWIPE_2 ("se_swipe_2.wav")
+//うがい時　音
 #define SE_SWIPE_3 ("se_swipe_3.mp3")
 
 #define SE_POWDER_1 ("se_powder_1.mp3")

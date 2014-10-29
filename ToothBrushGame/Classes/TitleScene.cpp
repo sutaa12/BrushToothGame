@@ -4,7 +4,7 @@
 //
 //  Created by 鈴木愛忠 on 2014/10/20.
 //
-// メモ： BGM用の音なりだす関数あったからBGMはBGM用の再生のやつに変える
+// メモ：
 
 #include "TextureFile.h"
 #include "TitleScene.h"
@@ -138,7 +138,7 @@ bool TitleScene::init()
         
     }else{
         //音量調整
-        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MIN);
+        SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_TITLE_VOLUME);
         //タイトル画面BGMをループ再生
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         

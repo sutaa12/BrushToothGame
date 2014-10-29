@@ -90,8 +90,8 @@ void HitChecker::hitCheckSwipe(Rect touchRect,int nDirectionType,bool bToothPowd
 
             ppEnemy[nEnemyNum]->setFollowPowder(true);
             //音量調整
-            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-            //敵がくっついたら　SE
+            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_3);
+            //敵がくっつく　SE
             SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_1);
         }
     }
