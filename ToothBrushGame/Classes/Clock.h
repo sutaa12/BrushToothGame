@@ -52,7 +52,9 @@ public:
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
     
     int getColockNow(void){return m_nCurrentTime;}
-
+    
+    void stopTime(void){m_bStop = true;}
+    
 private:
     Vec2 m_startLeftTopPos;
     Sprite* m_pSprite;
@@ -68,6 +70,8 @@ private:
     int m_nTimer;
     LabelTTF* m_pPercentTxt;
     bool m_bSudden;
+    
+    bool m_bStop;
 
 };
 

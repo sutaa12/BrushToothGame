@@ -15,6 +15,10 @@
 #include "RankManager.h"
 #include "Sound.h"
 USING_NS_CC;
+AchievementsScene::~AchievementsScene()
+{
+    SAFE_DELETE(m_pAchievementList);
+}
 //================================================================================
 // シーン生成
 //================================================================================
@@ -89,13 +93,11 @@ bool AchievementsScene::init()
     //タイトルボタン
     //タップ前のスプライト
     Sprite* pNormalSprite2 = Sprite::create(TEX_BACK_BUTTON);
-    pNormalSprite2->setColor(Color3B(250,250,250));
-    
-    pNormalSprite2->setOpacity(200);
-    
+    pNormalSprite2->setColor(Color3B(255,255,255));
+        
     //タップ時のスプライト
     Sprite* pSelectedSprite2 = Sprite::create(TEX_BACK_BUTTON);
-    pSelectedSprite2->setColor(Color3B(255,255,255));
+    pSelectedSprite2->setColor(Color3B(200,200,200));
     
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(AchievementsScene::ButtonTitle,this));
     

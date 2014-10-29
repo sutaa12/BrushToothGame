@@ -33,20 +33,22 @@ bool RankObject::init(void)
   
     
     // RankObject　文字列
-    m_pRankObjectLabel = LabelTTF::create("Rank", MIKA_FONT, 48);
+    m_pRankObjectLabel = LabelTTF::create("らんく", MIKA_FONT, 48);
     //左上の位置に設定
     m_pRankObjectLabel->setPosition(m_startLeftTopPos);
     
     // スコアポイント
     m_pPointLabel = LabelTTF::create("0",MIKA_FONT, 96);
-    String* points = String::createWithFormat( "%c", this->m_cRankObjectRank);
+    String* points = String::createWithFormat( "%s", this->m_cRankObjectRank);
     
     //RankObject文字の一番後ろの位置にセット
-    m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pRankObjectLabel->getContentSize().width, m_startLeftTopPos.y));
+    m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pRankObjectLabel->getContentSize().width - 10, m_startLeftTopPos.y));
     m_pPointLabel->setString(points->getCString());
     
     m_pLayer->addChild(m_pPointLabel);
     m_pLayer->addChild(m_pRankObjectLabel);
+    m_pPointLabel->enableStroke(Color3B::BLACK, 8.0f);
+    m_pRankObjectLabel->enableStroke(Color3B::BLACK, 8.0f);
     // 正常終了
     return true;
 }
@@ -69,7 +71,7 @@ void RankObject::update(void)
 //================================================================================
 // 生成処理
 //================================================================================
-RankObject* RankObject::create(const Vec2& startLeftTopPos,char cRank,Layer* layer)
+RankObject* RankObject::create(const Vec2& startLeftTopPos,char* cRank,Layer* layer)
 {
     // 歯マネージャーのインスタンス化
     RankObject* pRankObject = new RankObject();

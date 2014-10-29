@@ -64,39 +64,59 @@ bool RankManager::init(void)
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
+    
+   
+    Sprite* pBack = Sprite::create();
+    pBack->setTextureRect(Rect(0,0,visibleSize.width,visibleSize.height / 2 + 40));
+    pBack->setColor(Color3B::BLACK);
+    pBack->setOpacity(100);
+    pBack->setAnchorPoint(Vec2(0,0));
+    pBack->setPosition(Vec2(origin.x,visibleSize.height / 2 - 40));
+    m_pLayer->addChild(pBack);
+
     m_pEndingBack = Sprite::create(TEX_RESULT_ENDING_NORMAL_BACK);
     m_pEndingBack->setPosition(Vec2(visibleSize.width / 2,origin.y + m_pEndingBack->getContentSize().height / 2));
     m_pLayer->addChild(m_pEndingBack);
+    
+    Label* pResultName = Label::create("はみがきのせいか",MIKA_FONT,24);
+    
+    pResultName->setPosition(Vec2(visibleSize.width / 2,origin.y + 920));
+
+    m_pLayer->addChild(pResultName);
+    
     int time = m_nTimeBornus;
     if(time < 0)
     {
         time = 0;
     }
-    m_pTimeScore = DetailScore::create(Vec2(origin.x + 200,origin.y + 930),"たいむぼぉなすぅ　　　　　　　",time,m_pLayer);
+    const int SCORE_POS_Y = 860;
     for(int nloop = 0;nloop < Enemy::ENEMY_KIND_MAX;nloop++)
     {
 
         if(nloop >= Enemy::ENEMY_KIND_MAX /2)
         {
-            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 350,origin.y - 100 + m_pTimeScore->getDetailName()->getPosition().y - ((nloop - Enemy::ENEMY_KIND_MAX / 2) *90)),sEnemy[nloop],m_pLayer);
+            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 350,origin.y + origin.y + SCORE_POS_Y  - ((nloop - Enemy::ENEMY_KIND_MAX / 2) *90)),sEnemy[nloop],m_pLayer);
             m_nRankManagerPoint += Enemy::getEnemyKindDownNum(nloop) * nEnemyBounus[nloop];
         }else{
-            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 100,origin.y - 100 + m_pTimeScore->getDetailName()->getPosition().y - (nloop *90)),sEnemy[nloop],m_pLayer);
+            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 100,origin.y + origin.y + SCORE_POS_Y - (nloop *90)),sEnemy[nloop],m_pLayer,Enemy::getEnemyKindDownNum(nloop));
             m_nRankManagerPoint += Enemy::getEnemyKindDownNum(nloop) * nEnemyBounus[nloop];
         }
     }
-    m_pEnemysScore = DetailScore::create(Vec2(origin.x + 200,origin.y  + m_pTimeScore->getDetailName()->getPosition().y - (Enemy::ENEMY_KIND_MAX *90)),"敵の合計",Enemy::getEnemyAllDownNum(),m_pLayer);
+    m_pEnemysScore = DetailScore::create(Vec2(origin.x + 180,origin.y  + origin.y + SCORE_POS_Y - 10 - (Enemy::ENEMY_KIND_MAX *50)),"ばいきんごうけい",Enemy::getEnemyAllDownNum(),m_pLayer);
+    m_pTimeScore = DetailScore::create(Vec2(origin.x + 180,origin.y + m_pEnemysScore->getDetailName()->getPosition().y
+                                             + 50),"たいむぼぉなすぅ",time,m_pLayer);
+
     if(time > 0)
     {
         m_pEnemysScore->getDetailName()->setColor(Color3B::BLACK);
     }
     time *= TIME_BORNUS;
     m_nRankManagerPoint += time;
-    const char cRank[RANK_MAX]=
+    char* cRank[RANK_MAX]=
     {
-        'S','A','B','C','D'
+        "Ｓ","Ａ","Ｂ","Ｃ","Ｄ"
     };
-    m_pScore = DetailScore::create(Vec2(m_startLeftTopPos.x,m_startLeftTopPos.y - 100), "スコア",m_nRankManagerPoint,m_pLayer);
+    m_pScore = DetailScore::create(Vec2(origin.x + 110,m_pTimeScore->getDetailName()->getPosition().y - 100), "すこあ",m_nRankManagerPoint,m_pLayer);
     int nNum = RANK_D;
     if(m_nRankManagerPoint <= SCORE_RANK_D)
     {
@@ -120,7 +140,7 @@ bool RankManager::init(void)
     {
         nNum = RANK_D;
     }
-    m_pRankObject = RankObject::create(Vec2(m_pScore->getDetailName()->getPosition().x +m_pScore->getDetailName()->getContentSize().width + 100,m_startLeftTopPos.y - 100), cRank[nNum], m_pLayer);
+    m_pRankObject = RankObject::create(Vec2(m_pScore->getDetailName()->getPosition().x +m_pScore->getDetailName()->getContentSize().width + 200,m_pScore->getDetailName()->getPosition().y), cRank[nNum], m_pLayer);
     
     AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_TOP_SCORE, m_nRankManagerPoint);
     

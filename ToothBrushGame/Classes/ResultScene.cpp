@@ -105,11 +105,11 @@ bool ResultScene::init()
     
     //タップ前のスプライト
     Sprite* pNormalSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
-    pNormalSprite->setColor(Color3B(250,150,150));
+    pNormalSprite->setColor(Color3B(255,255,255));
     
     //タップ時のスプライト
     Sprite* pSelectedSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
-    pSelectedSprite->setColor(Color3B(255,200,200));
+    pSelectedSprite->setColor(Color3B(200,200,200));
     pButtonRetry = MenuItemSprite::create(pNormalSprite,pSelectedSprite,CC_CALLBACK_0(ResultScene::ButtonRetry,this));
     
     Menu* pButton = Menu::create(pButtonRetry,NULL);
@@ -118,18 +118,18 @@ bool ResultScene::init()
     //タイトルボタン
     //タップ前のスプライト
     Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 280));
-    pNormalSprite2->setColor(Color3B(150,150,250));
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 240));
+    pNormalSprite2->setColor(Color3B(255,255,255));
 
     
     //タップ時のスプライト
     Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pSelectedSprite2->setColor(Color3B(200,200,255));
+    pSelectedSprite2->setColor(Color3B(200,200,200));
 
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(ResultScene::ButtonTitle,this));
 
     pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 200));
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 150));
     addChild(pButton);
     
      //今、BGMが流れているかどうか

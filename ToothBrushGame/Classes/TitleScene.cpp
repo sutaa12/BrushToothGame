@@ -102,12 +102,12 @@ bool TitleScene::init()
     
     //ボタン生成
     m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
-    Sequence* pSequence = Sequence::create(TintTo::create(0.5f,250,180,160),TintTo::create(0.5f,210,160,160), NULL);
+    Sequence* pSequence = Sequence::create(TintTo::create(1.0f,255,255,255),TintTo::create(1.0f,230,200,200), NULL);
     m_pButton0->runAction(RepeatForever::create(pSequence));
     
     //タップ時のスプライト
     Sprite* pSelectedSprite = Sprite::create(TEX_BUTTON_TOUCH_START);
-    pSelectedSprite->setColor(Color3B(255,255,255));
+    pSelectedSprite->setColor(Color3B(200,200,200));
 
     pButtonRetry = MenuItemSprite::create(m_pButton0,pSelectedSprite,CC_CALLBACK_0(TitleScene::menuButtonGame,this));
     
@@ -118,11 +118,11 @@ bool TitleScene::init()
     //タイトルボタン
     //タップ前のスプライト
     Sprite* pNormalSprite2 = Sprite::create(TEX_BUTTON_ACIHEVE);
-    pNormalSprite2->setColor(Color3B(200,200,255));
+    pNormalSprite2->setColor(Color3B(255,255,255));
     
     //タップ時のスプライト
     Sprite* pSelectedSprite2 = Sprite::create(TEX_BUTTON_ACIHEVE);
-    pSelectedSprite2->setColor(Color3B(250,250,255));
+    pSelectedSprite2->setColor(Color3B(200,200,200));
     
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(TitleScene::menuButtonAchievements,this));
     

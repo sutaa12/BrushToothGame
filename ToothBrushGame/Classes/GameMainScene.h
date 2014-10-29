@@ -58,6 +58,7 @@ public:
     void createCountDown(float fTime);
     
 private:
+    static const int GAME_END_TIME = 6;
     //メンバ関数
     void setResultScene(bool bGameOverFlag = false);
     
@@ -108,6 +109,8 @@ private:
     
     int m_nGamePhase;//フェーズ数
     int m_nGameTime;//ゲーム終了までのタイム
+    
+    int m_nGameEndtTime;//ゲーム終了時にカウント
 
 };
 #endif /* defined(__ToothBrushGame__GameMainScene__) */

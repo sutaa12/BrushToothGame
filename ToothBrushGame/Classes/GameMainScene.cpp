@@ -32,7 +32,9 @@
 #include "Clock.h"
 #include "UgaiEffect.h"
 #include "ConfigScene.h"
+#include "Clock.h"
 USING_NS_CC;
+
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
@@ -200,6 +202,7 @@ bool GameMainScene::init()
     SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_ENEMY_SCENE_5, true);
         
     m_nUgaiCounter = 0;
+    m_nGameEndtTime = 0;
 
     return true;
 }
@@ -231,23 +234,13 @@ void GameMainScene::update(float fTime)
     // 歯垢の更新
     m_pPlaqueManager->update();
     
-    // 歯を動かすか判定
-    //歯垢が０になったら
-    int nPlaqur = m_pPlaqueManager->getPlaqueNum();
-    Plaque** ppPlaque = m_pPlaqueManager->getPlaqueTop();
-    int nPlaqurNum = 0;
-    for(int nloop = 0;nloop < nPlaqur;nloop++)
+    //終了時は判定止める
+    if(m_nGameEndtTime <= 0)
     {
-        //生きていたらカウント
-        if(!ppPlaque[nloop]->getDisappear())
-        {
-            nPlaqurNum++;
-        }
+
+        //敵の更新
+        m_pEnemyManager->update();
     }
-    
-    //敵の更新
-    m_pEnemyManager->update();
-    
     //UI更新
     m_pUIManager->update();
     //エフェクト更新
@@ -256,7 +249,6 @@ void GameMainScene::update(float fTime)
     m_pHitChecker->checkEnemyFollowPowder(m_touchPos, m_pUIManager->getToothPowder()->getPowderTouchFlag());
     
     updateGamePhase();
-
 }
 
 //================================================================================
@@ -265,7 +257,6 @@ void GameMainScene::update(float fTime)
 
 bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
-    m_nTimer++;
     
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
@@ -290,8 +281,11 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 
     m_EffectManager->spawn(40,m_touchPos);
     
-    m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
-    
+    //終了時は判定止める
+    if(m_nGameEndtTime <= 0)
+    {
+        m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
+    }
     m_pUIManager->getToothPowder()->chkPowderTouchFlag(m_touchPos);
     
     return true;
@@ -372,9 +366,12 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
 
         m_pUIManager->getToothPowder()->setPos(workPoint);
     }
-
-    // スワイプ時の当たり判定
-    m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection,m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    //終了時は判定止める
+    if(m_nGameEndtTime <= 0)
+    {
+        // スワイプ時の当たり判定
+        m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection,m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    }
 }
 
 //================================================================================
@@ -383,8 +380,11 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
 
 void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
 {
-    m_pHitChecker->hitCheckTouchEnded(m_pBubbleSprite->getBoundingBox(),m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    if(m_nGameEndtTime <= 0)
+    {
 
+        m_pHitChecker->hitCheckTouchEnded(m_pBubbleSprite->getBoundingBox(),m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    }
     // タッチしていないので泡スプライトを透明に
     m_pBubbleSprite->setOpacity(0);
     
@@ -393,7 +393,6 @@ void GameMainScene::onTouchEnded(Touch* pTouch, Event* pEvent)
     m_pUIManager->getToothPowder()->disappear();
     
     m_bHit = false;
-    m_nTimer = 0;
 }
 
 //================================================================================
@@ -429,11 +428,13 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     {
         if(m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY)
         {
-        m_pUgaiEffect->setSpawn();
-        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
-        m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
-        m_pHitChecker->checkEnemyDown();
-
+            m_pUgaiEffect->setSpawn();
+            AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
+            m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
+            if(m_nGameEndtTime <= 0)
+            {
+                m_pHitChecker->checkEnemyDown();
+            }
         //SE
         SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
         SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
@@ -485,10 +486,54 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
 //================================================================================
 void GameMainScene::setResultScene(bool bGameOverFlag)
 {
-    this->getEventDispatcher()->removeAllEventListeners();
-    this->removeAllChildren();
-    this->unscheduleUpdate();
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,m_pUIManager->getClock()->getColockNow()),Color3B::WHITE));
+    m_pUIManager->getClock()->stopTime();
+    if(m_nGameEndtTime <= 0)
+    {
+        Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+        Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
+        m_nGameEndtTime = 1;
+        LabelTTF* pEndGameMessage = LabelTTF::create("はみがきせいこう！","Arrial",42);
+        pEndGameMessage->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 50));
+        pEndGameMessage->setColor(Color3B::WHITE);
+        pEndGameMessage->enableStroke(Color3B::BLACK,6);
+        pEndGameMessage->setOpacity(0);
+        if(bGameOverFlag)
+        {
+            
+            String* Message = String::createWithFormat( "はみがきしっぱい！");
+            pEndGameMessage->setString(Message->getCString());
+            pEndGameMessage->setColor(Color3B::RED);
+        }else{
+
+            Sprite* ToothShine = Sprite::create(TEX_KIRAKIRA_01);
+            ToothShine->setPosition(visibleSize.width - 300, visibleSize.height - 150);
+            ToothShine->setOpacity(0);
+            ToothShine->setScale(0.6f);
+            Sequence* pSequence = Sequence::create(FadeIn::create(0.1f),ScaleTo::create(1.0,1.5f),ScaleTo::create(1.0,0.6f),FadeOut::create(0.1f),NULL);
+            Sprite* ToothShine2 = Sprite::create(TEX_KIRA_01);
+            ToothShine2->setPosition(origin.x + 200, origin.y + 400);
+            ToothShine2->setOpacity(0);
+            ToothShine2->setScale(0.6f);
+            
+            Sequence* pSequence2 = Sequence::create(FadeIn::create(0.1f),ScaleTo::create(0.8,1.5f),ScaleTo::create(0.8,0.6f),FadeOut::create(0.1f),NULL);
+
+            ToothShine->runAction(RepeatForever::create(pSequence));
+            addChild(ToothShine);
+            ToothShine2->runAction(RepeatForever::create(pSequence2));
+            addChild(ToothShine2);
+
+        }
+
+        addChild(pEndGameMessage);
+        pEndGameMessage->runAction(Spawn::create(FadeIn::create(1),MoveBy::create(1.0, Vec2(0,-300)), NULL));
+    }
+    if(m_nGameEndtTime > GAME_END_TIME)
+    {
+        this->getEventDispatcher()->removeAllEventListeners();
+        this->removeAllChildren();
+        this->unscheduleUpdate();
+        Director::getInstance()->replaceScene(TransitionFade::create(1.0f,ResultScene::createScene(bGameOverFlag,m_pUIManager->getClock()->getColockNow()),Color3B::WHITE));
+    }
 }
 //================================================================================
 // カウントダウン生成処理
@@ -520,7 +565,11 @@ void GameMainScene::updateGamePhase(void)
     {
         m_nGameTime++;
         AchievementDataBaseList::saveAchievement();
-        
+        //１以上ないと加算しない
+        if(m_nGameEndtTime > 0)
+        {
+            m_nGameEndtTime++;
+        }
     }
     chkGamePhase();
 }
@@ -529,13 +578,18 @@ void GameMainScene::updateGamePhase(void)
 //================================================================================
 void GameMainScene::chkGamePhase(void)
 {
-    if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
+    //終了時は止める
+    if(m_nGameEndtTime <= 0)
     {
-        m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->getSprite()->getPosition());
-        m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->disappear();
-        if(m_nGamePhase <= PHASE_MAX)
+
+        if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
         {
-            m_nGamePhase++;
+            m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->getSprite()->getPosition());
+            m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->disappear();
+            if(m_nGamePhase <= PHASE_MAX)
+            {
+                m_nGamePhase++;
+            }
         }
     }
     int nEnemyDown = 0;
@@ -556,7 +610,7 @@ void GameMainScene::chkGamePhase(void)
     {
         setResultScene(false);
     }else
-    if(m_pUIManager->getClock()->getColockNow() < 0)
+    if(m_pUIManager->getClock()->getColockNow() <= 0)
     {
         setResultScene(true);
     }

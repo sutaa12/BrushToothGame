@@ -37,14 +37,14 @@ public:
     void uninit(void);
     void update(void);
     
-    static RankObject* create(const Vec2& startLeftTopPos,char cRank,Layer* layer);
+    static RankObject* create(const Vec2& startLeftTopPos,char* cRank,Layer* layer);
     
 private:
     Layer* m_pLayer;
     Vec2 m_startLeftTopPos;
     LabelTTF* m_pRankObjectLabel;
     LabelTTF* m_pPointLabel;
-    char m_cRankObjectRank;
+    char* m_cRankObjectRank;
 };
 
 #endif /* defined(__ToothBrushGame__RankObject__) */
