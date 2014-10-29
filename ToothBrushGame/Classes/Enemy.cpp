@@ -195,7 +195,7 @@ void Enemy::addDamage(int nDamage)
     m_nLife -= nDamage;
     //敵に攻撃したときのSE
     //音量調整
-    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_ENEMY_DOWN_VOLUME_1);
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_ENEMY_DOWN_VOLUME_3);
     SimpleAudioEngine::getInstance()->playEffect(SE_ENEMY_DOWN_1);
 
     if(!m_bDeath)

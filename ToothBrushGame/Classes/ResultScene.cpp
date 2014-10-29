@@ -143,7 +143,7 @@ bool ResultScene::init()
      }
 
     //音量調整
-    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_VOLUME_MAX);
+    SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(BGM_RESULT_VOLUME);
     //BGMをループ再生 第二引数がループするかどうか判定
     SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_RESULT_1, true);
     
