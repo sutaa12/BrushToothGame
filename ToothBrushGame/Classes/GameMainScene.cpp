@@ -139,7 +139,7 @@ bool GameMainScene::init()
     this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(pAccelerometerEventListener, this);
     
     // 歯マネージャーのインスタンス化
-    m_pToothManager = ToothManager::create(Vec2(visibleSize.width / 2,visibleSize.height - 128),this);
+    m_pToothManager = ToothManager::create(Vec2(visibleSize.width / 2,visibleSize.height - 64),this);
     m_bHit = false;
     m_pPlaqueManager = PlaqueManager::create(0,m_pToothManager->getToothSprite(), this);
 
