@@ -35,15 +35,18 @@ public:
 private:
     Point m_touchPos;
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
+    bool m_bConfig;
 
     void returnGame(void);
     void retryGame(void);
     void returnTitle(void);
+    void openConfig(void);
 
     Sprite* m_pMaskSprite;
     Sprite* m_pRetryGameSprite;
     Sprite* m_pReturnGameSprite;
     Sprite* m_pReturnTitleSprite;
+    Sprite* m_pConfigSprite;
 
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);

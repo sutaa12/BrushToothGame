@@ -199,6 +199,7 @@
 		C385EFD71A008C6800B2B61A /* AchieveWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFD61A008C6800B2B61A /* AchieveWindow.png */; };
 		C385EFDA1A00908C00B2B61A /* UgaiEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */; };
 		C385EFDC1A00911600B2B61A /* WaterSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFDB1A00911600B2B61A /* WaterSprite.png */; };
+		C38DFCE01A00C2050090C2C9 /* ConfigScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38DFCDE1A00C2050090C2C9 /* ConfigScene.cpp */; };
 		C3AFC7C819EFBFC00017FB78 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */; };
 		C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF349F19FF202A00ECAC8C /* EndingNormal.png */; };
 		C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */; };
@@ -582,6 +583,8 @@
 		C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = UgaiEffect.cpp; path = ../Classes/UgaiEffect.cpp; sourceTree = "<group>"; };
 		C385EFD91A00908C00B2B61A /* UgaiEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UgaiEffect.h; path = ../Classes/UgaiEffect.h; sourceTree = "<group>"; };
 		C385EFDB1A00911600B2B61A /* WaterSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WaterSprite.png; sourceTree = "<group>"; };
+		C38DFCDE1A00C2050090C2C9 /* ConfigScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfigScene.cpp; path = ../Classes/ConfigScene.cpp; sourceTree = "<group>"; };
+		C38DFCDF1A00C2050090C2C9 /* ConfigScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigScene.h; path = ../Classes/ConfigScene.h; sourceTree = "<group>"; };
 		C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		C3CF349F19FF202A00ECAC8C /* EndingNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingNormal.png; sourceTree = "<group>"; };
 		C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirusTooth.cpp; path = ../Classes/VirusTooth.cpp; sourceTree = "<group>"; };
@@ -1033,6 +1036,8 @@
 		6193EE6E19F7EED100E98E07 /* GameSystem */ = {
 			isa = PBXGroup;
 			children = (
+				C38DFCDE1A00C2050090C2C9 /* ConfigScene.cpp */,
+				C38DFCDF1A00C2050090C2C9 /* ConfigScene.h */,
 				6193EE3619F53FAB00E98E07 /* PauseScene.cpp */,
 				6193EE3719F53FAB00E98E07 /* PauseScene.h */,
 				C36E0B5019F0C5F100E5040C /* HitChecker.cpp */,
@@ -1458,6 +1463,7 @@
 				18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */,
 				C36E0AF719F0C43500E5040C /* GameMainScene.cpp in Sources */,
 				C31B643519F8C58F00A8D67A /* AchievementsScene.cpp in Sources */,
+				C38DFCE01A00C2050090C2C9 /* ConfigScene.cpp in Sources */,
 				C33B330D19F5FDDD00DEDAF8 /* RankManager.cpp in Sources */,
 				C32E525F19F8FF0D00A93F0E /* sqlite3.c in Sources */,
 				C3CF34AC19FF6ACE00ECAC8C /* VirusToothManager.cpp in Sources */,
