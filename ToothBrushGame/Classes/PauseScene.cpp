@@ -10,6 +10,7 @@
 #include "GameMainScene.h"
 #include "TitleScene.h"
 #include "Sound.h"
+#include "ConfigScene.h"
 
 USING_NS_CC;
 //================================================================================
@@ -17,7 +18,7 @@ USING_NS_CC;
 //================================================================================
 PauseScene::~PauseScene()
 {
-    //this->getEventDispatcher()->removeEventListener(m_pTouchEventOneByOne);
+    m_bConfig = false;
 }
 
 //================================================================================
@@ -68,7 +69,7 @@ bool PauseScene::init()
     m_pTouchEventOneByOne->onTouchMoved = CC_CALLBACK_2(PauseScene::onTouchMoved,this);
     m_pTouchEventOneByOne->onTouchCancelled = CC_CALLBACK_2(PauseScene::onTouchCancelled, this);
     m_pTouchEventOneByOne->onTouchEnded = CC_CALLBACK_2(PauseScene::onTouchEnded, this);
-    this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 1);
+    this->getEventDispatcher()->addEventListenerWithFixedPriority(m_pTouchEventOneByOne, 2);
 
     // 薄暗いスプライトを作成
     m_pMaskSprite = Sprite::create();
@@ -96,6 +97,12 @@ bool PauseScene::init()
     m_pReturnGameSprite->setPosition(Vec2(400,800));
     this->addChild(m_pReturnGameSprite);
 
+    m_pConfigSprite = Sprite::create();
+    m_pConfigSprite->setTextureRect(Rect(0,0,100,100));
+    m_pConfigSprite->setColor(Color3B::YELLOW);
+    m_pConfigSprite->setPosition(Vec2(400,200));
+    this->addChild(m_pConfigSprite);
+
     return true;
 }
 
@@ -121,7 +128,13 @@ void PauseScene::menuCloseCallback(Ref* pSender)
 //================================================================================
 void PauseScene::update(float fTime)
 {
-
+    // コンフィグから戻ってきていたら
+    if(m_bConfig)
+    {
+        // 親レイヤーの更新を止める
+        Layer* pParent = static_cast<Layer*>(this->getParent());
+        pParent->pause();
+    }
 }
 
 //================================================================================
@@ -169,6 +182,12 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
         return true;
     }
 
+    Rect openConfigSpriteRect = m_pConfigSprite->getBoundingBox();
+    if(openConfigSpriteRect.containsPoint(m_touchPos))
+    {
+        openConfig();
+    }
+
     return true;
 }
 
@@ -177,11 +196,8 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 //================================================================================
 void PauseScene::onTouchMoved(Touch* pTouch,Event* pEvent)
 {
-
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-
-
 }
 
 //================================================================================
@@ -236,4 +252,13 @@ void PauseScene::returnTitle(void)
     this->unscheduleUpdate();
 
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
+}
+
+//================================================================================
+// コンフィグオープン処理
+//================================================================================
+void PauseScene::openConfig(void)
+{
+    m_bConfig = true;
+    Director::getInstance()->pushScene(ConfigScene::createScene());
 }

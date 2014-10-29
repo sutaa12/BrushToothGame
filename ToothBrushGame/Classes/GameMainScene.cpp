@@ -30,8 +30,8 @@
 #include "VirusToothManager.h"
 #include "VirusTooth.h"
 #include "Clock.h"
+#include "ConfigScene.h"
 USING_NS_CC;
-#define SHAKE_PERMISSION_DISTANCE (0.3f)
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
@@ -416,7 +416,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
     Vec3 work = m_acc - m_oldAcc;
     float fDistance = (work.x * work.x + work.y * work.y + work.z * work.z);
 
-    if(fDistance > SHAKE_PERMISSION_DISTANCE)
+    if(fDistance > ConfigScene::getShakePermissionDistance())
     {
         m_nShakeCnt++;
     }
