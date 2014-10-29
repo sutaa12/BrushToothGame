@@ -318,7 +318,6 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     }
     CCLOG("現タッチ位置(%f,%f)",m_touchPos.x,m_touchPos.y);
     CCLOG("旧タッチ位置(%f,%f)",m_oldTouchPos.x,m_oldTouchPos.y);
-    
     float fDistance = m_touchPos.distance(m_oldTouchPos);
     
     CCLOG("距離(%f)",fDistance);

@@ -22,6 +22,7 @@ using namespace cocos2d;
 class RankObject;
 class DetailScore;
 class Score;
+class EnemyScore;
 //********************************************************************************
 // クラス宣言
 //********************************************************************************
@@ -60,11 +61,12 @@ private:
     Sprite* m_pEndingBack;
     Vec2 m_startLeftTopPos;
     RankObject* m_pRankObject;
-    Score* m_pScore;
+    DetailScore* m_pScore;
     Layer* m_pLayer;
     DetailScore* m_pTimeScore;
-    DetailScore* m_pEnemyScore[Enemy::ENEMY_KIND_MAX + 1];
+    DetailScore* m_pEnemysScore;
     int m_nRankManagerPoint;
     int m_nTimeBornus;
+    EnemyScore* m_pEnemyScore[Enemy::ENEMY_KIND_MAX ];
 };
 #endif /* defined(__ToothBrushGame__RankManager__) */

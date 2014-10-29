@@ -103,6 +103,11 @@ std::string strsprintf(const char* format,...){
     free(alloc);
     return retStr;
 }
+AchievementDataBaseList::~AchievementDataBaseList()
+{
+    SAFE_DELETE_ARRAY(m_pAchievemntDate);SAFE_DELETE_ARRAY(m_pAchievemntFlag);SAFE_DELETE(m_pAchieveLayer);
+}
+
 //初期化
 void AchievementDataBaseList::init()
 {

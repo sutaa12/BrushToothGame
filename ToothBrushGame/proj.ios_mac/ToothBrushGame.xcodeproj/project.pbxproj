@@ -173,7 +173,9 @@
 		C385EFDA1A00908C00B2B61A /* UgaiEffect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C385EFD81A00908C00B2B61A /* UgaiEffect.cpp */; };
 		C385EFDC1A00911600B2B61A /* WaterSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = C385EFDB1A00911600B2B61A /* WaterSprite.png */; };
 		C38DFCE01A00C2050090C2C9 /* ConfigScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C38DFCDE1A00C2050090C2C9 /* ConfigScene.cpp */; };
+		C38DFCEA1A00DFDE0090C2C9 /* VirusIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C38DFCE91A00DFDE0090C2C9 /* VirusIcon.png */; };
 		C3AFC7C819EFBFC00017FB78 /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */; };
+		C3C4B9CE1A00E594009F8C8B /* EnemyScore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3C4B9CC1A00E594009F8C8B /* EnemyScore.cpp */; };
 		C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF349F19FF202A00ECAC8C /* EndingNormal.png */; };
 		C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */; };
 		C3CF34AC19FF6ACE00ECAC8C /* VirusToothManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34AA19FF6ACE00ECAC8C /* VirusToothManager.cpp */; };
@@ -531,7 +533,10 @@
 		C385EFDB1A00911600B2B61A /* WaterSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WaterSprite.png; sourceTree = "<group>"; };
 		C38DFCDE1A00C2050090C2C9 /* ConfigScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConfigScene.cpp; path = ../Classes/ConfigScene.cpp; sourceTree = "<group>"; };
 		C38DFCDF1A00C2050090C2C9 /* ConfigScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigScene.h; path = ../Classes/ConfigScene.h; sourceTree = "<group>"; };
+		C38DFCE91A00DFDE0090C2C9 /* VirusIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VirusIcon.png; sourceTree = "<group>"; };
 		C3AFC7BA19EFBFC00017FB78 /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
+		C3C4B9CC1A00E594009F8C8B /* EnemyScore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EnemyScore.cpp; path = ../Classes/EnemyScore.cpp; sourceTree = "<group>"; };
+		C3C4B9CD1A00E594009F8C8B /* EnemyScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyScore.h; path = ../Classes/EnemyScore.h; sourceTree = "<group>"; };
 		C3CF349F19FF202A00ECAC8C /* EndingNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingNormal.png; sourceTree = "<group>"; };
 		C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirusTooth.cpp; path = ../Classes/VirusTooth.cpp; sourceTree = "<group>"; };
 		C3CF34A619FF6ABC00ECAC8C /* VirusTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirusTooth.h; path = ../Classes/VirusTooth.h; sourceTree = "<group>"; };
@@ -817,7 +822,6 @@
 				C36E0ACB19F0C43500E5040C /* Bubble.h */,
 				C36E0ACF19F0C43500E5040C /* Enemy.cpp */,
 				C36E0AD019F0C43500E5040C /* Enemy.h */,
-				C36E0AD519F0C43500E5040C /* Gum.cpp */,
 				C36E0AD619F0C43500E5040C /* Gum.h */,
 				C36E0ADB19F0C43500E5040C /* Item.cpp */,
 				C36E0ADC19F0C43500E5040C /* Item.h */,
@@ -831,6 +835,7 @@
 				C36E0AE419F0C43500E5040C /* Plaque.h */,
 				C36E0AE919F0C43500E5040C /* Score.cpp */,
 				C36E0AEA19F0C43500E5040C /* Score.h */,
+				C36E0AD519F0C43500E5040C /* Gum.cpp */,
 				1823EC2619FF3C8100E67BDE /* Clock.cpp */,
 				1823EC2719FF3C8100E67BDE /* Clock.h */,
 				C36E0AEB19F0C43500E5040C /* Tooth.cpp */,
@@ -850,6 +855,7 @@
 		6193EE3C19F5B43D00E98E07 /* hd */ = {
 			isa = PBXGroup;
 			children = (
+				C38DFCE91A00DFDE0090C2C9 /* VirusIcon.png */,
 				C385EFDB1A00911600B2B61A /* WaterSprite.png */,
 				C385EFD41A0088C300B2B61A /* VirusTooth.png */,
 				C385EFCE1A00841400B2B61A /* ButtonBack.png */,
@@ -1037,6 +1043,8 @@
 				C33B331119F5FE3500DEDAF8 /* RankObject.h */,
 				C3DCB0D719FE4B7500C48DEC /* DetailScore.cpp */,
 				C3DCB0D819FE4B7500C48DEC /* DetailScore.h */,
+				C3C4B9CC1A00E594009F8C8B /* EnemyScore.cpp */,
+				C3C4B9CD1A00E594009F8C8B /* EnemyScore.h */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -1256,6 +1264,7 @@
 				18C9C85519FE471A007A1C42 /* Virus_Lair_Little_Wait_1.png in Resources */,
 				184AA5A819F63E430058E024 /* se_enemy_down.wav in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
+				C38DFCEA1A00DFDE0090C2C9 /* VirusIcon.png in Resources */,
 				18C9C85019FE471A007A1C42 /* kira.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				185830A619F64BE300A0A703 /* bgm_credit_1.mp3 in Resources */,
@@ -1366,6 +1375,7 @@
 				C36E0B5219F0C5F100E5040C /* HitChecker.cpp in Sources */,
 				C36E0AF219F0C43500E5040C /* Boss.cpp in Sources */,
 				C36E0B0319F0C43500E5040C /* Tooth.cpp in Sources */,
+				C3C4B9CE1A00E594009F8C8B /* EnemyScore.cpp in Sources */,
 				C36E0AFF19F0C43500E5040C /* Plaque.cpp in Sources */,
 				C36E0AF619F0C43500E5040C /* EnemyManager.cpp in Sources */,
 				C3DCB0D919FE4B7500C48DEC /* DetailScore.cpp in Sources */,

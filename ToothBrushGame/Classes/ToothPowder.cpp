@@ -92,10 +92,10 @@ bool ToothPowder::init(void)
     // スプライトの座標設定
     m_pSprite->setPosition(m_pos);
     m_pSprite->setScale(0.9f,0.85f);
-
+    
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);
-    
+    m_pItemIcon->setScale(1.5f, 1.5f);
     m_pLayer->addChild(m_pSprite);
     m_pLayer->addChild(m_pItemIcon);
     m_pLayer->addChild(m_pProgressTimer);
@@ -158,7 +158,7 @@ ToothPowder* ToothPowder::create(Layer* pLayer,const Vec2& pos)
 //================================================================================
 void ToothPowder::setPos(Vec2 pos)
 {
-    m_pItemIcon->setOpacity(90);
+    m_pItemIcon->setOpacity(100);
     m_pItemIcon->setPosition(pos);
     
 }

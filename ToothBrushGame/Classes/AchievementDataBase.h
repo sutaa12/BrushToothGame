@@ -60,7 +60,7 @@ public:
     
 public:
     AchievementDataBaseList(){}
-    ~AchievementDataBaseList(){SAFE_DELETE_ARRAY(m_pAchievemntDate);SAFE_DELETE_ARRAY(m_pAchievemntFlag);SAFE_DELETE(m_pAchieveLayer);}
+    ~AchievementDataBaseList();
     //初期化
     static void init();
     //実績情報の数

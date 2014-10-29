@@ -1,34 +1,31 @@
 //
-//  Score.cpp
+//  EnemyScore.cpp
 //  ToothBrushGame
 //
-//  Created by 鈴木 愛忠 on 2014/10/15.
+//  Created by 鈴木 愛忠 on 2014/10/29.
 //
 //
-
-//********************************************************************************
 // インクルード
-#include "Score.h"
+#include "EnemyScore.h"
 #include "Number.h"
 #include "TextureFile.h"
 #include "Enemy.h"
-int Score::m_nScorePoint = 0;
+int EnemyScore::m_nEnemyScorePoint = 0;
 
 //================================================================================
 // コンストラクタ
 //================================================================================
-Score::Score(void)
+EnemyScore::EnemyScore(void)
 {
     // メンバ変数の初期化
     m_ppNumbers = nullptr;
     m_pLayer = nullptr;
-    m_nMaxNumber = 0;
 }
 
 //================================================================================
 // デストラクタ
 //================================================================================
-Score::~Score()
+EnemyScore::~EnemyScore()
 {
     if(m_ppNumbers)
     {
@@ -40,17 +37,18 @@ Score::~Score()
 //================================================================================
 // 初期化処理
 //================================================================================
-bool Score::init(void)
+bool EnemyScore::init(void)
 {
-    m_pEnemyIcon = Sprite::create(TEX_UI_VIRUS_ICON);
+    m_pEnemyIcon = Sprite::create(m_pTexName);
+    m_pEnemyIcon->setScale(0.5f, 0.5f);
     //左上の位置に設定
     m_pEnemyIcon->setPosition(m_startLeftTopPos);
-
+    
     // スコアポイント
     m_pPointLabel = LabelTTF::create("0", "ariel", 48);
     //SCORE文字の一番後ろの位置にセット
     m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pEnemyIcon->getContentSize().width, m_startLeftTopPos.y));
-    String* points = String::createWithFormat( " × %d", this->m_nScorePoint);
+    String* points = String::createWithFormat( " × %d", this->m_nEnemyScorePoint);
     
     // スコアポイントの表示を更新
     m_pPointLabel->setString(points->getCString());
@@ -64,7 +62,7 @@ bool Score::init(void)
 //================================================================================
 // 終了処理
 //================================================================================
-void Score::uninit(void)
+void EnemyScore::uninit(void)
 {
     
 }
@@ -72,30 +70,30 @@ void Score::uninit(void)
 //================================================================================
 // 更新処理
 //================================================================================
-void Score::update(void)
+void EnemyScore::update(void)
 {
     String* points = String::createWithFormat( " × %d",Enemy::getEnemyAllDownNum());
-
+    
     // スコアポイントの表示を更新
     m_pPointLabel->setString(points->getCString());
-
+    
 }
 
 //================================================================================
 // 生成処理
 //================================================================================
-Score* Score::create(const Vec2& startLeftTopPos,int nMaxNumber,Layer* layer,int nScore)
+EnemyScore* EnemyScore::create(const Vec2& startLeftTopPos,char* pTexName,Layer* layer,int nEnemyScore)
 {
     // 歯マネージャーのインスタンス化
-    Score* pScore = new Score();
+    EnemyScore* pEnemyScore = new EnemyScore();
     
     // メンバー変数の代入
-    pScore->m_startLeftTopPos = startLeftTopPos;
-    pScore->m_pLayer = layer;
-    pScore->m_nMaxNumber = nMaxNumber;
-    m_nScorePoint = nScore;
+    pEnemyScore->m_startLeftTopPos = startLeftTopPos;
+    pEnemyScore->m_pLayer = layer;
+    pEnemyScore->m_pTexName = pTexName;
+    m_nEnemyScorePoint = nEnemyScore;
     // 初期化
-    pScore->init();
+    pEnemyScore->init();
     
-    return pScore;
+    return pEnemyScore;
 }

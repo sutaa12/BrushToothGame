@@ -89,7 +89,7 @@ void UgaiEffect::setSpawn()
 {
     m_pSprite->stopAllActions();
     m_pSprite->setPosition(m_pos);
-    m_pSprite->setOpacity(150);
+    m_pSprite->setOpacity(75);
 
     Sequence* pSequence = Sequence::create(MoveTo::create(UGAI_DELAY,Vec2(m_pos.x,m_pos.y - m_pSprite->getContentSize().height)), NULL);
     m_pSprite->runAction(pSequence);

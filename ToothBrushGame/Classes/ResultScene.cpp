@@ -105,7 +105,6 @@ bool ResultScene::init()
     
     //タップ前のスプライト
     Sprite* pNormalSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
-    pNormalSprite->setOpacity(180);
     pNormalSprite->setColor(Color3B(250,150,150));
     
     //タップ時のスプライト
@@ -122,7 +121,6 @@ bool ResultScene::init()
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 280));
     pNormalSprite2->setColor(Color3B(150,150,250));
 
-    pNormalSprite2->setOpacity(180);
     
     //タップ時のスプライト
     Sprite* pSelectedSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);

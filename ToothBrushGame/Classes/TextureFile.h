@@ -41,6 +41,7 @@
 
 
 //UI関係
+#define TEX_UI_VIRUS_ICON ("VirusIcon.png")
 #define TEX_ACHIEVE_WINDOW ("AchieveWindow.png")
 #define TEX_BADGE_1 ("ba.png")
 #define TEX_CLOCK_2 ("Clock_2.png")
