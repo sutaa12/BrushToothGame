@@ -48,7 +48,7 @@ bool Clock::init(void)
 //    m_pSprite = Sprite::create(TEX_HP_BAR);
  //   m_pBackLifeBar = Sprite::create(TEX_HP_BAR);
 
-
+    m_bSudden = false;
 
     // スプライトの座標設定
     m_pSprite = Sprite::create(TEX_CLOCK_2);
@@ -112,11 +112,40 @@ void Clock::update(void)
 
     //m_pProgressTimer->setPercentage(m_nClock);
 
+    //残り１０秒になったらサドンデス
+    if (getColockNow() == 10 && m_bSudden == false)
+    {
+
+        //画像をきり替え
+        m_pSprite->setColor(Color3B::RED);
+//        m_pSprite->setTexture(TEX_CLOCK_2_RED);
+
+
+  //      m_pLayer->addChild(m_pSprite);
+
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+        SimpleAudioEngine::getInstance()->playEffect(SE_FANFARE_1);
+        m_bSudden = true;
+    }
+
+    if (getColockNow() <= 10)
+    {
+        if (getColockNow() %2 == 0)
+        {
+            m_pSprite->setColor(Color3B::RED);
+            m_pPercentTxt->setColor(Color3B::RED);
+        } else {
+            m_pSprite->setColor(Color3B::WHITE);
+            m_pPercentTxt->setColor(Color3B::WHITE);
+        }
+    }
+
     //0になったら停止
     if(m_nClock < 0)
     {
         m_nClock = 0;
     }
+
     String* points = String::createWithFormat( "%d秒", (int)m_nCurrentTime);
 
     // スコアポイントの表示を更新

@@ -31,7 +31,7 @@
 #define TEX_BOSS_WAIT_01 ("Boss.png")
 
 //エフェクト関係
-//#define TEX_BUBBLE_01 ("bubble_01.png")
+#define TEX_BUBBLE_01 ("bubble_01.png")
 #define TEX_BUBBLE_02 ("bubble.png")
 #define TEX_KIRA_01 ("kira.png")
 #define TEX_KIRAKIRA_01 ("kirakira.png")
@@ -45,6 +45,7 @@
 #define TEX_ACHIEVE_WINDOW ("AchieveWindow.png")
 #define TEX_BADGE_1 ("ba.png")
 #define TEX_CLOCK_2 ("Clock_2.png")
+#define TEX_CLOCK_2_RED ("Clock_2_Red.png")
 #define TEX_BUTTON_TOUCH_START ("ButtonTouchStart.png")
 #define TEX_BUTTON_RETURN_GAME ("ButtonReturnGame.png")
 #define TEX_BUTTON_ACIHEVE ("ButtonAchieve.png")
