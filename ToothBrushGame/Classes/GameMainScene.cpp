@@ -146,7 +146,7 @@ bool GameMainScene::init()
     m_pPlaqueManager = PlaqueManager::create(0,m_pToothManager->getToothSprite(), this);
 
     // タッチ時の判定生成
-    m_pBubbleSprite = Sprite::create(TEX_BUBBLE_01);
+    m_pBubbleSprite = Sprite::create(TEX_BUBBLE_02);
     m_bubblePos = Vec2(0.0f,0.0f);
     m_pBubbleSprite->setPosition(m_bubblePos);
     m_pBubbleSprite->setOpacity(0);
