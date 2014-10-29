@@ -59,7 +59,7 @@ bool Enemy::init(void)
 {
     
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_ENEMY_WAIT_00);
+    m_pSprite = Sprite::create(TEX_ENEMY_NORMAL_WAIT_00);
 
     // エラーチェック
     if(m_pSprite == nullptr)

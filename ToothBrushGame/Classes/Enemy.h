@@ -42,12 +42,12 @@ public:
     const char* ENEMY_IMAGE_LIST[ENEMY_KIND_MAX][2] =
     {
         {
-            TEX_ENEMY_WAIT_00,
-            TEX_ENEMY_DIE_01
+            TEX_ENEMY_NORMAL_WAIT_00,
+            TEX_ENEMY_NORMAL_DIE_01
         },
         {
-            TEX_ENEMY_WAIT_01,
-            TEX_ENEMY_WAIT_01
+            TEX_ENEMY_BLUE_WAIT_01,
+            TEX_ENEMY_BLUE_DIE_01
         },
         {
             TEX_ENEMY_TOUGH_WAIT_01,
