@@ -31,7 +31,7 @@
 #define TEX_BOSS_WAIT_01 ("Boss.png")
 
 //エフェクト関係
-//#define TEX_BUBBLE_01 ("bubble_01.png")
+#define TEX_BUBBLE_01 ("bubble_01.png")
 #define TEX_BUBBLE_02 ("bubble.png")
 #define TEX_KIRA_01 ("kira.png")
 #define TEX_KIRAKIRA_01 ("kirakira.png")
