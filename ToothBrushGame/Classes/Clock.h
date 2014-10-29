@@ -67,6 +67,7 @@ private:
     int m_nCurrentTime;
     int m_nTimer;
     LabelTTF* m_pPercentTxt;
+    bool m_bSudden;
 
 };
 
