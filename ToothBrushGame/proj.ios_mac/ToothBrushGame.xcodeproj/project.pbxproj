@@ -38,6 +38,7 @@
 		188B080B1A008F950001FC9B /* Virus_Blue_Wait_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 188B08091A008F950001FC9B /* Virus_Blue_Wait_1.png */; };
 		188B080C1A008F950001FC9B /* Virus_Blue_Die_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 188B080A1A008F950001FC9B /* Virus_Blue_Die_1.png */; };
 		188B081A1A01DCA50001FC9B /* se_game_over_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08191A01DCA50001FC9B /* se_game_over_2.mp3 */; };
+		188B081E1A01E43D0001FC9B /* se_shake_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B081D1A01E43D0001FC9B /* se_shake_2.mp3 */; };
 		18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */; };
 		18C9C83519FE3A3A007A1C42 /* se_shine_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */; };
 		18C9C83719FE3A3A007A1C42 /* se_shine_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83219FE3A3A007A1C42 /* se_shine_1.mp3 */; };
@@ -364,6 +365,7 @@
 		188B08091A008F950001FC9B /* Virus_Blue_Wait_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Virus_Blue_Wait_1.png; sourceTree = "<group>"; };
 		188B080A1A008F950001FC9B /* Virus_Blue_Die_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Virus_Blue_Die_1.png; sourceTree = "<group>"; };
 		188B08191A01DCA50001FC9B /* se_game_over_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_game_over_2.mp3; sourceTree = "<group>"; };
+		188B081D1A01E43D0001FC9B /* se_shake_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shake_2.mp3; sourceTree = "<group>"; };
 		18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
 		18C9C82D19FDEB32007A1C42 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_5.mp3; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 				184AA5A919F63E4F0058E024 /* se_swipe_1.mp3 */,
 				184AA5AA19F63E4F0058E024 /* se_swipe_2.wav */,
 				184AA5AB19F63E4F0058E024 /* se_shake_1.mp3 */,
+				188B081D1A01E43D0001FC9B /* se_shake_2.mp3 */,
 				184AA5A619F63E430058E024 /* se_enemy_down.wav */,
 				184AA59F19F62C5B0058E024 /* se_game_start_1.mp3 */,
 				6193EE6319F5B54000E98E07 /* se_plaque_down_1.mp3 */,
@@ -1308,6 +1311,7 @@
 				185830AE19F64BE300A0A703 /* bgm_stageselect_2.mp3 in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				185830A919F64BE300A0A703 /* bgm_enemy_scene_3.mp3 in Resources */,
+				188B081E1A01E43D0001FC9B /* se_shake_2.mp3 in Resources */,
 				185830AF19F64BE300A0A703 /* bgm_title_1.mp3 in Resources */,
 				6193EE5C19F5B43D00E98E07 /* TitleLogo.png in Resources */,
 				C3CF34B91A00714900ECAC8C /* ButtonAchieve.png in Resources */,
