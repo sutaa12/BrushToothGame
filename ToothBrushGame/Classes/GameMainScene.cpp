@@ -390,7 +390,7 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
         }
         //SE
         SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
-        SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
+        SimpleAudioEngine::getInstance()->playEffect(SE_SHAKE_2);
         m_nUgaiCounter = 1;
     }
 }
