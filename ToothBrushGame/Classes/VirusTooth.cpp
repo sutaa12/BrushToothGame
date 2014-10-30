@@ -45,7 +45,7 @@ bool VirusTooth::init(void)
 {
     
     // スプライトの作成
-    m_pSprite = Sprite::create(TEX_VIRUS_TOOTH);
+    m_pSprite = Sprite::create(TEX_PLAQUE_WAIT_01);
     
     // エラーチェック
     if(m_pSprite == nullptr)
