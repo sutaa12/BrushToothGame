@@ -31,8 +31,10 @@ public:
     void uninit(void);
     void update(void);
 
-    static MenuBar* create(const Vec2& pos = Vec2(0.0f,0.0f));
-    Sprite* getSprite(void){return m_pSprite;}
+    static MenuBar* create(Layer* pPauseTagetLayer = nullptr,const Vec2& pos = Vec2(0.0f,0.0f));
+    Sprite* getSprite(void){return m_pSpriteBase;}
+    Menu* getMenu(void){return m_pMenu;}
+    void setPausePermission(bool bFlg);
 
     void setPos(Vec2 pos){m_pos = pos;}
     void setPos(float x,float y){m_pos.x = x;m_pos.y = y;}
@@ -44,12 +46,19 @@ public:
     void addPosY(float y){m_pos.y += y;}
     Vec2 getPos(void){return m_pos;}
 
-    void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+    void refreshSpritePos(void);
 
 private:
-    Sprite* m_pSprite;
+    void menuCallback(void);
+
+    Sprite* m_pSpriteBase;
+    MenuItemSprite* m_pMenuItemSprite;
+    Menu* m_pMenu;
+    Layer* m_pPauseTagetLayer;
+
     Vec2 m_pos;
     Vec3 m_rot;
+    bool m_bPausePermission;
 };
 
 #endif /* defined(__ToothBrushGame__MenuBar__) */

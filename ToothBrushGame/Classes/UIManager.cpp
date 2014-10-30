@@ -79,15 +79,15 @@ bool UIManager::init(void)
      *  UI Menubar Generation
      **/
     // UIアイテム生成処理
-    m_pMenuBar = MenuBar::create();
+    m_pMenuBar = MenuBar::create(m_pLayer);
     // スプライトサイズ取得
     Rect MenuBarSpriteRect = m_pMenuBar->getSprite()->getBoundingBox();
     //座標変換(左上を持ってきているため、中心にそろえる処理)
     m_pMenuBar->setPos(Vec2(565, visibleSize.height - 32));
     // スプライトの再配置
     m_pMenuBar->refreshSpritePos();
-    // スプライトの登録
-    m_pLayer->addChild(m_pMenuBar->getSprite());
+    // メニューの登録
+    m_pLayer->addChild(m_pMenuBar->getMenu());
 
     /**
      *  UI LifeBar Generation

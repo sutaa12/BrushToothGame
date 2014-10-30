@@ -102,7 +102,6 @@ private:
     
     bool m_bHit;
 
-    Layer* m_pPauseLayer;
     Layer* m_pCountDown;
     bool m_bCountDownEnd;
     int m_nUgaiCounter;
