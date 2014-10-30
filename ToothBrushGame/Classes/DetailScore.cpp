@@ -38,10 +38,13 @@ bool DetailScore::init(void)
     // スコアポイント
     m_pPointLabel = LabelTTF::create("0", MIKA_FONT, 48);
     String* points = String::createWithFormat( "%d", m_nPoint);
+    m_pDetailScoreLabel->enableStroke(Color3B::BLACK, 3);
     
     //DetailScore文字の一番後ろの位置にセット
     m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pDetailScoreLabel->getContentSize().width, m_startLeftTopPos.y));
     m_pPointLabel->setString(points->getCString());
+    m_pPointLabel->enableStroke(Color3B::BLACK, 3);
+    
     
     
     m_pLayer->addChild(m_pPointLabel);

@@ -58,7 +58,7 @@ public:
     void createCountDown(float fTime);
     
 private:
-    static const int GAME_END_TIME = 6;
+    static const int GAME_END_TIME = 5;
     //メンバ関数
     void setResultScene(bool bGameOverFlag = false);
     

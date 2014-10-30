@@ -78,10 +78,10 @@ bool RankManager::init(void)
     m_pEndingBack->setPosition(Vec2(visibleSize.width / 2,origin.y + m_pEndingBack->getContentSize().height / 2));
     m_pLayer->addChild(m_pEndingBack);
     
-    Label* pResultName = Label::create("はみがきのせいか",MIKA_FONT,24);
+    LabelTTF* pResultName = LabelTTF::create("はみがきのせいか",MIKA_FONT,24);
     
     pResultName->setPosition(Vec2(visibleSize.width / 2,origin.y + 920));
-
+    pResultName->enableStroke(Color3B::BLACK, 3);
     m_pLayer->addChild(pResultName);
     
     int time = m_nTimeBornus;
@@ -95,21 +95,18 @@ bool RankManager::init(void)
 
         if(nloop >= Enemy::ENEMY_KIND_MAX /2)
         {
-            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 350,origin.y + origin.y + SCORE_POS_Y  - ((nloop - Enemy::ENEMY_KIND_MAX / 2) *90)),sEnemy[nloop],m_pLayer);
+            m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 350,origin.y + origin.y + SCORE_POS_Y  - ((nloop - Enemy::ENEMY_KIND_MAX / 2) *90)),sEnemy[nloop],m_pLayer,Enemy::getEnemyKindDownNum(nloop));
             m_nRankManagerPoint += Enemy::getEnemyKindDownNum(nloop) * nEnemyBounus[nloop];
         }else{
             m_pEnemyScore[nloop] = EnemyScore::create(Vec2(origin.x + 100,origin.y + origin.y + SCORE_POS_Y - (nloop *90)),sEnemy[nloop],m_pLayer,Enemy::getEnemyKindDownNum(nloop));
             m_nRankManagerPoint += Enemy::getEnemyKindDownNum(nloop) * nEnemyBounus[nloop];
         }
+        m_pEnemyScore[nloop]->getPoint()->setColor(Color3B::WHITE);
+        m_pEnemyScore[nloop]->getPoint()->enableStroke(Color3B::BLACK, 3);
     }
     m_pEnemysScore = DetailScore::create(Vec2(origin.x + 180,origin.y  + origin.y + SCORE_POS_Y - 10 - (Enemy::ENEMY_KIND_MAX *50)),"ばいきんごうけい",Enemy::getEnemyAllDownNum(),m_pLayer);
     m_pTimeScore = DetailScore::create(Vec2(origin.x + 180,origin.y + m_pEnemysScore->getDetailName()->getPosition().y
                                              + 50),"たいむぼぉなすぅ",time,m_pLayer);
-
-    if(time > 0)
-    {
-        m_pEnemysScore->getDetailName()->setColor(Color3B::BLACK);
-    }
     time *= TIME_BORNUS;
     m_nRankManagerPoint += time;
     char* cRank[RANK_MAX]=

@@ -268,9 +268,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "GameMainScene::update(float fTime)"
-            landmarkType = "5">
+            endingLineNumber = "257">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -429,7 +427,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "500"
             endingLineNumber = "500"
-            landmarkName = "GameMainScene::createCountDown(float fTime)"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -440,12 +438,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436322848.223258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
-            landmarkName = "GameMainScene::updateGamePhase(void)"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -502,12 +500,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436322848.223258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "514"
-            endingLineNumber = "514"
-            landmarkName = "GameMainScene::updateGamePhase(void)"
+            startingLineNumber = "515"
+            endingLineNumber = "515"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -522,7 +520,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "504"
-            endingLineNumber = "504">
+            endingLineNumber = "504"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -868,12 +868,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436322848.223258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "548"
-            endingLineNumber = "548"
-            landmarkName = "GameMainScene::chkGamePhase(void)"
+            startingLineNumber = "556"
+            endingLineNumber = "556"
+            landmarkName = "GameMainScene::createCountDown(float fTime)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1236,11 +1236,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436322848.223258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "527"
-            endingLineNumber = "527">
+            startingLineNumber = "535"
+            endingLineNumber = "535"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

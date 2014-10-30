@@ -42,15 +42,15 @@ static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
     {Enemy::ENEMY_KIND_NORMAL_ONE,10,5,Point(300,400)},
     {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
     {Enemy::ENEMY_KIND_NORMAL_TWO,3,15,Point(200,300)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,4,20,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,2,20,Point(150,400)},
     {Enemy::ENEMY_KIND_NORMAL_TWO,10,25,Point(300,350)},
-    {Enemy::ENEMY_KIND_LAIR_TWO,3,30,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TWO,2,30,Point(150,400)},
     {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
     {Enemy::ENEMY_KIND_NORMAL_TWO,10,35,Point(150,400)},
-    {Enemy::ENEMY_KIND_LAIR_TREE,2,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TREE,1,40,Point(150,400)},
     {Enemy::ENEMY_KIND_NORMAL_ONE,40,10,Point(300,400)},
     {Enemy::ENEMY_KIND_NORMAL_TREE,2,45,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TREE,5,50,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,3,50,Point(150,400)},
 };
 //================================================================================
 // デストラクタ
@@ -510,17 +510,25 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
             ToothShine->setOpacity(0);
             ToothShine->setScale(0.6f);
             Sequence* pSequence = Sequence::create(FadeIn::create(0.1f),ScaleTo::create(1.0,1.5f),ScaleTo::create(1.0,0.6f),FadeOut::create(0.1f),NULL);
+            
             Sprite* ToothShine2 = Sprite::create(TEX_KIRA_01);
-            ToothShine2->setPosition(origin.x + 200, origin.y + 400);
+            ToothShine2->setPosition(origin.x + 200, origin.y + 350);
             ToothShine2->setOpacity(0);
             ToothShine2->setScale(0.6f);
-            
             Sequence* pSequence2 = Sequence::create(FadeIn::create(0.1f),ScaleTo::create(0.8,1.5f),ScaleTo::create(0.8,0.6f),FadeOut::create(0.1f),NULL);
+            
+            Sprite* ToothShine3 = Sprite::create(TEX_KIRA_01);
+            ToothShine3->setPosition(visibleSize.width - 200, origin.y + 350);
+            ToothShine3->setOpacity(0);
+            ToothShine3->setScale(0.3f);
+            Sequence* pSequence3 = Sequence::create(FadeIn::create(0.1f),ScaleTo::create(0.8,1.5f),ScaleTo::create(0.8,0.6f),FadeOut::create(0.1f),NULL);
 
             ToothShine->runAction(RepeatForever::create(pSequence));
             addChild(ToothShine);
             ToothShine2->runAction(RepeatForever::create(pSequence2));
             addChild(ToothShine2);
+            ToothShine3->runAction(RepeatForever::create(pSequence2));
+            addChild(ToothShine3);
 
         }
 
