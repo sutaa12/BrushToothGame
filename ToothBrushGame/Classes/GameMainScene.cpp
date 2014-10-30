@@ -33,6 +33,7 @@
 #include "UgaiEffect.h"
 #include "ConfigScene.h"
 #include "Clock.h"
+#include "MenuBar.h"
 USING_NS_CC;
 
 
@@ -260,23 +261,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-    //終了時は止める
-    if(m_nGameEndtTime <= 0)
-    {
 
-        // ポーズメニューを開く
-        if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
-        {
-            //音量調整
-            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-            //SE
-            SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-            m_pPauseLayer = PauseScene::createLayer();
-            this->addChild(m_pPauseLayer);
-            this->pause();
-            return true;
-        }
-    }
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
@@ -512,6 +497,9 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
         Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
         Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
         m_nGameEndtTime = 1;
+
+        // ゲームが終了しているのでポーズを不許可に
+        m_pUIManager->getMenuBar()->setPausePermission(false);
         
         Sprite* pBack = Sprite::create();
         Sprite* pToothSize = m_pToothManager->getTongerSprite();
