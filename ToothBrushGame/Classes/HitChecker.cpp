@@ -155,7 +155,7 @@ void HitChecker::hitCheckTouchEnded(Rect touchRect,bool bToothPowder)
     SoundManager::stopSoundID(ID_SE_POWDER_2);
 
     SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-    SimpleAudioEngine::getInstance()->playEffect(SE_FANFARE_1);
+    SimpleAudioEngine::getInstance()->playEffect(SE_POWDER_EXPLOSION_1);
 
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
 

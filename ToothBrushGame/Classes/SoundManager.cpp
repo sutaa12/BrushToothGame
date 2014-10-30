@@ -34,14 +34,16 @@ void SoundManager::init()
     SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_ENEMY_DOWN_3);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_1);
-    SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_FULL_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_EXPLOSION_1);
+        SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_EXPLOSION_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SHAKE_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SHAKE_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_FANFARE_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_2);
-    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_1);
-    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
+//    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GET_ACHIEVEMENT_3);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GET_ACHIEVEMENT_4);
 
@@ -76,7 +78,10 @@ void SoundManager::uninit()
     SimpleAudioEngine::getInstance()->unloadEffect(SE_ENEMY_DOWN_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_ENEMY_DOWN_3);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
-    SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_2);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_2);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_FULL_1);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_EXPLOSION_1);
+        SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_EXPLOSION_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_SHAKE_1);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_SHAKE_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);

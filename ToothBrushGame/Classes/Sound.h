@@ -33,7 +33,7 @@ using namespace CocosDenshion;
 #define BGM_VOLUME_HALF (0.5f)
 #define BGM_VOLUME_MAX (1.0f)
 
-
+#define SE_VOLUME_2 (0.2f)
 #define SE_VOLUME_3 (0.3f)
 #define SE_VOLUME_HALF (0.5f)
 #define SE_VOLUME_MAX (1.0f)
@@ -84,15 +84,22 @@ using namespace CocosDenshion;
 
 //敵くっつくの音
 #define SE_SWIPE_1 ("se_swipe_1.mp3")
-#define SE_SWIPE_2 ("se_swipe_2.wav")
+//#define SE_SWIPE_2 ("se_swipe_2.wav")
 
 //うがい時　音
 #define SE_SHAKE_1 ("se_shake_1.mp3")
 #define SE_SHAKE_2 ("se_shake_2.mp3")
 
-//歯磨き粉ボム
-#define SE_POWDER_1 ("se_powder_1.mp3")
+//歯磨き粉ボム　使用中
+//#define SE_POWDER_1 ("se_powder_1.mp3")
 #define SE_POWDER_2 ("se_powder_2.mp3")
+
+//チャージ完了
+#define SE_POWDER_FULL_1 ("se_powder_full_1.mp3")
+
+//爆発
+#define SE_POWDER_EXPLOSION_1 ("se_powder_explosion_1.mp3")
+#define SE_POWDER_EXPLOSION_2 ("se_powder_explosion_2.mp3")
 
 //残り１０秒！音
 #define SE_FANFARE_1 ("se_fanfare_1.mp3")
