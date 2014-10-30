@@ -43,8 +43,8 @@ bool PauseScene::init()
         return false;
     }
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
 
     //終了ボタン生成
     auto closeItem = MenuItemImage::create(
@@ -62,6 +62,7 @@ bool PauseScene::init()
 
     // 更新処理の追加
     this->scheduleUpdate();
+    
     // タッチ機能の有効化
     m_pTouchEventOneByOne =  EventListenerTouchOneByOne::create();
     m_pTouchEventOneByOne->setSwallowTouches(true);
@@ -79,18 +80,44 @@ bool PauseScene::init()
     m_pMaskSprite->setPosition(Vec2(visibleSize.width / 2,visibleSize.height / 2));
     this->addChild(m_pMaskSprite);
 
-    m_pRetryGameSprite = Sprite::create(TEX_RESULT_RETRY_BUTTON);
-    m_pRetryGameSprite->setPosition(Vec2(visibleSize.width / 2,origin.y + 600));
-    this->addChild(m_pRetryGameSprite);
+    // メニューバースプライトの作成
+    m_pMenuBarSpriteBase = Sprite::create(TEX_MENU_BUTTON);
+    Sprite* pMenuBarSpriteSelected = Sprite::create(TEX_MENU_BUTTON);
+    pMenuBarSpriteSelected->setColor(Color3B(200,200,200));
+    MenuItemSprite* pMenuBarMenuItemSprite = MenuItemSprite::create(m_pMenuBarSpriteBase, pMenuBarSpriteSelected,
+                                                                     CC_CALLBACK_0(PauseScene::returnGameCallback, this));
+    pMenuBarMenuItemSprite->setPosition(Vec2(565, visibleSize.height - 32));
 
-    m_pReturnTitleSprite = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    m_pReturnTitleSprite->setPosition(Vec2(visibleSize.width / 2,origin.y + 500));
-    this->addChild(m_pReturnTitleSprite);
+    // ゲーム再開メニュースプライトの作成
+    m_pReturnGameSpriteBase = Sprite::create(TEX_BUTTON_RETURN_GAME);
+    Sprite* pReturnGameSpriteSelected = Sprite::create(TEX_BUTTON_RETURN_GAME);
+    pReturnGameSpriteSelected->setColor(Color3B(200,200,200));
+    MenuItemSprite* pReturnGameMenuItemSprite = MenuItemSprite::create(m_pReturnGameSpriteBase, pReturnGameSpriteSelected,
+                                                                       CC_CALLBACK_0(PauseScene::returnGameCallback, this));
+    pReturnGameMenuItemSprite->setPosition(Vec2(visibleSize.width /2,origin.y + 700));
 
-    m_pReturnGameSprite = Sprite::create(TEX_BUTTON_RETURN_GAME);
-    m_pReturnGameSprite->setPosition(Vec2(visibleSize.width /2,origin.y + 700));
-    this->addChild(m_pReturnGameSprite);
+    // ゲームやり直しメニュースプライトの作成
+    m_pRetryGameSpriteBase = Sprite::create(TEX_RESULT_RETRY_BUTTON);
+    Sprite* pRetryGameSpriteSelected = Sprite::create(TEX_RESULT_RETRY_BUTTON);
+    pRetryGameSpriteSelected->setColor(Color3B(200,200,200));
+    MenuItemSprite* pRetryGameMenuItemSprite = MenuItemSprite::create(m_pRetryGameSpriteBase, pRetryGameSpriteSelected,
+                                                                      CC_CALLBACK_0(PauseScene::retryGameCallback, this));
+    pRetryGameMenuItemSprite->setPosition(Vec2(visibleSize.width / 2,origin.y + 600));
 
+    // タイトルリターンメニュースプライトの作成
+    m_pReturnTitleSpriteBase = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    Sprite* pReturnTitleSpriteSelected = Sprite::create(TEX_RESULT_TITLE_BUTTON);
+    pReturnTitleSpriteSelected->setColor(Color3B(200,200,200));
+    MenuItemSprite* pReturnTitleMenuItemSptire = MenuItemSprite::create(m_pReturnTitleSpriteBase, pReturnTitleSpriteSelected,
+                                                                        CC_CALLBACK_0(PauseScene::returnTitleCallback, this));
+    pReturnTitleMenuItemSptire->setPosition(Vec2(visibleSize.width / 2,origin.y + 500));
+
+    // メニューの一括登録
+    Menu* pPauseSceneMenu = Menu::create(pMenuBarMenuItemSprite,pReturnGameMenuItemSprite,pReturnTitleMenuItemSptire,pRetryGameMenuItemSprite, NULL);
+    pPauseSceneMenu->setPosition(Vec2::ZERO);
+    this->addChild(pPauseSceneMenu);
+
+    // コンフィグスプライト生成
     m_pConfigSprite = Sprite::create();
     m_pConfigSprite->setTextureRect(Rect(0,0,100,100));
     m_pConfigSprite->setColor(Color3B::YELLOW);
@@ -139,43 +166,6 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
 
-    Rect returnGameSpriteRect = m_pReturnGameSprite->getBoundingBox();
-    if(returnGameSpriteRect.containsPoint(m_touchPos))
-    {
-        //音量調整
-        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-        //SE
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-        returnGame();
-        return true;
-    }
-
-    Rect retryGameSpriteRect = m_pRetryGameSprite->getBoundingBox();
-    if(retryGameSpriteRect.containsPoint(m_touchPos))
-    {
-        //音量調整
-        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-        //SE
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-        retryGame();
-        return true;
-    }
-
-    Rect returnTitleSpriteRect = m_pReturnTitleSprite->getBoundingBox();
-    if(returnTitleSpriteRect.containsPoint(m_touchPos))
-    {
-        //音量調整
-        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-        //SE
-        CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-        
-        //音楽を止める
-        SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
-        
-        returnTitle();
-        return true;
-    }
-
     Rect openConfigSpriteRect = m_pConfigSprite->getBoundingBox();
     if(openConfigSpriteRect.containsPoint(m_touchPos))
     {
@@ -211,10 +201,13 @@ void PauseScene::onTouchCancelled(Touch* pTouch, Event* pEvent)
 }
 
 //================================================================================
-// ゲームやり直し処理
+// ゲームやり直しコールバック
 //================================================================================
-void PauseScene::retryGame(void)
+void PauseScene::retryGameCallback(void)
 {
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
@@ -223,10 +216,13 @@ void PauseScene::retryGame(void)
 }
 
 //================================================================================
-// ゲーム再開処理
+// ゲーム再開コールバック
 //================================================================================
-void PauseScene::returnGame(void)
+void PauseScene::returnGameCallback(void)
 {
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+
     this->getEventDispatcher()->removeEventListener(m_pTouchEventOneByOne);
     this->removeAllChildren();
     this->unscheduleUpdate();
@@ -237,17 +233,20 @@ void PauseScene::returnGame(void)
 }
 
 //================================================================================
-// タイトルバック処理
+// タイトルバックコールバック
 //================================================================================
-void PauseScene::returnTitle(void)
+void PauseScene::returnTitleCallback(void)
 {
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
+
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
 
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
 }
-
 //================================================================================
 // コンフィグオープン処理
 //================================================================================

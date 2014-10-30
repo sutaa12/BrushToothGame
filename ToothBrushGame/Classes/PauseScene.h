@@ -37,15 +37,17 @@ private:
     EventListenerTouchOneByOne* m_pTouchEventOneByOne;
     bool m_bConfig;
 
-    void returnGame(void);
-    void retryGame(void);
-    void returnTitle(void);
     void openConfig(void);
 
+    void returnGameCallback(void);
+    void retryGameCallback(void);
+    void returnTitleCallback(void);
+
     Sprite* m_pMaskSprite;
-    Sprite* m_pRetryGameSprite;
-    Sprite* m_pReturnGameSprite;
-    Sprite* m_pReturnTitleSprite;
+    Sprite* m_pMenuBarSpriteBase;
+    Sprite* m_pRetryGameSpriteBase;
+    Sprite* m_pReturnGameSpriteBase;
+    Sprite* m_pReturnTitleSpriteBase;
     Sprite* m_pConfigSprite;
 
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
