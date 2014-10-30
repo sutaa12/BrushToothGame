@@ -406,11 +406,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "481"
-            endingLineNumber = "481"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "GameMainScene::calcSwipeDirection(float fAngle)"
             landmarkType = "5">
          </BreakpointContent>
@@ -422,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "530"
+            endingLineNumber = "530"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -438,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436322848.223258"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -470,11 +470,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485">
+            startingLineNumber = "505"
+            endingLineNumber = "505">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -484,11 +484,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "GameMainScene::calcSwipeDirection(float fAngle)"
             landmarkType = "5">
          </BreakpointContent>
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436322848.223258"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "515"
-            endingLineNumber = "515"
+            startingLineNumber = "545"
+            endingLineNumber = "545"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -516,11 +516,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267220.297313"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "534"
+            endingLineNumber = "534"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -868,11 +868,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436322848.223258"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "556"
-            endingLineNumber = "556"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "GameMainScene::createCountDown(float fTime)"
             landmarkType = "5">
          </BreakpointContent>
@@ -980,11 +980,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
+            timestampString = "436326678.195034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "ToothPowder::update(void)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1044,11 +1044,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
+            timestampString = "436326678.195034"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "ToothPowder::update(void)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1236,11 +1236,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436322848.223258"
+            timestampString = "436325898.473728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1300,11 +1300,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436267249.953453"
+            timestampString = "436325349.217846"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)"
             landmarkType = "5">
          </BreakpointContent>

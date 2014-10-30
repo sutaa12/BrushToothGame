@@ -124,6 +124,10 @@ void ToothPowder::update(void)
 
         if(m_nCount > 60 * TOOTH_RESPONS_SEC)
         {
+            Sequence* pSequence = Sequence::create(ScaleTo::create(0.8f,1.05f),ScaleTo::create(0.8f,0.9f,0.85f), NULL);
+
+            m_pSprite->runAction(pSequence);
+            m_pProgressTimer->runAction(pSequence);
             m_nCount = 0;
         }
     }else{

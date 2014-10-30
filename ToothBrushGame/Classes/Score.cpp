@@ -45,12 +45,12 @@ bool Score::init(void)
     m_pEnemyIcon = Sprite::create(TEX_UI_VIRUS_ICON);
     //左上の位置に設定
     m_pEnemyIcon->setPosition(m_startLeftTopPos);
-
+    
     // スコアポイント
     m_pPointLabel = LabelTTF::create("0", "ariel", 48);
     //SCORE文字の一番後ろの位置にセット
-    m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + m_pEnemyIcon->getContentSize().width, m_startLeftTopPos.y));
-    String* points = String::createWithFormat( " × %d", this->m_nScorePoint);
+    String* points = String::createWithFormat( " × %3d", this->m_nScorePoint);
+    m_pPointLabel->setPosition(Vec2(m_startLeftTopPos.x + 15 + m_pEnemyIcon->getContentSize().width, m_startLeftTopPos.y));
     
     // スコアポイントの表示を更新
     m_pPointLabel->setString(points->getCString());
@@ -74,10 +74,12 @@ void Score::uninit(void)
 //================================================================================
 void Score::update(void)
 {
-    String* points = String::createWithFormat( " × %d",Enemy::getEnemyAllDownNum());
+    String* points = String::createWithFormat( " × %3d",Enemy::getEnemyAllDownNum());
 
     // スコアポイントの表示を更新
     m_pPointLabel->setString(points->getCString());
+    
+    
 
 }
 

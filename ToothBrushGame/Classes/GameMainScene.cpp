@@ -260,20 +260,23 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-
-    // ポーズメニューを開く
-    if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
+    //終了時は止める
+    if(m_nGameEndtTime <= 0)
     {
-        //音量調整
-        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-        //SE
-        SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-        m_pPauseLayer = PauseScene::createLayer();
-        this->addChild(m_pPauseLayer);
-        this->pause();
-        return true;
+
+        // ポーズメニューを開く
+        if(m_pHitChecker->checkTapOnMenuBar(m_touchPos))
+        {
+            //音量調整
+            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+            //SE
+            SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+            m_pPauseLayer = PauseScene::createLayer();
+            this->addChild(m_pPauseLayer);
+            this->pause();
+            return true;
+        }
     }
-    
     // 泡スプライトの追従
     m_bubblePos = m_touchPos;
     m_pBubbleSprite->setPosition(m_bubblePos);
@@ -371,6 +374,24 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     {
         // スワイプ時の当たり判定
         m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection,m_pUIManager->getToothPowder()->getPowderTouchFlag());
+    }
+    //幼女を下方向にスワイプしたときにうがい
+    Rect charaRect = m_pUIManager->getCharacterStatus()->getSprite()->getBoundingBox();
+    if( m_swipeDirection == SWIPE_DIRECTION_DOWN &&
+       charaRect.containsPoint(swipeRect.origin) &&
+       m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY)
+    {
+        m_pUgaiEffect->setSpawn();
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
+        m_pUIManager->getCharacterStatus()->setPattern(CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY);
+        if(m_nGameEndtTime <= 0)
+        {
+            m_pHitChecker->checkEnemyDown();
+        }
+        //SE
+        SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
+        SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
+        m_nUgaiCounter = 1;
     }
 }
 
@@ -475,7 +496,6 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     if((fAngle <= -135 && fAngle >= -180) || (fAngle <= 180 && fAngle >= 135))
     {
         CCLOG("下方向");
-        m_pHitChecker->checkEnemyDown();
         return SWIPE_DIRECTION_DOWN;
     }
     
@@ -492,6 +512,16 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
         Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
         Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
         m_nGameEndtTime = 1;
+        
+        Sprite* pBack = Sprite::create();
+        Sprite* pToothSize = m_pToothManager->getTongerSprite();
+        pBack->setTextureRect(Rect(0,0,pToothSize->getContentSize().width,pToothSize->getContentSize().height));
+        pBack->setColor(Color3B::BLACK);
+        pBack->setOpacity(80);
+        pBack->setPosition(pToothSize->getPosition());
+        addChild(pBack);
+
+        
         LabelTTF* pEndGameMessage = LabelTTF::create("はみがきせいこう！","Arrial",42);
         pEndGameMessage->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 50));
         pEndGameMessage->setColor(Color3B::WHITE);
