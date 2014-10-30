@@ -180,8 +180,6 @@ bool GameMainScene::init()
 
     m_pHitChecker = HitChecker::create(m_pEnemyManager, m_pToothManager, m_pPlaqueManager,m_pUIManager);
 
-    m_pPauseLayer = nullptr;
-
     m_nTimer = 0;
     
 
