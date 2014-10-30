@@ -239,6 +239,23 @@ void HitChecker::checkEnemyFollowPowder(Point touchPoint,bool bToothPowder)
 }
 
 //================================================================================
+// キャラクタと当たり判定処理
+//================================================================================
+bool HitChecker::hitCheckPointCharacter(Point touchPoint,Sprite* pCheckSprite)
+{
+    Rect workRect = pCheckSprite->getBoundingBox();
+    workRect.size.width -= 60.0f;
+    workRect.size.height -= 50.0f;
+
+    if(workRect.containsPoint(touchPoint))
+    {
+        return true;
+    }
+
+    return false;
+}
+
+//================================================================================
 // エネミー死亡チェック処理
 //================================================================================
 void HitChecker::checkEnemyDown(void)

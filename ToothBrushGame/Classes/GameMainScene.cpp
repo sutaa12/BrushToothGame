@@ -384,8 +384,8 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
     }
     //幼女を下方向にスワイプしたときにうがい
     if( m_swipeDirection == SWIPE_DIRECTION_DOWN &&
-       m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY &&VirusToothManager::collideAtPoint(m_pUIManager->getCharacterStatus()->getSprite(), swipeRect.origin)
-       )
+       m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY &&
+       m_pHitChecker->hitCheckPointCharacter(m_touchPos, m_pUIManager->getCharacterStatus()->getSprite()))
     {
         m_pUgaiEffect->setSpawn();
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
