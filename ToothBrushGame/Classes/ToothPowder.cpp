@@ -128,7 +128,7 @@ void ToothPowder::update(void)
         {
             //歯磨き粉ボム　チャージ完了音
             SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-            SimpleAudioEngine::getInstance()->playEffect(SE_FANFARE_1);
+            SimpleAudioEngine::getInstance()->playEffect(SE_POWDER_FULL_2);
             Sequence* pSequence = Sequence::create(ScaleTo::create(0.8f,1.05f),ScaleTo::create(0.8f,0.9f,0.85f), NULL);
 
             m_pSprite->runAction(pSequence);

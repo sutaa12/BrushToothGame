@@ -152,7 +152,7 @@ void AchieveLayer::setDispAchieveLayer(int nAchieveNum)
     m_pTitle->runAction(Sequence::create(MoveBy::create(1.0f,Vec2(ACHIEVE_LAYER_POS_WIDTH,0)),MoveBy::create(2.0f,Vec2(0,0)),MoveBy::create(1.0f,Vec2(-ACHIEVE_LAYER_POS_WIDTH,0)), NULL));
 
     //SE
-    SimpleAudioEngine::getInstance()->playEffect(SE_GET_ACHIEVEMENT_4);
+    SimpleAudioEngine::getInstance()->playEffect(SE_GET_ACHIEVEMENT_3);
 
 }
 

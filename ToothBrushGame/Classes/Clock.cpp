@@ -126,7 +126,7 @@ void Clock::update(void)
       //      m_pLayer->addChild(m_pSprite);
 
             SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
-            SimpleAudioEngine::getInstance()->playEffect(SE_FANFARE_1);
+            SimpleAudioEngine::getInstance()->playEffect(SE_TIME_REMAIND_1);
             m_bSudden = true;
         }
 
