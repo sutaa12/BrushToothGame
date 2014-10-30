@@ -14,7 +14,7 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
-
+    AppDelegate::SoundUnload();
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
@@ -47,6 +47,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
+
+
+    SoundPreload();
+
 
     AchievementDataBaseList::init();
     //実績スコアリセット
@@ -84,13 +88,13 @@ void AppDelegate::applicationWillEnterForeground() {
 }
 
 //SE、BGMをプリロードする
-void SoundPreload() {
+void AppDelegate::SoundPreload() {
 
     SoundManager::init();
 
 }
 //データ解放
-void SoundUnload() {
+void AppDelegate::SoundUnload() {
 
     SoundManager::uninit();
 
