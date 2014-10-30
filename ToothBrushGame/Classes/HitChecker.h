@@ -47,6 +47,7 @@ public:
     void checkEnemyFollowPowder(Point touchPoint,bool bToothPowder);
     void checkEnemyDown(void);
     bool checkTapOnMenuBar(Point touchPoint);
+    bool hitCheckPointCharacter(Point touchPoint,Sprite* pCheckSprite);
 
 private:
     EnemyManager* m_pEnemyManager;
