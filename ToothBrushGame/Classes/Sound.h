@@ -102,6 +102,8 @@ using namespace CocosDenshion;
 #define SE_POWDER_EXPLOSION_2 ("se_powder_explosion_2.mp3")
 
 //残り１０秒！音
+#define SE_TIME_REMAIND_1 ("se_time_remaind_1.mp3")
+#define SE_TIME_REMAIND_2 ("se_time_remaind_2.mp3")
 #define SE_FANFARE_1 ("se_fanfare_1.mp3")
 
 //ゲームクリア　キラキラ音
