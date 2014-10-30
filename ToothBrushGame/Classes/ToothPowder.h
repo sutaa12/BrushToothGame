@@ -43,6 +43,7 @@ public:
     Vec2 getPos(void){return m_pos;}
     
     void refreshSpritePos(void){m_pSprite->setPosition(m_pos);}
+    static int getToothPowderCount(void){return m_nToothPowderCount;}
     
     void chkPowderTouchFlag(Point pos);
     void setPowderTouchFlag(bool bFlag){m_bPowderTouchFlag = bFlag;}
@@ -58,6 +59,7 @@ private:
     bool m_bPowderTouchFlag;
     float m_nCount;
     static const int TOOTH_RESPONS_SEC = 3;
+    static int m_nToothPowderCount;
 };
 
 #endif /* defined(__ToothBrushGame__ToothPowder__) */

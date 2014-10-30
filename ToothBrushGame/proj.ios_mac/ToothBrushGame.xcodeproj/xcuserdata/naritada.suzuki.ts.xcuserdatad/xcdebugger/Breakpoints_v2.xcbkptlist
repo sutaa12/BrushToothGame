@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436257297.762022"
+            timestampString = "436342233.913246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "GameMainScene::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -264,11 +264,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436257297.762022"
+            timestampString = "436342233.913246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257">
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -406,12 +408,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "GameMainScene::calcSwipeDirection(float fAngle)"
+            startingLineNumber = "529"
+            endingLineNumber = "529"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -422,7 +424,71 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "558"
+            endingLineNumber = "558"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/GameMainScene.cpp"
+            timestampString = "436346445.498804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/GameMainScene.cpp"
+            timestampString = "436346445.498804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "535"
+            endingLineNumber = "535"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/GameMainScene.cpp"
+            timestampString = "436346445.498804"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
+            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/GameMainScene.cpp"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "530"
@@ -438,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "573"
+            endingLineNumber = "573"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -454,73 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "507"
-            endingLineNumber = "507"
-            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "505"
-            endingLineNumber = "505">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
-            landmarkName = "GameMainScene::calcSwipeDirection(float fAngle)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
-            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "534"
-            endingLineNumber = "534"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
             landmarkType = "5">
          </BreakpointContent>
@@ -868,12 +872,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
-            landmarkName = "GameMainScene::createCountDown(float fTime)"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
+            landmarkName = "GameMainScene::updateGamePhase(void)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -964,71 +968,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "ToothPowder::update(void)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436326678.195034"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "ToothPowder::update(void)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "ToothPowder::update(void)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "ToothPowder::update(void)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436168328.029538"
+            timestampString = "436343850.505613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -1044,11 +984,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/ToothPowder.cpp"
-            timestampString = "436326678.195034"
+            timestampString = "436343850.505613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "ToothPowder::update(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/ToothPowder.cpp"
+            timestampString = "436343850.505613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "ToothPowder::update(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/ToothPowder.cpp"
+            timestampString = "436343850.505613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "ToothPowder::update(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/ToothPowder.cpp"
+            timestampString = "436343850.505613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "ToothPowder::update(void)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/ToothPowder.cpp"
+            timestampString = "436343850.505613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "ToothPowder::update(void)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1236,13 +1240,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325898.473728"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
-            landmarkName = "GameMainScene::setResultScene(bool bGameOverFlag)"
-            landmarkType = "5">
+            startingLineNumber = "593"
+            endingLineNumber = "593">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1284,11 +1286,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436257297.762022"
+            timestampString = "436342233.913246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "GameMainScene::init()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1300,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/GameMainScene.cpp"
-            timestampString = "436325349.217846"
+            timestampString = "436346445.498804"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)"
             landmarkType = "5">
          </BreakpointContent>

@@ -34,7 +34,7 @@ public:
     VirusTooth* getVirusToothsTop(int nNum){return m_pVirusTooth[nNum];}
     
     void spawn(Vec2 pos);
-    bool collideAtPoint(Sprite* pSprite, Point point);
+    static bool collideAtPoint(Sprite* pSprite, Point point);
     
 public:
     //敵の最大数

@@ -104,7 +104,6 @@ bool AchievementsScene::init()
     Menu* pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 50));
     addChild(pButton);
-    
     return true;
 }
 

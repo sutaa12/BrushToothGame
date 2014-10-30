@@ -16,6 +16,8 @@
 #include "Enemy.h"
 #include "EnemyScore.h"
 #include "AchievementDataBase.h"
+#include "ToothPowder.h"
+
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -104,16 +106,20 @@ bool RankManager::init(void)
         m_pEnemyScore[nloop]->getPoint()->setColor(Color3B::WHITE);
         m_pEnemyScore[nloop]->getPoint()->enableStroke(Color3B::BLACK, 3);
     }
+    AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_TOP_ENEMY_DOWN, Enemy::getEnemyAllDownNum());
+
     m_pEnemysScore = DetailScore::create(Vec2(origin.x + 180,origin.y  + origin.y + SCORE_POS_Y - 10 - (Enemy::ENEMY_KIND_MAX *50)),"ばいきんごうけい",Enemy::getEnemyAllDownNum(),m_pLayer);
     m_pTimeScore = DetailScore::create(Vec2(origin.x + 180,origin.y + m_pEnemysScore->getDetailName()->getPosition().y
-                                             + 50),"たいむぼぉなすぅ",time,m_pLayer);
+                                             - 50),"たいむぼぉなすぅ",time,m_pLayer);
+    
+    m_pToothPowderScore = DetailScore::create(Vec2(origin.x + 220,m_pTimeScore->getDetailName()->getPosition().y - 50),"たっぷおんりーぼーなす",0,m_pLayer);
+
     time *= TIME_BORNUS;
     m_nRankManagerPoint += time;
     char* cRank[RANK_MAX]=
     {
         "Ｓ","Ａ","Ｂ","Ｃ","Ｄ"
     };
-    m_pScore = DetailScore::create(Vec2(origin.x + 110,m_pTimeScore->getDetailName()->getPosition().y - 100), "すこあ",m_nRankManagerPoint,m_pLayer);
     int nNum = RANK_D;
     if(m_nRankManagerPoint <= SCORE_RANK_D)
     {
@@ -136,8 +142,18 @@ bool RankManager::init(void)
     if(m_nTimeBornus < 0)
     {
         nNum = RANK_D;
-    }
-    m_pRankObject = RankObject::create(Vec2(m_pScore->getDetailName()->getPosition().x +m_pScore->getDetailName()->getContentSize().width + 200,m_pScore->getDetailName()->getPosition().y), cRank[nNum], m_pLayer);
+    }else
+        AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_MAX_USE_BOM, ToothPowder::getToothPowderCount());
+        AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM, ToothPowder::getToothPowderCount());
+        if(ToothPowder::getToothPowderCount() == 0)
+        {
+            m_nRankManagerPoint += 1000;
+            m_pToothPowderScore->setDetailPoint(1000);
+            nNum = RANK_S;
+        }
+    m_pScore = DetailScore::create(Vec2(origin.x + 110,m_pToothPowderScore->getDetailName()->getPosition().y - 50), "すこあ",m_nRankManagerPoint,m_pLayer);
+
+    m_pRankObject = RankObject::create(Vec2(m_pScore->getDetailName()->getPosition().x + 50 ,m_pScore->getDetailName()->getPosition().y - 50), cRank[nNum], m_pLayer);
     
     AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_TOP_SCORE, m_nRankManagerPoint);
     

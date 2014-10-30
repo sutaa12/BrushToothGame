@@ -87,6 +87,7 @@ void UgaiEffect::choiceAction(void)
 //================================================================================
 void UgaiEffect::setSpawn()
 {
+    AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
     m_pSprite->stopAllActions();
     m_pSprite->setPosition(m_pos);
     m_pSprite->setOpacity(75);

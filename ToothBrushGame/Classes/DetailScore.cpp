@@ -88,3 +88,9 @@ DetailScore* DetailScore::create(const Vec2& startLeftTopPos,char* DetailName,in
     
     return pDetailScore;
 }
+void DetailScore::setDetailPoint(int nPoint)
+{
+    m_nPoint = nPoint;
+    String* points = String::createWithFormat( "%d", m_nPoint);
+    m_pPointLabel->setString(points->getCString());
+}

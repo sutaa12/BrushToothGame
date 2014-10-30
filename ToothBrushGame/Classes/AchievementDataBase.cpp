@@ -228,13 +228,41 @@ void AchievementDataBaseList::chkAchievement(ACHIEVEMENT_KIND achieve)
         }
     }
 }
+void AchievementDataBaseList::chkAchievementMin(ACHIEVEMENT_KIND achieve)
+{
+    for(int nloop = 0;nloop<m_nAchivementSize;nloop++)
+    {
+        if(AchievementData[nloop].achieveFlagKind == achieve)
+        {
+            if(!m_pAchievemntFlag[nloop])
+            {
+                if(m_nAchievementCont[achieve] <= AchievementData[nloop].unlockNum)
+                {
+                    m_pAchievemntFlag[nloop] = true;
+                    time_t curTime;
+                    tm *timeObject;
+                    time(&curTime);
+                    timeObject = localtime(&curTime);
+                    std::string time = strsprintf("%d年 %d月 %d日 %d : %d : %d" ,
+                                                  timeObject->tm_year + 1900 , timeObject->tm_mon + 1 ,
+                                                  timeObject->tm_mday , timeObject->tm_hour ,
+                                                  timeObject->tm_min , timeObject->tm_sec);
+                    m_pAchievemntDate[nloop].swap(time);
+                    dispAchievement(nloop);
+                }
+            }
+            
+        }
+    }
+}
 
 void AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_KIND achievement,int nNum,bool bSave)
 {
     if(nNum < m_nAchievementCont[achievement])
     {
         m_nAchievementCont[achievement] = nNum;
-        chkAchievement(achievement);
+        chkAchievementMin(achievement);
+        
         if(bSave)
         {
             saveAchievement();

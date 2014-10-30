@@ -90,6 +90,7 @@ public:
     static void loadAchievement(void);
     //実績条件チェック
     static void chkAchievement(ACHIEVEMENT_KIND achieve);
+    static void chkAchievementMin(ACHIEVEMENT_KIND achieve);
     
     static void resetAchievement();
 

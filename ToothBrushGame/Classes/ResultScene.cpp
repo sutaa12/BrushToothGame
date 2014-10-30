@@ -132,6 +132,8 @@ bool ResultScene::init()
     pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 150));
     addChild(pButton);
     
+    AchievementDataBaseList::saveAchievement();
+    
      //今、BGMが流れているかどうか
      if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
      

@@ -39,19 +39,42 @@ USING_NS_CC;
 
 static const GAME_PASE_DATA GamePhaseData[PHASE_MAX] =
 {
-    {Enemy::ENEMY_KIND_NORMAL_ONE,5,0,Point(150,600)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,10,5,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,3,15,Point(200,300)},
-    {Enemy::ENEMY_KIND_LAIR_ONE,2,20,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,10,25,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,3,0,Point(150,600)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,1,0,Point(150,600)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,1,0,Point(150,600)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,3,5,Point(200,300)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,10,Point(300,400)},
+    {Enemy::ENEMY_KIND_LAIR_ONE,2,15,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,20,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,20,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,5,20,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,5,25,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,5,25,Point(300,350)},
     {Enemy::ENEMY_KIND_LAIR_TWO,2,30,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,30,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TWO,10,35,Point(150,400)},
-    {Enemy::ENEMY_KIND_LAIR_TREE,1,40,Point(150,400)},
-    {Enemy::ENEMY_KIND_NORMAL_ONE,40,10,Point(300,400)},
-    {Enemy::ENEMY_KIND_NORMAL_TREE,2,45,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,35,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,35,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,35,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,35,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,35,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,3,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,3,40,Point(150,400)},
+    {Enemy::ENEMY_KIND_LAIR_TREE,2,45,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,8,45,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,8,45,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,8,45,Point(300,350)},
     {Enemy::ENEMY_KIND_NORMAL_TREE,3,50,Point(150,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,6,55,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_ONE,6,55,Point(300,400)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,6,55,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_TWO,6,55,Point(300,350)},
+    {Enemy::ENEMY_KIND_NORMAL_TREE,6,55,Point(150,400)},
 };
 //================================================================================
 // デストラクタ
@@ -270,6 +293,7 @@ bool GameMainScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     //終了時は判定止める
     if(m_nGameEndtTime <= 0)
     {
+        AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_TOUP);
         m_pHitChecker->hitCheckTap(m_pBubbleSprite->getBoundingBox());
     }
     m_pUIManager->getToothPowder()->chkPowderTouchFlag(m_touchPos);
@@ -359,10 +383,9 @@ void GameMainScene::onTouchMoved(Touch* pTouch,Event* pEvent)
         m_pHitChecker->hitCheckSwipe(swipeRect, m_swipeDirection,m_pUIManager->getToothPowder()->getPowderTouchFlag());
     }
     //幼女を下方向にスワイプしたときにうがい
-    Rect charaRect = m_pUIManager->getCharacterStatus()->getSprite()->getBoundingBox();
     if( m_swipeDirection == SWIPE_DIRECTION_DOWN &&
-       charaRect.containsPoint(swipeRect.origin) &&
-       m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY)
+       m_pUIManager->getCharacterStatus()->getPattern() != CharacterStatus::CHARACTERSTATUS_PATTERN_GIDDY &&VirusToothManager::collideAtPoint(m_pUIManager->getCharacterStatus()->getSprite(), swipeRect.origin)
+       )
     {
         m_pUgaiEffect->setSpawn();
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_UGAI);
@@ -616,11 +639,22 @@ void GameMainScene::chkGamePhase(void)
 
         if(m_nGamePhase < PHASE_MAX && (m_nGameTime >= GamePhaseData[m_nGamePhase].spawnTime || m_pEnemyManager->getEnemyNum() < 2))
         {
+            
             m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->getSprite()->getPosition());
             m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->disappear();
             if(m_nGamePhase <= PHASE_MAX)
             {
                 m_nGamePhase++;
+            }
+
+            while(GamePhaseData[m_nGamePhase].spawnTime == GamePhaseData[m_nGamePhase - 1].spawnTime)
+            {
+                m_pEnemyManager->spawn(GamePhaseData[m_nGamePhase].enemykind,GamePhaseData[m_nGamePhase].spawn,m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->getSprite()->getPosition());
+                m_pVirusToothManager->getVirusToothsTop(m_nGamePhase)->disappear();
+                if(m_nGamePhase <= PHASE_MAX)
+                {
+                    m_nGamePhase++;
+                }
             }
         }
     }

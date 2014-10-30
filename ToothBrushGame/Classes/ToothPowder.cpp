@@ -14,7 +14,7 @@
 #include "ToothPowder.h"
 #include "SoundManager.h"
 #include "AchievementDataBase.h"
-
+int ToothPowder::m_nToothPowderCount;
 //================================================================================
 // コンストラクタ
 //================================================================================
@@ -32,7 +32,7 @@ ToothPowder::~ToothPowder()
     
 }
 //================================================================================
-// 終了処理
+// 歯磨き粉消滅処理
 //================================================================================
 void ToothPowder::disappear(void)
 {
@@ -40,6 +40,7 @@ void ToothPowder::disappear(void)
     {
         m_nCount = 1;
         AchievementDataBaseList::addAchievement(ACHIEVEMENT_TYPE_USE_TOOTHPOWDER);
+        m_nToothPowderCount++;
     }
     m_pItemIcon->setPosition(m_pos);
     m_pItemIcon->setOpacity(0);
@@ -53,6 +54,7 @@ void ToothPowder::disappear(void)
 //================================================================================
 bool ToothPowder::init(void)
 {
+    m_nToothPowderCount = 0;
     m_nCount = 0;
     m_bPowderTouchFlag = false;
     

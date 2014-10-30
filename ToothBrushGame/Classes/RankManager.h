@@ -65,6 +65,7 @@ private:
     Layer* m_pLayer;
     DetailScore* m_pTimeScore;
     DetailScore* m_pEnemysScore;
+    DetailScore* m_pToothPowderScore;
     int m_nRankManagerPoint;
     int m_nTimeBornus;
     EnemyScore* m_pEnemyScore[Enemy::ENEMY_KIND_MAX ];
