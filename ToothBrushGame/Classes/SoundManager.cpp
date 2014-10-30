@@ -42,6 +42,8 @@ void SoundManager::init()
     SimpleAudioEngine::getInstance()->preloadEffect(SE_GAME_OVER_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_GET_ACHIEVEMENT_3);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_GET_ACHIEVEMENT_4);
 
     for(int nloop = 0 ; nloop < SOUND_MAX;nloop++)
     {
@@ -80,6 +82,9 @@ void SoundManager::uninit()
     SimpleAudioEngine::getInstance()->unloadEffect(SE_FANFARE_1);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_1);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_GAME_OVER_2);
+
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_GET_ACHIEVEMENT_3);
+    SimpleAudioEngine::getInstance()->unloadEffect(SE_GET_ACHIEVEMENT_4);
 }
 
 void SoundManager::playSoundID(SOUND_LABEL soundlabel)
