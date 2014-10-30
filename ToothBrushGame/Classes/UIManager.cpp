@@ -46,7 +46,7 @@ UIManager::~UIManager()
     //SAFE_DELETE(m_pLifeBar);
     SAFE_DELETE(m_pToothPowder);
     SAFE_DELETE(m_pCharacterStatus);
-
+    SAFE_DELETE(m_pClock);
 }
 
 //================================================================================
