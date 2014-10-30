@@ -154,6 +154,9 @@ void HitChecker::hitCheckTouchEnded(Rect touchRect,bool bToothPowder)
     //歯磨き粉ボムはなしたらSE止める
     SoundManager::stopSoundID(ID_SE_POWDER_2);
 
+    SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+    SimpleAudioEngine::getInstance()->playEffect(SE_FANFARE_1);
+
     Enemy** ppEnemy = m_pEnemyManager->getEnemysTop();
 
     for(int nEnemyNum = 0;nEnemyNum < EnemyManager::ENEMY_MAX;nEnemyNum++)
