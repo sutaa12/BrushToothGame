@@ -41,6 +41,8 @@
 
 
 //UI関係
+#define TEX_BUTTON_HELP ("HelpButton.png")
+#define TEX_HELP_IMAGE ("HelpImage.png")
 #define TEX_UI_VIRUS_ICON ("VirusIcon.png")
 #define TEX_ACHIEVE_WINDOW ("AchieveWindow.png")
 #define TEX_BADGE_1 ("ba.png")

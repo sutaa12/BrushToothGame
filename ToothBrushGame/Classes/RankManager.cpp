@@ -108,13 +108,13 @@ bool RankManager::init(void)
     }
     AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_TOP_ENEMY_DOWN, Enemy::getEnemyAllDownNum());
 
-    m_pEnemysScore = DetailScore::create(Vec2(origin.x + 180,origin.y  + origin.y + SCORE_POS_Y - 10 - (Enemy::ENEMY_KIND_MAX *50)),"ばいきんごうけい",Enemy::getEnemyAllDownNum(),m_pLayer);
+    time *= TIME_BORNUS;
+    m_pEnemysScore = DetailScore::create(Vec2(origin.x + 180,origin.y  + origin.y + SCORE_POS_Y - 10 - (Enemy::ENEMY_KIND_MAX *50) + 80),"ばいきんごうけい",Enemy::getEnemyAllDownNum(),m_pLayer);
     m_pTimeScore = DetailScore::create(Vec2(origin.x + 180,origin.y + m_pEnemysScore->getDetailName()->getPosition().y
                                              - 50),"たいむぼぉなすぅ",time,m_pLayer);
     
     m_pToothPowderScore = DetailScore::create(Vec2(origin.x + 220,m_pTimeScore->getDetailName()->getPosition().y - 50),"たっぷおんりーぼーなす",0,m_pLayer);
 
-    time *= TIME_BORNUS;
     m_nRankManagerPoint += time;
     char* cRank[RANK_MAX]=
     {

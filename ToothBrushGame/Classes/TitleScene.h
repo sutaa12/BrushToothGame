@@ -35,6 +35,7 @@ public:
     
     void menuButtonAchievements(void);
     void menuButtonGame(void);
+    void menuButtonHelp(void);
 
     
 private:
@@ -46,6 +47,10 @@ private:
     Sprite* m_pTitleBack;
     Sprite* m_pTitleCharacter;
     Sprite* m_pButton0;
+    Sprite* m_pHelpWindow;
+    Sprite* m_pHelpButton;
+    
+    bool m_bHelpMode;
     
     bool onTouchBegin(Touch* pTouch,Event* pEvent);
     void onTouchMoved(Touch* pTouch,Event* pEvent);

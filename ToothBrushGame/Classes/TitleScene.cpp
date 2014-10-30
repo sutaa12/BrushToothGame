@@ -99,7 +99,8 @@ bool TitleScene::init()
     //ボタン表示
     MenuItemSprite* pButtonRetry;
     MenuItemSprite* pButtonTitle;
-    
+    MenuItemSprite* pButtonHelp;
+
     //ボタン生成
     m_pButton0 = Sprite::create(TEX_BUTTON_TOUCH_START);
     Sequence* pSequence = Sequence::create(TintTo::create(1.0f,255,255,255),TintTo::create(1.0f,230,200,200), NULL);
@@ -129,6 +130,21 @@ bool TitleScene::init()
     pButton = Menu::create(pButtonTitle,NULL);
     pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 800 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
+    //タイトルボタン
+    
+    //タップ前のスプライト
+    Sprite* pNormalSprite3 = Sprite::create(TEX_BUTTON_HELP);
+    pNormalSprite3->setColor(Color3B(255,255,255));
+    
+    //タップ時のスプライト
+    Sprite* pSelectedSprite3 = Sprite::create(TEX_BUTTON_HELP);
+    pSelectedSprite3->setColor(Color3B(200,200,200));
+    
+    pButtonHelp = MenuItemSprite::create(pNormalSprite3,pSelectedSprite3,CC_CALLBACK_0(TitleScene::menuButtonHelp,this));
+    
+    pButton = Menu::create(pButtonHelp,NULL);
+    pButton->setPosition(Vec2(visibleSize.width / 2 - 200,visibleSize.height - 800 - m_pButton0->getContentSize().height / 2));
+    addChild(pButton);
     
     //今、BGMが流れているかどうか
     if(SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying()){
@@ -143,8 +159,28 @@ bool TitleScene::init()
         SimpleAudioEngine::getInstance()->playBackgroundMusic(BGM_TITLE_1, true);
         
     }
-
+    m_pHelpWindow = Sprite::create(TEX_HELP_IMAGE);
+    m_pHelpWindow->setPosition(Vec2(visibleSize.width / 2,visibleSize.height / 2));
+    m_pHelpWindow->setOpacity(0);
+    addChild(m_pHelpWindow);
+    m_bHelpMode = false;
     return true;
+}
+//================================================================================
+// ヘルプ移動
+//================================================================================
+
+void TitleScene::menuButtonHelp(void)
+{
+    if(m_bHelpMode)
+    {
+        return;
+    }
+    //SE
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
+    m_bHelpMode = true;
+    m_pHelpWindow->setOpacity(255);
+
 }
 //================================================================================
 // 実績移動
@@ -152,6 +188,11 @@ bool TitleScene::init()
 
 void TitleScene::menuButtonAchievements(void)
 {
+    if(m_bHelpMode)
+    {
+        return;
+    }
+
     //SE
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_START_BUTTON_1);
     this->getEventDispatcher()->removeAllEventListeners();
@@ -167,6 +208,11 @@ void TitleScene::menuButtonAchievements(void)
 
 void TitleScene::menuButtonGame(void)
 {
+    if(m_bHelpMode)
+    {
+        return;
+    }
+
     //SE
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(SE_START_BUTTON_1);
     this->getEventDispatcher()->removeAllEventListeners();
@@ -214,7 +260,11 @@ bool TitleScene::onTouchBegin(Touch* pTouch,Event* pEvent)
 {
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
-
+    if(m_bHelpMode)
+    {
+        m_pHelpWindow->setOpacity(0);
+        m_bHelpMode = false;
+    }
 //    int nStageMax = 3;
 //
 //    m_pTitleLogo->pause();
