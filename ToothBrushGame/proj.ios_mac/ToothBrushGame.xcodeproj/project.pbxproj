@@ -50,6 +50,7 @@
 		188B08371A02121E0001FC9B /* se_time_remaind_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08351A02121E0001FC9B /* se_time_remaind_2.mp3 */; };
 		188B08381A02121E0001FC9B /* se_time_remaind_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08361A02121E0001FC9B /* se_time_remaind_1.mp3 */; };
 		188B083A1A0218CA0001FC9B /* se_powder_full_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08391A0218CA0001FC9B /* se_powder_full_2.mp3 */; };
+		188B083C1A021DE60001FC9B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188B083B1A021DE60001FC9B /* Images.xcassets */; };
 		18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */; };
 		18C9C83519FE3A3A007A1C42 /* se_shine_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */; };
 		18C9C83719FE3A3A007A1C42 /* se_shine_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83219FE3A3A007A1C42 /* se_shine_1.mp3 */; };
@@ -385,6 +386,7 @@
 		188B08351A02121E0001FC9B /* se_time_remaind_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_time_remaind_2.mp3; sourceTree = "<group>"; };
 		188B08361A02121E0001FC9B /* se_time_remaind_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_time_remaind_1.mp3; sourceTree = "<group>"; };
 		188B08391A0218CA0001FC9B /* se_powder_full_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_powder_full_2.mp3; sourceTree = "<group>"; };
+		188B083B1A021DE60001FC9B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "ToothBrushGame iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
 		18C9C82D19FDEB32007A1C42 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_5.mp3; sourceTree = "<group>"; };
@@ -998,6 +1000,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				188B083B1A021DE60001FC9B /* Images.xcassets */,
 				6193EE6119F5B54000E98E07 /* bgm */,
 				6193EE6219F5B54000E98E07 /* se */,
 				6193EE3C19F5B43D00E98E07 /* hd */,
@@ -1252,6 +1255,7 @@
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				C385EFD11A00841400B2B61A /* ButtonGameMenu.png in Resources */,
 				6193EE6A19F5BDB600E98E07 /* ButtonTouchStart.png in Resources */,
+				188B083C1A021DE60001FC9B /* Images.xcassets in Resources */,
 				6193EE7B19F864CD00E98E07 /* GameTopBack.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				185830AA19F64BE300A0A703 /* bgm_enemy_scene_4.mp3 in Resources */,
@@ -1485,6 +1489,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
@@ -1518,6 +1524,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
