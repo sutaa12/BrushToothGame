@@ -49,6 +49,7 @@
 		188B08341A020D600001FC9B /* se_powder_explosion_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08321A020D600001FC9B /* se_powder_explosion_1.mp3 */; };
 		188B08371A02121E0001FC9B /* se_time_remaind_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08351A02121E0001FC9B /* se_time_remaind_2.mp3 */; };
 		188B08381A02121E0001FC9B /* se_time_remaind_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08361A02121E0001FC9B /* se_time_remaind_1.mp3 */; };
+		188B083A1A0218CA0001FC9B /* se_powder_full_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 188B08391A0218CA0001FC9B /* se_powder_full_2.mp3 */; };
 		18C9C82E19FDEB32007A1C42 /* SoundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */; };
 		18C9C83519FE3A3A007A1C42 /* se_shine_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */; };
 		18C9C83719FE3A3A007A1C42 /* se_shine_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 18C9C83219FE3A3A007A1C42 /* se_shine_1.mp3 */; };
@@ -381,6 +382,7 @@
 		188B08321A020D600001FC9B /* se_powder_explosion_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_powder_explosion_1.mp3; sourceTree = "<group>"; };
 		188B08351A02121E0001FC9B /* se_time_remaind_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_time_remaind_2.mp3; sourceTree = "<group>"; };
 		188B08361A02121E0001FC9B /* se_time_remaind_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_time_remaind_1.mp3; sourceTree = "<group>"; };
+		188B08391A0218CA0001FC9B /* se_powder_full_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_powder_full_2.mp3; sourceTree = "<group>"; };
 		18C9C82C19FDEB32007A1C42 /* SoundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundManager.cpp; path = ../Classes/SoundManager.cpp; sourceTree = "<group>"; };
 		18C9C82D19FDEB32007A1C42 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundManager.h; path = ../Classes/SoundManager.h; sourceTree = "<group>"; };
 		18C9C83019FE3A3A007A1C42 /* se_shine_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_shine_5.mp3; sourceTree = "<group>"; };
@@ -962,6 +964,7 @@
 				6193EE6519F5B54000E98E07 /* hit_1.wav */,
 				770596A519FD2DDB0070B5CC /* se_powder_2.mp3 */,
 				188B082F1A01F8450001FC9B /* se_powder_full_1.mp3 */,
+				188B08391A0218CA0001FC9B /* se_powder_full_2.mp3 */,
 				188B08311A020D600001FC9B /* se_powder_explosion_2.mp3 */,
 				188B08321A020D600001FC9B /* se_powder_explosion_1.mp3 */,
 				188B08351A02121E0001FC9B /* se_time_remaind_2.mp3 */,
@@ -1284,6 +1287,7 @@
 				6193EE5319F5B43D00E98E07 /* CloseSelected.png in Resources */,
 				6193EE6819F5B54000E98E07 /* hit_1.wav in Resources */,
 				C33B331B19F645B000DEDAF8 /* tongue.png in Resources */,
+				188B083A1A0218CA0001FC9B /* se_powder_full_2.mp3 in Resources */,
 				C385EFD51A0088C300B2B61A /* VirusTooth.png in Resources */,
 				C33B331519F6091B00DEDAF8 /* ButtonRetryGame.png in Resources */,
 				188B08331A020D600001FC9B /* se_powder_explosion_2.mp3 in Resources */,

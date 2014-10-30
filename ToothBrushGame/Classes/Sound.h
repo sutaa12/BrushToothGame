@@ -96,6 +96,7 @@ using namespace CocosDenshion;
 
 //チャージ完了
 #define SE_POWDER_FULL_1 ("se_powder_full_1.mp3")
+#define SE_POWDER_FULL_2 ("se_powder_full_2.mp3")
 
 //爆発
 #define SE_POWDER_EXPLOSION_1 ("se_powder_explosion_1.mp3")

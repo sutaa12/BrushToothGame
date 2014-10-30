@@ -36,6 +36,7 @@ void SoundManager::init()
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SWIPE_1);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_FULL_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_FULL_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_EXPLOSION_1);
         SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_EXPLOSION_2);
     SimpleAudioEngine::getInstance()->preloadEffect(SE_SHAKE_1);
@@ -83,6 +84,7 @@ void SoundManager::uninit()
     SimpleAudioEngine::getInstance()->unloadEffect(SE_SWIPE_1);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_FULL_1);
+    SimpleAudioEngine::getInstance()->preloadEffect(SE_POWDER_FULL_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_EXPLOSION_1);
         SimpleAudioEngine::getInstance()->unloadEffect(SE_POWDER_EXPLOSION_2);
     SimpleAudioEngine::getInstance()->unloadEffect(SE_SHAKE_1);
