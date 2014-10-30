@@ -458,7 +458,7 @@ void GameMainScene::onAcceleration(Acceleration *acc,Event *unused_event)
             }
         //SE
         SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_MAX);
-        SimpleAudioEngine::getInstance()->playEffect(SE_SWIPE_3);
+        SimpleAudioEngine::getInstance()->playEffect(SE_SHAKE_1);
             m_nUgaiCounter = 1;
         }
         m_nShakeCnt = 0;
@@ -533,6 +533,10 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
             String* Message = String::createWithFormat( "はみがきしっぱい！");
             pEndGameMessage->setString(Message->getCString());
             pEndGameMessage->setColor(Color3B::RED);
+
+            //ゲームオーバー音
+            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+            SimpleAudioEngine::getInstance()->playEffect(SE_GAME_OVER_2);
         }else{
 
             Sprite* ToothShine = Sprite::create(TEX_KIRAKIRA_01);
@@ -559,6 +563,10 @@ void GameMainScene::setResultScene(bool bGameOverFlag)
             addChild(ToothShine2);
             ToothShine3->runAction(RepeatForever::create(pSequence2));
             addChild(ToothShine3);
+
+            //ゲームクリア　キラキラ音
+            SimpleAudioEngine::getInstance()->setEffectsVolume(SE_VOLUME_HALF);
+            SimpleAudioEngine::getInstance()->playEffect(SE_SHINE_1);
 
         }
 

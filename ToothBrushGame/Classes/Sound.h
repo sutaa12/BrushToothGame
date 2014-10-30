@@ -85,17 +85,25 @@ using namespace CocosDenshion;
 //敵くっつくの音
 #define SE_SWIPE_1 ("se_swipe_1.mp3")
 #define SE_SWIPE_2 ("se_swipe_2.wav")
+
 //うがい時　音
-#define SE_SWIPE_3 ("se_swipe_3.mp3")
+#define SE_SHAKE_1 ("se_shake_1.mp3")
+#define SE_SHAKE_2 ("se_shake_2.mp3")
 
 //歯磨き粉ボム
 #define SE_POWDER_1 ("se_powder_1.mp3")
 #define SE_POWDER_2 ("se_powder_2.mp3")
 
-//未使用
+//残り１０秒！音
 #define SE_FANFARE_1 ("se_fanfare_1.mp3")
-#define SE_GAME_OVER_1 ("se_game_over_1.mp3")
 
+//ゲームクリア　キラキラ音
+#define SE_SHINE_1 ("se_shine_1.mp3")
+#define SE_SHINE_5 ("se_shine_5.mp3")
+
+//ゲームオーバー
+#define SE_GAME_OVER_1 ("se_game_over_1.mp3")
+#define SE_GAME_OVER_2 ("se_game_over_2.mp3")
 
 
 #endif
