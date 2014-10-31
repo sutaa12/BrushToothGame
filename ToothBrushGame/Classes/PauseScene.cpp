@@ -117,12 +117,14 @@ bool PauseScene::init()
     pPauseSceneMenu->setPosition(Vec2::ZERO);
     this->addChild(pPauseSceneMenu);
 
+    /*
     // コンフィグスプライト生成
     m_pConfigSprite = Sprite::create();
     m_pConfigSprite->setTextureRect(Rect(0,0,100,100));
     m_pConfigSprite->setColor(Color3B::YELLOW);
     m_pConfigSprite->setPosition(Vec2(400,200));
     //this->addChild(m_pConfigSprite);
+    */
 
     return true;
 }
@@ -166,12 +168,13 @@ bool PauseScene::onTouchBegin(Touch* pTouch,Event* pEvent)
     // タッチ座標の取得
     m_touchPos = pTouch->getLocation();
 
+/*
     Rect openConfigSpriteRect = m_pConfigSprite->getBoundingBox();
     if(openConfigSpriteRect.containsPoint(m_touchPos))
     {
         openConfig();
     }
-
+*/
     return true;
 }
 
