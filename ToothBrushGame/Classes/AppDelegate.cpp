@@ -54,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     AchievementDataBaseList::init();
     //実績スコアリセット
-    AchievementDataBaseList::resetAchievement();
+    //AchievementDataBaseList::resetAchievement();
     
     AchievementDataBaseList::addAchievement(ACHIEVE_TYPE_TURN_ON);
     

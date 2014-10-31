@@ -77,10 +77,10 @@ AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
     {"実績6","実績フラグ6",ACHIEVEMENT_TYPE_ENEMY_DOWN,1000,"敵を１０００体倒した！","さうざんとぉすとらぁいく"},
     {"実績7","実績フラグ7",ACHIEVEMENT_TYPE_ENEMY_DOWN,5000,"敵を５０００体倒した！","ふぇぇいっぱいだよぉ"},
     {"実績8","実績フラグ8",ACHIEVEMENT_TYPE_ENEMY_DOWN,10000,"敵を１００００体倒した！","汚れ過ぎだろ"},
-    {"実績9","実績フラグ9",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,100,"スコア100pt達成した！","もっとみがいてよぉ"},
+    {"実績9","実績フラグ9",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,600,"スコア600pt達成した！","もっとみがいてよぉ"},
     {"実績10","実績フラグ10",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1000,"スコア1000pt達成した！","おくちきれいきれい"},
-    {"実績11","実績フラグ11",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,5000,"スコア5000達成した！","いっぱいみがいたね！"},
-    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,100000,"スコア10000pt達成した！","やばい。"}
+    {"実績11","実績フラグ11",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1500,"スコア1500達成した！","いっぱいみがいたね！"},
+    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,1800,"スコア1800pt達成した！","やばい。"}
 };
 
 std::string strsprintf(const char* format,...){
