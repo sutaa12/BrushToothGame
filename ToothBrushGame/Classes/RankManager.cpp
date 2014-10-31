@@ -164,11 +164,15 @@ bool RankManager::init(void)
         {
             m_nRankManagerPoint += 1000;
             m_pToothPowderScore->setDetailPoint(1000);
+            AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM, ToothPowder::getToothPowderCount());
+            AchievementDataBaseList::chkAchievementMin(ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM);
             nNum = RANK_S;
         }
-
+    if(nNum != RANK_D)
+    {
         AchievementDataBaseList::setAchievementMax(ACHIEVEMENT_TYPE_GAME_MAX_USE_BOM, ToothPowder::getToothPowderCount());
         AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM, ToothPowder::getToothPowderCount());
+    }
     m_pScore = DetailScore::create(Vec2(origin.x + 110,m_pToothPowderScore->getDetailName()->getPosition().y - 50), "すこあ",m_nRankManagerPoint,m_pLayer);
     
     m_pEndingBack->setTexture(pTexEnd[nNum]);
