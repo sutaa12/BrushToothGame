@@ -122,7 +122,7 @@ bool PauseScene::init()
     m_pConfigSprite->setTextureRect(Rect(0,0,100,100));
     m_pConfigSprite->setColor(Color3B::YELLOW);
     m_pConfigSprite->setPosition(Vec2(400,200));
-    this->addChild(m_pConfigSprite);
+    //this->addChild(m_pConfigSprite);
 
     return true;
 }

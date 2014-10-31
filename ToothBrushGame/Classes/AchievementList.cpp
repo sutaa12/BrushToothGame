@@ -52,6 +52,9 @@ Size AchievementList::tableCellSizeForIndex(TableView *table, ssize_t idx)
 // 1セルに表示させるValueをセット
 TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
 {
+    Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
+    Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
+
     TableViewCell *cell = table->dequeueCell();
     
     cell = new TableViewCell();
@@ -64,10 +67,11 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
         std::string message = StringUtils::format("%d",AchievementDataBaseList::getAchieveInfo(((int)idx + 1)));
         
         // セルの背景は交互に色を変更する
-        auto background_color = Color3B(255,255,255);
+        auto background_color = Color3B(255,220,165);
         if (idx%2) {
-            background_color = Color3B(200,200,200);
+            background_color = Color3B(225,210,140);
         }
+
         
         Sprite* bg = Sprite::create();
         bg->setAnchorPoint(Point(0, 0));
@@ -78,25 +82,29 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
         // タイトル部分
         auto *label_2 = LabelTTF::create(title.c_str(),MIKA_FONT, STATUS_TITLE_SIZE);
         label_2->setAnchorPoint(Point(0, 0));
-        label_2->setPosition(Point(80, label_2->getContentSize().height / 2 -6));
+        label_2->setPosition(Point(10, label_2->getContentSize().height / 2 -6));
         label_2->setColor(Color3B(0,0,0));
         cell->addChild(label_2);
         
         // メッセージ部分
         auto *label_3 = LabelTTF::create(message.c_str(),MIKA_FONT, STATUS_MESSAGE_SIZE);
         label_3->setAnchorPoint(Point(0, 0));
-        label_3->setPosition(Point(80 + label_2->getContentSize().width,label_2->getContentSize().height / 2 - 6));
+        label_3->setPosition(Point(visibleSize.width - 100,label_2->getContentSize().height / 2 - 6));
         label_3->setColor(Color3B(0,0,0));
         cell->addChild(label_3);
+        label_2->setHorizontalAlignment(TextHAlignment::LEFT);
+
+        label_3->setHorizontalAlignment(TextHAlignment::LEFT);
+
     }else{
     AchievementDataBaseList::ACHIEVE_STATUS achivestatus = AchievementDataBaseList::getAchievement(((int)idx - ACHIEVEMENT_MAX + 1));
     std::string id = StringUtils::format("%zd", idx- ACHIEVEMENT_MAX + 1);
     // セルの背景は交互に色を変更する
-    auto background_color = Color3B(255,255,255);
-    if (idx%2) {
-        background_color = Color3B(200,200,200);
-    }
-    
+    auto background_color = Color3B(160,220,255);
+        if (idx%2) {
+            background_color = Color3B(130,190,225);
+        }
+
     Sprite* bg = Sprite::create();
     bg->setAnchorPoint(Point(0, 0));
     bg->setTextureRect(Rect(0, 0, m_window_size.width, CELL_SIZE));
@@ -139,6 +147,7 @@ TableViewCell* AchievementList::tableCellAtIndex(TableView *table, ssize_t idx)
             label_4->setPosition(Point(100 + label_3->getContentSize().width,5));
             label_4->setColor(Color3B(0,0,0));
             cell->addChild(label_4);
+            label_3->setHorizontalAlignment(TextHAlignment::LEFT);
         }else{
         
         // タイトル部分

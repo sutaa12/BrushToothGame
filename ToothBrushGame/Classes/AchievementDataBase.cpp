@@ -34,17 +34,13 @@ const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
     "ACHIEVEMENT_TYPE_GAME_MAX_USE_ENEMY_DOWN_BOM",//１ゲームでボム使用で倒した敵で最も多い回数
     "ACHIEVEMENT_TYPE_GAME_TIME",//ゲームにかかった最短タイム
     "ACHIEVEMENT_TYPE_GAME_ENEMY_NOT_DOWN",//うがいしなかった敵の数
-    "ACHIEVEMENT_TYPE_TAP_GIRL_TITLE",//タイトルの女の子のタップ回数
-    "ACHIEVEMENT_TYPE_SWIPE_GIRL_TITLE",//タイトルの女の子のスワイプ回数
-    "ACHIEVEMENT_TYPE_TAP_GIRL_GAMESTATUS",//ステータスの女の子のタップ回数
-    "ACHIEVEMENT_TYPE_SWIPE_GIRL_GAMESTATUS",//ステータスの女の子スワイプ回数
 };
 
 const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
 {
     "ACHIEVE_TYPE_NONE",//実績タイプ
     "きどうしたかいすぅ　　　　　　　　　　　　　　　　　　",//起動回数
-    "はみがきしたかいすぅ　　　　　　　　　　　　　　　　　　　",//プレイ回数
+    "はみがきしたかいすぅ　　　　　　　　　　　　　　　　　",//プレイ回数
     "ばいばいしたばいきんさん　　　　　　　　　　　　　　　",//倒した敵の総数
     "ばいばいしたよわいばいきんさん　　　　　　　　　　　　",//普通の種類の敵の倒した数
     "ばいばいしたふつうのばいきんさん　　　　　　　　　　　",
@@ -64,10 +60,6 @@ const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
     "はみがきこでばぃばぃしたばぃきんさんがぃちばんのかずぅ",//１ゲームでボム使用で倒した敵で最も多い回数
     "はみがきがぃちばんみじかかったかずぅ　　　　　　　　　",//ゲームにかかった最短タイム
     "くちのこっちゃたばいきんさんのかずぅ　　　　　　　　　",//うがいしなかった敵の数
-    "歯磨き以外でお前に触られた数　　　　　　　　　　　　　",//タイトルの女の子のタップ回数
-    "歯磨き以外でお前になでられた数　　　　　　　　　　　　",//タイトルの女の子のスワイプ回数
-    "歯磨き中にお前に触られた数　　　　　　　　　　　　　　",//ステータスの女の子のタップ回数
-    "歯磨き中でお前になでられた数　　　　　　　　　　　　　",//ステータスの女の子スワイプ回数
 
 };
 

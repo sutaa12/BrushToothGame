@@ -70,16 +70,17 @@ bool RankManager::init(void)
     
    
     Sprite* pBack = Sprite::create();
-    pBack->setTextureRect(Rect(0,0,visibleSize.width,visibleSize.height / 2 + 40));
+    pBack->setTextureRect(Rect(0,0,visibleSize.width,visibleSize.height));
     pBack->setColor(Color3B::BLACK);
     pBack->setOpacity(100);
     pBack->setAnchorPoint(Vec2(0,0));
-    pBack->setPosition(Vec2(origin.x,visibleSize.height / 2 - 40));
+    pBack->setPosition(Vec2(origin.x,origin.y));
     m_pLayer->addChild(pBack);
 
     m_pEndingBack = Sprite::create(TEX_RESULT_ENDING_NORMAL_BACK);
     m_pEndingBack->setPosition(Vec2(visibleSize.width / 2,origin.y + m_pEndingBack->getContentSize().height / 2));
     m_pLayer->addChild(m_pEndingBack);
+    
     
     LabelTTF* pResultName = LabelTTF::create("はみがきのせいか",MIKA_FONT,24);
     
