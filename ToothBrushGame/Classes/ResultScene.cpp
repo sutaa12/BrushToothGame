@@ -118,7 +118,7 @@ bool ResultScene::init()
     //タイトルボタン
     //タップ前のスプライト
     Sprite* pNormalSprite2 = Sprite::create(TEX_RESULT_TITLE_BUTTON);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 240));
+    pButton->setPosition(Vec2(visibleSize.width - pNormalSprite2->getContentSize().width / 2,origin.y + 240));
     pNormalSprite2->setColor(Color3B(255,255,255));
 
     
@@ -129,7 +129,7 @@ bool ResultScene::init()
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(ResultScene::ButtonTitle,this));
 
     pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 150));
+    pButton->setPosition(Vec2(visibleSize.width - pSelectedSprite2->getContentSize().width / 2,origin.y + 150));
     addChild(pButton);
     
     AchievementDataBaseList::saveAchievement();

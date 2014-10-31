@@ -184,6 +184,9 @@
 		C3C4B9CE1A00E594009F8C8B /* EnemyScore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3C4B9CC1A00E594009F8C8B /* EnemyScore.cpp */; };
 		C3C4B9D41A023AAC009F8C8B /* HelpImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C4B9D31A023AAC009F8C8B /* HelpImage.png */; };
 		C3C4B9D81A023BD0009F8C8B /* HelpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C4B9D71A023BD0009F8C8B /* HelpButton.png */; };
+		C3C4B9DF1A03102D009F8C8B /* EndingBad.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C4B9DC1A03102D009F8C8B /* EndingBad.png */; };
+		C3C4B9E01A03102D009F8C8B /* EndingHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C4B9DD1A03102D009F8C8B /* EndingHappy.png */; };
+		C3C4B9E11A03102D009F8C8B /* EndingTrue.png in Resources */ = {isa = PBXBuildFile; fileRef = C3C4B9DE1A03102D009F8C8B /* EndingTrue.png */; };
 		C3CF34A019FF202A00ECAC8C /* EndingNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CF349F19FF202A00ECAC8C /* EndingNormal.png */; };
 		C3CF34A719FF6ABC00ECAC8C /* VirusTooth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */; };
 		C3CF34AC19FF6ACE00ECAC8C /* VirusToothManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C3CF34AA19FF6ACE00ECAC8C /* VirusToothManager.cpp */; };
@@ -553,6 +556,9 @@
 		C3C4B9CD1A00E594009F8C8B /* EnemyScore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyScore.h; path = ../Classes/EnemyScore.h; sourceTree = "<group>"; };
 		C3C4B9D31A023AAC009F8C8B /* HelpImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpImage.png; sourceTree = "<group>"; };
 		C3C4B9D71A023BD0009F8C8B /* HelpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelpButton.png; sourceTree = "<group>"; };
+		C3C4B9DC1A03102D009F8C8B /* EndingBad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingBad.png; sourceTree = "<group>"; };
+		C3C4B9DD1A03102D009F8C8B /* EndingHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingHappy.png; sourceTree = "<group>"; };
+		C3C4B9DE1A03102D009F8C8B /* EndingTrue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingTrue.png; sourceTree = "<group>"; };
 		C3CF349F19FF202A00ECAC8C /* EndingNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndingNormal.png; sourceTree = "<group>"; };
 		C3CF34A519FF6ABC00ECAC8C /* VirusTooth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VirusTooth.cpp; path = ../Classes/VirusTooth.cpp; sourceTree = "<group>"; };
 		C3CF34A619FF6ABC00ECAC8C /* VirusTooth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VirusTooth.h; path = ../Classes/VirusTooth.h; sourceTree = "<group>"; };
@@ -914,6 +920,9 @@
 				18C9C84519FE471A007A1C42 /* pika.png */,
 				18C9C84D19FE471A007A1C42 /* water.png */,
 				6193EE3E19F5B43D00E98E07 /* bubble_01.png */,
+				C3C4B9DC1A03102D009F8C8B /* EndingBad.png */,
+				C3C4B9DD1A03102D009F8C8B /* EndingHappy.png */,
+				C3C4B9DE1A03102D009F8C8B /* EndingTrue.png */,
 				C3CF349F19FF202A00ECAC8C /* EndingNormal.png */,
 				6193EE4019F5B43D00E98E07 /* CloseNormal.png */,
 				6193EE4119F5B43D00E98E07 /* CloseSelected.png */,
@@ -1260,6 +1269,7 @@
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				185830AA19F64BE300A0A703 /* bgm_enemy_scene_4.mp3 in Resources */,
 				188B082B1A01E69F0001FC9B /* StatusLittleGirl_Giddy.png in Resources */,
+				C3C4B9E11A03102D009F8C8B /* EndingTrue.png in Resources */,
 				184AA5DF19F63F130058E024 /* se_fanfare_1.mp3 in Resources */,
 				184AA5AC19F63E4F0058E024 /* se_swipe_1.mp3 in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -1278,6 +1288,7 @@
 				184AA5DB19F63EE50058E024 /* se_plaque_down_2.mp3 in Resources */,
 				18C9C84019FE3BC5007A1C42 /* get_archivement_3.mp3 in Resources */,
 				18C9C83E19FE3BC5007A1C42 /* get_archivement_4.mp3 in Resources */,
+				C3C4B9DF1A03102D009F8C8B /* EndingBad.png in Resources */,
 				188B080C1A008F950001FC9B /* Virus_Blue_Die_1.png in Resources */,
 				188B082E1A01E69F0001FC9B /* StatusLittleGirl_Smile.png in Resources */,
 				184AA5AE19F63E4F0058E024 /* se_shake_1.mp3 in Resources */,
@@ -1334,6 +1345,7 @@
 				184AA5D819F63EE50058E024 /* se_button_1.mp3 in Resources */,
 				6193EE7D19F864CD00E98E07 /* GameBottomBack.png in Resources */,
 				18C9C85919FE471A007A1C42 /* Virus_Tough_Wait_1.png in Resources */,
+				C3C4B9E01A03102D009F8C8B /* EndingHappy.png in Resources */,
 				188B08381A02121E0001FC9B /* se_time_remaind_1.mp3 in Resources */,
 				615A3F031A0058A600CFCC8C /* ToothBrush.png in Resources */,
 				770596AB19FD333D0070B5CC /* bgm_enemy_scene_5.mp3 in Resources */,

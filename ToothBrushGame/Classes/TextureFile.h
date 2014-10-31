@@ -82,6 +82,9 @@
 #define TEX_RESULT_GAMEOVER_LOGO ("")
 #define TEX_RESULT_GAMEOVER_BUTTON_0 ("")
 
+#define TEX_RESULT_ENDING_BAD_BACK ("EndingBad.png")
 #define TEX_RESULT_ENDING_NORMAL_BACK ("EndingNormal.png")
+#define TEX_RESULT_ENDING_HAPPY_BACK ("EndingHappy.png")
+#define TEX_RESULT_ENDING_TRUE_BACK ("EndingTrue.png")
 
 #endif

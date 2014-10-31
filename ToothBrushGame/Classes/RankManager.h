@@ -40,8 +40,8 @@ public:
     
     const int SCORE_RANK_S = 1000;
     const int SCORE_RANK_A = 800;
-    const int SCORE_RANK_B = 600;
-    const int SCORE_RANK_C = 500;
+    const int SCORE_RANK_B = 650;
+    const int SCORE_RANK_C = 600;
     const int SCORE_RANK_D = 400;
     
     const int TIME_BORNUS = 10;
