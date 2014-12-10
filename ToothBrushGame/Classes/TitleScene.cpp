@@ -81,7 +81,7 @@ bool TitleScene::init()
     this->addChild(m_pTitleBack);
     //ロゴ生成
     m_pTitleLogo = Sprite::create(TEX_TITLE_LOGO);
-    m_pTitleLogo->setPosition(Vec2(m_pTitleLogo->getContentSize().width / 2,visibleSize.height - 50 - m_pTitleLogo->getContentSize().height / 2));
+    m_pTitleLogo->setPosition(Vec2(m_pTitleLogo->getContentSize().width / 2,visibleSize.height + 50 - m_pTitleLogo->getContentSize().height / 2));
     this->addChild(m_pTitleLogo);
     
     ccBezierConfig config;
