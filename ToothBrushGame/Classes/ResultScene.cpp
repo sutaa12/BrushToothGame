@@ -53,21 +53,7 @@ bool ResultScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
-    
-    //終了ボタン生成
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(ResultScene::menuCloseCallback, this));
-    
-    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-    
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-    
+        
     AchievementDataBaseList::setAchievementMin(ACHIEVEMENT_TYPE_GAME_TIME, GAME_TIME_MAX - m_nTimeBornus);
     
     // 更新処理の追加

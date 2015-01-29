@@ -50,19 +50,6 @@ bool TitleScene::init()
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
     
-    //終了ボタン生成
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(TitleScene::menuCloseCallback, this));
-    
-    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-    
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
     
     // 更新処理の追加
     this->scheduleUpdate();
@@ -113,7 +100,7 @@ bool TitleScene::init()
     pButtonRetry = MenuItemSprite::create(m_pButton0,pSelectedSprite,CC_CALLBACK_0(TitleScene::menuButtonGame,this));
     
     Menu* pButton = Menu::create(pButtonRetry,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
+    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 600 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
     
     //タイトルボタン
@@ -128,7 +115,7 @@ bool TitleScene::init()
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(TitleScene::menuButtonAchievements,this));
     
     pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 800 - m_pButton0->getContentSize().height / 2));
+    pButton->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
     //タイトルボタン
     
@@ -143,7 +130,7 @@ bool TitleScene::init()
     pButtonHelp = MenuItemSprite::create(pNormalSprite3,pSelectedSprite3,CC_CALLBACK_0(TitleScene::menuButtonHelp,this));
     
     pButton = Menu::create(pButtonHelp,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2 - 200,visibleSize.height - 800 - m_pButton0->getContentSize().height / 2));
+    pButton->setPosition(Vec2(visibleSize.width / 2 - 200,visibleSize.height - 700 - m_pButton0->getContentSize().height / 2));
     addChild(pButton);
     
     //今、BGMが流れているかどうか
@@ -164,6 +151,10 @@ bool TitleScene::init()
     m_pHelpWindow->setOpacity(0);
     addChild(m_pHelpWindow);
     m_bHelpMode = false;
+    
+    char apiKey[] = "d6a0b6f9ffb262bbc0f689922bb0c9345263c4b5";
+    char spotID[] = "281369";
+    NendModule::createNADViewBottom(apiKey, spotID);
     return true;
 }
 //================================================================================

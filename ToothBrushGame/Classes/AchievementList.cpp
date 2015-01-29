@@ -13,7 +13,7 @@
 bool AchievementList::init()
 {
     m_window_size = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
-    m_window_size.height -= 128;
+    m_window_size.height -= 180;
 
     //画面サイズサイズを取得
     TableView* tableView = TableView::create(this, m_window_size);
@@ -26,7 +26,7 @@ bool AchievementList::init()
     tableView->setDelegate(this);
     m_pLayer->addChild(tableView);
     tableView->reloadData();
-    tableView->setPosition(Vec2(0,128));
+    tableView->setPosition(Vec2(0,180));
 
     
     return true;

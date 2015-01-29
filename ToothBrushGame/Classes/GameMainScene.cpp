@@ -127,21 +127,7 @@ bool GameMainScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize() / 2 + SCREEN_CENTER;
     Vec2 origin = Director::getInstance()->getVisibleSize() / 2 - SCREEN_CENTER;
-    
-    //終了ボタン生成
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameMainScene::menuCloseCallback, this));
-    
-    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
-    
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-    
+        
     Enemy::initEnemyDownNum();
     
     //始めるフェーズから
@@ -481,7 +467,6 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     
     if(fAngle <= 45 && fAngle >= -45)
     {
-        CCLOG("上方向");
 
         return SWIPE_DIRECTION_UP;
 
@@ -489,19 +474,16 @@ GameMainScene::SWIPE_DIRECTION GameMainScene::calcSwipeDirection(float fAngle)
     
     if(fAngle <= 135 && fAngle >= 45)
     {
-        CCLOG("右方向");
         return SWIPE_DIRECTION_RIGHT;
     }
     
     if(fAngle <= -45 && fAngle >= -135)
     {
-        CCLOG("左方向");
         return SWIPE_DIRECTION_LEFT;
     }
     
     if((fAngle <= -135 && fAngle >= -180) || (fAngle <= 180 && fAngle >= 135))
     {
-        CCLOG("下方向");
         return SWIPE_DIRECTION_DOWN;
     }
     

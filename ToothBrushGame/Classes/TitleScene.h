@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "common.h"
-
+#include "NendModule.h"
 using namespace cocos2d;
 
 class TitleScene : public cocos2d::Layer

@@ -65,7 +65,7 @@ bool UIManager::init(void)
 
     m_pGameTopBack = Sprite::create(TEX_GAME_TOP_BACK);
     
-    m_pGameBottomBack->setPosition(Vec2(visibleSize.width / 2,origin.y + 224 - m_pGameTopBack->getContentSize().height / 2));
+    m_pGameBottomBack->setPosition(Vec2(visibleSize.width / 2,origin.y + 160 - m_pGameTopBack->getContentSize().height / 2));
     m_pLayer->addChild(m_pGameBottomBack);
     
     m_pGameTopBack->setPosition(Vec2(visibleSize.width / 2,visibleSize.height - m_pGameTopBack->getContentSize().height / 2));

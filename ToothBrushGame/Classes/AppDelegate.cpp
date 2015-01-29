@@ -31,19 +31,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
         director->setOpenGLView(glview);
 
-    std::vector< std::string > searchPath;    //リソースのパスを格納するvector
-    //画像フォルダ指定
-    searchPath.push_back("hd");
-    
-    //音楽フォルダ指定
-    searchPath.push_back("se");
-    searchPath.push_back("bgm");
-
-    //サーチパスに設定
-    FileUtils::getInstance()->setSearchPaths(searchPath);
+	
 
     // turn on display FPS
-    director->setDisplayStats(true);
+    director->setDisplayStats(false);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
