@@ -33,7 +33,6 @@ const char* ACHIEVEMENT_NAME[ACHIEVEMENT_MAX]
     "ACHIEVEMENT_TYPE_GAME_USE_UGAI",//うがいを使用した回数
     "ACHIEVEMENT_TYPE_GAME_MAX_USE_ENEMY_DOWN_BOM",//１ゲームでボム使用で倒した敵で最も多い回数
     "ACHIEVEMENT_TYPE_GAME_TIME",//ゲームにかかった最短タイム
-    "ACHIEVEMENT_TYPE_GAME_ENEMY_NOT_DOWN",//うがいしなかった敵の数
 };
 
 const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
@@ -59,8 +58,6 @@ const std::string ACHIEVEMENT_STATUSNAME[ACHIEVEMENT_MAX]
     "いっかいのはみがきでいっぱいうがいしたかずぅ　　　　　",//うがいを使用した回数
     "はみがきこでばいばいしたばいきんさんがいちばんのかずぅ",//１ゲームでボム使用で倒した敵で最も多い回数
     "はみがきがいちばんみじかかったかずぅ　　　　　　　　　",//ゲームにかかった最短タイム
-    "くちのこっちゃたばいきんさんのかずぅ　　　　　　　　　",//うがいしなかった敵の数
-
 };
 
 int AchievementDataBaseList::m_nAchievementCont[ACHIEVEMENT_MAX];
@@ -71,17 +68,17 @@ AchievementDataBaseList::ACHIEVE_STATUS AchievementData[]=
 {
     {"実績1","実績フラグ1",ACHIEVE_TYPE_TURN_ON,1,"はじめてのはみがき","ゲームを初めて起動する"},
     {"実績2","実績フラグ2",ACHIEVE_TYPE_GAME_PLAY,1,"たのしいはみがき","初めてゲームを始める"},
-    {"実績3","実績フラグ3",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"敵を５０体倒した！","ごじゅぅたぉしたぁ！"},
-    {"実績4","実績フラグ4",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"敵を１００体倒した！","ひゃぁくたぉしたぁ！"},
-    {"実績5","実績フラグ5",ACHIEVEMENT_TYPE_ENEMY_DOWN,500,"敵を５００体倒した！","ごひゃぁくたぉしたぁ！"},
-    {"実績6","実績フラグ6",ACHIEVEMENT_TYPE_ENEMY_DOWN,1000,"敵を１０００体倒した！","さうざんとぉすとらぁいく"},
-    {"実績7","実績フラグ7",ACHIEVEMENT_TYPE_ENEMY_DOWN,5000,"敵を５０００体倒した！","ふぇぇいっぱいだよぉ"},
-    {"実績8","実績フラグ8",ACHIEVEMENT_TYPE_ENEMY_DOWN,10000,"敵を１００００体倒した！","汚れ過ぎだろ"},
-    {"実績9","実績フラグ9",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,600,"スコア600pt達成した！","もっとみがいてよぉ"},
-    {"実績10","実績フラグ10",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1000,"スコア1000pt達成した！","おくちきれいきれい"},
-    {"実績11","実績フラグ11",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1500,"スコア1500達成した！","いっぱいみがいたね！"},
-    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,1800,"スコア1800pt達成した！","やばい。"},
-    {"実績13","実績フラグ13",ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM,0,"タップのみでクリアした！","たっぷますたぁ。"}
+    {"実績3","実績フラグ3",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"ごじゅぅたぉしたぁ！","敵を５０体倒した！"},
+    {"実績4","実績フラグ4",ACHIEVEMENT_TYPE_ENEMY_DOWN,100,"ひゃぁくたぉしたぁ！","敵を１００体倒した！"},
+    {"実績5","実績フラグ5",ACHIEVEMENT_TYPE_ENEMY_DOWN,500,"ごひゃぁくたぉしたぁ！","敵を５００体倒した！"},
+    {"実績6","実績フラグ6",ACHIEVEMENT_TYPE_ENEMY_DOWN,1000,"さうざんとぉすとらぁいく","敵を１０００体倒した！"},
+    {"実績7","実績フラグ7",ACHIEVEMENT_TYPE_ENEMY_DOWN,5000,"ふぇぇいっぱいだよぉ","敵を５０００体倒した！"},
+    {"実績8","実績フラグ8",ACHIEVEMENT_TYPE_ENEMY_DOWN,10000,"汚れ過ぎ","敵を１００００体倒した！"},
+    {"実績9","実績フラグ9",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,600,"もっとみがいてよぉ","スコア600pt達成した！",},
+    {"実績10","実績フラグ10",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1000,"おくちきれいきれい","スコア1000pt達成した！"},
+    {"実績11","実績フラグ11",ACHIEVEMENT_TYPE_GAME_TOP_SCORE,1500,"いっぱいみがいたね！","スコア1500達成した！"},
+    {"実績12","実績フラグ12",ACHIEVEMENT_TYPE_ENEMY_DOWN,1800,"やばい。","スコア1800pt達成した！"},
+    {"実績13","実績フラグ13",ACHIEVEMENT_TYPE_GAME_MIN_USE_BOM,0,"たっぷますたぁ。","タップのみでクリアした！"}
 };
 
 std::string strsprintf(const char* format,...){

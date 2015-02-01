@@ -14,6 +14,7 @@
 #include "GameMainScene.h"
 #include "RankManager.h"
 #include "Sound.h"
+#include "Random.h"
 USING_NS_CC;
 AchievementsScene::~AchievementsScene()
 {
@@ -88,8 +89,20 @@ bool AchievementsScene::init()
     pButtonTitle = MenuItemSprite::create(pNormalSprite2,pSelectedSprite2,CC_CALLBACK_0(AchievementsScene::ButtonTitle,this));
     
     Menu* pButton = Menu::create(pButtonTitle,NULL);
-    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 150));
+    pButton->setPosition(Vec2(visibleSize.width / 2,origin.y + 180));
     addChild(pButton);
+    NendModule::hideNADView();
+
+    char apiKey[] = "dda54eb3d743f07ab21f3a8f69805b221d1d8c8d";
+    char spotID[] = "281367";
+    NendInterstitialModule::createNADInterstitial(apiKey,spotID);
+    
+    char iconApiKey[] = "7921cf489ca3ba7ade7b5ff8ca16b73e8fa4be48";
+    char iconSpotID[] = "281337";
+    NendIconModule::createNADIconLoader(iconApiKey, iconSpotID);
+    NendIconModule::createNADIconViewBottom();
+    NendIconModule::load();
+    NendIconModule::showNADIconView();
     return true;
 }
 
@@ -165,9 +178,16 @@ void AchievementsScene::ButtonTitle(void)
 {
     //SE
     SimpleAudioEngine::getInstance()->playEffect(SE_BUTTON_1);
-
+    
     this->getEventDispatcher()->removeAllEventListeners();
     this->removeAllChildren();
     this->unscheduleUpdate();
     Director::getInstance()->replaceScene(TransitionFade::create(1.0f,TitleScene::createScene(),Color3B::WHITE));
+    short randView = RandomMT::getRaodom(0,1);
+    if(randView)
+    {
+    NendInterstitialModule::showNADInterstitialView();
+    }
+    NendModule::showNADView();
+    NendIconModule::hideNADIconView();
 }

@@ -11,6 +11,9 @@
 
 #include <cocos2d.h>
 #include <common.h>
+#include "NendInterstitialModule.h"
+#include "NendIconModule.h"
+#include "NendModule.h"
 
 using namespace cocos2d;
 class AchievementList;

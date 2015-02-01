@@ -14,7 +14,6 @@ CPP_FILES := $(shell find $(LOCAL_PATH)/../../Classes -name *.cpp)
 LOCAL_SRC_FILES := hellocpp/main.cpp
 LOCAL_SRC_FILES += $(CPP_FILES:$(LOCAL_PATH)/%=%)
 LOCAL_C_INCLUDES := $(shell find $(LOCAL_PATH)/../../Classes -type d)
-LOCAL_SRC_FILES +=../../Classes/sqlite3.c
 # 追加
 
 # 旧
