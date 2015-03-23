@@ -11,10 +11,17 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 # 追加分
 CPP_FILES := $(shell find $(LOCAL_PATH)/../../Classes -name *.cpp)
+CPP_FILES_NEND := $(shell find $(LOCAL_PATH)/nend -name *.cpp)
+
 LOCAL_SRC_FILES := hellocpp/main.cpp
 LOCAL_SRC_FILES += $(CPP_FILES:$(LOCAL_PATH)/%=%)
+LOCAL_SRC_FILES += $(CPP_FILES_NEND:$(LOCAL_PATH)/%=%)
 LOCAL_C_INCLUDES := $(shell find $(LOCAL_PATH)/../../Classes -type d)
-# 追加
+
+# ヘッダのincludeパスを追加
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../cocos2d/external
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/nend
 
 # 旧
 # LOCAL_SRC_FILES := hellocpp/main.cpp \

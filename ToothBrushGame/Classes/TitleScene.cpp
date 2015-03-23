@@ -151,14 +151,15 @@ bool TitleScene::init()
     m_pHelpWindow->setOpacity(0);
     addChild(m_pHelpWindow);
     m_bHelpMode = false;
+    float destHeight = (visibleSize.height - 860) * 960 / Director::getInstance()->getOpenGLView()->getFrameSize().height;
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     char apiKey[] = "d6a0b6f9ffb262bbc0f689922bb0c9345263c4b5";
     char spotID[] = "281369";
-    NendModule::createNADViewBottom(apiKey, spotID);
-#elif (CC_TARGET_PLATFORM ==CC_PLATFORM_ANDROID)
+    NendModule::createNADView(apiKey, spotID,Point(0,destHeight + (Director::getInstance()->getOpenGLView()->getFrameSize().height - 960)* 960 / Director::getInstance()->getOpenGLView()->getFrameSize().height / 2));
+#else
     char apiKey[] = "3fca04ca62d5d98b742a784ba2b5dad36163b2f4";
     char spotID[] = "308942";
-    NendModule::createNADViewBottom(apiKey, spotID);
+    NendModule::createNADView(apiKey, spotID,Point(0,destHeight + (Director::getInstance()->getOpenGLView()->getFrameSize().height - 960)* 960 / Director::getInstance()->getOpenGLView()->getFrameSize().height / 2));
 #endif
     return true;
 }

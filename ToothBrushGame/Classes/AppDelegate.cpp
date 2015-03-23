@@ -18,9 +18,6 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-    //乱数初期化
-    RandomMT::initRand();
-
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
@@ -28,10 +25,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLView::create("BrushToothGame");
     }
 
-        glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
-        director->setOpenGLView(glview);
-
-	
+    director->setOpenGLView(glview);
+    glview->setDesignResolutionSize(SCREEN_WIDTH, SCREEN_HEIGHT, ResolutionPolicy::SHOW_ALL);
+    //乱数初期化
+    RandomMT::initRand();
+    //リソースのパスを格納するvector
+    std::vector< std::string > searchPath;
+    searchPath.push_back("bgm");
+    searchPath.push_back("fonts");
+    searchPath.push_back("se");
+    searchPath.push_back("hd");
+    //サーチパスに設定
+    FileUtils::sharedFileUtils()->setSearchPaths(searchPath);
 
     // turn on display FPS
     director->setDisplayStats(false);
@@ -39,9 +44,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
-
     SoundPreload();
-
 
     AchievementDataBaseList::init();
     //実績スコアリセット
